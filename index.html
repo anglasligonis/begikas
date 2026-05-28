@@ -614,8 +614,8 @@ input[type=range]::-moz-range-thumb{width:22px;height:22px;background:var(--surf
   </div>
 
   <div class="demo">
-    <div class="demo-title">Interaktyvus demonstravimas — Kadencija ir smūgio jėga</div>
-    <p style="font-size:.88rem;color:var(--muted);margin-bottom:1.25rem">Slankite ir stebėkite, kaip kadencija veikia žingsnio ilgį ir smūgio jėgą į kelio sąnarį.</p>
+    <div class="demo-title">Interaktyvus demonstravimas — Kadensas ir smūgio jėga</div>
+    <p style="font-size:.88rem;color:var(--muted);margin-bottom:1.25rem">Slinkite ir stebėkite, kaip kadencija veikia žingsnio ilgį ir smūgio jėgą į kelio sąnarį.</p>
 
     <div class="slider-control">
       <div class="slider-label"><span>Kadencija (žingsniai per minutę)</span><strong id="s7-cad-label">170 SPM</strong></div>
@@ -647,7 +647,7 @@ input[type=range]::-moz-range-thumb{width:22px;height:22px;background:var(--surf
 
   <div class="callout callout-tip">
     <span class="callout-label">Praktinis patarimas</span>
-    Norėdami padidinti kadenciją: paleiskite muziką 170–180 BPM ir stenkitės trypti jos ritmu. Arba bėkite su metronomo programa. Didinkite po 5 SPM per savaitę — staigus pakeitimas gali sukelti blauzdų skausmą.
+    Norėdami padidinti kadensą: paleiskite muziką 170–180 BPM ir stenkitės trypti jos ritmu. Arba bėkite su metronomo programa. Didinkite po 5 SPM per savaitę — staigus pakeitimas gali sukelti blauzdų skausmą.
   </div>
 
   <div class="step-nav">
@@ -957,7 +957,7 @@ function initDemo4() {
     const descs = {
       low: 'Laktatas gaminamas, bet perdirbamas tokiu pat tempu. Galite bėgti ilgai. Čia kuriamas aerobinis pagrindas.',
       mid: 'Artėjate prie slenksčio arba jį pasiekėte. Tempas tvarus, bet reikalauja pastangų. Geriausia zona slenkščiui kelti.',
-      high: `Laktatas kaupiasi greičiau nei perdirbamas. Raumeniuose kaupiasi rūgštumas. Galima išlaikyti tik ${fit === 3 ? '10–20' : fit === 2 ? '5–15' : '2–8'} min.`
+      high: `Laktatas kaupiasi greičiau nei perdirbamas. Raumenyse kaupiasi rūgštumas. Galima išlaikyti tik ${fit === 3 ? '10–20' : fit === 2 ? '5–15' : '2–8'} min.`
     };
     document.getElementById('s4-desc').textContent = lac < 2 ? descs.low : lac < 4 ? descs.mid : descs.high;
     draw(pct, fit);
