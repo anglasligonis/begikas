@@ -130,6 +130,24 @@ input[type=range]::-moz-range-thumb{width:22px;height:22px;background:var(--surf
 .btn-next:disabled{opacity:.4;cursor:not-allowed}
 .step-counter{font-size:.8rem;color:var(--muted)}
 
+/* Knowledge check quiz */
+.quiz{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:1.5rem 1.75rem;margin:2rem 0}
+.quiz-q{font-size:.95rem;font-weight:600;color:var(--text);margin-bottom:1rem;display:flex;align-items:flex-start;gap:.5rem}
+.quiz-q::before{content:'?';display:inline-flex;align-items:center;justify-content:center;width:20px;height:20px;border-radius:50%;background:var(--z3);color:#fff;font-size:.72rem;font-weight:700;flex-shrink:0;margin-top:.1rem}
+.quiz-opts{display:flex;flex-direction:column;gap:.5rem}
+.quiz-opt{text-align:left;background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:.7rem 1rem;font-size:.88rem;font-family:'Inter',sans-serif;color:var(--text);cursor:pointer;transition:all .2s;line-height:1.5}
+.quiz-opt:hover:not(:disabled){border-color:var(--text)}
+.quiz-opt:disabled{cursor:default}
+.quiz-opt.correct{background:#f0fdf4;border-color:#22c55e;color:#14532d;font-weight:500}
+.quiz-opt.wrong{background:#fef2f2;border-color:#ef4444;color:#7f1d1d}
+.quiz-opt .mark{float:right;font-weight:700}
+.quiz-feedback{margin-top:.85rem;font-size:.85rem;line-height:1.6;color:var(--muted);padding:.7rem .9rem;border-radius:8px;background:var(--bg);display:none}
+.quiz-feedback.show{display:block}
+
+/* Keyboard hint */
+.kbd-hint{text-align:center;font-size:.72rem;color:var(--light);margin-top:1.5rem}
+.kbd-hint kbd{display:inline-block;padding:.1rem .4rem;border:1px solid var(--border);border-bottom-width:2px;border-radius:4px;background:var(--surface);font-family:'Inter',sans-serif;font-size:.7rem;margin:0 .1rem}
+
 /* Summary lesson */
 .summary-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:1.5rem 0}
 @media(max-width:600px){.summary-grid{grid-template-columns:1fr}}
@@ -196,7 +214,7 @@ input[type=range]::-moz-range-thumb{width:22px;height:22px;background:var(--surf
 
   <div class="prose">
     <p>Jūsų raumenys turi dviejų tipų skaidulas: <strong>lėtas (I tipas)</strong> ir <strong>greitąsias (II tipas)</strong>. Lėtos skaidulos yra ekonomiškos — jos naudoja deguonį ir riebalus kaip kurą ir gali dirbti valandas. Greitos skaidulos — galingos, bet greitai pavargsta.</p>
-    <p>Kai bėgate lengvai, dirba beveik vien lėtos skaidulos. Kai paskubate, kūnas pasitelkia greitas — ir jos pradeda kaupti laktatą (daugiau apie tai 4-oje pamokoje). Tad bėgimas tampa sunkus ne todėl, kad esate silpni, o todėl, kad naudojate netinkamas skaidulas.</p>
+    <p>Kai bėgate lengvai, dirba beveik vien lėtos skaidulos. Kai paskubate, kūnas pasitelkia greitas — ir laktato gaminasi daugiau, nei spėjama perdirbti (daugiau apie tai 4-oje pamokoje). Tad bėgimas tampa sunkus ne todėl, kad esate silpni, o todėl, kad naudojate netinkamas skaidulas.</p>
     <p>Greitis auginamas lėtomis treniruotėmis. <strong>80% treniruočių turėtų būti lengvos</strong> — tokios, kur galite laisvai kalbėtis. Tai nėra tingėjimas. Tai mokslas.</p>
   </div>
 
@@ -232,13 +250,13 @@ input[type=range]::-moz-range-thumb{width:22px;height:22px;background:var(--surf
           <circle cx="50" cy="93" r="9" fill="#f1f5f9" stroke="#e5e7eb" stroke-width="1.5"/>
           <text x="50" y="96" text-anchor="middle" font-size="6" fill="#9ca3af" font-family="Inter,sans-serif">kelys</text>
           <!-- fiber type bars -->
-          <text x="10" y="175" text-anchor="middle" font-size="5.5" fill="#9ca3af" font-family="Inter,sans-serif">Tipas I</text>
+          <text x="10" y="175" text-anchor="middle" font-size="5.5" fill="#9ca3af" font-family="Inter,sans-serif">I tipas</text>
           <rect x="2" y="178" width="16" height="8" rx="2" fill="#e5e7eb"/>
           <rect x="2" y="178" width="16" height="8" rx="2" fill="var(--z2)" id="fib1-bar"/>
-          <text x="50" y="175" text-anchor="middle" font-size="5.5" fill="#9ca3af" font-family="Inter,sans-serif">Tipas IIa</text>
+          <text x="50" y="175" text-anchor="middle" font-size="5.5" fill="#9ca3af" font-family="Inter,sans-serif">IIa tipas</text>
           <rect x="40" y="178" width="20" height="8" rx="2" fill="#e5e7eb"/>
           <rect x="40" y="178" width="0" height="8" rx="2" fill="var(--z3)" id="fib2a-bar" style="transition:width .5s"/>
-          <text x="88" y="175" text-anchor="middle" font-size="5.5" fill="#9ca3af" font-family="Inter,sans-serif">Tipas IIx</text>
+          <text x="88" y="175" text-anchor="middle" font-size="5.5" fill="#9ca3af" font-family="Inter,sans-serif">IIx tipas</text>
           <rect x="80" y="178" width="16" height="8" rx="2" fill="#e5e7eb"/>
           <rect x="80" y="178" width="0" height="8" rx="2" fill="var(--z4)" id="fib2x-bar" style="transition:width .5s"/>
         </svg>
@@ -268,6 +286,21 @@ input[type=range]::-moz-range-thumb{width:22px;height:22px;background:var(--surf
   <div class="callout callout-myth">
     <span class="callout-label">Populiarus mitas</span>
     „Jei neskausminga — nenaudinga." Netikra. Lengvas bėgimas kuria kapiliarų tinklą, moko raumenis deginti riebalus ir stiprina sausgysles. Tai pamatai, ant kurių statomi visi greičiai.
+  </div>
+
+  <div class="callout callout-tip">
+    <span class="callout-label">Pradedantiesiems</span>
+    Jei bėgti be perstojo dar sunku — naudokite <strong>bėgimo-ėjimo metodą</strong>: pakaitomis 1–2 min bėgimo ir 1 min ėjimo. Tai leidžia ilgiau išbūti judant, mažiau apkrauna sausgysles ir leidžia pamažu didinti ištvermę. Daugelis sėkmingų bėgikų pradėjo būtent taip.
+  </div>
+
+  <div class="quiz" data-correct="1">
+    <div class="quiz-q">Kokia treniruočių dalis turėtų būti lengvos, pokalbinės?</div>
+    <div class="quiz-opts">
+      <button class="quiz-opt">Apie 20%</button>
+      <button class="quiz-opt">Apie 80%</button>
+      <button class="quiz-opt">Apie 50%</button>
+    </div>
+    <div class="quiz-feedback">Taip — apie 80% treniruočių turėtų būti lengvos. Tai stato aerobinį pagrindą ir leidžia organizmui atsigauti tarp sunkesnių treniruočių.</div>
   </div>
 
   <div class="step-nav">
@@ -337,7 +370,17 @@ input[type=range]::-moz-range-thumb{width:22px;height:22px;background:var(--surf
 
   <div class="callout callout-tip">
     <span class="callout-label">Praktinė rekomendacija</span>
-    Jei neturite pulsometro — naudokite kalbėjimo testą. Lengva (Z2): laisvai šnekate. Vidutinė (Z3): trumpi sakiniai. Sunki (Z4): tik vienas žodis atsakant. Labai sunki (Z5): visai nekalbate.
+    Jei neturite pulsometro — naudokite kalbėjimo testą. Lengva (Z2): laisvai šnekate. Vidutinė (Z3): trumpi sakiniai. Sunki (Z4): atsakote vienu žodžiu. Labai sunki (Z5): visai nekalbate.
+  </div>
+
+  <div class="quiz" data-correct="2">
+    <div class="quiz-q">Kas yra „pilkosios zonos spąstas"?</div>
+    <div class="quiz-opts">
+      <button class="quiz-opt">Bėgimas per lėtai, kad būtų nauda</button>
+      <button class="quiz-opt">Bėgimas tik naktį</button>
+      <button class="quiz-opt">Visas treniruotes praleisti 3 zonoje — per sunku lengvai adaptacijai, per lengva greičio augimui</button>
+    </div>
+    <div class="quiz-feedback">Teisingai. 3 zona (70–85% MaksPP) yra „nei šis, nei tas" — pernelyg sunki, kad būtų tikrai lengva, ir pernelyg lengva reikšmingam stimului. Geriau bėgti arba tikrai lengvai (Z2), arba tikrai sunkiai (Z4).</div>
   </div>
 
   <div class="step-nav">
@@ -365,7 +408,7 @@ input[type=range]::-moz-range-thumb{width:22px;height:22px;background:var(--surf
 
   <div class="demo">
     <div class="demo-title">Interaktyvus demonstravimas — Kuro bako eikvojimas</div>
-    <p style="font-size:.88rem;color:var(--muted);margin-bottom:1.25rem">Slankite, kad pamatytumėte, kaip skirtingas tempas eikvoją glikogeno atsargas.</p>
+    <p style="font-size:.88rem;color:var(--muted);margin-bottom:1.25rem">Slankite, kad pamatytumėte, kaip skirtingas tempas eikvoja glikogeno atsargas.</p>
 
     <div class="slider-control">
       <div class="slider-label"><span>Bėgimo intensyvumas</span><strong id="s3-int-label">Lengvas (Z2)</strong></div>
@@ -409,6 +452,21 @@ input[type=range]::-moz-range-thumb{width:22px;height:22px;background:var(--surf
   <div class="callout callout-warn">
     <span class="callout-label">Maratono siena</span>
     ~32–35 km žymėje daugelis maratono bėgikų patiria staigų sulėtėjimą. Priežastis — išsekęs glikogenas. Sprendimas: treniruotis lėtai ilgiau (kuria riebalų efektyvumą) ir valgyti geliukus nuo 45-os minutės.
+  </div>
+
+  <div class="callout callout-tip">
+    <span class="callout-label">Mityba aplink treniruotę</span>
+    <strong>Prieš (1–3 val.):</strong> lengvai virškinamas angliavandenių šaltinis (bananas, avižos, duona). Venkite sunkaus, riebaus maisto. <strong>Po ilgesnės ar sunkios treniruotės (per ~1 val.):</strong> angliavandeniai glikogenui atstatyti + baltymai raumenims atsigauti (pvz. varškė su vaisiais, jogurtas, sumuštinis). Po lengvo trumpo bėgimo specialaus maitinimosi nereikia — užteks įprasto valgio.
+  </div>
+
+  <div class="quiz" data-correct="0">
+    <div class="quiz-q">Kodėl atsiranda maratono „siena"?</div>
+    <div class="quiz-opts">
+      <button class="quiz-opt">Išsenka glikogeno atsargos</button>
+      <button class="quiz-opt">Pritrūksta riebalų</button>
+      <button class="quiz-opt">Per daug laktato kraujyje</button>
+    </div>
+    <div class="quiz-feedback">Taip. Glikogeno atsargos riboto dydžio (~90 min intensyvaus bėgimo). Kai jos išsenka, kūnas priverstas kliautis lėta riebalų oksidacija — todėl staiga sulėtėjama. Sprendimas: treniruoti riebalų deginimą ir valgyti angliavandenius bėgimo metu.</div>
   </div>
 
   <div class="step-nav">
@@ -468,6 +526,16 @@ input[type=range]::-moz-range-thumb{width:22px;height:22px;background:var(--surf
     „Kitą dieną raumenys skauda dėl pieno rūgšties." Netikra. Uždelstas raumenų skausmas (DOMS) atsiranda dėl mikro-įplyšimų skaidulose — ne dėl laktato. Laktatas išnyksta per kelias valandas po bėgimo.
   </div>
 
+  <div class="quiz" data-correct="1">
+    <div class="quiz-q">Kas iš tikrųjų sukelia deginimo jausmą raumenyse?</div>
+    <div class="quiz-opts">
+      <button class="quiz-opt">Pats laktatas</button>
+      <button class="quiz-opt">Vandenilio jonai (H⁺), kurie rūgština raumenų aplinką</button>
+      <button class="quiz-opt">Pieno rūgštis, susidaranti kitą dieną</button>
+    </div>
+    <div class="quiz-feedback">Tiksliai. Laktatas yra net naudingas kuras. Deginimą sukelia kartu susidarantys vandenilio jonai, mažinantys raumenų pH. O kitos dienos skausmas (DOMS) — tai mikro-įplyšimai, ne laktatas.</div>
+  </div>
+
   <div class="step-nav">
     <button class="btn-step btn-prev" onclick="goLesson(2)">← Atgal</button>
     <span class="step-counter">4 / 8</span>
@@ -504,8 +572,8 @@ input[type=range]::-moz-range-thumb{width:22px;height:22px;background:var(--surf
       <div style="text-align:center">
         <div style="font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.8px;color:var(--muted);margin-bottom:.5rem">Plaučių tūris</div>
         <svg viewBox="0 0 120 100" style="width:140px;height:auto">
-          <ellipse cx="40" cy="55" rx="22" ry="id" fill="#dbeafe" stroke="#93c5fd" stroke-width="1.5" id="lung-l"/>
-          <ellipse cx="80" cy="55" rx="22" ry="id" fill="#dbeafe" stroke="#93c5fd" stroke-width="1.5" id="lung-r"/>
+          <ellipse cx="40" cy="55" rx="22" ry="20" fill="#dbeafe" stroke="#93c5fd" stroke-width="1.5" id="lung-l"/>
+          <ellipse cx="80" cy="55" rx="22" ry="20" fill="#dbeafe" stroke="#93c5fd" stroke-width="1.5" id="lung-r"/>
           <path d="M60 20 L60 45" stroke="#60a5fa" stroke-width="2.5" stroke-linecap="round"/>
           <path d="M60 42 Q48 48 40 52" stroke="#60a5fa" stroke-width="1.8" fill="none" stroke-linecap="round"/>
           <path d="M60 42 Q72 48 80 52" stroke="#60a5fa" stroke-width="1.8" fill="none" stroke-linecap="round"/>
@@ -528,6 +596,16 @@ input[type=range]::-moz-range-thumb{width:22px;height:22px;background:var(--surf
   <div class="callout callout-tip">
     <span class="callout-label">Praktinis patarimas</span>
     Išmokite kvėpuoti pilvu: atsigulę, padėkite ranką ant pilvo. Įkvėpdami pilvas turi kilti, o ne krūtinė. Treniruokite tai ramybėje — bėgant veiks automatiškai.
+  </div>
+
+  <div class="quiz" data-correct="2">
+    <div class="quiz-q">Kas iš tikrųjų valdo kvėpavimą bėgant?</div>
+    <div class="quiz-opts">
+      <button class="quiz-opt">Deguonies trūkumas kraujyje</button>
+      <button class="quiz-opt">Raumenų nuovargis</button>
+      <button class="quiz-opt">CO₂ kiekio padidėjimas kraujyje</button>
+    </div>
+    <div class="quiz-feedback">Teisingai. Kvėpavimą skatina ne deguonies stoka, o anglies dvideginio (CO₂) kaupimasis. Todėl lavinant CO₂ toleranciją galima kvėpuoti ramiau ir efektyviau.</div>
   </div>
 
   <div class="step-nav">
@@ -583,6 +661,16 @@ input[type=range]::-moz-range-thumb{width:22px;height:22px;background:var(--surf
     Virš 25°C sulėtinkite tempą ~6–8% kiekvienam 5°C virš 15°C. 30°C dieną bėgkite apie 10–15% lėčiau nei vėsioje. Gerkite ~150–200 ml kas 15 minučių, net jei netrokšta.
   </div>
 
+  <div class="quiz" data-correct="0">
+    <div class="quiz-q">Kodėl karštą dieną reikia sulėtinti tempą?</div>
+    <div class="quiz-opts">
+      <button class="quiz-opt">Dalis kraujo nukreipiama į odą aušinimui, todėl pulsas kyla esant tam pačiam tempui</button>
+      <button class="quiz-opt">Raumenys karštyje silpnėja</button>
+      <button class="quiz-opt">Karštyje deguonies ore yra mažiau</button>
+    </div>
+    <div class="quiz-feedback">Taip. Širdis turi aprūpinti ir raumenis, ir odą (aušinimui), todėl tas pats tempas reikalauja aukštesnio pulso. Norint likti toje pačioje treniruočių zonoje, reikia sulėtinti tempą.</div>
+  </div>
+
   <div class="step-nav">
     <button class="btn-step btn-prev" onclick="goLesson(4)">← Atgal</button>
     <span class="step-counter">6 / 8</span>
@@ -602,9 +690,9 @@ input[type=range]::-moz-range-thumb{width:22px;height:22px;background:var(--surf
 
   <div class="prose">
     <p>Bėgimo technika neturi būti tobula — ji turi būti <strong>saugi ir efektyvi</strong>. Nėra vieno teisingo bėgimo stiliaus: elitiniai bėgikai atrodo labai skirtingai. Tačiau yra kelios dažniausios klaidos, kurios sukelia daugumą pradedančiųjų traumų.</p>
-    <p><strong>Perkrova per žingsnį (overstriding)</strong> — dažniausia klaida. Tai nutinka, kai koja nusileisdama atsiduria toli priešais kūno masės centrą, veikiant kaip stabdys. Kiekvienas toks žingsnis siunčia smūgio jėgą tiesiai į kelio sąnarį. Sprendimas: trumpinkite žingsnį, didinkite kadenciją (žingsnių skaičių per minutę) iki 170–180 SPM.</p>
+    <p><strong>Perkrova per žingsnį (overstriding)</strong> — dažniausia klaida. Tai nutinka, kai koja nusileisdama atsiduria toli priešais kūno masės centrą ir veikia kaip stabdys. Kiekvienas toks žingsnis siunčia smūgio jėgą tiesiai į kelio sąnarį. Sprendimas: trumpinkite žingsnį, didinkite kadenciją (žingsnių skaičių per minutę) iki 170–180 SPM.</p>
     <p><strong>Rankų kirtimas per kūno vidurio liniją</strong> — kai rankos sūpuojasi į vidų (ne tiesiai pirmyn-atgal), kūnas kompensuoja sukiodamasis. Tai eikvoja energiją ir apkrauna juosmens raumenis. Laikykite alkūnes ~90° kampu, riešus atsipalaidavusius — rankų judesys turi būti tiesiai pirmyn.</p>
-    <p><strong>Per stiprus kulno smūgis</strong> — ne visi kulnų nusileidimą smerkia, tačiau jei nusileisdami galite aiškiai girdėti smūgio garsą, žingsnis tikriausiai per ilgas. Stenkitės, kad koja nusileistų po kūnu, o ne priekyje.</p>
+    <p><strong>Per stiprus kulno smūgis</strong> — ne visi kulno nusileidimą smerkia, tačiau jei nusileisdami galite aiškiai girdėti smūgio garsą, žingsnis tikriausiai per ilgas. Stenkitės, kad koja nusileistų po kūnu, o ne priekyje.</p>
     <p><strong>Tiesus liemuo, ne priekinis palinkimas</strong> — palinkimas iš čiurnos (ne iš juosmens) ~5–10° pirmyn leidžia gravitacijai padėti judėti į priekį. Bėgantys visiškai tiesiai dažnai „stabdo save" kiekvienu žingsniu.</p>
   </div>
 
@@ -614,8 +702,8 @@ input[type=range]::-moz-range-thumb{width:22px;height:22px;background:var(--surf
   </div>
 
   <div class="demo">
-    <div class="demo-title">Interaktyvus demonstravimas — Kadensas ir smūgio jėga</div>
-    <p style="font-size:.88rem;color:var(--muted);margin-bottom:1.25rem">Slinkite ir stebėkite, kaip kadencija veikia žingsnio ilgį ir smūgio jėgą į kelio sąnarį.</p>
+    <div class="demo-title">Interaktyvus demonstravimas — Kadencija ir smūgio jėga</div>
+    <p style="font-size:.88rem;color:var(--muted);margin-bottom:1.25rem">Slankite ir stebėkite, kaip kadencija veikia žingsnio ilgį ir smūgio jėgą į kelio sąnarį.</p>
 
     <div class="slider-control">
       <div class="slider-label"><span>Kadencija (žingsniai per minutę)</span><strong id="s7-cad-label">170 SPM</strong></div>
@@ -647,7 +735,27 @@ input[type=range]::-moz-range-thumb{width:22px;height:22px;background:var(--surf
 
   <div class="callout callout-tip">
     <span class="callout-label">Praktinis patarimas</span>
-    Norėdami padidinti kadensą: paleiskite muziką 170–180 BPM ir stenkitės trypti jos ritmu. Arba bėkite su metronomo programa. Didinkite po 5 SPM per savaitę — staigus pakeitimas gali sukelti blauzdų skausmą.
+    Norėdami padidinti kadenciją: paleiskite muziką 170–180 BPM ir stenkitės trypti jos ritmu. Arba bėkite su metronomo programa. Didinkite po 5 SPM per savaitę — staigus pakeitimas gali sukelti blauzdų skausmą.
+  </div>
+
+  <div class="callout callout-key">
+    <span class="callout-label">Apšilimas ir atvėsimas</span>
+    <strong>Prieš bėgimą:</strong> 5–10 min lengvo ėjimo ar lėto bėgimo + dinaminiai pratimai (kojų mostai, pritūpimai). Tai paruošia raumenis ir sąnarius, mažina traumų riziką. <strong>Po bėgimo:</strong> 5 min lėto ėjimo, kad pulsas nurimtų palaipsniui. Statinį tempimą atidėkite vėlesniam laikui — prieš bėgimą jis nereikalingas ir gali net pakenkti.
+  </div>
+
+  <div class="callout callout-tip">
+    <span class="callout-label">Apie batus</span>
+    Pradedantiesiems svarbiausia — patogūs, tinkamo dydžio bėgimo bateliai (palikite ~1 cm laisvumo prie pirštų). Nebūtina pirkti brangiausių ar „karbono" batų. Geriausia apsilankyti specializuotoje parduotuvėje, kur padės parinkti pagal jūsų pėdą ir bėgimo stilių. Keiskite batus maždaug kas 600–800 km.
+  </div>
+
+  <div class="quiz" data-correct="1">
+    <div class="quiz-q">Koks paprasčiausias būdas sumažinti smūgio jėgą į kelį?</div>
+    <div class="quiz-opts">
+      <button class="quiz-opt">Bėgti tiesiu liemeniu</button>
+      <button class="quiz-opt">Padidinti kadenciją ir sutrumpinti žingsnį</button>
+      <button class="quiz-opt">Bėgti tik minkštu paviršiumi</button>
+    </div>
+    <div class="quiz-feedback">Teisingai. Didesnė kadencija (170–180 SPM) su trumpesniu žingsniu reiškia, kad koja nusileidžia po kūnu, ne priešais jį — tai mažina stabdymo jėgą ir kelio apkrovą. Didinkite kadenciją palaipsniui, ~5 SPM per savaitę.</div>
   </div>
 
   <div class="step-nav">
@@ -670,7 +778,7 @@ input[type=range]::-moz-range-thumb{width:22px;height:22px;background:var(--surf
   <div class="prose">
     <p>Kiekvieną kartą bėgdami jūs suteikiate organizmui stresą. Po to, atsistatydamas, kūnas tampa šiek tiek stipresnis — tai vadinama <strong>superkompensacija</strong>. Bet tik tada, kai stresas buvo tinkamas ir poilsis pakankamas.</p>
     <p>Konkrečios adaptacijos, kurios daro jus greitesnį:</p>
-    <p><strong>Širdis:</strong> didėja kairiojo skilvelio tūris — kiekvieno plakimo metu išstūmia daugiau kraujo. Po mėnesių treniruočių ramybės pulsas krenta.</p>
+    <p><strong>Širdis:</strong> didėja kairiojo skilvelio tūris — kiekvieno plakimo metu širdis išstumia daugiau kraujo. Po mėnesių treniruočių ramybės pulsas krenta.</p>
     <p><strong>Raumenys:</strong> daugėja mitochondrijų (ląstelių elektrinių stočių), tankėja kapiliarų tinklas, raumenys išmoksta naudoti daugiau deguonies per minutę.</p>
     <p><strong>Sausgyslės ir kaulai:</strong> stiprėja lėčiau nei raumenys — tai dažniausia traumų priežastis pradedantiesiems, kurie per greitai didina apimtis.</p>
     <p>Svarbiausias principas: <strong>10% gairė</strong> — stenkitės nepadidinti savaitinės apimties daugiau kaip 10% per savaitę. Tai nėra absoliuti taisyklė — kai kuriems žmonėms 5% yra saugiau, ypač pradedant iš nulio. Raumenys pritampa per 2–3 savaites. Kaulai ir sausgyslės — per 3–6 mėnesius. Jei kūnas siunčia perspėjimo signalus anksčiau — klausykitės jo, ne kalendoriaus.</p>
@@ -715,11 +823,23 @@ input[type=range]::-moz-range-thumb{width:22px;height:22px;background:var(--surf
     Geriausia treniruotė — ta, kurią galite kartoti kitą savaitę. Sveikas, reguliarus bėgimas visada lenkia heroišką, bet traumuojantį.
   </div>
 
+  <div class="quiz" data-correct="2">
+    <div class="quiz-q">Kada iš tikrųjų vyksta kūno adaptacija (sustiprėjimas)?</div>
+    <div class="quiz-opts">
+      <button class="quiz-opt">Pačiame bėgime</button>
+      <button class="quiz-opt">Iškart po finišo</button>
+      <button class="quiz-opt">Poilsio ir miego metu po treniruotės</button>
+    </div>
+    <div class="quiz-feedback">Taip. Treniruotė yra tik stimulas — tikrasis sustiprėjimas (superkompensacija) vyksta atsigaunant, ypač miegant. Todėl poilsis ir 7–9 val. miego yra tokia pat svarbi treniruočių dalis kaip ir pats bėgimas.</div>
+  </div>
+
   <div class="step-nav">
     <button class="btn-step btn-prev" onclick="goLesson(6)">← Atgal</button>
     <span class="step-counter">8 / 8</span>
     <button class="btn-step btn-next" onclick="goLesson(0)" style="background:var(--z2);color:#fff">&#10003; Pradėti iš naujo</button>
   </div>
+
+  <div class="kbd-hint">Patarimas: pamokas galite vartyti klaviatūros klavišais <kbd>←</kbd> ir <kbd>→</kbd></div>
 </article>
 
 </main>
@@ -727,22 +847,25 @@ input[type=range]::-moz-range-thumb{width:22px;height:22px;background:var(--surf
 <script>
 const TOTAL = 8;
 let current = 0;
-const visited = new Set([0]); // track all visited, including current
+const visited = new Set([0]);
+const completed = new Set(); // lessons scrolled through / quiz answered
 
-function goLesson(n) {
-  document.getElementById('lesson-' + current).classList.remove('active');
-  document.querySelectorAll('.nav-pill')[current].classList.remove('active');
-  visited.add(current);
-  current = n;
-  visited.add(n);
-  document.getElementById('lesson-' + current).classList.add('active');
+function refreshPills() {
   const pills = document.querySelectorAll('.nav-pill');
   pills.forEach((p, i) => {
     p.classList.remove('active', 'done');
-    if (visited.has(i) && i !== current) p.classList.add('done');
+    if (completed.has(i) && i !== current) p.classList.add('done');
   });
   pills[current].classList.add('active');
-  document.getElementById('progressFill').style.width = ((visited.size / TOTAL) * 100) + '%';
+  document.getElementById('progressFill').style.width = ((completed.size / TOTAL) * 100) + '%';
+}
+
+function goLesson(n) {
+  document.getElementById('lesson-' + current).classList.remove('active');
+  current = n;
+  visited.add(n);
+  document.getElementById('lesson-' + current).classList.add('active');
+  refreshPills();
   window.scrollTo({ top: 0, behavior: 'smooth' });
   initDemos();
 }
@@ -750,6 +873,57 @@ function goLesson(n) {
 document.querySelectorAll('.nav-pill').forEach((btn, i) => {
   btn.addEventListener('click', () => goLesson(i));
 });
+
+// Keyboard navigation (left/right arrows)
+document.addEventListener('keydown', (e) => {
+  if (e.target.tagName === 'INPUT' || e.target.tagName === 'BUTTON') return;
+  if (e.key === 'ArrowRight' && current < TOTAL - 1) goLesson(current + 1);
+  if (e.key === 'ArrowLeft' && current > 0) goLesson(current - 1);
+});
+
+// Quiz logic
+document.querySelectorAll('.quiz').forEach(quiz => {
+  const correctIdx = parseInt(quiz.dataset.correct);
+  const opts = quiz.querySelectorAll('.quiz-opt');
+  const feedback = quiz.querySelector('.quiz-feedback');
+  opts.forEach((opt, idx) => {
+    opt.addEventListener('click', () => {
+      if (quiz.dataset.answered) return;
+      quiz.dataset.answered = 'true';
+      opts.forEach(o => o.disabled = true);
+      if (idx === correctIdx) {
+        opt.classList.add('correct');
+        opt.innerHTML += '<span class="mark">✓</span>';
+      } else {
+        opt.classList.add('wrong');
+        opt.innerHTML += '<span class="mark">✗</span>';
+        opts[correctIdx].classList.add('correct');
+        opts[correctIdx].innerHTML += '<span class="mark">✓</span>';
+      }
+      feedback.classList.add('show');
+      // Mark lesson complete once quiz is answered
+      const lessonEl = quiz.closest('.lesson');
+      const idx2 = parseInt(lessonEl.id.replace('lesson-', ''));
+      completed.add(idx2);
+      refreshPills();
+    });
+  });
+});
+
+// Mark a lesson complete when its bottom (step-nav) is reached
+const completeObserver = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      const lessonEl = e.target.closest('.lesson');
+      if (lessonEl) {
+        const idx = parseInt(lessonEl.id.replace('lesson-', ''));
+        completed.add(idx);
+        refreshPills();
+      }
+    }
+  });
+}, { threshold: 0.5 });
+document.querySelectorAll('.lesson .step-nav').forEach(el => completeObserver.observe(el));
 
 // ── DEMO 1: Fiber recruitment ──
 function initDemo1() {
@@ -957,7 +1131,7 @@ function initDemo4() {
     const descs = {
       low: 'Laktatas gaminamas, bet perdirbamas tokiu pat tempu. Galite bėgti ilgai. Čia kuriamas aerobinis pagrindas.',
       mid: 'Artėjate prie slenksčio arba jį pasiekėte. Tempas tvarus, bet reikalauja pastangų. Geriausia zona slenkščiui kelti.',
-      high: `Laktatas kaupiasi greičiau nei perdirbamas. Raumenyse kaupiasi rūgštumas. Galima išlaikyti tik ${fit === 3 ? '10–20' : fit === 2 ? '5–15' : '2–8'} min.`
+      high: `Laktatas kaupiasi greičiau nei perdirbamas. Raumeniuose kaupiasi rūgštumas. Galima išlaikyti tik ${fit === 3 ? '10–20' : fit === 2 ? '5–15' : '2–8'} min.`
     };
     document.getElementById('s4-desc').textContent = lac < 2 ? descs.low : lac < 4 ? descs.mid : descs.high;
     draw(pct, fit);
@@ -984,7 +1158,7 @@ function initDemo5() {
       'Pirmas ventiliacijos slenkstis (VT1). Pradedate kvėpuoti giliau. Galite derinti nosies ir burnos kvėpavimą.',
       'Antrasis ventiliacijos slenkstis (VT2). Reikia greito CO₂ šalinimo — burna būtina. Kvėpavimo raumenys pradeda vargti.',
       'Kvėpavimas tampa rimta problema pats savaime. Diafragma ir tarpšonkauliniai raumenys sunaudoja dalį deguonies.',
-      'Maksimalus ventiliavimas. Kvėpavimo raumenys gali sunaudoti iki 12% viso deguonies. Galima jaustis dusulys.'
+      'Maksimalus ventiliavimas. Kvėpavimo raumenys gali sunaudoti iki 12% viso deguonies. Gali atsirasti dusulys.'
     ];
     document.getElementById('s5-label').textContent = labels[v - 1];
     document.getElementById('s5-rr').textContent = rrs[v - 1];
