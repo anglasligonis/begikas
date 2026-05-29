@@ -148,6 +148,36 @@ input[type=range]::-moz-range-thumb{width:22px;height:22px;background:var(--surf
 .kbd-hint{text-align:center;font-size:.72rem;color:var(--light);margin-top:1.5rem}
 .kbd-hint kbd{display:inline-block;padding:.1rem .4rem;border:1px solid var(--border);border-bottom-width:2px;border-radius:4px;background:var(--surface);font-family:'Inter',sans-serif;font-size:.7rem;margin:0 .1rem}
 
+/* Methodology cards */
+.method-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:1.25rem 1.5rem;margin-bottom:.85rem;border-left:4px solid var(--border);transition:box-shadow .2s}
+.method-card:hover{box-shadow:0 4px 16px rgba(0,0,0,.06)}
+.method-card.norwegian{border-left-color:#3b82f6}
+.method-card.kenyan{border-left-color:#ef4444}
+.method-card.polarized{border-left-color:#22c55e}
+.method-card.lydiard{border-left-color:#f59e0b}
+.method-card.daniels{border-left-color:#8b5cf6}
+.method-name{font-size:1rem;font-weight:600;margin-bottom:.15rem}
+.method-sub{font-size:.75rem;color:var(--muted);margin-bottom:.6rem;font-style:italic}
+.method-badges{display:flex;gap:.35rem;flex-wrap:wrap;margin-bottom:.75rem}
+.method-badge{font-size:.62rem;font-weight:600;padding:.2rem .55rem;border-radius:10px;border:1px solid var(--border);background:var(--bg);color:var(--muted);text-transform:uppercase;letter-spacing:.4px}
+.method-body{font-size:.875rem;color:#374151;line-height:1.7;margin-bottom:.85rem}
+.ibar-wrap{margin-top:.5rem}
+.ibar-title{font-size:.62rem;font-weight:700;text-transform:uppercase;letter-spacing:.8px;color:var(--light);margin-bottom:.3rem}
+.ibar{display:flex;height:10px;border-radius:5px;overflow:hidden;gap:1px;width:100%}
+.ibar-seg{height:100%;transition:flex .4s}
+.ibar-legend{display:flex;gap:.75rem;margin-top:.3rem;flex-wrap:wrap}
+.ibar-legend span{font-size:.6rem;color:var(--muted);display:flex;align-items:center;gap:.3rem}
+.ibar-legend span::before{content:'';width:8px;height:8px;border-radius:2px;flex-shrink:0}
+.method-picker{display:flex;gap:.75rem;flex-wrap:wrap;margin-bottom:1rem}
+.method-pick-group{display:flex;flex-direction:column;gap:.3rem;flex:1;min-width:200px}
+.method-pick-group label{font-size:.72rem;font-weight:600;text-transform:uppercase;letter-spacing:.8px;color:var(--muted)}
+.method-rec{background:var(--bg);border:2px solid var(--border);border-radius:var(--radius);padding:1.25rem 1.5rem;transition:border-color .3s}
+.method-rec-header{display:flex;align-items:center;gap:.6rem;margin-bottom:.5rem}
+.method-rec-dot{width:12px;height:12px;border-radius:50%;flex-shrink:0}
+.method-rec-name{font-weight:700;font-size:1rem}
+.method-rec-why{font-size:.875rem;color:var(--muted);line-height:1.7}
+.method-rec-borrow{margin-top:.75rem;padding:.6rem .85rem;background:var(--surface);border-radius:8px;border:1px solid var(--border);font-size:.82rem;color:#374151;line-height:1.6}
+
 /* Summary lesson */
 .summary-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:1.5rem 0}
 @media(max-width:600px){.summary-grid{grid-template-columns:1fr}}
@@ -171,7 +201,7 @@ input[type=range]::-moz-range-thumb{width:22px;height:22px;background:var(--surf
 
 <header class="site-header">
   <h1>Bėgimo <span>fiziologija</span></h1>
-  <span style="font-size:.78rem;color:var(--muted)">8 pamokos pradedantiesiems</span>
+  <span style="font-size:.78rem;color:var(--muted)">9 pamokos pradedantiesiems</span>
 </header>
 <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
 
@@ -184,6 +214,7 @@ input[type=range]::-moz-range-thumb{width:22px;height:22px;background:var(--surf
   <button class="nav-pill" data-lesson="5">6. Karštis ir hidratacija</button>
   <button class="nav-pill" data-lesson="6">7. Bėgimo technika</button>
   <button class="nav-pill" data-lesson="7">8. Kaip tobulėti?</button>
+  <button class="nav-pill" data-lesson="8">9. Metodologijos</button>
 </div>
 
 <main>
@@ -209,6 +240,7 @@ input[type=range]::-moz-range-thumb{width:22px;height:22px;background:var(--surf
       <div style="font-size:.85rem;color:var(--muted);display:flex;align-items:baseline;gap:.4rem"><span style="font-size:.65rem;font-weight:700;color:var(--light)">6.</span> Karštis ir hidratacija</div>
       <div style="font-size:.85rem;color:var(--muted);display:flex;align-items:baseline;gap:.4rem"><span style="font-size:.65rem;font-weight:700;color:var(--light)">7.</span> Bėgimo technika ir traumos</div>
       <div style="font-size:.85rem;color:var(--muted);display:flex;align-items:baseline;gap:.4rem"><span style="font-size:.65rem;font-weight:700;color:var(--light)">8.</span> Kaip tobulėti?</div>
+      <div style="font-size:.85rem;color:var(--muted);display:flex;align-items:baseline;gap:.4rem"><span style="font-size:.65rem;font-weight:700;color:var(--light)">9.</span> Treniruočių metodologijos</div>
     </div>
   </div>
 
@@ -838,7 +870,261 @@ input[type=range]::-moz-range-thumb{width:22px;height:22px;background:var(--surf
 
   <div class="step-nav">
     <button class="btn-step btn-prev" onclick="goLesson(6)">← Atgal</button>
-    <span class="step-counter">8 / 8</span>
+    <span class="step-counter">8 / 9</span>
+    <button class="btn-step btn-next" onclick="goLesson(8)">Metodologijos →</button>
+  </div>
+
+  <div class="kbd-hint">Patarimas: pamokas galite vartyti klaviatūros klavišais <kbd>←</kbd> ir <kbd>→</kbd></div>
+</article>
+
+<!-- ══════════════════════════════════════════
+     PAMOKA 9 — TRENIRUOČIŲ METODOLOGIJOS
+     ══════════════════════════════════════════ -->
+<article class="lesson" id="lesson-8">
+  <div class="lesson-header">
+    <div class="lesson-num">9 pamoka iš 9</div>
+    <h2 class="lesson-title">Treniruočių metodologijos</h2>
+    <p class="lesson-intro">Pasaulio geriausi bėgikai treniruojasi labai skirtingai. Kas iš tikrųjų veikia — ir ką iš jų galima pasiskolinti?</p>
+  </div>
+
+  <div class="prose">
+    <p>Nėra vienos „teisingos" treniruočių sistemos. Tačiau yra kelios gerai ištirtos metodologijos, kurias naudoja elito bėgikai ir kurios grindžiamos patikima fiziologine logika. Kiekviena turi savo stipriąsias puses, apribojimus ir tinkamas auditorijas.</p>
+    <p>Svarbu suprasti: net ir geriausios metodologijos yra <strong>principai, ne receptai</strong>. Pradedančiajam nereikia kopijuoti Jakobs Ingebrigseno treniruočių programos — bet galima suprasti, <em>kodėl</em> ji veikia, ir pasiskolinti pagrindinę logiką.</p>
+  </div>
+
+  <!-- ── 1. NORWEGIAN ── -->
+  <div class="method-card norwegian">
+    <div class="method-name">Norvegiška metodologija — dvigubas slenkstis</div>
+    <div class="method-sub">Gjert Ingebrigtsen · Jakob Ingebrigtsen, Filip Ingebrigtsen, Gustav Iden</div>
+    <div class="method-badges">
+      <span class="method-badge">Didelė apimtis</span>
+      <span class="method-badge">Ne pradedantiesiems</span>
+      <span class="method-badge">5K–maratonas</span>
+      <span class="method-badge">Trenerio priežiūra būtina</span>
+    </div>
+    <div class="method-body">
+      Principas: dvi slenkstinės treniruotės <em>per dieną</em> — ryte ir vakare, — su lengvu bėgimu tarp jų. Intensyvumas tiksliai kontroliuojamas laktatų testais: kiekviena slenkstinė sesija baigiasi ties ~2–2,5 mmol/L, niekada neviršijant slenksčio. Aukšto intensyvumo intervaliai (VO₂ Max) beveik nenaudojami.
+      <br><br>
+      Logika paprasta: didžiulė slenkstinė apimtis → slenksčio riba kyla aukštyn → galima bėgti greičiau prieš kaupiantis laktatui. Norvegų metodas reikalauja puikios aerobinės bazės ir nuolatinės laktatų kontrolės — be to jis neveikia.
+    </div>
+    <div class="ibar-wrap">
+      <div class="ibar-title">Intensyvumo pasiskirstymas</div>
+      <div class="ibar">
+        <div class="ibar-seg" style="flex:30;background:var(--z1)"></div>
+        <div class="ibar-seg" style="flex:42;background:var(--z2)"></div>
+        <div class="ibar-seg" style="flex:3;background:var(--z3)"></div>
+        <div class="ibar-seg" style="flex:23;background:var(--z4)"></div>
+        <div class="ibar-seg" style="flex:2;background:var(--z5)"></div>
+      </div>
+      <div class="ibar-legend">
+        <span style="--c:var(--z1)"><span style="display:inline-block;width:8px;height:8px;border-radius:2px;background:var(--z1)"></span>Z1 30%</span>
+        <span><span style="display:inline-block;width:8px;height:8px;border-radius:2px;background:var(--z2)"></span>Z2 42%</span>
+        <span><span style="display:inline-block;width:8px;height:8px;border-radius:2px;background:var(--z3)"></span>Z3 3%</span>
+        <span><span style="display:inline-block;width:8px;height:8px;border-radius:2px;background:var(--z4)"></span>Z4 23%</span>
+        <span><span style="display:inline-block;width:8px;height:8px;border-radius:2px;background:var(--z5)"></span>Z5 2%</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── 2. KENYAN ── -->
+  <div class="method-card kenyan">
+    <div class="method-name">Keniečių / Etiopų modelis — didžiulės apimtys lėtai</div>
+    <div class="method-sub">Eliud Kipchoge, Kenenisa Bekele, Patrick Sang (treneris)</div>
+    <div class="method-badges">
+      <span class="method-badge">160–220 km/sav.</span>
+      <span class="method-badge">Aukštis 2000m+</span>
+      <span class="method-badge">Maratonas / ilgos distancijos</span>
+      <span class="method-badge">Grupinis bėgimas</span>
+    </div>
+    <div class="method-body">
+      Principas: neįtikėtinai didelės apimtys (160–220 km per savaitę), daugiausia lėtai, aukštyje. Itene (Kenija, ~2400 m) ir Bekojyje (Etiopija, ~3000 m) vaikai bėgioja į mokyklą ir darbus nuo mažens — aerobinė bazė kuriama dešimtmečius prieš rimtas varžybas.
+      <br><br>
+      Greitis kyla ne dėl dažnų intensyvių treniruočių, o dėl nepaprastai didelės aerobinės bazės ir aukščio adaptacijos. Grupinis bėgimas padeda palaikyti tempą ir motyvaciją net ir labai lengvose treniruotėse.
+    </div>
+    <div class="ibar-wrap">
+      <div class="ibar-title">Intensyvumo pasiskirstymas</div>
+      <div class="ibar">
+        <div class="ibar-seg" style="flex:50;background:var(--z1)"></div>
+        <div class="ibar-seg" style="flex:33;background:var(--z2)"></div>
+        <div class="ibar-seg" style="flex:7;background:var(--z3)"></div>
+        <div class="ibar-seg" style="flex:8;background:var(--z4)"></div>
+        <div class="ibar-seg" style="flex:2;background:var(--z5)"></div>
+      </div>
+      <div class="ibar-legend">
+        <span><span style="display:inline-block;width:8px;height:8px;border-radius:2px;background:var(--z1)"></span>Z1 50%</span>
+        <span><span style="display:inline-block;width:8px;height:8px;border-radius:2px;background:var(--z2)"></span>Z2 33%</span>
+        <span><span style="display:inline-block;width:8px;height:8px;border-radius:2px;background:var(--z3)"></span>Z3 7%</span>
+        <span><span style="display:inline-block;width:8px;height:8px;border-radius:2px;background:var(--z4)"></span>Z4 8%</span>
+        <span><span style="display:inline-block;width:8px;height:8px;border-radius:2px;background:var(--z5)"></span>Z5 2%</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── 3. POLARIZED ── -->
+  <div class="method-card polarized">
+    <div class="method-name">Poliarizuotas modelis (80/20)</div>
+    <div class="method-sub">Stephen Seiler · Moksliniais tyrimais pagrįstas modelis</div>
+    <div class="method-badges">
+      <span class="method-badge">Moksliniais tyrimais pagrįstas</span>
+      <span class="method-badge">Vidutinė–didelė apimtis</span>
+      <span class="method-badge">Visos distancijos</span>
+      <span class="method-badge">Tinka mėgėjams</span>
+    </div>
+    <div class="method-body">
+      Stepheno Seilerio ištyrinėtas elito sportininkų modelis: 80% labai lengvos treniruotės, 20% labai sunkios. Sąmoningai vengiama vidurinės zonos (Z3) — ta „patogi" zona, kurioje daugelis mėgėjų praleidžia daugumą treniruočių, nėra nei pakankamai lengva aerobiniam pagrindui, nei pakankamai sunki aukštesnio intensyvumo adaptacijai.
+      <br><br>
+      Moksliniai tyrimai su elito plaukikais, dviratininkais ir bėgikais nuosekliai rodo, kad poliarizuotas modelis duoda geresnius rezultatus nei tradicinis „vidutinis intensyvumas visur". Labai tinkamas mėgėjams, nes sumažina traumų riziką ir leidžia ilgai treniruotis be pervargimo.
+    </div>
+    <div class="ibar-wrap">
+      <div class="ibar-title">Intensyvumo pasiskirstymas</div>
+      <div class="ibar">
+        <div class="ibar-seg" style="flex:45;background:var(--z1)"></div>
+        <div class="ibar-seg" style="flex:35;background:var(--z2)"></div>
+        <div class="ibar-seg" style="flex:0;background:var(--z3)"></div>
+        <div class="ibar-seg" style="flex:15;background:var(--z4)"></div>
+        <div class="ibar-seg" style="flex:5;background:var(--z5)"></div>
+      </div>
+      <div class="ibar-legend">
+        <span><span style="display:inline-block;width:8px;height:8px;border-radius:2px;background:var(--z1)"></span>Z1 45%</span>
+        <span><span style="display:inline-block;width:8px;height:8px;border-radius:2px;background:var(--z2)"></span>Z2 35%</span>
+        <span><span style="display:inline-block;width:8px;height:8px;border-radius:2px;background:var(--z3)"></span>Z3 0%</span>
+        <span><span style="display:inline-block;width:8px;height:8px;border-radius:2px;background:var(--z4)"></span>Z4 15%</span>
+        <span><span style="display:inline-block;width:8px;height:8px;border-radius:2px;background:var(--z5)"></span>Z5 5%</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── 4. LYDIARD ── -->
+  <div class="method-card lydiard">
+    <div class="method-name">Lydiardo metodas — aerobinis pagrindas</div>
+    <div class="method-sub">Arthur Lydiard · Naujoji Zelandija · XX a. 6-as dešimtmetis</div>
+    <div class="method-badges">
+      <span class="method-badge">Istoriškai įtakingas</span>
+      <span class="method-badge">Didelės apimtys</span>
+      <span class="method-badge">Maratonas / pusmaratonis</span>
+      <span class="method-badge">Ilgas pagrindo kūrimas</span>
+    </div>
+    <div class="method-body">
+      Arthuro Lydardo sukurta sistema: pirmiausia didelės apimtys (160+ km per savaitę) grynai aerobiniu tempu — mėnesiai be intensyvių intervalių. Tik tada — kalvų bėgimai, intervalai, greičio darbas. Sistema davė kelis olimpinius čempionus (Peter Snell, Murray Halberg) ir iš esmės pakeitė bėgimo treniruočių supratimą visame pasaulyje.
+      <br><br>
+      Pagrindinė idėja: be tvirto aerobinio pagrindo jokie greičio darbai neduos pilno potencialo. Lydiardo įtaka juntama visose šiuolaikinėse metodologijose — poliarizuotame modelyje, norvegiškoje mokykloje ir keniečių praktikoje.
+    </div>
+    <div class="ibar-wrap">
+      <div class="ibar-title">Intensyvumo pasiskirstymas (pagrindo fazė)</div>
+      <div class="ibar">
+        <div class="ibar-seg" style="flex:60;background:var(--z1)"></div>
+        <div class="ibar-seg" style="flex:30;background:var(--z2)"></div>
+        <div class="ibar-seg" style="flex:5;background:var(--z3)"></div>
+        <div class="ibar-seg" style="flex:4;background:var(--z4)"></div>
+        <div class="ibar-seg" style="flex:1;background:var(--z5)"></div>
+      </div>
+      <div class="ibar-legend">
+        <span><span style="display:inline-block;width:8px;height:8px;border-radius:2px;background:var(--z1)"></span>Z1 60%</span>
+        <span><span style="display:inline-block;width:8px;height:8px;border-radius:2px;background:var(--z2)"></span>Z2 30%</span>
+        <span><span style="display:inline-block;width:8px;height:8px;border-radius:2px;background:var(--z3)"></span>Z3 5%</span>
+        <span><span style="display:inline-block;width:8px;height:8px;border-radius:2px;background:var(--z4)"></span>Z4 4%</span>
+        <span><span style="display:inline-block;width:8px;height:8px;border-radius:2px;background:var(--z5)"></span>Z5 1%</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── 5. DANIELS ── -->
+  <div class="method-card daniels">
+    <div class="method-name">Danielso formulė (VDOT sistema)</div>
+    <div class="method-sub">Jack Daniels · „Daniels' Running Formula" (1998)</div>
+    <div class="method-badges">
+      <span class="method-badge">Struktūrizuota</span>
+      <span class="method-badge">Vidutinė apimtis</span>
+      <span class="method-badge">5K–maratonas</span>
+      <span class="method-badge">Tinka mėgėjams</span>
+    </div>
+    <div class="method-body">
+      Jack Danielso sukurta sistema, kuri apskaičiuoja bėgiko fiziologinį pajėgumą (VDOT) iš varžybų rezultato ir nustato 5 tikslias treniruočių zonas su konkrečiais tempais: lengvas (E), maratoninis (M), slenkstinis (T), intervalinis (I) ir pasikartojimų (R). Kiekvienas bėgimo tipas turi aiškų fiziologinį tikslą.
+      <br><br>
+      Labai populiari tarp mėgėjų dėl konkretumo — žinai tiksliai, kokiu tempu bėgti kiekvieną treniruotę. Sistema automatiškai perskaičiuojama gerėjant rezultatams. Geras pasirinkimas tiems, kuriems patinka struktūra ir aiški sistema.
+    </div>
+    <div class="ibar-wrap">
+      <div class="ibar-title">Intensyvumo pasiskirstymas</div>
+      <div class="ibar">
+        <div class="ibar-seg" style="flex:30;background:var(--z1)"></div>
+        <div class="ibar-seg" style="flex:35;background:var(--z2)"></div>
+        <div class="ibar-seg" style="flex:10;background:var(--z3)"></div>
+        <div class="ibar-seg" style="flex:15;background:var(--z4)"></div>
+        <div class="ibar-seg" style="flex:10;background:var(--z5)"></div>
+      </div>
+      <div class="ibar-legend">
+        <span><span style="display:inline-block;width:8px;height:8px;border-radius:2px;background:var(--z1)"></span>Z1 30%</span>
+        <span><span style="display:inline-block;width:8px;height:8px;border-radius:2px;background:var(--z2)"></span>Z2 35%</span>
+        <span><span style="display:inline-block;width:8px;height:8px;border-radius:2px;background:var(--z3)"></span>Z3 10%</span>
+        <span><span style="display:inline-block;width:8px;height:8px;border-radius:2px;background:var(--z4)"></span>Z4 15%</span>
+        <span><span style="display:inline-block;width:8px;height:8px;border-radius:2px;background:var(--z5)"></span>Z5 10%</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="callout callout-myth">
+    <span class="callout-label">Populiarus mitas</span>
+    „Keniečiai greiti dėl genetikos." Iš tikrųjų didžiąją dalį lemia aukštis, bėgiojimas nuo vaikystės ir dešimtmečiais kaupiama didelių apimčių aerobinė bazė. Genetika gali suteikti pranašumą, bet Kipsoge ir Bekele bėga po 200+ km per savaitę ne todėl, kad lengvai sekasi — o todėl, kad tai vienintelis kelias į tokį lygį.
+  </div>
+
+  <div class="callout callout-warn">
+    <span class="callout-label">Norvegiška metodologija — ne pradedantiesiems</span>
+    Dvigubas slenkstis reikalauja puikios aerobinės bazės ir nuolatinės laktatų kontrolės. Be trenerio priežiūros ir reguliarių laktatų testų ši metodologija lengvai virsta dvigubai sunkia treniruote per dieną — ir tai greitas kelias į pervargimą ar traumą.
+  </div>
+
+  <!-- DEMO -->
+  <div class="demo">
+    <div class="demo-title">Interaktyvus demonstravimas — Kuri metodologija tinka jums?</div>
+    <p style="font-size:.88rem;color:var(--muted);margin-bottom:1.25rem">Pasirinkite savo tikslą ir turimą laiką — gausite rekomendaciją ir patarimą, ką galite pasiskolinti iš šios metodologijos jau dabar.</p>
+
+    <div class="method-picker">
+      <div class="method-pick-group">
+        <label for="s8-goal">Jūsų tikslas</label>
+        <select id="s8-goal" class="scandi-select" style="width:100%">
+          <option value="5k">Pagerinti 5K laiką</option>
+          <option value="half">Pirmas pusmaratonis</option>
+          <option value="marathon">Maratono finišas</option>
+          <option value="health">Sveikata ir ilgaamžiškumas</option>
+        </select>
+      </div>
+      <div class="method-pick-group">
+        <label for="s8-time">Savaitinis treniruočių laikas</label>
+        <select id="s8-time" class="scandi-select" style="width:100%">
+          <option value="low">Iki 4 val./sav.</option>
+          <option value="mid" selected>4–8 val./sav.</option>
+          <option value="high">8+ val./sav.</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="method-rec" id="s8-rec">
+      <div class="method-rec-header">
+        <div class="method-rec-dot" id="s8-rec-dot"></div>
+        <div class="method-rec-name" id="s8-rec-name"></div>
+      </div>
+      <div class="method-rec-why" id="s8-rec-why"></div>
+      <div class="method-rec-borrow" id="s8-rec-borrow"></div>
+    </div>
+  </div>
+
+  <div class="callout callout-tip">
+    <span class="callout-label">Universalus principas</span>
+    Visose penkiose metodologijose — norvegiškoje, keniečių, poliarizuotoje, Lydardo ir Danielso — dominuoja vienas bendras bruožas: <strong>didžioji treniruočių dalis yra lengva</strong>. Nesvarbu, kurią metodologiją pasirinksite, 80/20 principas veikia visose.
+  </div>
+
+  <div class="quiz" data-correct="1">
+    <div class="quiz-q">Koks vienas bruožas yra bendras visoms čia aptartoms metodologijoms?</div>
+    <div class="quiz-opts">
+      <button class="quiz-opt">Treniruojamasi du kartus per dieną</button>
+      <button class="quiz-opt">Didžioji treniruočių dalis yra lengva, nepriklausomai nuo metodologijos</button>
+      <button class="quiz-opt">Naudojami tik intervaliniai bėgimai</button>
+    </div>
+    <div class="quiz-feedback">Taip. Nuo norvegiško dvigubo slenksčio iki keniečių aukšto tūrio — visur 70–80% treniruočių vyksta lengvu, pokalbiu tempu. Tai ne sutapimas: aerobinis pagrindas yra visų metodologijų pamatas.</div>
+  </div>
+
+  <div class="step-nav">
+    <button class="btn-step btn-prev" onclick="goLesson(7)">← Atgal</button>
+    <span class="step-counter">9 / 9</span>
     <button class="btn-step btn-next" onclick="goLesson(0)" style="background:var(--z2);color:#fff">&#10003; Pradėti iš naujo</button>
   </div>
 
@@ -848,7 +1134,7 @@ input[type=range]::-moz-range-thumb{width:22px;height:22px;background:var(--surf
 </main>
 
 <script>
-const TOTAL = 8;
+const TOTAL = 9;
 let current = 0;
 const visited = new Set([0]);
 const completed = new Set(); // lessons scrolled through / quiz answered
@@ -1256,6 +1542,41 @@ function initDemo7() {
   update();
 }
 
+// ── DEMO 8: Methodology matcher ──
+function initDemo8() {
+  const goalS = document.getElementById('s8-goal');
+  const timeS = document.getElementById('s8-time');
+
+  const recs = {
+    '5k-low':      { name:'Danielso formulė', color:'#8b5cf6', why:'Riboto laiko sąlygomis Danielso VDOT sistema yra efektyviausia — kiekviena treniruotė turi aiškų tikslą ir tikslų tempą. Nereikia didelių apimčių: 3 struktūrizuotos treniruotės per savaitę duoda gerų rezultatų.', borrow:'Pasiskolinkite: apskaičiuokite savo VDOT iš paskutinio 5K laiko (vdoto.com) ir naudokite gautas zonas bent lengvoms treniruotėms.' },
+    '5k-mid':      { name:'Poliarizuotas modelis', color:'#22c55e', why:'80/20 metodas puikiai tinka 5K renginiui su vidutine apimtimi. 2–3 lengvos treniruotės per savaitę + 1 tikrai sunki (intervalai) duoda aiškų progresą nenuvargstant.', borrow:'Pasiskolinkite: atidžiai saugokite Z3 — jei jaučiate, kad bėgate „patogiai sunkiai", greičiausiai tai pilkoji zona. Bėkite arba lėčiau, arba greičiau.' },
+    '5k-high':     { name:'Norvegiška metodologija', color:'#3b82f6', why:'Su 8+ val./sav. galima pradėti eksperimentuoti su dvigubomis treniruotėmis. Fokusas į slenkstinį tempą — dvi laktatinės sesijos per savaitę (ne per dieną, kaip elitui) duoda puikius rezultatus.', borrow:'Pasiskolinkite: vieną kartą per savaitę bėkite du kartus — ryte lengvai 30–40 min, vakare slenkstinį tempą 20–30 min.' },
+    'half-low':    { name:'Danielso formulė', color:'#8b5cf6', why:'Pusmaratonui su ribotu laiku Danielso sistema siūlo aiškią struktūrą: ilgas bėgimas savaitgalį + viena kokybinė sesija + lengvos dienos. Nedaug, bet tikslinga.', borrow:'Pasiskolinkite: savaitgalio ilgas bėgimas visada turi būti tikrai lengvas (galite kalbėtis) — tai Danielso E tempas, ne maratoninis.' },
+    'half-mid':    { name:'Lydiardo metodas', color:'#f59e0b', why:'Pusmaratonui su vidutine apimtimi Lydardo principas veikia puikiai: 8–10 sav. aerobinio pagrindo kūrimas (ilgi, lėti bėgimai), tada 3–4 sav. slenkstinio darbo. Finišui stiprūs liks kojos.', borrow:'Pasiskolinkite: prieš pradėdami greičio darbus, 8 savaites bėgkite tik lengvai. Tai nuobodu, bet aerobinis pagrindas apsimoka.' },
+    'half-high':   { name:'Poliarizuotas modelis', color:'#22c55e', why:'Su didelėmis apimtimis poliarizuotas modelis leidžia bėgti daug ir nesusirgti. 80% lengvų treniruočių + 1–2 tikrai sunkios per savaitę yra idealus santykis pusmaratonui.', borrow:'Pasiskolinkite: vienas ilgas bėgimas per savaitę (16–22 km) tikrai lengvu tempu yra kertinis pusmaratono treniruočių akmuo.' },
+    'marathon-low':{ name:'Lydiardo metodas', color:'#f59e0b', why:'Maratonui net su ribotu laiku Lydardo principas yra svarbiausias: ilgi, lėti savaitgalio bėgimai kuria riebalų efektyvumą ir sausgyslių atsparumą. Geriau 3 treniruotės per savaitę su ilgu savaitgaliu nei 5 vidutinės.', borrow:'Pasiskolinkite: kiekvieną savaitę — vienas bėgimas ilgesnis nei visa kita. Palaipsniui didinkite iki 28–30 km prieš maratoną.' },
+    'marathon-mid':{ name:'Poliarizuotas modelis', color:'#22c55e', why:'Maratonui su vidutine apimtimi 80/20 metodas leidžia bėgti pakankamai daug be pervargimo. Ilgi savaitgalio bėgimai (lengvi!) + 1 slenkstinė sesija per savaitę yra klasikinis receptas.', borrow:'Pasiskolinkite: maratoninis tempas = Z2/Z3 riba. Treniruotės „maratoniniu tempu" yra labai veiksmingos, bet jas reikia subalansuoti su daug lengvesnio bėgimo.' },
+    'marathon-high':{ name:'Keniečių / Etiopų modelis', color:'#ef4444', why:'Su didelėmis apimtimis keniečių logika veikia: kuo daugiau lengvo bėgimo, tuo geresnis riebalų metabolizmas ir aerobinė bazė. 80–90% visų kilometrų turi būti tikrai lengvi — net jei tai jaučiasi per lengva.', borrow:'Pasiskolinkite: jei bėgate 60+ km/sav., patikrinkite — ar tikrai 80% yra lengva? Daugelis bėga per greitai lengvomis dienomis ir per lėtai sunkiomis.' },
+    'health-low':  { name:'Poliarizuotas modelis', color:'#22c55e', why:'Sveikatai ir ilgaamžiškumui poliarizuotas modelis yra idealus: mažiausiai traumų, didelis malonumas, tvarumas dešimtmečius. Net 3 treniruotės per savaitę (2 lengvos + 1 sunkesnė) duoda reikšmingos naudos sveikatai.', borrow:'Pasiskolinkite: 30 min lengvo bėgimo 3× per savaitę yra pakankamai. Svarbiausia — reguliarumas, ne intensyvumas.' },
+    'health-mid':  { name:'Poliarizuotas modelis', color:'#22c55e', why:'Su vidutine apimtimi poliarizuotas modelis leidžia mėgautis bėgimu be pervargimo. 80% treniruočių turi būti malonios — jei bėgimas nuolat sunkus, tai nesveika ilgalaikiai.', borrow:'Pasiskolinkite: sekmadienio ilgas bėgimas tikrai lengvu tempu yra vienas sveikiausių įpročių. Net 60–90 min Z1/Z2 daro stebuklus sirdies ir metabolinei sveikatai.' },
+    'health-high': { name:'Lydiardo metodas', color:'#f59e0b', why:'Su dideliu laiku Lydardo aerobinio pagrindo principas yra tvariausias ilgalaikiai. Didelės lengvo bėgimo apimtys be pervargimo kuria kapiliarų tinklą, gerina metabolinę sveikatą ir ilgina aktyvų gyvenimą.', borrow:'Pasiskolinkite: jei mėgstate bėgti daug — bėkite daug, bet lėtai. Greitis ateina pats, kai aerobinis pagrindas stiprus.' }
+  };
+
+  function update() {
+    const key = goalS.value + '-' + timeS.value;
+    const r = recs[key] || recs['health-mid'];
+    const rec = document.getElementById('s8-rec');
+    document.getElementById('s8-rec-dot').style.background = r.color;
+    document.getElementById('s8-rec-name').textContent = r.name;
+    document.getElementById('s8-rec-why').textContent = r.why;
+    document.getElementById('s8-rec-borrow').innerHTML = r.borrow;
+    rec.style.borderColor = r.color;
+  }
+  goalS.addEventListener('change', update);
+  timeS.addEventListener('change', update);
+  update();
+}
+
 function initDemos() {
   if (current === 0) initDemo1();
   if (current === 1) initDemo2();
@@ -1264,6 +1585,7 @@ function initDemos() {
   if (current === 4) initDemo5();
   if (current === 5) initDemo6();
   if (current === 6) initDemo7();
+  if (current === 8) initDemo8();
 }
 
 initDemos();
