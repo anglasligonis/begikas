@@ -24,7 +24,12 @@ a{color:inherit}
 .progress-fill{height:100%;background:var(--z2);width:0%;transition:width .3s}
 
 /* ── NAV PILLS ── */
-.lesson-nav{display:flex;gap:.5rem;flex-wrap:wrap;padding:1.25rem 2rem .75rem;background:var(--bg);border-bottom:1px solid var(--border);position:sticky;top:64px;z-index:190;overflow-x:auto}
+.lesson-nav{display:flex;gap:.5rem;flex-wrap:wrap;padding:1.25rem 2rem .75rem;background:var(--bg);border-bottom:1px solid var(--border);position:sticky;top:64px;z-index:190;overflow:hidden;max-height:300px;transition:max-height .35s ease,padding .35s ease,border-color .35s ease}
+.lesson-nav.nav-collapsed{max-height:0;padding-top:0;padding-bottom:0;border-bottom-color:transparent}
+.nav-toggle-btn{background:none;border:1px solid var(--border);border-radius:6px;padding:.3rem .55rem;cursor:pointer;font-size:.82rem;color:var(--muted);transition:all .2s;line-height:1;font-family:'Inter',sans-serif;flex-shrink:0}
+.nav-toggle-btn:hover{border-color:var(--text);color:var(--text)}
+.lesson-indicator{font-size:.72rem;color:var(--muted);opacity:0;transition:opacity .25s;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:200px;pointer-events:none}
+@media(max-width:480px){.lesson-indicator{max-width:110px}}
 .nav-pill{background:none;border:1px solid var(--border);border-radius:20px;padding:.3rem .9rem;font-size:.78rem;font-weight:500;color:var(--muted);cursor:pointer;transition:all .2s;white-space:nowrap;font-family:'Inter',sans-serif}
 .nav-pill:hover{border-color:var(--text);color:var(--text)}
 .nav-pill.active{background:var(--text);color:#fff;border-color:var(--text)}
@@ -259,8 +264,10 @@ input[type=range]::-moz-range-thumb{width:22px;height:22px;background:var(--surf
 
 <header class="site-header">
   <h1>Bėgimo <span>fiziologija</span></h1>
-  <div style="display:flex;align-items:center;gap:.75rem">
-    <span style="font-size:.78rem;color:var(--muted)">20 pamokų pradedantiesiems</span>
+  <div style="display:flex;align-items:center;gap:.6rem">
+    <span class="lesson-indicator" id="lessonIndicator"></span>
+    <span style="font-size:.78rem;color:var(--muted)" id="lessonCountLabel">20 pamokų pradedantiesiems</span>
+    <button class="nav-toggle-btn" id="navToggleBtn" onclick="toggleNav()" title="Rodyti / slėpti pamokas">☰</button>
     <button class="glossary-btn" onclick="toggleGlossary()">📖 Žodynas</button>
   </div>
 </header>
@@ -2004,13 +2011,61 @@ function goLesson(n) {
   visited.add(n);
   document.getElementById('lesson-' + current).classList.add('active');
   refreshPills();
+  updateIndicator();
   window.scrollTo({ top: 0, behavior: 'smooth' });
   initDemos();
 }
 
 document.querySelectorAll('.nav-pill').forEach((btn, i) => {
-  btn.addEventListener('click', () => goLesson(i));
+  btn.addEventListener('click', () => {
+    goLesson(i);
+    // Auto-collapse after picking a lesson on small screens
+    if (window.innerWidth < 700) collapseNav(true);
+  });
 });
+
+// ── NAV COLLAPSE ──
+const NAV_LESSON_NAMES = [
+  '1. Kodėl bėgame lėtai?','2. Širdis ir pulsas','3. Energija ir kuras',
+  '4. Laktatas','5. Kvėpavimas','6. Karštis ir hidratacija',
+  '7. Bėgimo technika','8. Kaip tobulėti?','9. Metodologijos',
+  '10. Jėgos treniruotės','11. Žiemos bėgimas','12. Pirmos varžybos',
+  '13. VO₂max','14. Bėgimo ekonomija','15. Nuovargis',
+  '16. Tempo paskirstymas','17. Krūvio valdymas','18. Skausmas ar trauma',
+  '19. Motyvacija','20. Bėgimo laikrodžiai'
+];
+
+let navCollapsed = false;
+let lastScrollY = window.scrollY;
+
+function collapseNav(force) {
+  navCollapsed = (force !== undefined) ? force : !navCollapsed;
+  const nav = document.getElementById('lessonNav');
+  const btn = document.getElementById('navToggleBtn');
+  const ind = document.getElementById('lessonIndicator');
+  const lbl = document.getElementById('lessonCountLabel');
+  nav.classList.toggle('nav-collapsed', navCollapsed);
+  if (btn) btn.textContent = navCollapsed ? '☰' : '✕';
+  if (ind) ind.style.opacity = navCollapsed ? '1' : '0';
+  if (lbl) lbl.style.opacity = navCollapsed ? '0' : '1';
+}
+
+function updateIndicator() {
+  const ind = document.getElementById('lessonIndicator');
+  if (ind) ind.textContent = NAV_LESSON_NAMES[current] || '';
+}
+
+window.toggleNav = function() { collapseNav(); };
+
+window.addEventListener('scroll', () => {
+  const y = window.scrollY;
+  if (y > lastScrollY + 20 && y > 80 && !navCollapsed) {
+    collapseNav(true);
+  } else if (y < lastScrollY - 20 && navCollapsed) {
+    collapseNav(false);
+  }
+  lastScrollY = y;
+}, { passive: true });
 
 // Keyboard navigation (left/right arrows)
 document.addEventListener('keydown', (e) => {
@@ -2919,6 +2974,7 @@ function initDemos() {
 }
 
 initDemos();
+updateIndicator();
 </script>
 </body>
 </html>
