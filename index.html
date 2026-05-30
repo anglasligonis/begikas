@@ -195,13 +195,74 @@ input[type=range]::-moz-range-thumb{width:22px;height:22px;background:var(--surf
   .figure-svg-col{width:120px;margin:0 auto}
   .metric-row{gap:.5rem}
 }
+
+/* Key takeaway box */
+.takeaway{background:linear-gradient(to right,#fef9e7,#fef3c7);border:none;border-radius:10px;padding:.85rem 1.25rem;margin-bottom:1.5rem;font-size:.92rem;line-height:1.65;color:#713f12;display:flex;gap:.6rem;align-items:flex-start}
+.takeaway::before{content:'💡';font-size:1.1rem;flex-shrink:0;margin-top:.05rem}
+
+/* Cross-reference badges */
+.xref{display:inline-flex;align-items:center;gap:.2rem;font-size:.75rem;padding:.15rem .55rem;border-radius:12px;background:#eef2ff;color:#4338ca;border:1px solid #c7d2fe;cursor:pointer;font-family:'Inter',sans-serif;font-weight:600;text-decoration:none;margin:0 .15rem;transition:all .15s;vertical-align:baseline}
+.xref:hover{background:#4338ca;color:#fff;border-color:#4338ca}
+.xref::before{content:'→';margin-right:.1rem}
+
+/* Glossary panel */
+.glossary-overlay{position:fixed;inset:0;background:rgba(0,0,0,.3);z-index:299;opacity:0;pointer-events:none;transition:opacity .3s}
+.glossary-overlay.open{opacity:1;pointer-events:auto}
+.glossary-panel{position:fixed;top:0;right:0;bottom:0;width:min(440px,92vw);background:var(--surface);box-shadow:-8px 0 32px rgba(0,0,0,.12);z-index:300;transform:translateX(100%);transition:transform .3s ease;display:flex;flex-direction:column}
+.glossary-panel.open{transform:translateX(0)}
+.glossary-header{padding:1.25rem 1.5rem;border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;flex-shrink:0}
+.glossary-header h2{font-family:'Lora',serif;font-size:1.3rem;font-weight:600}
+.glossary-close{background:none;border:none;font-size:1.4rem;color:var(--muted);cursor:pointer;line-height:1;padding:.25rem .4rem;border-radius:4px}
+.glossary-close:hover{background:var(--bg);color:var(--text)}
+.glossary-search{padding:.75rem 1.5rem;border-bottom:1px solid var(--border);flex-shrink:0}
+.glossary-search input{width:100%;padding:.6rem .9rem;border:1px solid var(--border);border-radius:8px;font-family:'Inter',sans-serif;font-size:.88rem;outline:none;background:var(--bg)}
+.glossary-search input:focus{border-color:var(--text)}
+.glossary-list{flex:1;overflow-y:auto;padding:1rem 1.5rem 2rem}
+.glossary-entry{padding:.85rem 0;border-bottom:1px solid var(--border)}
+.glossary-entry:last-child{border-bottom:none}
+.glossary-entry.hidden{display:none}
+.glossary-term{font-size:.92rem;font-weight:700;color:var(--text);margin-bottom:.25rem}
+.glossary-def{font-size:.85rem;color:var(--muted);line-height:1.7}
+.glossary-btn{background:var(--surface);border:1px solid var(--border);padding:.4rem .85rem;border-radius:20px;font-size:.75rem;font-family:'Inter',sans-serif;font-weight:600;color:var(--text);cursor:pointer;transition:all .2s;white-space:nowrap}
+.glossary-btn:hover{border-color:var(--text);background:var(--bg)}
+
+/* Exercise cards (lesson 10) */
+.exercise-grid{display:grid;grid-template-columns:1fr 1fr;gap:.75rem;margin:1.25rem 0}
+@media(max-width:600px){.exercise-grid{grid-template-columns:1fr}}
+.exercise-card{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:1rem 1.25rem}
+.exercise-name{font-size:.95rem;font-weight:600;margin-bottom:.2rem}
+.exercise-tag{font-size:.62rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.6px;margin-bottom:.45rem;display:block}
+.exercise-desc{font-size:.83rem;color:var(--muted);line-height:1.6}
+.exercise-sets{font-size:.75rem;font-weight:600;color:var(--text);margin-top:.4rem;padding:.25rem .6rem;background:var(--bg);border-radius:6px;border:1px solid var(--border);display:inline-block}
+
+/* Race day timeline (lesson 12) */
+.race-timeline{margin:1.25rem 0}
+.timeline-step{display:flex;gap:1rem;margin-bottom:.85rem;padding-left:1.25rem;border-left:2px solid var(--border);position:relative}
+.timeline-step::before{content:'';position:absolute;left:-7px;top:.55rem;width:12px;height:12px;border-radius:50%;background:var(--z2);border:2px solid var(--bg)}
+.timeline-step.warn::before{background:var(--z3)}
+.timeline-step.alert::before{background:var(--z4)}
+.timeline-time{font-weight:700;font-size:.82rem;color:var(--text);min-width:96px;padding-top:.35rem}
+.timeline-body h4{font-size:.9rem;font-weight:600;margin-bottom:.15rem}
+.timeline-body p{font-size:.82rem;color:var(--muted);line-height:1.6}
+
+/* Winter layers demo (lesson 11) */
+.layer-row{display:flex;flex-direction:column;gap:.5rem;margin:1rem 0}
+.layer-item{display:flex;align-items:center;gap:.75rem;padding:.6rem .9rem;border-radius:8px;border:1px solid var(--border);background:var(--bg);font-size:.85rem;transition:all .3s}
+.layer-item.active{background:#eff6ff;border-color:#93c5fd}
+.layer-item.removed{opacity:.25;text-decoration:line-through}
+.layer-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0}
+.layer-name{font-weight:600;flex:1}
+.layer-note{font-size:.75rem;color:var(--muted)}
 </style>
 </head>
 <body>
 
 <header class="site-header">
   <h1>Bėgimo <span>fiziologija</span></h1>
-  <span style="font-size:.78rem;color:var(--muted)">9 pamokos pradedantiesiems</span>
+  <div style="display:flex;align-items:center;gap:.75rem">
+    <span style="font-size:.78rem;color:var(--muted)">12 pamokų pradedantiesiems</span>
+    <button class="glossary-btn" onclick="toggleGlossary()">📖 Žodynas</button>
+  </div>
 </header>
 <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
 
@@ -215,7 +276,22 @@ input[type=range]::-moz-range-thumb{width:22px;height:22px;background:var(--surf
   <button class="nav-pill" data-lesson="6">7. Bėgimo technika</button>
   <button class="nav-pill" data-lesson="7">8. Kaip tobulėti?</button>
   <button class="nav-pill" data-lesson="8">9. Metodologijos</button>
+  <button class="nav-pill" data-lesson="9">10. Jėgos treniruotės</button>
+  <button class="nav-pill" data-lesson="10">11. Žiemos bėgimas</button>
+  <button class="nav-pill" data-lesson="11">12. Pirmos varžybos</button>
 </div>
+
+<div class="glossary-overlay" id="glossaryOverlay" onclick="toggleGlossary()"></div>
+<aside class="glossary-panel" id="glossaryPanel">
+  <div class="glossary-header">
+    <h2>Žodynas</h2>
+    <button class="glossary-close" onclick="toggleGlossary()">✕</button>
+  </div>
+  <div class="glossary-search">
+    <input type="text" id="glossarySearch" placeholder="Ieškoti termino..." oninput="filterGlossary(this.value)">
+  </div>
+  <div class="glossary-list" id="glossaryList"></div>
+</aside>
 
 <main>
 
@@ -224,10 +300,12 @@ input[type=range]::-moz-range-thumb{width:22px;height:22px;background:var(--surf
      ══════════════════════════════════════════ -->
 <article class="lesson active" id="lesson-0">
   <div class="lesson-header">
-    <div class="lesson-num">1 pamoka iš 8</div>
+    <div class="lesson-num">1 pamoka iš 12</div>
     <h2 class="lesson-title">Kodėl pradedantieji turi bėgti lėtai?</h2>
     <p class="lesson-intro">Daugelis naujokų bando bėgti per greitai nuo pirmos dienos. Suprantama — bet fiziologiškai tai klaida. Štai kodėl.</p>
   </div>
+
+  <div class="takeaway"><div><strong>Pagrindinė mintis:</strong> 80% jūsų bėgimo turėtų būti toks lengvas, kad galėtumėte laisvai kalbėtis. Tai ne tingėjimas — tai mokslas.</div></div>
 
   <div style="background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:1.25rem 1.5rem;margin-bottom:2rem">
     <div style="font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:1.2px;color:var(--light);margin-bottom:.85rem">Šio kurso turinys</div>
@@ -241,12 +319,15 @@ input[type=range]::-moz-range-thumb{width:22px;height:22px;background:var(--surf
       <div style="font-size:.85rem;color:var(--muted);display:flex;align-items:baseline;gap:.4rem"><span style="font-size:.65rem;font-weight:700;color:var(--light)">7.</span> Bėgimo technika ir traumos</div>
       <div style="font-size:.85rem;color:var(--muted);display:flex;align-items:baseline;gap:.4rem"><span style="font-size:.65rem;font-weight:700;color:var(--light)">8.</span> Kaip tobulėti?</div>
       <div style="font-size:.85rem;color:var(--muted);display:flex;align-items:baseline;gap:.4rem"><span style="font-size:.65rem;font-weight:700;color:var(--light)">9.</span> Treniruočių metodologijos</div>
+      <div style="font-size:.85rem;color:var(--muted);display:flex;align-items:baseline;gap:.4rem"><span style="font-size:.65rem;font-weight:700;color:var(--light)">10.</span> Jėgos treniruotės</div>
+      <div style="font-size:.85rem;color:var(--muted);display:flex;align-items:baseline;gap:.4rem"><span style="font-size:.65rem;font-weight:700;color:var(--light)">11.</span> Žiemos bėgimas</div>
+      <div style="font-size:.85rem;color:var(--muted);display:flex;align-items:baseline;gap:.4rem"><span style="font-size:.65rem;font-weight:700;color:var(--light)">12.</span> Pirmos varžybos</div>
     </div>
   </div>
 
   <div class="prose">
     <p>Jūsų raumenys turi dviejų tipų skaidulas: <strong>lėtas (I tipas)</strong> ir <strong>greitąsias (II tipas)</strong>. Lėtos skaidulos yra ekonomiškos — jos naudoja deguonį ir riebalus kaip kurą ir gali dirbti valandas. Greitos skaidulos — galingos, bet greitai pavargsta.</p>
-    <p>Kai bėgate lengvai, dirba beveik vien lėtos skaidulos. Kai paskubate, kūnas pasitelkia greitas — ir laktato gaminasi daugiau, nei spėjama perdirbti (daugiau apie tai 4-oje pamokoje). Tad bėgimas tampa sunkus ne todėl, kad esate silpni, o todėl, kad naudojate netinkamas skaidulas.</p>
+    <p>Kai bėgate lengvai, dirba beveik vien lėtos skaidulos. Kai paskubate, kūnas pasitelkia greitas — ir laktato gaminasi daugiau, nei spėjama perdirbti <button class="xref" onclick="goLesson(3)">4 pamoka: Laktatas</button>. Tad bėgimas tampa sunkus ne todėl, kad esate silpni, o todėl, kad naudojate netinkamas skaidulas.</p>
     <p>Greitis auginamas lėtomis treniruotėmis. <strong>80% treniruočių turėtų būti lengvos</strong> — tokios, kur galite laisvai kalbėtis. Tai nėra tingėjimas. Tai mokslas.</p>
   </div>
 
@@ -346,14 +427,15 @@ input[type=range]::-moz-range-thumb{width:22px;height:22px;background:var(--surf
      ══════════════════════════════════════════ -->
 <article class="lesson" id="lesson-1">
   <div class="lesson-header">
-    <div class="lesson-num">2 pamoka iš 8</div>
+    <div class="lesson-num">2 pamoka iš 12</div>
     <h2 class="lesson-title">Širdis, pulsas ir treniruočių zonos</h2>
     <p class="lesson-intro">Pulsas — paprasčiausias treniruočių intensyvumo rodiklis. Bet kaip jį teisingai interpretuoti?</p>
   </div>
+  <div class="takeaway"><div><strong>Pagrindinė mintis:</strong> Treniruočių zonos padeda bėgti teisingai. 80% bėgimo turėtų būti Z1–Z2. Venkite pilkosios Z3 zonos — nei pernelyg lengvos adaptacijai, nei pakankamai sunkios progresui.</div></div>
 
   <div class="prose">
     <p>Jūsų širdis — siurblys. Kiekvieną kartą, kai raumeniui reikia daugiau deguonies, ji plaka greičiau. <strong>Maksimalus pulsas (MaksPP)</strong> — tai didžiausias galimas jos plakimo dažnis. Tiksliausiai nustatomas laboratorijoje, bet grubi formulė: <strong>220 − amžius</strong>.</p>
-    <p>Treniruotės zonos suskirstomos pagal MaksPP procentus. Svarbiausia žinoti dvi iš jų: <strong>2 zona</strong> (60–70% MaksPP) — lengvas, pokalbinis tempas, kur vyksta aerobinė adaptacija; ir <strong>4 zona</strong> (85–95% MaksPP) — laktatinis slenkstis, kur bėgimas tampa tikrai sunkus.</p>
+    <p>Treniruotės zonos suskirstomos pagal MaksPP procentus. Svarbiausia žinoti dvi iš jų: <strong>2 zona</strong> (60–70% MaksPP) — lengvas, pokalbinis tempas, kur vyksta aerobinė adaptacija; ir <strong>4 zona</strong> (85–95% MaksPP) — laktatinis slenkstis <button class="xref" onclick="goLesson(3)">4 pamoka: Laktatas</button>, kur bėgimas tampa tikrai sunkus.</p>
     <p>Pradedantiesiems dažna klaida — beveik visas treniruotes praleisti <strong>3 zonoje</strong> (70–85%): per sunki lengvoms adaptacijoms, per lengva reikšmingam greičio augimui. Tai vadinamasis „pilkosios zonos spąstas".</p>
   </div>
 
@@ -417,7 +499,7 @@ input[type=range]::-moz-range-thumb{width:22px;height:22px;background:var(--surf
 
   <div class="step-nav">
     <button class="btn-step btn-prev" onclick="goLesson(0)">← Atgal</button>
-    <span class="step-counter">2 / 8</span>
+    <span class="step-counter">2 / 12</span>
     <button class="btn-step btn-next" onclick="goLesson(2)">Energija ir kuras →</button>
   </div>
 </article>
@@ -427,15 +509,16 @@ input[type=range]::-moz-range-thumb{width:22px;height:22px;background:var(--surf
      ══════════════════════════════════════════ -->
 <article class="lesson" id="lesson-2">
   <div class="lesson-header">
-    <div class="lesson-num">3 pamoka iš 8</div>
+    <div class="lesson-num">3 pamoka iš 12</div>
     <h2 class="lesson-title">Kuo kūnas maitina bėgimą?</h2>
     <p class="lesson-intro">Jūsų kūnas turi du pagrindinius kuro šaltinius. Kuris naudojamas — priklauso nuo tempo. Tai lemia viską: nuo svorio metimo iki maratono finišo.</p>
   </div>
+  <div class="takeaway"><div><strong>Pagrindinė mintis:</strong> Riebalai — beveik neišsenkantis šaltinis, bet lėtas. Glikogenas — greitas, bet ribotas. Lėtos treniruotės moko kūną taupyti glikogeną.</div></div>
 
   <div class="prose">
     <p><strong>Riebalai</strong> — beveik neišsenkantis energijos šaltinis. Net plonas 70 kg žmogus turi ~80 000–100 000 kcal riebaluose. Bet yra svarbi riba: kūnas gali deginti riebalus ne greičiau nei ~0.5–1 g per minutę, net ir gerai treniruoti sportininkai. Tai reiškia, jog esant dideliam intensyvumui riebalai tiesiog per lėtai tiekia energiją — tada glikogenas tampa neišvengiamas.</p>
     <p><strong>Glikogenas</strong> — cukrus, laikomas raumenyse ir kepenyse. Greičiau prieinamas, bet kiekis ribotas: maždaug 1 500–2 000 kcal (užtenka ~90 minučių intensyvaus bėgimo). Kai jis baigiasi, kūnas patiria tai, ką maratono bėgikai vadina <strong>„siena"</strong> — staigus nuovargis apie 30–35 km žymę.</p>
-    <p>Treniruodamiesi lėtai jūs mokote kūną <strong>efektyviau deginti riebalus</strong> ir taupyti glikogeną ilgesnėms distancijoms.</p>
+    <p>Treniruodamiesi lėtai jūs mokote kūną <strong>efektyviau deginti riebalus</strong> ir taupyti glikogeną ilgesnėms distancijoms. Tai viena pagrindinių adaptacijų — plačiau <button class="xref" onclick="goLesson(7)">8 pamoka: Kaip tobulėti</button>.</p>
   </div>
 
   <div class="demo">
@@ -503,7 +586,7 @@ input[type=range]::-moz-range-thumb{width:22px;height:22px;background:var(--surf
 
   <div class="step-nav">
     <button class="btn-step btn-prev" onclick="goLesson(1)">← Atgal</button>
-    <span class="step-counter">3 / 8</span>
+    <span class="step-counter">3 / 12</span>
     <button class="btn-step btn-next" onclick="goLesson(3)">Laktatas →</button>
   </div>
 </article>
@@ -513,15 +596,16 @@ input[type=range]::-moz-range-thumb{width:22px;height:22px;background:var(--surf
      ══════════════════════════════════════════ -->
 <article class="lesson" id="lesson-3">
   <div class="lesson-header">
-    <div class="lesson-num">4 pamoka iš 8</div>
+    <div class="lesson-num">4 pamoka iš 12</div>
     <h2 class="lesson-title">Laktatas — ne priešas, o signalas</h2>
     <p class="lesson-intro">Laktatas turi blogą reputaciją. „Pieno rūgštis degins raumenis!" Iš tikrųjų — tai ne visai tiesa. Štai kas iš tiesų vyksta.</p>
   </div>
+  <div class="takeaway"><div><strong>Pagrindinė mintis:</strong> Laktatas nėra jūsų priešas — tai kuras. Deginimą sukelia ne jis, o vandenilio jonai. Laktatinis slenkstis kyla treniruojantis.</div></div>
 
   <div class="prose">
     <p>Kai raumeniui stinga deguonies, jis skaido gliukozę ir gamina laktatą. Tai normalu ir vyksta nuolat. <strong>Problema — ne laktatas</strong>, o kartu susidarantys <strong>vandenilio jonai (H⁺)</strong>, kurie rūgština raumenų aplinką. Tai sukelia deginimą ir nuovargį.</p>
     <p>Laktatas pats savaime yra <strong>kuras</strong> — širdis jį mielai degina, o kiti raumenys pasiima ir naudoja. Jis susikaupia tik tada, kai gaminama greičiau nei spėjama perdirbti.</p>
-    <p><strong>Laktatinis slenkstis</strong> — tai intensyvumas, po kurio laktatas pradeda kauptis eksponentiškai. Treniruotas bėgikas šį slenkstį pasiekia gerokai vėliau (didesniu tempu) nei netreniruotas. Treniruočių tikslas — pastumti šį slenkstį kuo toliau.</p>
+    <p><strong>Laktatinis slenkstis</strong> — tai intensyvumas (žr. <button class="xref" onclick="goLesson(1)">2 pamoka: Zonos</button>), po kurio laktatas pradeda kauptis eksponentiškai. Treniruotas bėgikas šį slenkstį pasiekia gerokai vėliau (didesniu tempu) nei netreniruotas. Treniruočių tikslas — pastumti šį slenkstį kuo toliau.</p>
   </div>
 
   <div class="demo">
@@ -573,7 +657,7 @@ input[type=range]::-moz-range-thumb{width:22px;height:22px;background:var(--surf
 
   <div class="step-nav">
     <button class="btn-step btn-prev" onclick="goLesson(2)">← Atgal</button>
-    <span class="step-counter">4 / 8</span>
+    <span class="step-counter">4 / 12</span>
     <button class="btn-step btn-next" onclick="goLesson(4)">Kvėpavimas →</button>
   </div>
 </article>
@@ -583,10 +667,11 @@ input[type=range]::-moz-range-thumb{width:22px;height:22px;background:var(--surf
      ══════════════════════════════════════════ -->
 <article class="lesson" id="lesson-4">
   <div class="lesson-header">
-    <div class="lesson-num">5 pamoka iš 8</div>
+    <div class="lesson-num">5 pamoka iš 12</div>
     <h2 class="lesson-title">Kvėpavimas bėgant: nosis ar burna?</h2>
     <p class="lesson-intro">Kvėpavimas yra vienintelis deguonies pristatymo kelias į raumenis. Kaip kvėpuojate — svarbu labiau, nei daugelis mano.</p>
   </div>
+  <div class="takeaway"><div><strong>Pagrindinė mintis:</strong> Lengvai — per nosį. Sunkiai — per burną. Kvėpavimą valdo CO₂, ne deguonies trūkumas.</div></div>
 
   <div class="prose">
     <p>Kvėpavimas nėra valdomas deguonies trūkumo. Jį valdo <strong>CO₂ kiekis kraujyje</strong>. Kai CO₂ kaupiasi — smegenys duoda signalą įkvėpti. Štai kodėl, išmokę toleruoti šiek tiek daugiau CO₂, kvėpuojate ramiau ir efektyviau.</p>
@@ -645,7 +730,7 @@ input[type=range]::-moz-range-thumb{width:22px;height:22px;background:var(--surf
 
   <div class="step-nav">
     <button class="btn-step btn-prev" onclick="goLesson(3)">← Atgal</button>
-    <span class="step-counter">5 / 8</span>
+    <span class="step-counter">5 / 12</span>
     <button class="btn-step btn-next" onclick="goLesson(5)">Karštis ir hidratacija →</button>
   </div>
 </article>
@@ -655,10 +740,11 @@ input[type=range]::-moz-range-thumb{width:22px;height:22px;background:var(--surf
      ══════════════════════════════════════════ -->
 <article class="lesson" id="lesson-5">
   <div class="lesson-header">
-    <div class="lesson-num">6 pamoka iš 8</div>
+    <div class="lesson-num">6 pamoka iš 12</div>
     <h2 class="lesson-title">Karštis, prakaitavimas ir hidratacija</h2>
     <p class="lesson-intro">Vasarą bėgimas lėtėja. Tai ne silpnumas — tai fizika. Štai kodėl, ir ką daryti.</p>
   </div>
+  <div class="takeaway"><div><strong>Pagrindinė mintis:</strong> Virš 25°C sulėtinkite tempą ir gerkite kas 15 min. Net 2% dehidratacija reikšmingai mažina pajėgumą.</div></div>
 
   <div class="prose">
     <p>Bėgdami jūs generuojate daug šilumos — raumenų efektyvumas yra tik apie 25%, likusieji 75% tampa šiluma. Ją reikia pašalinti, kol kūno temperatūra nenukrypo per toli nuo 37°C.</p>
@@ -708,7 +794,7 @@ input[type=range]::-moz-range-thumb{width:22px;height:22px;background:var(--surf
 
   <div class="step-nav">
     <button class="btn-step btn-prev" onclick="goLesson(4)">← Atgal</button>
-    <span class="step-counter">6 / 8</span>
+    <span class="step-counter">6 / 12</span>
     <button class="btn-step btn-next" onclick="goLesson(6)">Bėgimo technika →</button>
   </div>
 </article>
@@ -718,10 +804,11 @@ input[type=range]::-moz-range-thumb{width:22px;height:22px;background:var(--surf
      ══════════════════════════════════════════ -->
 <article class="lesson" id="lesson-6">
   <div class="lesson-header">
-    <div class="lesson-num">7 pamoka iš 8</div>
+    <div class="lesson-num">7 pamoka iš 12</div>
     <h2 class="lesson-title">Bėgimo technika ir traumų prevencija</h2>
     <p class="lesson-intro">Traumos — pagrindinė priežastis, kodėl pradedantieji meta bėgimą. Daugelio jų galima išvengti keičiant kelis paprastus dalykus.</p>
   </div>
+  <div class="takeaway"><div><strong>Pagrindinė mintis:</strong> Didinkite kadenciją iki 170–180 SPM. Tai vienas paprasčiausių būdų sumažinti kelio apkrovą ir traumų riziką.</div></div>
 
   <div class="prose">
     <p>Bėgimo technika neturi būti tobula — ji turi būti <strong>saugi ir efektyvi</strong>. Nėra vieno teisingo bėgimo stiliaus: elitiniai bėgikai atrodo labai skirtingai. Tačiau yra kelios dažniausios klaidos, kurios sukelia daugumą pradedančiųjų traumų.</p>
@@ -733,7 +820,7 @@ input[type=range]::-moz-range-thumb{width:22px;height:22px;background:var(--surf
 
   <div class="callout callout-warn">
     <span class="callout-label">Dažniausios pradedančiųjų traumos</span>
-    <strong>Kelio juostinės sausgyslės sindromas (ITBS)</strong> — skausmas kelio išorėje, dažnai nuo per greitai didinamos apimties. <strong>Blauzdiniai periostito skausmai (shin splints)</strong> — skausmas blauzdoje, dažnai nuo kieto paviršiaus ir per greito apimties augimo. <strong>Plantar fasciitis</strong> — kulno skausmas, dažnai nuo silpnų padų ir blogų batų. Visoms trims: sumažinkite apimtį, stiprinkite silpnas vietas, pereikite prie minkštesnio paviršiaus.
+    <strong>Kelio juostinės sausgyslės sindromas (ITBS)</strong> — skausmas kelio išorėje, dažnai nuo per greitai didinamos apimties. <strong>Blauzdiniai periostito skausmai (shin splints)</strong> — skausmas blauzdoje, dažnai nuo kieto paviršiaus ir per greito apimties augimo. <strong>Plantar fasciitis</strong> — kulno skausmas, dažnai nuo silpnų padų ir blogų batų. Visoms trims: sumažinkite apimtį, stiprinkite silpnas vietas, pereikite prie minkštesnio paviršiaus. Jėgos treniruotės padeda išvengti daugelio šių traumų — žr. <button class="xref" onclick="goLesson(9)">10 pamoka: Jėgos treniruotės</button>.
   </div>
 
   <div class="demo">
@@ -795,7 +882,7 @@ input[type=range]::-moz-range-thumb{width:22px;height:22px;background:var(--surf
 
   <div class="step-nav">
     <button class="btn-step btn-prev" onclick="goLesson(5)">← Atgal</button>
-    <span class="step-counter">7 / 8</span>
+    <span class="step-counter">7 / 12</span>
     <button class="btn-step btn-next" onclick="goLesson(7)">Kaip tobulėti? →</button>
   </div>
 </article>
@@ -805,7 +892,7 @@ input[type=range]::-moz-range-thumb{width:22px;height:22px;background:var(--surf
      ══════════════════════════════════════════ -->
 <article class="lesson" id="lesson-7">
   <div class="lesson-header">
-    <div class="lesson-num">8 pamoka iš 8</div>
+    <div class="lesson-num">8 pamoka iš 12</div>
     <h2 class="lesson-title">Kaip iš tikrųjų tobulėja bėgikas?</h2>
     <p class="lesson-intro">Greitis didėja ne dėl valios, o dėl konkrečių biologinių adaptacijų. Jos vyksta tik tada, kai treniruojatės teisingai.</p>
   </div>
@@ -882,10 +969,11 @@ input[type=range]::-moz-range-thumb{width:22px;height:22px;background:var(--surf
      ══════════════════════════════════════════ -->
 <article class="lesson" id="lesson-8">
   <div class="lesson-header">
-    <div class="lesson-num">9 pamoka iš 9</div>
+    <div class="lesson-num">9 pamoka iš 12</div>
     <h2 class="lesson-title">Treniruočių metodologijos</h2>
     <p class="lesson-intro">Pasaulio geriausi bėgikai treniruojasi labai skirtingai. Kas iš tikrųjų veikia — ir ką iš jų galima pasiskolinti?</p>
   </div>
+  <div class="takeaway"><div><strong>Pagrindinė mintis:</strong> Visuose metoduose dominuoja tas pats bruožas: 70–80% treniruočių yra lengvos. Metodologijos skiriasi, principas — ne.</div></div>
 
   <div class="prose">
     <p>Nėra vienos „teisingos" treniruočių sistemos. Tačiau yra kelios gerai ištirtos metodologijos, kurias naudoja elito bėgikai ir kurios grindžiamos patikima fiziologine logika. Kiekviena turi savo stipriąsias puses, apribojimus ir tinkamas auditorijas.</p>
@@ -1124,7 +1212,194 @@ input[type=range]::-moz-range-thumb{width:22px;height:22px;background:var(--surf
 
   <div class="step-nav">
     <button class="btn-step btn-prev" onclick="goLesson(7)">← Atgal</button>
-    <span class="step-counter">9 / 9</span>
+    <span class="step-counter">9 / 12</span>
+    <button class="btn-step btn-next" onclick="goLesson(9)">Jėgos treniruotės →</button>
+  </div>
+
+  <div class="kbd-hint">Patarimas: pamokas galite vartyti klaviatūros klavišais <kbd>←</kbd> ir <kbd>→</kbd></div>
+</article>
+
+<!-- ══════════════════════════════════════════
+     PAMOKA 10 — JĖGOS TRENIRUOTĖS
+     ══════════════════════════════════════════ -->
+<article class="lesson" id="lesson-9">
+  <div class="lesson-header">
+    <div class="lesson-num">10 pamoka iš 12</div>
+    <h2 class="lesson-title">Jėgos treniruotės bėgikams</h2>
+    <p class="lesson-intro">Bėgimas neapsaugo nuo traumų pats savaime. Jėgos darbas — ne papildoma veikla, o esminė bėgimo programos dalis.</p>
+  </div>
+
+  <div class="takeaway"><div><strong>Pagrindinė mintis:</strong> 2 jėgos treniruotės per savaitę mažina traumų riziką, gerina ekonomiją ir leidžia bėgti greičiau — net nepridedant kilometrų.</div></div>
+
+  <div class="prose">
+    <p>Bėgimas yra vienkojis judesys — kiekviename žingsnyje visas kūno svoris tenka vienai kojai. Tai reikalauja didelės <strong>klubų, sėdmenų ir šerdies stabilizacinės jėgos</strong>. Kai šie raumenys per silpni, smūgio jėga perskirstoma į kelius, blauzdas ir kulkšnis — čia prasideda dauguma bėgikų traumų.</p>
+    <p>Jėgos treniruotės bėgikams nėra apie raumenų masę. Tikslas — <strong>stabilumas, ekscentrinis stiprumas ir sausgyslių atsparumas</strong>. Tyrimai rodo, kad 6–8 savaičių jėgos programa pagerina bėgimo ekonomiją (mažiau energijos tam pačiam tempui) vidutiniškai 2–8%.</p>
+    <p>Svarbiausia: jėgos darbas turi prasidėti <em>prieš</em> atsirandant skausmui. Kaip profilaktika, ne gydymas. Raumenys reaguoja per 4–6 savaites, sausgyslės — per 3–6 mėnesius. <button class="xref" onclick="goLesson(6)">7 pamoka: Technika ir traumos</button></p>
+  </div>
+
+  <div class="demo">
+    <div class="demo-title">Interaktyvus demonstravimas — Svarbiausi pratimai</div>
+    <p style="font-size:.88rem;color:var(--muted);margin-bottom:1rem">Pasirinkite savo silpnąją vietą — gausite svarbiausiems pratimų rekomendaciją.</p>
+    <div class="slider-control">
+      <div class="slider-label"><span>Silpnoji vieta / dažniausia trauma</span><strong id="s9-area-label">Kelis</strong></div>
+      <select id="s9-area" class="scandi-select" style="width:100%;margin-top:.4rem">
+        <option value="knee">Kelio skausmas (ITBS, runner's knee)</option>
+        <option value="shin">Blauzdos skausmas (shin splints)</option>
+        <option value="achilles">Achilo sausgyslė</option>
+        <option value="hip">Klubų silpnumas, žingsnio nestabilumas</option>
+        <option value="core">Šerdies nestabilumas, juosmens skausmas</option>
+      </select>
+    </div>
+    <div style="margin-top:1rem;padding:.85rem 1rem;border-radius:8px;border:1px solid var(--border);background:var(--bg)">
+      <p id="s9-why" style="font-size:.85rem;color:var(--muted);line-height:1.7;margin-bottom:.75rem"></p>
+    </div>
+    <div id="s9-exercises" class="exercise-grid"></div>
+  </div>
+
+  <div class="callout callout-tip">
+    <span class="callout-label">Kaip integruoti</span>
+    Jėgos treniruotes darykite <strong>po lengvo bėgimo</strong> arba atskiromis dienomis — ne prieš sunkų intervalinį. 2× per savaitę, 20–30 min. Pradėkite nuo kūno svorio pratimų — svoriai reikalingi tik tada, kai 3×12 kartojimų jau tampa lengva.
+  </div>
+
+  <div class="callout callout-warn">
+    <span class="callout-label">Dažna klaida</span>
+    Pradedantieji dažnai pradeda jėgos treniruotes tik tada, kai jau skauda. Tuo metu sausgyslė ar sąnarys jau pažeisti. Geriau 15 min blauzdų ir klubų pratimų 2× per savaitę nuo pat pirmosios bėgimo savaitės.
+  </div>
+
+  <div class="quiz" data-correct="1">
+    <div class="quiz-q">Kodėl jėgos treniruotės gerina bėgimo ekonomiją?</div>
+    <div class="quiz-opts">
+      <button class="quiz-opt">Didina raumenų masę, todėl bėgimas tampa galingesnis</button>
+      <button class="quiz-opt">Gerina stabilumą ir elastingų audinių energijos grąžą, mažinant iššvaistomą energiją</button>
+      <button class="quiz-opt">Padidina maksimalų pulsą</button>
+    </div>
+    <div class="quiz-feedback">Tiksliai. Jėgos darbas gerina sausgyslių elastingumą ir stabilizacinių raumenų veikimą — dėl to mažiau energijos švaistoma kompensaciniams judesiams ir kūnas efektyviau perduoda jėgą žemei.</div>
+  </div>
+
+  <div class="step-nav">
+    <button class="btn-step btn-prev" onclick="goLesson(8)">← Atgal</button>
+    <span class="step-counter">10 / 12</span>
+    <button class="btn-step btn-next" onclick="goLesson(10)">Žiemos bėgimas →</button>
+  </div>
+</article>
+
+<!-- ══════════════════════════════════════════
+     PAMOKA 11 — ŽIEMOS BĖGIMAS
+     ══════════════════════════════════════════ -->
+<article class="lesson" id="lesson-10">
+  <div class="lesson-header">
+    <div class="lesson-num">11 pamoka iš 12</div>
+    <h2 class="lesson-title">Žiemos bėgimas</h2>
+    <p class="lesson-intro">Šaltis, ledas ir trumpos dienos — ne priežastis sustoti. Su tinkama apranga ir technika galima bėgti net ir ties −20°C.</p>
+  </div>
+
+  <div class="takeaway"><div><strong>Pagrindinė mintis:</strong> Šaltas oras yra saugus bėgimui — problema yra per karšta apranga, slydimo paviršius ir dehidratacija, kuri šaltyje dažnai nepastebima.</div></div>
+
+  <div class="prose">
+    <p>Šaltas oras nepavojingas plaučiams — net ties −20°C oras sušyla iki kūno temperatūros pasiekus bronchus. Žiemos bėgimo tikri iššūkiai: <strong>slysta</strong>, per karšta apranga sukelia gausų prakaitavimą (ir po to atšalimą), o troškulys šaltyje jaučiamas mažiau, nors skysčių poreikis išlieka.</p>
+    <p>Apranga veikia kaip svogūno sluoksniai: <strong>pirmasis sluoksnis</strong> (prie odos) — drėgmę nuleidžiantis sintetinis audinys, ne medvilnė (medvilnė sugeria prakaitą ir šaldo). <strong>Antrasis</strong> — šilumą išlaikantis flisas ar vatos striukė. <strong>Trečiasis</strong> (ties −5°C ir žemiau) — vėjo ir lietaus atspari striukė.</p>
+    <p>Bėgant ant ledo ar sniego technika keičiasi: <strong>trumpesni žingsniai</strong>, žemesnis masės centras, koja nusileisdama tiesiai po kūnu (ne priekyje). Bėgimo greitis natūraliai sumažėja 10–20% — tai normalu ir teisinga.</p>
+    <p>Šaltyje raumenys ir sausgyslės šyla lėčiau. <strong>Apšilimas tampa dar svarbesnis</strong> — rekomenduojama 5–10 min ėjimas ar labai lėtas bėgimas prieš didinant intensyvumą. <button class="xref" onclick="goLesson(6)">7 pamoka: Technika ir traumos</button></p>
+  </div>
+
+  <div class="demo">
+    <div class="demo-title">Interaktyvus demonstravimas — Aprangos sluoksniai pagal temperatūrą</div>
+    <p style="font-size:.88rem;color:var(--muted);margin-bottom:1rem">Slinkite temperatūros slankiklį — matysite rekomenduojamą aprangą.</p>
+    <div class="slider-control">
+      <div class="slider-label"><span>Aplinkos temperatūra</span><strong id="s10-temp-label">+5°C</strong></div>
+      <input type="range" id="s10-temp" min="-25" max="10" value="5" step="1">
+      <div style="display:flex;justify-content:space-between;font-size:.65rem;color:var(--light);margin-top:3px"><span>−25°C</span><span>−15°C</span><span>−5°C</span><span>0°C</span><span>+10°C</span></div>
+    </div>
+    <div id="s10-layers" class="layer-row"></div>
+    <div style="margin-top:.75rem;padding:.75rem 1rem;border-radius:8px;background:var(--bg);border:1px solid var(--border)">
+      <p id="s10-advice" style="font-size:.88rem;color:var(--muted);line-height:1.7"></p>
+    </div>
+  </div>
+
+  <div class="callout callout-key">
+    <span class="callout-label">Ledo paviršiai</span>
+    Ant ledo bėgikų spygliai (microspikes) arba Yaktrax tipo traukos priedai sumažina slydimo riziką. Kitaip — rinkitės purvo ar sniego takus vietoje lygaus ledo. Į ledinį asfalto taką — geriau trupučio plačiau, žemiau, stabiliau.
+  </div>
+
+  <div class="callout callout-warn">
+    <span class="callout-label">Šalčio rizikos</span>
+    <strong>Nušalimas</strong> — ties −10°C ir žemiau, ypač su vėju. Apsaugokite ausis, pirštus ir veidą. <strong>Hipotermija</strong> — pagrindinis pavojus, kai sustojate prakaituoti ir atvėstate — visada turėkite galimybę greitai patekti į šiltą patalpą. <strong>Dehidratacija</strong> — šaltyje troškulys jaučiamas silpniau, bet prakaituojate vis tiek.
+  </div>
+
+  <div class="quiz" data-correct="0">
+    <div class="quiz-q">Kodėl žiemos bėgimo aprangos pirmasis sluoksnis neturėtų būti medvilninis?</div>
+    <div class="quiz-opts">
+      <button class="quiz-opt">Medvilnė sugeria prakaitą ir išlaiko drėgmę prie odos, sukeldama šalimą</button>
+      <button class="quiz-opt">Medvilnė per storas audinys ir trukdo judėti</button>
+      <button class="quiz-opt">Medvilnė per karšta žiemai</button>
+    </div>
+    <div class="quiz-feedback">Taip. Medvilnė sulaiko drėgmę ir vos sustojate — šlapi drabužiai labai greitai šaldo kūną. Sintetiniai audiniai (polipropilenas, Merino vilna) praleidžia drėgmę nuo odos toliau.</div>
+  </div>
+
+  <div class="step-nav">
+    <button class="btn-step btn-prev" onclick="goLesson(9)">← Atgal</button>
+    <span class="step-counter">11 / 12</span>
+    <button class="btn-step btn-next" onclick="goLesson(11)">Pirmos varžybos →</button>
+  </div>
+</article>
+
+<!-- ══════════════════════════════════════════
+     PAMOKA 12 — PIRMOS VARŽYBOS
+     ══════════════════════════════════════════ -->
+<article class="lesson" id="lesson-11">
+  <div class="lesson-header">
+    <div class="lesson-num">12 pamoka iš 12</div>
+    <h2 class="lesson-title">Pirmos varžybos — kaip pasiruošti</h2>
+    <p class="lesson-intro">Startinė linija pirmą kartą — jaudinanti ir bauginanti. Daugelio naujokų klaidų galima išvengti žinant, ko tikėtis.</p>
+  </div>
+
+  <div class="takeaway"><div><strong>Pagrindinė mintis:</strong> Pirmose varžybose viena klaida nusveria viską kitą: pradžia per greita. Pradėkite 10–15% lėčiau nei planuojate — visada galima pagreitėti antroje pusėje.</div></div>
+
+  <div class="prose">
+    <p>Varžybų aplinka — minios, muzika, numeriai — sukelia adrenalino antplūdį, kuris priverčia pradėti per greitai. Tai vadinama <strong>startiniu greičiu</strong> ir tai dažniausia priežastis, kodėl bėgikai „išdega" antroje distancijos pusėje.</p>
+    <p>Pirmose varžybose tikslas yra ne rekordas — tikslas yra <strong>finišuoti geroje savijautoje ir nesigraužti</strong>. Rezervo palikimas leidžia mėgautis finišo tiesiąja, o ne kovoti su savo kojomis.</p>
+    <p>Mityba varžybų dieną remiasi tuo, kas jau žinoma iš treniruočių. Varžybų dieną — ne laikas eksperimentuoti su naujais maisto produktais ar geliukais. <button class="xref" onclick="goLesson(2)">3 pamoka: Energija ir kuras</button></p>
+    <p>Po varžybų kūnas nusipelno poilsio. Lengvas bėgimas galimas kitą dieną, bet intensyvios treniruotės — tik po 1–2 savaičių, atsižvelgiant į distancijos ilgį. Maratonas reikalauja iki 4 savaičių pilno atsistatymo. <button class="xref" onclick="goLesson(7)">8 pamoka: Kaip tobulėti</button></p>
+  </div>
+
+  <div class="demo">
+    <div class="demo-title">Interaktyvus demonstravimas — Varžybų dienos tvarkaraštis</div>
+    <p style="font-size:.88rem;color:var(--muted);margin-bottom:1rem">Pasirinkite distanciją — gausite rekomenduojamą varžybų dienos planą.</p>
+    <div class="slider-control">
+      <div class="slider-label"><span>Distancija</span><strong id="s11-dist-label">5K</strong></div>
+      <select id="s11-dist" class="scandi-select" style="width:100%;margin-top:.4rem">
+        <option value="5k">5K</option>
+        <option value="10k">10K</option>
+        <option value="half">Pusmaratonis (21.1 km)</option>
+        <option value="full">Maratonas (42.2 km)</option>
+      </select>
+    </div>
+    <div id="s11-timeline" class="race-timeline" style="margin-top:1rem"></div>
+  </div>
+
+  <div class="callout callout-myth">
+    <span class="callout-label">Populiarus mitas</span>
+    „Prieš varžybas reikia daug valgyti angliavandenių." Teisingas principas — klaidingas mastas. Karboidinimas (carb-loading) reikšmingas tik maratonui ir ultra distancijoms. 5K ar 10K — įprastas valgymas dieną prieš yra visiškai pakankamas.
+  </div>
+
+  <div class="callout callout-tip">
+    <span class="callout-label">Bėgikų patirtis</span>
+    Pirmose varžybose beveik visi pradeda per greitai. Tai normalus jausmas. Pasidėkite tikslą ne greitį, o <strong>nepagreitinti pirmame kilometre</strong> — ir greičiausiai finišuosite geriau nei tikėjotės.
+  </div>
+
+  <div class="quiz" data-correct="2">
+    <div class="quiz-q">Kodėl varžybose pavojinga pradėti per greitai?</div>
+    <div class="quiz-opts">
+      <button class="quiz-opt">Pulsas per greitai pakyla ir nebenukrenta</button>
+      <button class="quiz-opt">Raumenys nepašyla ir gresia trauma</button>
+      <button class="quiz-opt">Glikogenas ir laktatas anksti išbalansuojami — antroje pusėje bėgimas smarkiai lėtėja</button>
+    </div>
+    <div class="quiz-feedback">Taip. Per greita pradžia anksti aktyvuoja greitas skaidulas ir eikvojia glikogeną. Laktatas kaupiasi anksčiau nei reikia — antroje distancijos pusėje kojos „užkimba" ir tempas krenta drastiškai. Lygi pradžia visada geresnė strategija.</div>
+  </div>
+
+  <div class="step-nav">
+    <button class="btn-step btn-prev" onclick="goLesson(10)">← Atgal</button>
+    <span class="step-counter">12 / 12</span>
     <button class="btn-step btn-next" onclick="goLesson(0)" style="background:var(--z2);color:#fff">&#10003; Pradėti iš naujo</button>
   </div>
 
@@ -1134,7 +1409,7 @@ input[type=range]::-moz-range-thumb{width:22px;height:22px;background:var(--surf
 </main>
 
 <script>
-const TOTAL = 9;
+const TOTAL = 12;
 let current = 0;
 const visited = new Set([0]);
 const completed = new Set(); // lessons scrolled through / quiz answered
@@ -1577,6 +1852,232 @@ function initDemo8() {
   update();
 }
 
+// ── GLOSSARY ──
+const GLOSSARY_TERMS = [
+  { term: 'Aerobinis', def: 'Su deguonimi. Aerobinės treniruotės — tos, kuriose energija gaminama deguonies pagalba. Lengvas ir vidutinis bėgimas yra aerobinis.' },
+  { term: 'Anaerobinis', def: 'Be deguonies. Labai intensyvus bėgimas, kai deguonies nepakanka — energija gaminama anaerobiškai, kaupiantis laktatui.' },
+  { term: 'DOMS', def: 'Delayed Onset Muscle Soreness — uždelstas raumenų skausmas. Raumenų skausmas 24–48 val. po treniruotės, sukeltas mikro-įplyšimų. Nesusijęs su laktatu.' },
+  { term: 'Ekscentrinis stiprumas', def: 'Raumenų gebėjimas valdyti judesį ilgėjant (pvz. nusileidžiant laiptais ar bėgant nuokalne). Svarbus traumų prevencijai.' },
+  { term: 'FatMax', def: 'Intensyvumo zona, kurioje kūnas degina daugiausiai riebalų absoliučia išraiška. Dažniausiai atitinka Z2 (60–70% MaksPP).' },
+  { term: 'Glikogenas', def: 'Gliukozės atsargos raumenyse ir kepenyse. Pagrindinė greito energijos šaltinis. Ribota talpa — ~1500–2000 kcal, užtenka ~90 min intensyvaus bėgimo.' },
+  { term: 'Kadencija', def: 'Žingsnių skaičius per minutę (SPM). Optimalus diapazonas daugumai bėgikų — 170–180 SPM. Mažesnė kadencija reiškia ilgesnį žingsnį ir didesnę smūgio jėgą.' },
+  { term: 'Kapiliarai', def: 'Mažiausios kraujagyslės, deguonį pristatančios tiesiai į raumens skaidulas. Ištvermės treniruotės didina kapiliarų tankumą — tai vienas pagrindinių aerobinio progreso mechanizmų.' },
+  { term: 'Kardiodriftas', def: 'Širdies ritmo slinkis — pulsas kyla bėgant tuo pačiu tempu ilgiau, ypač karštyje ar esant dehidratacijai.' },
+  { term: 'Laktatas', def: 'Medžiaga, susidaranti greitai skaidant gliukozę. Nėra tiesiogiai kaltas dėl deginimo — jį sukelia vandenilio jonai. Laktatas pats gali būti kuras.' },
+  { term: 'Laktatinis slenkstis', def: 'Intensyvumo riba, po kurios laktatas kraujyje pradeda kauptis greičiau nei perdirbamas. Treniruotas bėgikas pasiekia šią ribą vėliau (didesniu tempu).' },
+  { term: 'MaksPP', def: 'Maksimalus pulso dažnis — greičiausiai, kaip gali plakti širdis. Apytikslė formulė: 220 − amžius. Tiksliau nustatoma laboratorijoje.' },
+  { term: 'Mitochondrijos', def: 'Ląstelės „elektrinė stotis" — organelė, kur aerobiškai gaminama energija. Ištvermės treniruotės didina mitochondrijų kiekį ir efektyvumą.' },
+  { term: 'Overstriding', def: 'Perkrova per žingsnį — koja nusileisdama atsiduria per toli priešais kūno masės centrą. Didina smūgio jėgą ir kelio traumų riziką.' },
+  { term: 'Poliarizuotas modelis', def: '80/20 treniruočių principas: 80% labai lengvos, 20% labai sunkios. Vengiama vidurinės zonos. Moksliniais tyrimais pagrįstas elito sportininkų modelis.' },
+  { term: 'RPE', def: 'Rate of Perceived Exertion — subjektyvaus sunkumo skalė nuo 1 iki 10. Paprastas būdas matuoti intensyvumą be pulsometro.' },
+  { term: 'Slenkstis (LT)', def: 'Žr. Laktatinis slenkstis.' },
+  { term: 'SPM', def: 'Žingsniai per minutę — kadencijos matavimo vienetas. Optimalus diapazonas bėgikams: 170–180 SPM.' },
+  { term: 'Superkompensacija', def: 'Kūno adaptacijos mechanizmas: po streso (treniruotės) ir poilsio kūnas tampa šiek tiek pajėgesnis nei prieš stresą. Tai progreso pagrindas.' },
+  { term: 'Šerdis (core)', def: 'Liemens stabilizaciniai raumenys — skersiniai pilvo raumenys, įstrižieji, nugaros tiesiamieji, diafragma. Svarbūs jėgos perdavimui tarp kojų ir rankų bėgant.' },
+  { term: 'Tempas', def: 'Bėgimo greitis išreikštas laiku — minutės per kilometrą (min/km) arba minutės per mylią. Lėtesnis tempas = didesnis skaičius.' },
+  { term: 'VT1', def: 'Pirmasis ventiliacijos slenkstis — kvėpavimo dažnis pradeda kilti greičiau. Maždaug atitinka Z2/Z3 ribą. Virš jo — sunkiau kalbėtis.' },
+  { term: 'VT2', def: 'Antrasis ventiliacijos slenkstis — kvėpavimas labai intensyvus, kalba nebeįmanoma. Maždaug atitinka laktatinį slenkstį.' },
+  { term: 'VDOT', def: 'Jack Danielso sukurtas bėgiko pajėgumo rodiklis, apskaičiuojamas iš varžybų rezultato. Naudojamas nustatyti tikslias treniruočių zonas.' },
+  { term: 'VO₂ Max', def: 'Maksimalus deguonies kiekis, kurį kūnas gali sunaudoti per minutę. Vienas pagrindinių ištvermės pajėgumo rodiklių. Kyla su aerobinėmis treniruotėmis.' },
+  { term: 'Z1–Z5', def: 'Treniruočių zonos pagal pulso procentus nuo MaksPP. Z1 (50–60%): labai lengva. Z2 (60–70%): aerobinė bazė. Z3 (70–80%): pilkoji zona. Z4 (80–90%): slenkstis. Z5 (90–100%): maksimumas.' }
+];
+
+function buildGlossary() {
+  const list = document.getElementById('glossaryList');
+  list.innerHTML = GLOSSARY_TERMS.map(t =>
+    `<div class="glossary-entry">
+      <div class="glossary-term">${t.term}</div>
+      <div class="glossary-def">${t.def}</div>
+    </div>`
+  ).join('');
+}
+
+function filterGlossary(q) {
+  const lq = q.toLowerCase();
+  document.querySelectorAll('.glossary-entry').forEach((el, i) => {
+    const term = GLOSSARY_TERMS[i];
+    const match = term.term.toLowerCase().includes(lq) || term.def.toLowerCase().includes(lq);
+    el.classList.toggle('hidden', !match);
+  });
+}
+
+function toggleGlossary() {
+  const panel = document.getElementById('glossaryPanel');
+  const overlay = document.getElementById('glossaryOverlay');
+  const open = panel.classList.toggle('open');
+  overlay.classList.toggle('open', open);
+  if (open) document.getElementById('glossarySearch').focus();
+}
+
+buildGlossary();
+
+// ── DEMO 9: Strength training exercise recommender ──
+function initDemo9() {
+  const sel = document.getElementById('s9-area');
+  const exercises = {
+    knee: {
+      why: 'Kelio skausmas dažniausiai kyla dėl silpnų klubų pagrobėjų (gluteus medius) ir keturgalvių. Kai klubas nenukrenta į šoną bėgimo metu, kelio apkrova mažėja drastiškai.',
+      items: [
+        { name: 'Vienos kojos pritūpimas', tag: 'Keturgalviai · Gluteus medius', sets: '3 × 8 k.k.', desc: 'Stovėkite ant vienos kojos, lėtai lenkite kelį iki 60–70°. Kelias negali krypti į vidų. Pradėkite prie sienos palaikymui.' },
+        { name: 'Klamster / Clamshell', tag: 'Klubų pagrobėjai', sets: '3 × 15 k.k.', desc: 'Atsigulkite ant šono, kojos sulenktos 90°. Atidarykite viršutinę koją kaip kriaušę — negalima sukioti dubens. Pasipriešinimui naudokite gumelę.' },
+        { name: 'Stepping-down (ekscentrinis)', tag: 'Keturgalviai ekscentriškai', sets: '3 × 10 k.k.', desc: 'Stovėkite ant laiptelio. Lėtai (3–4 sek.) nuleiskite kitą koją žemyn. Koncentruokitės į lėtą nusileidimą, ne kilimą.' },
+        { name: 'Sėdmenų tiltelis', tag: 'Gluteus maximus · Stuburo tiesiamieji', sets: '3 × 15', desc: 'Atsigulkite ant nugaros, kojos sulenktos. Pakelkite dubenį iki tiesios linijos. Vienos kojos versija — pažengusiems.' }
+      ]
+    },
+    shin: {
+      why: 'Blauzdiniai skausmai dažniausiai signalizuoja apie per greitą apimties augimą ir silpną tibialis anterior bei blauzdos raumenį. Ekscentrinis stiprinimas yra svarbiausias.',
+      items: [
+        { name: 'Kulno kėlimas (vienos kojos)', tag: 'Gastrocnemius · Soleus', sets: '3 × 15 k.k.', desc: 'Stovėkite ant laiptelio krašto. Pakelkite kulną kuo aukščiau, tada leiskite žemiau laiptelio lygio (3 sek.). Tai ekscentrinis pratimas — svarbiausia dalis yra leidimasis.' },
+        { name: 'Tibialis anterior stiprinimas', tag: 'Blauzda (priekinė dalis)', sets: '3 × 20', desc: 'Sėdėkite ir kaitaliojamais judesiais traukite pirštus link savęs. Su pasipriešinimu (guma) — dar efektyviau.' },
+        { name: 'Pėdos lanko pratimai', tag: 'Pėdos raumeniukai', sets: '2 × 20', desc: 'Stovėdami bandykite „suraukti" pėdą nesulenkdami pirštų. Stiprina vidinį pėdos lanką.' },
+        { name: 'Vienos kojos pusiausvyra', tag: 'Čiurnos stabilizatoriai', sets: '3 × 30 sek. k.k.', desc: 'Stovėkite ant vienos kojos. Pradėkite akimis atvirtomis, tada užmerkite. Laikykite čiurnos stabilumą.' }
+      ]
+    },
+    achilles: {
+      why: 'Achilo sausgyslė reikalauja ekscentrino stiprinimo. Dydgaard protokolas — nuolaidžiai pripažintas efektyviausiu Achilo reabilitacijos būdu — grindžiamas būtent ekscentriniu kulno leidimu.',
+      items: [
+        { name: 'Alfredson protokolas (ekscentrinis)', tag: 'Achilo sausgyslė · Soleus · Gastrocnemius', sets: '3 × 15 k.k. × 2/d.', desc: 'Ant laiptelio pakėlę abi kojas, pereikite ant vienos ir lėtai (3 sek.) leiskite kulną žemiau laiptelio. Pradedant bus nepatogu — tai normalu. Sustokite jei aštrus skausmas.' },
+        { name: 'Tiesios kojos kulno leidimas', tag: 'Gastrocnemius ekscentriškai', sets: '3 × 15 k.k.', desc: 'Tas pats kaip Alfredson, bet koja tiesi (ne sulenkta). Apkrauna aukštesnę Achilo dalį.' },
+        { name: 'Soleus stiprinimas', tag: 'Soleus (giliasis)', sets: '3 × 15 k.k.', desc: 'Kulno kėlimas sulenkta kelio — apkrauna soleus, kuris prisideda prie Achilo apačios.' },
+        { name: 'Čiurnos mobilumas', tag: 'Dorsifleksija', sets: '2 × 20', desc: 'Stovėkite prie sienos, lenkite kelį link sienos nekeliando kulno. Gerina dorsifleksiją, kuri dažnai sutrikusi Achilo sindrome.' }
+      ]
+    },
+    hip: {
+      why: 'Klubų silpnumas — viena dažniausių netiesiogiai su bėgimu susijusių problemų. Silpnas gluteus medius sukelia kelių krypimą, blauzdinį sindromą ir net nugaros skausmą.',
+      items: [
+        { name: 'Lateral band walk', tag: 'Gluteus medius', sets: '3 × 15 žingsnių/k.', desc: 'Su guma aplink kelius ar kulkšnis eikite į šoną laikydami kūną stabilų. Kelio neleiskite krypti į vidų.' },
+        { name: 'Vienos kojos RDL', tag: 'Gluteus maximus · Hamstring', sets: '3 × 10 k.k.', desc: 'Stovėkite ant vienos kojos, lenkitės į priekį laikydami nugarą tiesią ir kilnodami laisvą koją atgal. Kontroliuoja visas užpakalinės grandinės raumenys.' },
+        { name: 'Hip thrust', tag: 'Gluteus maximus', sets: '3 × 12', desc: 'Nugaros viršutinė dalis ant suolo, pečiai aukštai. Pakelkite dubenį iki tiesios linijos. Pridėkite svorį, kai 15 kartojimų tampa lengva.' },
+        { name: 'Kopsteliai (step-up)', tag: 'Gluteal · Keturgalviai', sets: '3 × 12 k.k.', desc: 'Viena koja ant paaukštinimo (~30–40 cm), lipkite aukštyn valdydami judesį. Nusileiskite lėtai. Paprastasis, bet labai efektyvus pratimas.' }
+      ]
+    },
+    core: {
+      why: 'Šerdis bėgant veikia kaip jėgos perdavimo centras — sieja kojų ir rankų judesius. Silpna šerdis leidžia energijai ,,išsibarstyti" per liemenį ir didina juosmens apkrovą.',
+      items: [
+        { name: 'Planka (dead bug variacija)', tag: 'Transversus abdominis · Šerdis', sets: '3 × 30–45 sek.', desc: 'Atsigulkite ant nugaros, kojos 90° kampą. Lėtai tiesinkite kaitaliodami priešingą ranką ir koją, neleisdami juosmeniui kilti nuo grindų.' },
+        { name: 'Šoninis tiltelis', tag: 'Šoniniai stabilizatoriai', sets: '3 × 20–30 sek. k.k.', desc: 'Atsirėmę ant alkūnės ir kojos briaunos, laikykite kūną tiesų. Pakelkite ir nuleiskite dubenį. Stiprina oblique ir šoninę grandinę.' },
+        { name: 'Bird-dog', tag: 'Nugaros tiesiamieji · Šerdis', sets: '3 × 10 k.k.', desc: 'Stovėkite ant keturių. Lėtai tiesinkite priešingą ranką ir koją išlaikydami stuburą neutralioje padėtyje.' },
+        { name: 'Pallof press', tag: 'Anti-rotacinė šerdis', sets: '3 × 10 k.k.', desc: 'Su guma ar bloku spausdami abi rankas tiesiai priešais save neleiskite kūnui sukiotis į šoną. Imituoja šerdies darbą bėgant.' }
+      ]
+    }
+  };
+
+  function render() {
+    const a = sel.value;
+    const d = exercises[a];
+    document.getElementById('s9-why').textContent = d.why;
+    document.getElementById('s9-exercises').innerHTML = d.items.map(e =>
+      `<div class="exercise-card">
+        <div class="exercise-name">${e.name}</div>
+        <span class="exercise-tag">${e.tag}</span>
+        <div class="exercise-desc">${e.desc}</div>
+        <span class="exercise-sets">${e.sets}</span>
+      </div>`
+    ).join('');
+  }
+  sel.addEventListener('change', render);
+  render();
+}
+
+// ── DEMO 10: Winter clothing layers ──
+function initDemo10() {
+  const sl = document.getElementById('s10-temp');
+  const layers = [
+    { name: 'Kojinės (vilnonės / sintetinės)', dot:'#6366f1', always: true },
+    { name: 'Bėgimo batai su geresnėmis trakcijomis', dot:'#64748b', always: true },
+    { name: 'Sintetiniai taitai / tamprės', dot:'#0284c7', threshold: 15 },
+    { name: 'Lengvas sintetinis marškinėlis (moisture-wicking)', dot:'#0369a1', threshold: 15 },
+    { name: 'Ilgomis rankovėmis palaidinė', dot:'#1d4ed8', threshold: 10 },
+    { name: 'Šiltos tamprės / thermoaktyvios', dot:'#4338ca', threshold: 5 },
+    { name: 'Lengva fliso striukė arba bėgimo džemperis', dot:'#7c3aed', threshold: 0 },
+    { name: 'Kepurė / ausų apsauga', dot:'#9333ea', threshold: 3 },
+    { name: 'Pirštinės', dot:'#c026d3', threshold: 5 },
+    { name: 'Vėjo / lietaus atspari striukė (virštinis sluoksnis)', dot:'#db2777', threshold: -5 },
+    { name: 'Balaklava arba kaklo šalikas', dot:'#e11d48', threshold: -10 },
+    { name: 'Dvigubos pirštinės arba mitenos', dot:'#be123c', threshold: -15 },
+  ];
+  function update() {
+    const t = parseInt(sl.value);
+    document.getElementById('s10-temp-label').textContent = (t > 0 ? '+' : '') + t + '°C';
+    const active = layers.filter(l => l.always || t <= l.threshold);
+    document.getElementById('s10-layers').innerHTML = active.map(l =>
+      `<div class="layer-item active">
+        <div class="layer-dot" style="background:${l.dot}"></div>
+        <span class="layer-name">${l.name}</span>
+      </div>`
+    ).join('');
+    let advice = '';
+    if (t >= 5) advice = 'Vėsios sąlygos — lengvai apsirenginėkite. Šalčio jausmas bėgant praeis per 5–10 min.';
+    else if (t >= 0) advice = 'Žiemos sąlygos. Ypač apsaugokite rankas ir ausis. Pradžioje jaučiasi šalta — tai normalu, kūnas šils.';
+    else if (t >= -10) advice = 'Šalta. Ant ledo — trumpesni žingsniai, žemesnis masės centras. Venkite prakaituoto audinio prie odos.';
+    else if (t >= -20) advice = 'Labai šalta. Balaklava ir dvigubos pirštinės — ne priedas, o būtinybė. Sutrumpinkite bėgimo trukmę arba bėkite viduje.';
+    else advice = 'Ekstremalus šaltis. Apgalvokite, ar būtina bėgti lauke. Jei taip — stebėkite nušalimo ženklus pirštų, ausų ir nosies srityje.';
+    document.getElementById('s10-advice').textContent = advice;
+  }
+  sl.addEventListener('input', update);
+  update();
+}
+
+// ── DEMO 11: Race day timeline ──
+function initDemo11() {
+  const sel = document.getElementById('s11-dist');
+  const plans = {
+    '5k': [
+      { time: 'Vakar vakare', cls: '', title: 'Įprastas vakarienė', body: 'Nereikia specialaus karboidinimo — 5K neišeikvos glikogeno atsargų. Paprasta, gerai žinoma mityba. Miegokite 7–8 val.' },
+      { time: 'Ryte (−2 val.)', cls: '', title: 'Lengvas pusryčis', body: 'Bananas, avižos arba skrudinta duona su uogiene. Ne daugiau nei už 2 val. iki starto. Vengti kiaušinių, riebalų, pieno produktų.' },
+      { time: 'Prieš startą (−30 min)', cls: 'warn', title: 'Apšilimas', body: '5–10 min lengvo bėgimo + dinaminis tempimas. 5K reikalauja greito starto — šaltų raumenų nepakankama.' },
+      { time: 'Pirmas km', cls: 'alert', title: 'Pradėkite lėčiau', body: 'Adrenalinas ir minia verčia bėgti per greitai. Pirmą kilometrą sąmoningai sulėtinkite 10–15%. Galėsite pagreitėti vėliau.' },
+      { time: 'Km 2–4', cls: '', title: 'Rytmas', body: 'Suraskite planuotą tempą ir palaikykite. Kvėpuokite ritmingai.' },
+      { time: 'Paskutinis km', cls: 'warn', title: 'Finišo spurtas', body: 'Jei turi jėgų — dabar galima viską išduoti. Jei ne — tolygus finišas geriau nei žlugimas prieš finiš liniją.' },
+      { time: 'Po finišo', cls: '', title: 'Atsistatymas', body: '5 min ėjimas, skysčiai, angliavandeniai. 5K — 1–2 poilsio dienos. Gali bėgti lengvai rytoj.' }
+    ],
+    '10k': [
+      { time: 'Vakar vakare', cls: '', title: 'Geras angliavan. valgymas', body: 'Ryžiai, pasta, duona. 10K pradeda eikvojti glikogeną — verta turėti pilnas atsargas. Miegokite 7–8 val.' },
+      { time: 'Ryte (−2.5 val.)', cls: '', title: 'Pusryčiai su angliavandeniais', body: 'Avižos, bananas, duona. Šiek tiek daugiau nei 5K pasiruošimui.' },
+      { time: 'Prieš startą (−40 min)', cls: 'warn', title: 'Apšilimas', body: '10 min lengvo bėgimo + keli greitesni pagreitėjimai. 10K bėgama greitu tempu — apšilimas labai svarbus.' },
+      { time: 'Km 1–2', cls: 'alert', title: 'Kontroliuotas startas', body: 'Pirmieji km — lengvesni nei planui. Pulsas dar kyla. Būkite kantrūs.' },
+      { time: 'Km 3–8', cls: '', title: 'Tikslo tempas', body: 'Suraskite ritmą ir išlaikykite. Maitinimosi nereikia — tik vanduo starto/finišo zonoje.' },
+      { time: 'Km 9–10', cls: 'warn', title: 'Viskas į priekį', body: 'Paskutiniai 2 km — galima duoti viską. Iki čia turėjote taupyti energiją.' },
+      { time: 'Po finišo', cls: '', title: 'Atsistatymas', body: 'Skysčiai, angliavandeniai per 30–60 min. 2–3 poilsio dienos. Lengvas bėgimas galimas po 2 dienų.' }
+    ],
+    'half': [
+      { time: '2 dienos prieš', cls: '', title: 'Lengvesnis karboidinimas', body: 'Šiek tiek daugiau angliavandenių nei įprastai. Nelengvas treniruočių atsisakymas (tapering pradžia).' },
+      { time: 'Vakar vakare', cls: '', title: 'Karboidinimas', body: 'Didelė porcija ryžių ar pastos. Ankstyva vakarienė (18–19 val.) — miegas be pilno skrandžio. 8 val. miego.' },
+      { time: 'Ryte (−2.5 val.)', cls: '', title: 'Tiksliniai pusryčiai', body: '60–80g angliavandenių: avižos + bananas + medus. Kava — jei įpratę. Jokio naujo maisto.' },
+      { time: 'Prieš startą (−30 min)', cls: 'warn', title: 'Apšilimas + geliukas', body: 'Lengvas 5 min bėgimas. Vienas geliukas su vandeniu jei planuojate naudoti bėgant.' },
+      { time: 'Km 1–5', cls: 'alert', title: 'Taupymas', body: 'Per greitas startas čia yra klaidinga — 16 km dar liko. Laikykitės planuoto tempo.' },
+      { time: 'Km 7–8', cls: 'warn', title: 'Pirmas geliukas', body: '1 geliukas su 200 ml vandens. Neskauda pradėti anksti — geriau per anksti nei per vėlai.' },
+      { time: 'Km 14', cls: 'warn', title: 'Antras geliukas', body: 'Dar vienas geliukas. Dabar raumenys ims jausti nuovargį — glikogeno palaikymas svarbus.' },
+      { time: 'Paskutiniai 3 km', cls: '', title: 'Viską atiduoti', body: 'Jei taupėte energiją — dabar galima pagreitėti. Jei ne — tolygiai iki finišo.' },
+      { time: 'Po finišo', cls: '', title: 'Atsistatymas', body: 'Angliavandeniai + baltymai per 30 min. 4–5 lengvos dienos. Intensyvios treniruotės — po 1–2 savaičių.' }
+    ],
+    'full': [
+      { time: '3 dienos prieš', cls: '', title: 'Intensyvus karboidinimas', body: 'Karboidinimo pradžia: 8–10g angliavandenių per kg kūno svorio per dieną. Sumažinkite riebalus ir skaidulas.' },
+      { time: 'Vakar vakare', cls: '', title: 'Paskutinis karboidinimas', body: 'Didelė porcija gerai žinomo maisto. Miegoti 20–21 val. jei startas anksti. Pasiruoškite viską vakar.' },
+      { time: 'Ryte (−3 val.)', cls: '', title: 'Pusryčiai', body: '80–100g angliavandenių. Laikas labai svarbus — 3 val. prieš startą, kad virškinimas baigtųsi.' },
+      { time: 'Prieš startą (−30 min)', cls: 'warn', title: 'Paskutinis geliukas', body: 'Vienas geliukas su vandeniu. Lengvas apšilimas — 5 min ėjimas, ne bėgimas.' },
+      { time: 'Km 1–10', cls: 'alert', title: 'LABAI svarbu: lėtas startas', body: 'Maratonas pralaimimas pirmais km — ne laimimas. 10–15% lėčiau nei planuojamas tempas. Atrodo per lengva — taip ir turi būti.' },
+      { time: 'Kas 5 km', cls: 'warn', title: 'Maitinimosi protokolas', body: '1 geliukas kas 5–7 km nuo 35 km (t.y. nuo ~30 min). 200 ml vandens su kiekvienu geliuku. Iš viso 5–7 geliukai.' },
+      { time: 'Km 30–35', cls: 'alert', title: '"Sienos" zona', body: 'Čia daugelis patiria glikogeno išeikvojimą. Jei tinkamai maitinomės — praeiname. Sutelkite dėmesį į formą ir ritmą.' },
+      { time: 'Km 40–42.2', cls: '', title: 'Finišas', body: 'Jei dar turite ką atiduoti — dabar. Jei ne — laikykitės ritmo iki finišo.' },
+      { time: 'Po finišo', cls: '', title: 'Atsistatymas', body: 'Neskubėkite grįžti į treniruotes. 2 sav. tik lengvas judėjimas. 3–4 sav. iki normalių treniruočių. Maratonas reikalauja pagarbos.' }
+    ]
+  };
+
+  function render() {
+    const p = plans[sel.value];
+    document.getElementById('s11-dist-label').textContent = sel.options[sel.selectedIndex].text;
+    document.getElementById('s11-timeline').innerHTML = p.map(s =>
+      `<div class="timeline-step${s.cls?' '+s.cls:''}">
+        <div class="timeline-time">${s.time}</div>
+        <div class="timeline-body"><h4>${s.title}</h4><p>${s.body}</p></div>
+      </div>`
+    ).join('');
+  }
+  sel.addEventListener('change', render);
+  render();
+}
+
 function initDemos() {
   if (current === 0) initDemo1();
   if (current === 1) initDemo2();
@@ -1586,6 +2087,9 @@ function initDemos() {
   if (current === 5) initDemo6();
   if (current === 6) initDemo7();
   if (current === 8) initDemo8();
+  if (current === 9) initDemo9();
+  if (current === 10) initDemo10();
+  if (current === 11) initDemo11();
 }
 
 initDemos();
