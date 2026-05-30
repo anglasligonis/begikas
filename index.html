@@ -260,7 +260,7 @@ input[type=range]::-moz-range-thumb{width:22px;height:22px;background:var(--surf
 <header class="site-header">
   <h1>Bėgimo <span>fiziologija</span></h1>
   <div style="display:flex;align-items:center;gap:.75rem">
-    <span style="font-size:.78rem;color:var(--muted)">12 pamokų pradedantiesiems</span>
+    <span style="font-size:.78rem;color:var(--muted)">20 pamokų pradedantiesiems</span>
     <button class="glossary-btn" onclick="toggleGlossary()">📖 Žodynas</button>
   </div>
 </header>
@@ -279,6 +279,14 @@ input[type=range]::-moz-range-thumb{width:22px;height:22px;background:var(--surf
   <button class="nav-pill" data-lesson="9">10. Jėgos treniruotės</button>
   <button class="nav-pill" data-lesson="10">11. Žiemos bėgimas</button>
   <button class="nav-pill" data-lesson="11">12. Pirmos varžybos</button>
+  <button class="nav-pill" data-lesson="12">13. VO₂max</button>
+  <button class="nav-pill" data-lesson="13">14. Bėgimo ekonomija</button>
+  <button class="nav-pill" data-lesson="14">15. Nuovargis</button>
+  <button class="nav-pill" data-lesson="15">16. Tempo paskirstymas</button>
+  <button class="nav-pill" data-lesson="16">17. Krūvio valdymas</button>
+  <button class="nav-pill" data-lesson="17">18. Skausmas ar trauma</button>
+  <button class="nav-pill" data-lesson="18">19. Motyvacija ir pastovumas</button>
+  <button class="nav-pill" data-lesson="19">20. Bėgimo laikrodžiai</button>
 </div>
 
 <div class="glossary-overlay" id="glossaryOverlay" onclick="toggleGlossary()"></div>
@@ -322,6 +330,14 @@ input[type=range]::-moz-range-thumb{width:22px;height:22px;background:var(--surf
       <div style="font-size:.85rem;color:var(--muted);display:flex;align-items:baseline;gap:.4rem"><span style="font-size:.65rem;font-weight:700;color:var(--light)">10.</span> Jėgos treniruotės</div>
       <div style="font-size:.85rem;color:var(--muted);display:flex;align-items:baseline;gap:.4rem"><span style="font-size:.65rem;font-weight:700;color:var(--light)">11.</span> Žiemos bėgimas</div>
       <div style="font-size:.85rem;color:var(--muted);display:flex;align-items:baseline;gap:.4rem"><span style="font-size:.65rem;font-weight:700;color:var(--light)">12.</span> Pirmos varžybos</div>
+      <div style="font-size:.85rem;color:var(--muted);display:flex;align-items:baseline;gap:.4rem"><span style="font-size:.65rem;font-weight:700;color:var(--light)">13.</span> VO₂max</div>
+      <div style="font-size:.85rem;color:var(--muted);display:flex;align-items:baseline;gap:.4rem"><span style="font-size:.65rem;font-weight:700;color:var(--light)">14.</span> Bėgimo ekonomija</div>
+      <div style="font-size:.85rem;color:var(--muted);display:flex;align-items:baseline;gap:.4rem"><span style="font-size:.65rem;font-weight:700;color:var(--light)">15.</span> Nuovargis</div>
+      <div style="font-size:.85rem;color:var(--muted);display:flex;align-items:baseline;gap:.4rem"><span style="font-size:.65rem;font-weight:700;color:var(--light)">16.</span> Tempo paskirstymas</div>
+      <div style="font-size:.85rem;color:var(--muted);display:flex;align-items:baseline;gap:.4rem"><span style="font-size:.65rem;font-weight:700;color:var(--light)">17.</span> Krūvio valdymas</div>
+      <div style="font-size:.85rem;color:var(--muted);display:flex;align-items:baseline;gap:.4rem"><span style="font-size:.65rem;font-weight:700;color:var(--light)">18.</span> Skausmas ar trauma</div>
+      <div style="font-size:.85rem;color:var(--muted);display:flex;align-items:baseline;gap:.4rem"><span style="font-size:.65rem;font-weight:700;color:var(--light)">19.</span> Motyvacija ir pastovumas</div>
+      <div style="font-size:.85rem;color:var(--muted);display:flex;align-items:baseline;gap:.4rem"><span style="font-size:.65rem;font-weight:700;color:var(--light)">20.</span> Bėgimo laikrodžiai</div>
     </div>
   </div>
 
@@ -1399,7 +1415,564 @@ input[type=range]::-moz-range-thumb{width:22px;height:22px;background:var(--surf
 
   <div class="step-nav">
     <button class="btn-step btn-prev" onclick="goLesson(10)">← Atgal</button>
-    <span class="step-counter">12 / 12</span>
+    <span class="step-counter">12 / 20</span>
+    <button class="btn-step btn-next" onclick="goLesson(12)">VO₂max →</button>
+  </div>
+</article>
+
+
+<!-- ══════════════════════════════════════════
+     PAMOKA 13 — VO₂max
+     ══════════════════════════════════════════ -->
+<article class="lesson" id="lesson-12">
+  <div class="lesson-header">
+    <div class="lesson-num">13 pamoka iš 20</div>
+    <h2 class="lesson-title">VO₂max — kiek deguonies gali panaudoti jūsų kūnas</h2>
+    <p class="lesson-intro">VO₂max yra vienas žinomiausių ištvermės rodiklių. Bet ką jis iš tikrųjų reiškia — ir ar verta jį vaikytis?</p>
+  </div>
+
+  <div class="takeaway"><div><strong>Pagrindinė mintis:</strong> VO₂max parodo fiziologinį potencialą, bet nepasako, kaip gerai jį išnaudojate. Du bėgikai su vienodu VO₂max gali bėgti labai skirtingai.</div></div>
+
+  <div class="prose">
+    <p>Įsivaizduokite du automobilius su vienodais varikliais. Vienas važiuoja toliau su tuo pačiu kuro kiekiu — ne todėl, kad variklis galingesnis, o todėl, kad kuras naudojamas efektyviau. Tas pats principas galioja bėgikams.</p>
+    <p>VO₂max — tai maksimalus deguonies kiekis mililitrais, kurį organizmas gali sunaudoti per minutę vienam kilogramui kūno svorio (ml/kg/min). Jis matuojamas laboratorijoje bėgant ant takelio iki visiško išsekimo arba apytikriai apskaičiuojamas iš varžybų rezultatų. Vidutinis netreniruotas vyras — apie 35–40 ml/kg/min. Elitinis maratono bėgikas — 70–85 ml/kg/min.</p>
+    <p>Tačiau svarbu suprasti: VO₂max nėra vienintelis greičio veiksnys. Jis parodo, kiek deguonies jūsų kūnas teoriškai gali sunaudoti — bet ne tai, kaip efektyviai jis jį naudoja <button class="xref" onclick="goLesson(13)">14 pamoka: Bėgimo ekonomija</button>, ar kokiu greičiu kaupiasi laktatas <button class="xref" onclick="goLesson(3)">4 pamoka: Laktatas</button>. Dėl šių priežasčių du bėgikai su identišku VO₂max gali rodyti labai skirtingus rezultatus.</p>
+    <p>VO₂max gerėja labiausiai nuo didelio intensyvumo intervalinių treniruočių — tų, kurios bėgamos 90–100% maksimalaus pulso. Tačiau pradedančiajam bėgikui pirmaisiais metais VO₂max kyla net ir nuo nuoseklių lengvų treniruočių, nes širdis stiprėja, kapiliarų tankumas didėja ir raumenys mokosi naudoti daugiau deguonies. Brangios laboratorinės pažymos čia visai nereikia.</p>
+  </div>
+
+  <div class="callout callout-key">
+    <span class="callout-label">Svarbiausia žinoti</span>
+    Jei laikrodis ar programa rodo jūsų „VO₂max įvertinimą" — tai tik algoritmo spėjimas pagal pulsą ir greitį. Tikslus VO₂max matuojamas tik laboratorijoje su deguonies analizatoriumi. Laikrodžio rodmuo gali skirtis 10–15% nuo tikro.
+  </div>
+
+  <div class="callout callout-myth">
+    <span class="callout-label">Populiarus mitas</span>
+    „Aukštas VO₂max reiškia greitą bėgiką." Ne visada. Daugelis elito bėgikų laimi ne dėl rekordinio VO₂max, o dėl išskirtinės bėgimo ekonomijos ar labai aukšto laktatinio slenksčio. VO₂max yra lubos — kiek iš tų lubų išnaudojama, priklauso nuo daugelio kitų veiksnių.
+  </div>
+
+  <div class="callout callout-tip">
+    <span class="callout-label">Pradedantiesiems</span>
+    Pradedantiesiems VO₂max reikšmė mažai ką pasako apie kasdienę treniruotę. Svarbiau nuosekliai laikytis lengvo tempo ir stebėti, kaip tas pats tempas laikui bėgant jaučiasi vis lengviau. Tai praktiškas VO₂max augimo požymis — be jokio laikrodžio.
+  </div>
+
+  <div class="demo">
+    <div class="demo-title">Interaktyvus demonstravimas — VO₂max ir bėgimo ekonomija</div>
+    <p style="font-size:.88rem;color:var(--muted);margin-bottom:1.25rem">Du bėgikai: vienodas VO₂max, skirtinga bėgimo ekonomija. Pakeiskite treniruotumo lygį ir stebėkite, kaip ekonomija gali kompensuoti žemesnį VO₂max.</p>
+    <div class="slider-control">
+      <div class="slider-label"><span>Treniruotumo lygis</span><strong id="s12-fit-label">Vidutinis</strong></div>
+      <input type="range" id="s12-fit" min="1" max="3" value="2" step="1">
+      <div style="display:flex;justify-content:space-between;font-size:.65rem;color:var(--light);margin-top:3px"><span>Pradedantysis</span><span>Vidutinis</span><span>Treniruotas</span></div>
+    </div>
+    <div class="metric-row">
+      <div class="metric-card"><div class="mv" id="s12-vo2a" style="color:#3b82f6">52</div><div class="ml">A bėgikas VO₂max</div></div>
+      <div class="metric-card"><div class="mv" id="s12-eco" style="color:var(--z2)">Vidutinė</div><div class="ml">Ekonomija (A)</div></div>
+      <div class="metric-card"><div class="mv" id="s12-10k" style="color:var(--text)">52:00</div><div class="ml">10K rezultatas (A)</div></div>
+    </div>
+    <div style="margin-top:.75rem;padding:.75rem 1rem;background:#f0fdf4;border-radius:8px;border:1px solid #86efac;font-size:.82rem;color:#14532d;line-height:1.65" id="s12-insight"></div>
+  </div>
+
+  <div class="quiz" data-correct="1">
+    <div class="quiz-q">Kodėl du bėgikai su vienodu VO₂max gali rodyti labai skirtingus rezultatus?</div>
+    <div class="quiz-opts">
+      <button class="quiz-opt">Nes vienas turi geresnę genetiką</button>
+      <button class="quiz-opt">Nes greitis priklauso ir nuo bėgimo ekonomijos, laktatinio slenksčio bei treniruočių patirties</button>
+      <button class="quiz-opt">Nes VO₂max testas nėra tikslus</button>
+    </div>
+    <div class="quiz-feedback">Tiksliai. VO₂max parodo tik fiziologinį deguonies pajėgumą — tarsi variklio dydį. Galutinį greitį lemia ir bėgimo ekonomija, laktatinis slenkstis bei treniruočių patirtis. Visi šie veiksniai kartu nulemia realų rezultatą.</div>
+  </div>
+
+  <div class="step-nav">
+    <button class="btn-step btn-prev" onclick="goLesson(11)">← Atgal</button>
+    <span class="step-counter">13 / 20</span>
+    <button class="btn-step btn-next" onclick="goLesson(13)">Bėgimo ekonomija →</button>
+  </div>
+</article>
+
+<!-- ══════════════════════════════════════════
+     PAMOKA 14 — BĖGIMO EKONOMIJA
+     ══════════════════════════════════════════ -->
+<article class="lesson" id="lesson-13">
+  <div class="lesson-header">
+    <div class="lesson-num">14 pamoka iš 20</div>
+    <h2 class="lesson-title">Bėgimo ekonomija — kodėl vieni bėga lengviau</h2>
+    <p class="lesson-intro">Du bėgikai, tas pats tempas, tas pats VO₂max — ir visiškai skirtingas nuovargis. Tai bėgimo ekonomija.</p>
+  </div>
+
+  <div class="takeaway"><div><strong>Pagrindinė mintis:</strong> Bėgimo ekonomija — tai energijos kaina tam pačiam greičiui. Geresnis bėgikas nebūtinai stipresnis — dažniau jis tiesiog efektyvesnis.</div></div>
+
+  <div class="prose">
+    <p>Andrius ir Tomas bėga kartu. Tas pats tempas, tas pats atstumas. Po bėgimo Andrius jaučiasi gerai — Tomas visiškai išsekęs. Jų pulsas bėgimo metu skyrėsi dešimčia dūžių. Abu sveiki, abu treniruoti. Skirtumas — bėgimo ekonomija.</p>
+    <p>Bėgimo ekonomija matuojama kaip deguonies sąnaudos tam pačiam greičiui. Kuo mažiau deguonies sunaudojama bėgant tam tikru tempu, tuo geresnė ekonomija. Sportininkams tai svarbu lygiai taip pat kaip VO₂max <button class="xref" onclick="goLesson(12)">13 pamoka: VO₂max</button> — daugeliu atvejų net svarbiau, nes ją galima lavinti daug labiau nei genetiškai nulemtą VO₂max.</p>
+    <p>Ekonomiją lemia keletas veiksnių kartu. Technika — kaip žingsnis nusileisdamas atiduoda smūgio energiją žemei, kiek energijos švaistoma šoniniam svyravimui ir liemens sukimui <button class="xref" onclick="goLesson(6)">7 pamoka: Technika</button>. Sausgyslių elastingumas — ypač Achilo ir padų fascijos gebėjimas kaupti ir grąžinti elastinę energiją. Raumenų koordinacija — kiek antagonistiniai raumenys nejuda tada, kai neturėtų. Ir patirtis — ilgus metus bėgantys žmonės demonstruoja geresnę ekonomiją net tada, kai VO₂max jau nebedidėja.</p>
+    <p>Tai viena paguodžiančių fiziologijos tiesų: ekonomija gerėja tiesiog bėgant daug ir reguliariai. Pradedantysis po pirmo bėgimo metų bėga su 10–15% mažesnėmis energijos sąnaudomis nei pradžioje — net jei jokių techninių pratimų neatlikinėjo. Kūnas pats išmoksta optimizuoti judesį. Jėgos treniruotės šį procesą pagreitina — ypač ekscentriniai pratimai, stiprinantys sausgysles <button class="xref" onclick="goLesson(9)">10 pamoka: Jėgos treniruotės</button>.</p>
+  </div>
+
+  <div class="callout callout-key">
+    <span class="callout-label">Kaip gerinti ekonomiją</span>
+    Geriausi ekonomijos lavinimo įrankiai: reguliarus bėgimas (kilometražas), jėgos treniruotės (ypač vienkojiai pratimai), techniniai bėgimo pratimai ir kadencijos didinimas iki 170–180 SPM. Nė vienas jų nereikalauja laboratorijos ar brangios įrangos.
+  </div>
+
+  <div class="callout callout-myth">
+    <span class="callout-label">Populiarus mitas</span>
+    „Lengvesni bėgikai visada ekonomiškesni." Ne visada. Kūno svoris veikia ekonomiją, tačiau raumenų sudėtis, sausgyslių savybės ir technika dažnai svarbesnės. Kai kurie sunkesni bėgikai bėga ekonomiškiau nei lengvesni — dėl geresnio elastingumo ir koordinacijos.
+  </div>
+
+  <div class="callout callout-tip">
+    <span class="callout-label">Namų testas</span>
+    Bėkite 10 minučių tuo pačiu tempu po 3 mėnesių nuoseklių treniruočių. Jei pulsas žemesnis nei anksčiau — ekonomija gerėja. Jums nereikia laboratorijos. Tai paprasčiausias ir pigiausias progreso rodiklis.
+  </div>
+
+  <div class="demo">
+    <div class="demo-title">Interaktyvus demonstravimas — Ekonomijos augimas laike</div>
+    <p style="font-size:.88rem;color:var(--muted);margin-bottom:1.25rem">Slinkite, kad pamatytumėte, kaip bėgimo ekonomija gerėja su treniruočių patirtimi ir kaip tai veikia realų tempą.</p>
+    <div class="slider-control">
+      <div class="slider-label"><span>Bėgimo patirtis</span><strong id="s13-years-label">1 metai</strong></div>
+      <input type="range" id="s13-years" min="1" max="5" value="1" step="1">
+      <div style="display:flex;justify-content:space-between;font-size:.65rem;color:var(--light);margin-top:3px"><span>1 metai</span><span>2</span><span>3</span><span>4</span><span>5 metai</span></div>
+    </div>
+    <div class="metric-row">
+      <div class="metric-card"><div class="mv" id="s13-economy" style="color:var(--z2)">−0%</div><div class="ml">Ekonomijos pagerėjimas</div></div>
+      <div class="metric-card"><div class="mv" id="s13-o2cost">210</div><div class="ml">ml O₂/kg/km</div></div>
+      <div class="metric-card"><div class="mv" id="s13-pace-gain" style="color:var(--z3)">0 sek/km</div><div class="ml">Greičio laimėjimas</div></div>
+    </div>
+    <div style="margin-top:.75rem;padding:.75rem 1rem;background:var(--bg);border-radius:8px;border:1px solid var(--border);font-size:.88rem;color:var(--muted);line-height:1.65" id="s13-insight"></div>
+  </div>
+
+  <div class="quiz" data-correct="1">
+    <div class="quiz-q">Bėgimo ekonomija pirmiausia gerėja dėl:</div>
+    <div class="quiz-opts">
+      <button class="quiz-opt">Didesnio VO₂max</button>
+      <button class="quiz-opt">Reguliaraus bėgimo, jėgos darbo ir sausgyslių elastingumo</button>
+      <button class="quiz-opt">Greitesnio maksimalaus pulso</button>
+    </div>
+    <div class="quiz-feedback">Tiksliai. Ekonomija nėra vienas rodiklis — tai daugelio veiksnių suma. Reguliarus bėgimas moko kūną judėti efektyviau. Jėgos darbas stiprina sausgysles, kurios grąžina elastinę energiją. VO₂max ekonomijai tiesiogiai įtakos neturi.</div>
+  </div>
+
+  <div class="step-nav">
+    <button class="btn-step btn-prev" onclick="goLesson(12)">← Atgal</button>
+    <span class="step-counter">14 / 20</span>
+    <button class="btn-step btn-next" onclick="goLesson(14)">Nuovargis →</button>
+  </div>
+</article>
+
+<!-- ══════════════════════════════════════════
+     PAMOKA 15 — NUOVARGIS
+     ══════════════════════════════════════════ -->
+<article class="lesson" id="lesson-14">
+  <div class="lesson-header">
+    <div class="lesson-num">15 pamoka iš 20</div>
+    <h2 class="lesson-title">Nuovargis — kodėl organizmas liepia sulėtėti</h2>
+    <p class="lesson-intro">Nuovargis nėra vien raumenų problema. Tai viso organizmo apsauginė sistema — ir centrinis, ir periferinis lygmuo.</p>
+  </div>
+
+  <div class="takeaway"><div><strong>Pagrindinė mintis:</strong> Smegenys pradeda stabdyti dar prieš tikrąjį raumenų išsekimą. Supratę tai, galite protingiau valdyti pastangas — ir atpažinti tikrą pervargimą laiku.</div></div>
+
+  <div class="prose">
+    <p>Bėgant ilgą laiką arba dideliu intensyvumu ateina momentas, kai kojos pasunkėja, kvėpavimas tampa sunkesnis, o mintyse atsiranda noras sustoti. Dauguma žmonių tai vadina nuovargiu ir mano, kad priežastis paprasta — raumenys pavargo. Tačiau nuovargis yra daug sudėtingesnis reiškinys.</p>
+    <p>Mokslininkai skiria du nuovargio tipus: <strong>periferinius</strong> ir <strong>centrinį</strong>. Periferinis nuovargis vyksta tiesiogiai raumenyse ir juos supančiuose audiniuose. Bėgant eikvojamas glikogenas <button class="xref" onclick="goLesson(2)">3 pamoka: Energija</button>, kaupiasi metabolitai, mažėja raumenų gebėjimas susitraukti. Šis nuovargis yra lokalus — jaučiamas konkrečiuose raumenyse.</p>
+    <p>Centrinis nuovargis vyksta smegenų ir nervų sistemos lygmeniu. Dar prieš periferinius raumenis pasiekiant tikrąją išeikvojimo ribą, smegenys pradeda siųsti stabdymo signalus. Tai vadinama centrinio gubernatoriaus teorija — smegenys nuolat vertina organizmo būklę ir, prognozuodamos galimą pavojų, mažina raumenų aktyvavimo intensyvumą. Štai kodėl finišo tiesiosios artėjimas netikėtai suteikia jėgų — smegenys, pajutusios, kad finišas arti, „atleidžia" saugos stabdžius.</p>
+    <p>Ūminis nuovargis — tai, ką jaučiate po vienos sunkios treniruotės — paprastai praeina per 24–72 valandas. <strong>Chroninis nuovargis</strong> yra rimtesnis. Kai organizmas per kelias savaites negauna pakankamai poilsio, prasideda pervargimas. Jį atpažįstama iš kelių požymių: pulsas rytais aukštesnis nei įprastai, lengvas bėgimas jaučiasi sunkiai, nėra noro treniruotis, miegas neišsprendžia nuovargio. Jei šie ženklai trunka daugiau nei savaitę — reikia rimtos poilsio savaitės, ne paprastos atsipalaidavimo dienos.</p>
+  </div>
+
+  <div class="callout callout-warn">
+    <span class="callout-label">Pervargimo sindromas</span>
+    Pervargimo sindromas (overtraining syndrome) yra rimta būklė, kuriai atsigauti prireikia savaičių ar net mėnesių. Jį sukelia per ilgas krūvio didinimas be pakankamo poilsio. Skirtingai nuo paprasto nuovargio, pervargimas nesustoja po kelių poilsio dienų — ir treniruotės jo neišsprendžia, tik paaštrina.
+  </div>
+
+  <div class="callout callout-tip">
+    <span class="callout-label">Rytinio pulso metodas</span>
+    Rytinio pulso matavimas — vienas pigiausių ir patikimiausių chroninio nuovargio rodiklių. Matuokite pulsą tuo pačiu metu gulėdami po pabudimo. Jei tris dienas iš eilės jis 7–10 dūžių aukštesnis nei įprastai — organizmas siunčia atkūrimo signalą.
+  </div>
+
+  <div class="callout callout-key">
+    <span class="callout-label">Nuovargis varžybų metu</span>
+    Nuovargio pojūtis varžybų metu nebūtinai reiškia, kad raumenys išsekę. Dažnai tai smegenų apsauginis signalas. Treniruotas bėgikas išmoksta atskirti, kada signalas reiškia tikrą pavojų ir kada jį galima drąsiai ignoruoti — tai ugdoma su patirtimi.
+  </div>
+
+  <div class="demo">
+    <div class="demo-title">Interaktyvus demonstravimas — Nuovargio veiksniai</div>
+    <p style="font-size:.88rem;color:var(--muted);margin-bottom:1.25rem">Slinkite, kad pamatytumėte, kaip skirtingi nuovargio veiksniai kaupiasi ilgesnio bėgimo metu.</p>
+    <div class="slider-control">
+      <div class="slider-label"><span>Bėgimo trukmė</span><strong id="s14-dur-label">30 min</strong></div>
+      <input type="range" id="s14-dur" min="10" max="150" value="30" step="5">
+    </div>
+    <div class="slider-control">
+      <div class="slider-label"><span>Treniruotumo lygis</span><strong id="s14-fit-label">Vidutinis</strong></div>
+      <input type="range" id="s14-fit" min="1" max="3" value="2" step="1">
+    </div>
+    <div id="s14-fatigue-bars" style="margin-top:1rem;display:flex;flex-direction:column;gap:.5rem"></div>
+    <div style="margin-top:.75rem;padding:.75rem 1rem;background:var(--bg);border-radius:8px;border:1px solid var(--border);font-size:.88rem;color:var(--muted);line-height:1.65" id="s14-insight"></div>
+  </div>
+
+  <div class="quiz" data-correct="1">
+    <div class="quiz-q">Ką reiškia „centrinis nuovargis"?</div>
+    <div class="quiz-opts">
+      <button class="quiz-opt">Nuovargis pilvo raumenyse</button>
+      <button class="quiz-opt">Smegenų siunčiami stabdymo signalai, apsaugantys organizmą dar prieš pasiekiant tikrąją raumenų išeikvojimo ribą</button>
+      <button class="quiz-opt">Nuovargis dėl per didelio angliavandenių trūkumo</button>
+    </div>
+    <div class="quiz-feedback">Tiksliai. Centrinis nuovargis — tai nervų sistemos apsauginis mechanizmas. Smegenys nuolat stebi organizmo būklę ir mažina raumenų aktyvavimą dar prieš tikrąjį išsekimą. Tai viena priežasčių, kodėl prie finišo visada atsiranda „atsarginių" jėgų.</div>
+  </div>
+
+  <div class="step-nav">
+    <button class="btn-step btn-prev" onclick="goLesson(13)">← Atgal</button>
+    <span class="step-counter">15 / 20</span>
+    <button class="btn-step btn-next" onclick="goLesson(15)">Tempo paskirstymas →</button>
+  </div>
+</article>
+
+<!-- ══════════════════════════════════════════
+     PAMOKA 16 — TEMPO PASKIRSTYMAS
+     ══════════════════════════════════════════ -->
+<article class="lesson" id="lesson-15">
+  <div class="lesson-header">
+    <div class="lesson-num">16 pamoka iš 20</div>
+    <h2 class="lesson-title">Tempo paskirstymas — menas nepradėti per greitai</h2>
+    <p class="lesson-intro">Dauguma mėgėjų varžybas sugadina per pirmuosius kilometrus. Ne dėl silpnumo — dėl adrenalino ir neteisingos strategijos.</p>
+  </div>
+
+  <div class="takeaway"><div><strong>Pagrindinė mintis:</strong> Geras rezultatas dažniausiai prasideda nuo kantrybės pirmuose kilometruose. Neigiamas splitas — antroji pusė greitesnė — yra efektyviausia strategija daugumai distancijų.</div></div>
+
+  <div class="prose">
+    <p>Vienas dažniausių bėgikų pasakojimų skamba taip: „Pirmieji penki kilometrai jautėsi puikiai, tada viskas sugriuvo." Tai nėra silpnumo požymis. Tai fiziologiškai nuspėjamas adrenaline ir entuziazme pagrįstos perdozuotos pradžios pasekmė.</p>
+    <p>Startas varžybose yra nepalankus psichologinis momentas teisingam tempui pasirinkti. Aplinkoje gausu dirgiklių: minia, muzika, kiti bėgikai aplenkia. Jaučiatės gerai, nes pailsėjote prieš varžybas. Pirmas kilometras beveik visada jaučiasi per lengvas — net jei bėgate per greitai. Energijos sąnaudos tuo metu dar neatspindi tikro krūvio, nes organizmas dar tik „sukyla" ir pasiekia stabilų aerobinės energijos gamybos lygį.</p>
+    <p><strong>Neigiamas splitas</strong> — tai strategija, kai pirmoji distancijos pusė bėgama šiek tiek lėčiau, o antroji šiek tiek greičiau. Kodėl tai veikia fiziologiškai? Laktatas kaupiasi eksponentiškai su greičiu <button class="xref" onclick="goLesson(3)">4 pamoka: Laktatas</button>. Nedidelis pirmų kilometrų sulėtinimas reikšmingai mažina laktatų kaupimąsi ir leidžia antroje distancijos pusėje bėgti be rūgštimo. „Laiko uždirbimas" pirmoje pusėje yra iliuzija — laktatas, susikaupęs per pirmų kilometrų entuziazmą, antroje pusėje atneša gerokai daugiau laiko nuostolių nei buvo „sutaupyta".</p>
+    <p>Praktinė rekomendacija: pirmuosius du kilometrus bėkite 5–10 sekundžių per km lėčiau nei planinis tempas. Jei planuojate 5:30 min/km — pradėkite 5:35–5:40. Tai jaučiasi per lengva — ir teisingai. Palaipsniui, apie 30–40% distancijos, galite pradėti artėti prie planinio tempo.</p>
+  </div>
+
+  <div class="callout callout-key">
+    <span class="callout-label">Strategija pagal distanciją</span>
+    5K galima bėgti beveik tolygiai nuo starto, nes distancija trumpa. Pusmaratonyje ir maratone neigiamas splitas duoda didžiausią naudą — kuo ilgesnė distancija, tuo brangesčiau kainuoja per greita pradžia.
+  </div>
+
+  <div class="callout callout-warn">
+    <span class="callout-label">Jei jau pradėjote per greitai</span>
+    Nesistenkite staigiai sulėtėti. Laipsniškas 5–10 sekundžių per km tempas bus žymiai geresnis nei staigus sulėtėjimas ir vėliau bandymas vėl pagreitėti. Svarbiausia — išlaikyti ritmingą kvėpavimą ir tolygų žingsnį.
+  </div>
+
+  <div class="callout callout-tip">
+    <span class="callout-label">Laikrodžio signalas</span>
+    Prieš varžybas nustatykite „sienos tempą" — greitį, kurio jokiu būdu nepereikite pirmame kilometre — ir įveskite jį kaip laikrodžio įspėjimą. Kai laikrodis perspėja, kad per greita — tai jūsų pačių ankstesnio intelekto žinutė karštligiškai bėgančiam „aš".
+  </div>
+
+  <div class="demo">
+    <div class="demo-title">Interaktyvus demonstravimas — Splito strategijų palyginimas</div>
+    <p style="font-size:.88rem;color:var(--muted);margin-bottom:1.25rem">Pasirinkite distanciją ir tikslinį tempą — pamatykite, kiek teigiamas ir neigiamas splitas skiriasi galutiniame rezultate.</p>
+    <div class="slider-control">
+      <div class="slider-label"><span>Distancija</span><strong id="s15-dist-label">10K</strong></div>
+      <select id="s15-dist" class="scandi-select" style="width:100%;margin-top:.35rem">
+        <option value="5">5K</option>
+        <option value="10" selected>10K</option>
+        <option value="21">Pusmaratonis</option>
+        <option value="42">Maratonas</option>
+      </select>
+    </div>
+    <div class="slider-control">
+      <div class="slider-label"><span>Tikslintas tempas (min/km)</span><strong id="s15-pace-label">5:30 min/km</strong></div>
+      <input type="range" id="s15-pace" min="280" max="500" value="330" step="5">
+    </div>
+    <div class="metric-row">
+      <div class="metric-card"><div class="mv" id="s15-even" style="color:var(--z2)">55:00</div><div class="ml">Tolygus splitas</div></div>
+      <div class="metric-card"><div class="mv" id="s15-neg" style="color:#3b82f6">54:10</div><div class="ml">Neigiamas splitas</div></div>
+      <div class="metric-card"><div class="mv" id="s15-pos" style="color:var(--z4)">57:30</div><div class="ml">Teigiamas splitas</div></div>
+    </div>
+    <div style="margin-top:.75rem;padding:.75rem 1rem;background:var(--bg);border-radius:8px;border:1px solid var(--border);font-size:.88rem;color:var(--muted);line-height:1.65" id="s15-insight"></div>
+  </div>
+
+  <div class="quiz" data-correct="0">
+    <div class="quiz-q">Kodėl „laiko uždirbimas" pirmoje distancijos pusėje dažniausiai neveikia?</div>
+    <div class="quiz-opts">
+      <button class="quiz-opt">Per greita pradžia anksti sukelia laktatų kaupimąsi, dėl kurio antroje pusėje prarandama daugiau laiko nei buvo sutaupyta</button>
+      <button class="quiz-opt">Nes greitas bėgimas pradžioje alina psichologiškai</button>
+      <button class="quiz-opt">Nes širdies ritmas per daug pakyla</button>
+    </div>
+    <div class="quiz-feedback">Tiksliai. Laktatas kaupiasi eksponentiškai su greičiu. Kiekviena papildoma sekundė greičiau nei planuota reikalauja disproporcinių energijos sąnaudų. Antroje pusėje šio „skolos" grąžinimas kainuoja keliskart daugiau laiko nei buvo laimėta pradžioje.</div>
+  </div>
+
+  <div class="step-nav">
+    <button class="btn-step btn-prev" onclick="goLesson(14)">← Atgal</button>
+    <span class="step-counter">16 / 20</span>
+    <button class="btn-step btn-next" onclick="goLesson(16)">Krūvio valdymas →</button>
+  </div>
+</article>
+
+<!-- ══════════════════════════════════════════
+     PAMOKA 17 — KRŪVIO VALDYMAS
+     ══════════════════════════════════════════ -->
+<article class="lesson" id="lesson-16">
+  <div class="lesson-header">
+    <div class="lesson-num">17 pamoka iš 20</div>
+    <h2 class="lesson-title">Krūvio valdymas — kaip augti nesusižeidžiant</h2>
+    <p class="lesson-intro">Dauguma pradedančiųjų traumų atsiranda ne dėl silpnumo, o dėl per greito progreso. Širdis prisitaiko per savaites — sausgyslės reikalauja mėnesių.</p>
+  </div>
+
+  <div class="takeaway"><div><strong>Pagrindinė mintis:</strong> Didžiausia traumų rizika nėra tada, kai krūvis didelis — o tada, kai vienos savaitės krūvis ženkliai viršija ankstesnių savaičių vidurkį.</div></div>
+
+  <div class="prose">
+    <p>Yra paradoksas, su kuriuo susiduria beveik kiekvienas bėgimo entuziastas. Po kelių savaičių treniruočių jaučiatės stipriai, bėgimas lengvėja, norite daugiau. Pulsas lengvuose bėgimuose krenta, atsiranda rezervų. Ir tada natūraliai kyla pagunda: kodėl ne papildomas kilometras? Kodėl ne papildoma treniruotė?</p>
+    <p>Šiame taške širdis ir plaučiai sutinka — jie tikrai prisitaikė. Tačiau sausgyslės, raiščiai ir kaulai gyvena pagal kitokį biologinį laikrodį. Raumenų prisitaikymas vyksta per 2–4 savaites. Sausgyslių kolageno atsinaujinimas — per 3–6 mėnesius <button class="xref" onclick="goLesson(9)">10 pamoka: Jėgos treniruotės</button>. Kaulų mineralų tankis keičiasi dar lėčiau. Tai reiškia, kad kai jaučiatės pasiruošę daugiau — jūsų jungiamieji audiniai dar ne.</p>
+    <p>Svarbiau nei absoliutus krūvis yra jo <strong>dinamika</strong>. Tyrimas, analizavęs bėgikų traumų priežastis, nustatė, kad didžiausia rizika atsiranda ne tada, kai krūvis didelis, o tada, kai vienos savaitės krūvis ženkliai viršija ankstesnių savaičių vidurkį. Praktiškai tai reiškia: po aktyvios savaitės reikalinga ir „poilsio savaitė" — mažesnė apimtis, žemesnis intensyvumas. Grįžus po traumos ar ligos pertraukos, negalima grįžti į tą pačią apimtį iš karto. Net po dviejų savaičių pertraukos audiniai pradeda grįžti į mažesnio krūvio toleravimo lygį.</p>
+  </div>
+
+  <div class="callout callout-warn">
+    <span class="callout-label">Tris rizikos situacijos</span>
+    Traumų rizika didžiausia šiose situacijose: pirmosios 8 bėgimo savaitės (audiniai dar neadaptavosi), ruošiantis pirmajam pusmaratoniui ar maratonui (pagundos greitai didinti apimtį) ir grįžimas po ilgesnės pertraukos. Visais šiais atvejais — būkite konservatyvesni nei atrodo reikalinga.
+  </div>
+
+  <div class="callout callout-key">
+    <span class="callout-label">Savaitinis patikrinimas</span>
+    Paprastas savaitinis testas: ar šios savaitės bendras kilometražas yra ne daugiau kaip 10% didesnis nei praėjusių 4 savaičių vidurkis? Jei taip — saugi zona. Jei daugiau — apsvarstykite sulėtinti progresą viena savaite.
+  </div>
+
+  <div class="callout callout-tip">
+    <span class="callout-label">Vienu metu — tik vienas</span>
+    Sporto medicinos specialistai siūlo paprastą principą: didinkite arba apimtį, arba intensyvumą — ne abu kartu tą pačią savaitę. Šis taisyklė sumažina traumų riziką be didelio progreso praradimo.
+  </div>
+
+  <div class="demo">
+    <div class="demo-title">Interaktyvus demonstravimas — Krūvio augimas ir adaptacija</div>
+    <p style="font-size:.88rem;color:var(--muted);margin-bottom:1.25rem">Slinkite savaitinį kilometražą ir stebėkite, kaip raumenų ir sausgyslių adaptacija skiriasi — ir kada atsiranda traumų rizika.</p>
+    <div class="slider-control">
+      <div class="slider-label"><span>Savaitinis kilometražas</span><strong id="s16-km-label">30 km/sav.</strong></div>
+      <input type="range" id="s16-km" min="10" max="80" value="30" step="5">
+    </div>
+    <div class="slider-control">
+      <div class="slider-label"><span>Savaitės nuo pradžios</span><strong id="s16-weeks-label">4 savaitės</strong></div>
+      <input type="range" id="s16-weeks" min="1" max="16" value="4" step="1">
+    </div>
+    <div class="metric-row">
+      <div class="metric-card"><div class="mv" id="s16-muscle" style="color:var(--z2)">70%</div><div class="ml">Raumenų adaptacija</div></div>
+      <div class="metric-card"><div class="mv" id="s16-tendon" style="color:var(--z3)">30%</div><div class="ml">Sausgyslių adaptacija</div></div>
+      <div class="metric-card"><div class="mv" id="s16-risk" style="color:var(--z2)">Žema</div><div class="ml">Traumų rizika</div></div>
+    </div>
+    <div style="margin-top:.75rem;padding:.75rem 1rem;background:var(--bg);border-radius:8px;border:1px solid var(--border);font-size:.88rem;color:var(--muted);line-height:1.65" id="s16-insight"></div>
+  </div>
+
+  <div class="quiz" data-correct="0">
+    <div class="quiz-q">Kodėl daugelis traumų atsiranda net tada, kai treniruotės jaučiasi lengvai?</div>
+    <div class="quiz-opts">
+      <button class="quiz-opt">Nes širdis ir plaučiai prisitaiko greičiau nei sausgyslės ir kaulai — jaučiamasi pasiruošęs, bet jungiamieji audiniai dar ne</button>
+      <button class="quiz-opt">Nes lengvas jausmas reiškia blogą techniką</button>
+      <button class="quiz-opt">Nes mažas pulsas reiškia per lėtą bėgimą</button>
+    </div>
+    <div class="quiz-feedback">Tiksliai. Širdies ir kraujagyslių sistema prisitaiko per kelias savaites. Sausgyslių kolagenas — per mėnesius. Tai reiškia, kad aerobinio pasirengimo pojūtis visada lenkia audinių pasirengimą. Dėl to reikalingas nuosaikus progresavimas net tada, kai viskas jaučiasi lengva.</div>
+  </div>
+
+  <div class="step-nav">
+    <button class="btn-step btn-prev" onclick="goLesson(15)">← Atgal</button>
+    <span class="step-counter">17 / 20</span>
+    <button class="btn-step btn-next" onclick="goLesson(17)">Skausmas ar trauma →</button>
+  </div>
+</article>
+
+<!-- ══════════════════════════════════════════
+     PAMOKA 18 — SKAUSMAS AR TRAUMA
+     ══════════════════════════════════════════ -->
+<article class="lesson" id="lesson-17">
+  <div class="lesson-header">
+    <div class="lesson-num">18 pamoka iš 20</div>
+    <h2 class="lesson-title">Skausmas ar trauma — kaip atskirti</h2>
+    <p class="lesson-intro">Ne kiekvienas skausmas reikalauja poilsio. Ne kiekvieną skausmą galima ignoruoti. Mokėjimas juos atskirti — viena svarbiausių bėgiko kompetencijų.</p>
+  </div>
+
+  <div class="takeaway"><div><strong>Pagrindinė mintis:</strong> Raumenų skausmas po sunkios treniruotės yra normalus. Skausmas, didėjantis bėgimo metu ir lokalizuotas viename taške — reikalauja dėmesio.</div></div>
+
+  <div class="prose">
+    <p>Bėgimas be jokio diskomforto yra nerealus lūkestis. Raumenų varginimas, prieš tai nejudintos struktūros, pirmos ilgos distancijos — visa tai natūraliai sukelia pojūčius, kurie lengvai supainiojami su trauma. Tačiau ne visi tokie pojūčiai yra pavojingi. Ignoruojamos traumos dažnai tampa rimtesniais sužeidimais, o per didelis dėmesys normalioms sensacijoms veda į beprasmiškas pertraukas.</p>
+    <p><strong>Uždelstas raumenų skausmas (DOMS)</strong> — tai tas gerai pažįstamas kojas gniaužiantis pojūtis kitą dieną po sunkios treniruotės. Jis atsiranda dėl mikroskopinių raumenų skaidulų įplyšimų, kurie yra normali adaptacijos dalis. DOMS dažniausiai jaučiamas abiejose pusėse, pasireiškia 12–48 valandų vėlavimo periodu, sumažėja judant ir praeina per 2–5 dienas. Tai ne trauma — tai augimo kaina.</p>
+    <p>Ženklai, reikalaujantys didesnio dėmesio, yra kitokie. Skausmas, <strong>didėjantis bėgimo metu</strong> — ypač jei pradžioje jo nebuvo — yra įspėjamasis signalas. Skausmas, <strong>lokalizuotas viename konkrečiame taške</strong> — ne difuzinis raumenų skausmas, o tiksliai nurodoma vieta — vertas atidumo. <strong>Šlubavimas arba technikos pasikeitimas</strong> dėl skausmo reiškia, kad kūnas bando apsaugoti skaudamą vietą perskirstydamas apkrovą — tai jau ne diskomfortas, o kompensacija. Skausmas, <strong>kuris nepraeina po poilsio dienos</strong>, bet grįžta iš karto kitą bėgimą — vertas konsultacijos su sporto medicinos specialistu.</p>
+    <p>Praktinė taisyklė, kurią naudoja daugelis sporto medicinos specialistų: skausmas iki 3 balo iš 10 bėgimo metu leidžia tęsti treniruotę. 4–5 — sumažinkite intensyvumą ir apimtį. 6 ir daugiau — sustokite ir poilsiaukite. Jei skausmas nepradeda mažėti per 5–7 poilsio dienas — kreipkitės į specialistą <button class="xref" onclick="goLesson(16)">17 pamoka: Krūvio valdymas</button>.</p>
+  </div>
+
+  <div class="callout callout-warn">
+    <span class="callout-label">Sausgyslių skausmai</span>
+    Sausgyslių skausmai (Achilas, kelio sausgyslė, IT juosta) dažnai būna klastingi — pradžioje jaučiasi 2–3 balu ir atrodo toleruojami, bet ignoruojami gali peraugti į lėtinę būklę, kurios gydymas trunka mėnesius. Klasikinis ženklas: skausmas pirmomis bėgimo minutėmis „išnyksta", o po bėgimo grįžta. Tai ne gerinimas — tai perkrovos signalas.
+  </div>
+
+  <div class="callout callout-myth">
+    <span class="callout-label">Populiarus mitas</span>
+    „Skausmą reikia išbėgti." Šis patarimas taikytinas tik DOMS tipo raumenų skausmui — jis iš tikrųjų mažėja nuo lengvo judėjimo. Bet sausgyslių, kaulų ar sąnarių skausmui šis patarimas yra žalingas. Lengvas judėjimas — gerai. Bėgimas per skausmą tikintis, kad jis praeis — blogas.
+  </div>
+
+  <div class="callout callout-tip">
+    <span class="callout-label">Ėjimo testas</span>
+    Jei nežinote, ar skausmas reikalauja pertraukos — pabandykite 10 minučių ėjimą. Jei ėjant skausmas didėja arba jaučiamas akivaizdžiai — poilsiaukite. Jei mažėja — lengvas bėgimas tikriausiai saugus. Tai paprastas, bet dažnai informatyvus pirmasis žingsnis.
+  </div>
+
+  <div class="demo">
+    <div class="demo-title">Interaktyvus demonstravimas — Simptomų tikrintuvas</div>
+    <p style="font-size:.88rem;color:var(--muted);margin-bottom:1rem">Pasirinkite skausmo požymius ir gaukite orientacinę rekomendaciją. Tai nėra medicinos diagnoze — tik sprendimų pagalbininkas.</p>
+    <div style="display:flex;flex-direction:column;gap:.75rem;margin-bottom:1rem">
+      <div class="method-pick-group">
+        <label>Kur skauda?</label>
+        <select id="s17-where" class="scandi-select" style="width:100%;margin-top:.3rem">
+          <option value="muscle">Raumuo (plati sritis)</option>
+          <option value="achilles">Achilo sausgyslė</option>
+          <option value="knee">Kelias (priekis arba išorė)</option>
+          <option value="shin">Blauzda (priekinė dalis)</option>
+          <option value="foot">Pėda arba kulnas</option>
+        </select>
+      </div>
+      <div class="method-pick-group">
+        <label>Kada atsiranda?</label>
+        <select id="s17-when" class="scandi-select" style="width:100%;margin-top:.3rem">
+          <option value="after">Tik po bėgimo / kitą dieną</option>
+          <option value="start">Bėgimo pradžioje, vėliau praeina</option>
+          <option value="during">Didėja bėgimo metu</option>
+          <option value="always">Jaučiamas ir ramybėje</option>
+        </select>
+      </div>
+      <div class="method-pick-group">
+        <label>Intensyvumas (0 — jokio, 10 — stiprus)</label>
+        <div style="display:flex;align-items:center;gap:.75rem;margin-top:.3rem">
+          <input type="range" id="s17-intensity" min="0" max="10" value="3" step="1" style="flex:1">
+          <strong id="s17-intensity-label" style="min-width:1.5rem">3</strong>
+        </div>
+      </div>
+    </div>
+    <div id="s17-result" style="padding:1rem 1.25rem;border-radius:10px;border:2px solid var(--border);background:var(--bg);font-size:.88rem;line-height:1.7;color:var(--text)"></div>
+  </div>
+
+  <div class="quiz" data-correct="1">
+    <div class="quiz-q">Kuris iš šių skausmo tipų yra rimčiausias įspėjamasis signalas?</div>
+    <div class="quiz-opts">
+      <button class="quiz-opt">Raumenų skausmas abiejose kojose kitą dieną po ilgo bėgimo</button>
+      <button class="quiz-opt">Skausmas, didėjantis bėgimo metu ir lokalizuotas viename konkrečiame taške</button>
+      <button class="quiz-opt">Lengvas diskomfortas pirmomis bėgimo minutėmis, kuris praeina per 5 minutes</button>
+    </div>
+    <div class="quiz-feedback">Tiksliai. Raumenų skausmas abiejose pusėse po treniruotės — tai DOMS, normali adaptacijos dalis. Bėgimo pradžios diskomfortas, išnykstantis per pirmąsias minutes — dažnai normalus. Tačiau skausmas, didėjantis bėgimo metu ir koncentruotas viename taške, signalizuoja apie galimą sausgyslės, raiščio ar kaulo perkrovą.</div>
+  </div>
+
+  <div class="step-nav">
+    <button class="btn-step btn-prev" onclick="goLesson(16)">← Atgal</button>
+    <span class="step-counter">18 / 20</span>
+    <button class="btn-step btn-next" onclick="goLesson(18)">Motyvacija ir pastovumas →</button>
+  </div>
+</article>
+
+<!-- ══════════════════════════════════════════
+     PAMOKA 19 — MOTYVACIJA IR PASTOVUMAS
+     ══════════════════════════════════════════ -->
+<article class="lesson" id="lesson-18">
+  <div class="lesson-header">
+    <div class="lesson-num">19 pamoka iš 20</div>
+    <h2 class="lesson-title">Motyvacija ir pastovumas</h2>
+    <p class="lesson-intro">Sėkmingi bėgikai nebūtinai turi daugiau motyvacijos. Jie turi geresnių įpročių. Motyvacija svyruoja — įpročiai lieka.</p>
+  </div>
+
+  <div class="takeaway"><div><strong>Pagrindinė mintis:</strong> Sportinę formą sukuria ne idealios savaitės, o daugybė paprastų savaičių iš eilės. Reguliarumas visada lenkia tobulumą.</div></div>
+
+  <div class="prose">
+    <p>Yra mitas, kad sėkmingi sportininkai kasdien kyla su liepsnojančia motyvacija. Tiesa žymiai prozajiškesnė. Bet kurio reguliariai bėgiojančio žmogaus retrospektyvus savaitės vertinimas atrodytų taip: dvi treniruotės buvo malonios, viena — pakenčiama, viena — reikėjo save spausti, viena — visiškai nesisekė, bet nuėjai vis tiek. Tai ne nesėkmė. Tai normalus bėgiko gyvenimas.</p>
+    <p>Motyvacija yra emocija, o emocijos kinta. Veiksnius, kurie ją mažina, žinome visi: lietus, pavargimas po darbo, šaltos tamsos rytas, kelios iš eilės blogos treniruotės. Problema — motyvacijos šaltiniai yra išoriniai ir nekontroliuojami. Jei treniruočių sėkmė priklauso nuo jų, ji taip pat yra nekontroliuojama.</p>
+    <p>Įpročiai veikia kitaip. Įprotis yra elgesys, kuris su laiku reikalauja mažiau sąmoningų pastangų, nes jis tampa numatytu. Neuromokslai patvirtina: pakartotinis elgesys tose pačiose aplinkybėse sustiprina sinapsinius ryšius, dėl ko tas elgesys ateityje sukeliamas automatiškai, be didelio psichologinio pasipriešinimo. Kitaip tariant: kuo daugiau kartų bėgote trečiadienio vakarą, tuo lengviau bėgti kitą trečiadienio vakarą.</p>
+    <p>Praktiškai tai reiškia: <strong>laikas, diena ir rutina svarbesnės nei motyvacija</strong>. Bėgikas, bėgantis kiekvieną pirmadienį ir ketvirtadienį 7 valandą ryto, ilgainiui bėga ne todėl, kad to nori, o todėl, kad taip yra. Praleista treniruotė tokioje sistemoje nėra nesėkmė — tai informacija apie tai, kas kliudė, ir signalas ką pakeisti.</p>
+  </div>
+
+  <div class="callout callout-tip">
+    <span class="callout-label">Įpročių kūrimas</span>
+    Susiekite bėgimą su jau egzistuojančiu įpročiu. „Po ryto kavos — apsiaviu bėgimo batelius." „Grįžęs iš darbo — prieš dušą — 30 minučių bėgimas." Šie ryšiai sukuriami sąmoningai, bet su laiku tampa automatiniai ir reikalauja vis mažiau valios pastangų.
+  </div>
+
+  <div class="callout callout-key">
+    <span class="callout-label">Entuziastų ciklas</span>
+    Dažnai aptariamas „motyvacijos praradimas" po pirmų savaičių entuziastų bėgiojimo yra normalus neurobiologinis ciklas. Pradinis entuziazmas visada mažėja. Tie, kurie išlieka, yra ne labiau motyvuoti — jie sukūrė struktūrą, kuri veikia ir be motyvacijos.
+  </div>
+
+  <div class="callout callout-myth">
+    <span class="callout-label">Populiarus mitas</span>
+    „Jei reikia save spausti, vadinasi, tai ne tau." Netikra. Profesionalūs bėgikai dažnai aprašo treniruotes, kuriose reikėjo save įkalbinėti. Pastangos nereiškia, kad kažkas negerai — jos reiškia, kad einsite prieš pasipriešinimą, kuris yra normalus augimo dalis.
+  </div>
+
+  <div class="demo">
+    <div class="demo-title">Interaktyvus demonstravimas — Pastovumo galia</div>
+    <p style="font-size:.88rem;color:var(--muted);margin-bottom:1.25rem">Palyginkite „tobulą" ir „pastovų" bėgiką per metus. Pamatysite, kodėl reguliarumas lenkia tobulumą.</p>
+    <div class="slider-control">
+      <div class="slider-label"><span>Treniruočių tikslas (per savaitę)</span><strong id="s18-goal-label">3 treniruotės</strong></div>
+      <input type="range" id="s18-goal" min="2" max="5" value="3" step="1">
+    </div>
+    <div class="slider-control">
+      <div class="slider-label"><span>Realus pastovumas</span><strong id="s18-consist-label">80%</strong></div>
+      <input type="range" id="s18-consist" min="50" max="100" value="80" step="5">
+    </div>
+    <div class="metric-row">
+      <div class="metric-card"><div class="mv" id="s18-perfect" style="color:#94a3b8">156</div><div class="ml">„Tobulas" bėgikas (100%)</div></div>
+      <div class="metric-card"><div class="mv" id="s18-real" style="color:var(--z2)">125</div><div class="ml">„Pastovus" bėgikas</div></div>
+      <div class="metric-card"><div class="mv" id="s18-diff" style="color:var(--z3)">80%</div><div class="ml">Treniruočių skaičius iš max</div></div>
+    </div>
+    <div style="margin-top:.75rem;padding:.75rem 1rem;background:var(--bg);border-radius:8px;border:1px solid var(--border);font-size:.88rem;color:var(--muted);line-height:1.65" id="s18-insight"></div>
+  </div>
+
+  <div class="quiz" data-correct="1">
+    <div class="quiz-q">Kodėl įpročiai yra patikimesnė sistema nei motyvacija?</div>
+    <div class="quiz-opts">
+      <button class="quiz-opt">Nes motyvuoti žmonės daro klaidas</button>
+      <button class="quiz-opt">Nes motyvacija svyruoja priklausomai nuo aplinkybių, o įpročiai su laiku tampa automatiniais elgesiais, nepriklausančiais nuo nuotaikos</button>
+      <button class="quiz-opt">Nes bėgimas su draugais visada geresnis</button>
+    </div>
+    <div class="quiz-feedback">Tiksliai. Motyvacija yra emocija — ji kinta kaip oras. Įpročiai yra nervų sistemos automatizmai, susiformuojantys per pakartotinį elgesį tose pačiose aplinkybėse. Todėl reguliarus bėgimas tomis pačiomis dienomis tuo pačiu laiku ilgainiui reikalauja vis mažiau valios pastangų.</div>
+  </div>
+
+  <div class="step-nav">
+    <button class="btn-step btn-prev" onclick="goLesson(17)">← Atgal</button>
+    <span class="step-counter">19 / 20</span>
+    <button class="btn-step btn-next" onclick="goLesson(19)">Bėgimo laikrodžiai →</button>
+  </div>
+</article>
+
+<!-- ══════════════════════════════════════════
+     PAMOKA 20 — BĖGIMO LAIKRODŽIAI
+     ══════════════════════════════════════════ -->
+<article class="lesson" id="lesson-19">
+  <div class="lesson-header">
+    <div class="lesson-num">20 pamoka iš 20</div>
+    <h2 class="lesson-title">Bėgimo laikrodžiai ir duomenys</h2>
+    <p class="lesson-intro">Laikrodis yra puikus pagalbininkas — kai žinote, kam jis skirtas. Svarbu atskirti, kurie rodikliai yra patikimi, o kurie — tik algoritmo spėjimas.</p>
+  </div>
+
+  <div class="takeaway"><div><strong>Pagrindinė mintis:</strong> Geriausi bėgikai naudoja duomenis kaip pagalbininką, o ne kaip šeimininką. Laikrodis papildo — bet nepakeičia — gebėjimo klausytis savo kūno.</div></div>
+
+  <div class="prose">
+    <p>GPS laikrodžiai tapo tokia prieinama technologija, kad beveik kiekvienas pradedantysis savo pirmąjį pirkinį susideda iš dviejų dalykų: bėgimo batų ir laikrodžio. Tai teigiamas pokytis — duomenys padeda suprasti treniruotes. Tačiau kartu atsirado nauja problema: duomenų perteklius be konteksto.</p>
+    <p>Laikrodžio duomenis galima suskirstyti į dvi kategorijas. <strong>Patikimi duomenys</strong> — tiesiogiai matuojami kintamieji: GPS atstumas (su nedidele paklaida tankiai užstatytose vietose), bėgimo laikas, kadencija <button class="xref" onclick="goLesson(6)">7 pamoka: Technika</button>. Širdies ritmas iš riešo yra vidutiniškai patikimas lygaus intensyvumo bėgime, tačiau intervalinių ar kalnų bėgimų metu dažnai atsilieka 10–30 sekundžių — tai svarbu žinoti.</p>
+    <p><strong>Apytiksliai apskaičiuojami rodikliai</strong> — tai algoritmai, interpretuojantys matavimus. VO₂max įvertinimai <button class="xref" onclick="goLesson(12)">13 pamoka: VO₂max</button>, „pasirengimo balas", „kūno baterija", „atsistatymo laikas" — visa tai statistiniai modeliai, sukalibruoti vidutiniam vartotojui. Jie gali rodyti teisingą tendenciją, bet absoliutūs skaičiai yra apytiksliai. Bėgikas, praleidęs blogą naktį prieš lengvą bėgimą, gali gauti žemą „pasirengimo balą" net jei fiziologiškai yra gerai. Ir atvirkščiai.</p>
+    <p>Didžiausias pavojus, kurį atneša laikrodžiai — tai sąmoningas ar nesąmoningas tempo didinimas lengvose treniruotėse, nes žinote, kad kiti matys jūsų veiklą. Lengva treniruotė neturi atrodyti greita — ji turi būti lengva. Trys rodikliai, kurie daugumai pradedančiųjų duoda daugiausiai naudos: širdies ritmas (padeda laikytis tinkamoje zonoje <button class="xref" onclick="goLesson(1)">2 pamoka: Zonos</button>), kadencija ir savaitinis kilometražas. Likusieji rodikliai yra naudingi priedai, bet ne pagrindas sprendimams.</p>
+  </div>
+
+  <div class="callout callout-tip">
+    <span class="callout-label">Savaitė be laikrodžio</span>
+    Pabandykite vieną savaitę bėgti su apdengtu ekranu arba be laikrodžio. Tai moko klausytis kūno, o ne reaguoti į skaičius. Daugelis bėgikų atranda, kad jų intuityvus tempas yra gerokai tikslesnis nei tikėjosi.
+  </div>
+
+  <div class="callout callout-warn">
+    <span class="callout-label">Zonos laikrodyje prieš zones kūne</span>
+    Laikrodžio HR zona ir jūsų tikroji fiziologinė zona nebūtinai sutampa. Jei laikrodis sako „Z2", bet jaučiate, kad galite kalbėtis laisvai — tikėkite savijautu. Kalbėjimo testas yra tikslesnis nei algoritmas.
+  </div>
+
+  <div class="callout callout-key">
+    <span class="callout-label">Teisingas klausimas</span>
+    Klausimas nėra „ką sako laikrodis?" — klausimas yra „kaip šiandien jaučiasi mano kūnas, ir ką sako laikrodis?" Kai abu atsakymai sutampa — duomenys yra naudinga informacija. Kai skiriasi — pasitikėkite kūnu.
+  </div>
+
+  <div class="demo">
+    <div class="demo-title">Interaktyvus demonstravimas — Rodiklių patikimumo skalė</div>
+    <p style="font-size:.88rem;color:var(--muted);margin-bottom:1rem">Paspauskite ant rodiklio — sužinosite, kiek jam galima pasitikėti ir kodėl.</p>
+    <div id="s19-metrics" style="display:flex;flex-direction:column;gap:.5rem;margin-top:.5rem"></div>
+  </div>
+
+  <div class="quiz" data-correct="1">
+    <div class="quiz-q">Kuriam laikrodžio rodikliui galima labiausiai pasitikėti?</div>
+    <div class="quiz-opts">
+      <button class="quiz-opt">Pasirengimo balui (readiness score)</button>
+      <button class="quiz-opt">GPS atstumui ir bėgimo laikui</button>
+      <button class="quiz-opt">VO₂max įvertinimui</button>
+    </div>
+    <div class="quiz-feedback">Tiksliai. GPS atstumas ir laikas yra tiesiogiai matuojami duomenys — jie patikimi. Pasirengimo balai ir VO₂max įvertinimai yra algoritmai, pagrįsti statistiniais modeliais. Jie gali rodyti teisingą kryptį, bet absoliutūs skaičiai nepatikimi.</div>
+  </div>
+
+  <div class="step-nav">
+    <button class="btn-step btn-prev" onclick="goLesson(18)">← Atgal</button>
+    <span class="step-counter">20 / 20</span>
     <button class="btn-step btn-next" onclick="goLesson(0)" style="background:var(--z2);color:#fff">&#10003; Pradėti iš naujo</button>
   </div>
 
@@ -1408,8 +1981,9 @@ input[type=range]::-moz-range-thumb{width:22px;height:22px;background:var(--surf
 
 </main>
 
+
 <script>
-const TOTAL = 12;
+const TOTAL = 20;
 let current = 0;
 const visited = new Set([0]);
 const completed = new Set(); // lessons scrolled through / quiz answered
@@ -1985,7 +2559,7 @@ function initDemo10() {
   const layers = [
     { name: 'Kojinės (vilnonės / sintetinės)', dot:'#6366f1', always: true },
     { name: 'Bėgimo batai su geresnėmis trakcijomis', dot:'#64748b', always: true },
-    { name: 'Sintetiniai taitai / tamprės', dot:'#0284c7', threshold: 15 },
+    { name: 'Tamprės (lengvos arba šiltos)', dot:'#0284c7', threshold: 15 },
     { name: 'Lengvas sintetinis marškinėlis (moisture-wicking)', dot:'#0369a1', threshold: 15 },
     { name: 'Ilgomis rankovėmis palaidinė', dot:'#1d4ed8', threshold: 10 },
     { name: 'Šiltos tamprės / thermoaktyvios', dot:'#4338ca', threshold: 5 },
@@ -2078,18 +2652,270 @@ function initDemo11() {
   render();
 }
 
+// ── DEMO 12: VO₂max and economy ──
+function initDemo12() {
+  const sl = document.getElementById('s12-fit');
+  const data = [
+    { label:'Pradedantysis', vo2: 42, eco:'Prasta', gain:0, time:'1:02:00', insight:'Pradedantysis turi žemesnį VO₂max ir prastą ekonomiją. Pirmieji metai treniruočių abu šiuos rodiklius kelia sparčiausiai.' },
+    { label:'Vidutinis', vo2: 52, eco:'Vidutinė', gain:8, time:'52:00', insight:'Po 2–3 metų treniruočių ekonomija pagerėjo ~12%. Net be didelio VO₂max augimo šis pagerėjimas duoda kelias minutes 10K bėgime.' },
+    { label:'Treniruotas', vo2: 60, eco:'Gera', gain:18, time:'43:30', insight:'Treniruotas bėgikas: aukštas VO₂max ir gera ekonomija kartu. Ekonomija gali kompensuoti net 5–8 ml/kg/min VO₂max skirtumą tarp dviejų bėgikų.' }
+  ];
+  function update() {
+    const d = data[parseInt(sl.value)-1];
+    document.getElementById('s12-fit-label').textContent = d.label;
+    document.getElementById('s12-vo2a').textContent = d.vo2;
+    document.getElementById('s12-eco').textContent = d.eco;
+    document.getElementById('s12-eco').style.color = ['#ef4444','#f59e0b','#22c55e'][parseInt(sl.value)-1];
+    document.getElementById('s12-10k').textContent = d.time;
+    document.getElementById('s12-insight').textContent = d.insight;
+  }
+  sl.addEventListener('input', update); update();
+}
+
+// ── DEMO 13: Running economy over years ──
+function initDemo13() {
+  const sl = document.getElementById('s13-years');
+  function update() {
+    const y = parseInt(sl.value);
+    document.getElementById('s13-years-label').textContent = y + (y===1?' metai':y<5?' metai':' metai');
+    const improvePct = Math.round((y-1) * 3.5);
+    const o2base = 220;
+    const o2 = Math.round(o2base * (1 - improvePct/100));
+    const paceGain = Math.round(improvePct * 1.8);
+    document.getElementById('s13-economy').textContent = (improvePct > 0 ? '−' : '') + improvePct + '%';
+    document.getElementById('s13-economy').style.color = improvePct > 10 ? '#22c55e' : improvePct > 0 ? '#f59e0b' : '#94a3b8';
+    document.getElementById('s13-o2cost').textContent = o2;
+    document.getElementById('s13-pace-gain').textContent = paceGain > 0 ? '−'+paceGain+' sek/km' : '0 sek/km';
+    document.getElementById('s13-pace-gain').style.color = paceGain > 15 ? '#22c55e' : paceGain > 0 ? '#f59e0b' : '#94a3b8';
+    const insights = [
+      'Pirmas bėgimo metai: ekonomija dar formuojasi. Kūnas mokosi naujų judesių, kapiliarų tinklas tik prasideda.',
+      'Antri metai: matomas pirmasis reikšmingas šuolis. Sausgyslių elastingumas gerėja, raumenų koordinacija tikslesnė.',
+      'Treti metai: ekonomija pasiekia gerą lygį. Tas pats tempas reikalauja ~10% mažiau deguonies nei pradžioje.',
+      'Ketvirti metai: tolesnis tobulėjimas lėtėja, bet tęsiasi. Patyrę bėgikai įgyja instinktyvų ritmo jausmą.',
+      'Penkti metai ir daugiau: ekonomija artėja prie individualaus potencialo. Šiame etape reikia specializuoto darbo (jėga, technika) tolimesniam augimui.'
+    ];
+    document.getElementById('s13-insight').textContent = insights[y-1];
+  }
+  sl.addEventListener('input', update); update();
+}
+
+// ── DEMO 14: Fatigue factors ──
+function initDemo14() {
+  const durSl = document.getElementById('s14-dur');
+  const fitSl = document.getElementById('s14-fit');
+  const factors = [
+    { id:'f-glycogen', label:'Glikogeno eikvojimas', color:'#3b82f6', base:120, fitMod:1.3 },
+    { id:'f-dehydr',   label:'Skysčių netekimas',    color:'#f59e0b', base:90,  fitMod:1.1 },
+    { id:'f-heat',     label:'Kūno perkaitimas',     color:'#ef4444', base:80,  fitMod:1.2 },
+    { id:'f-central',  label:'Centrinis nuovargis',  color:'#8b5cf6', base:100, fitMod:1.25 }
+  ];
+  const barsEl = document.getElementById('s14-fatigue-bars');
+  barsEl.innerHTML = factors.map(f =>
+    `<div>
+      <div style="display:flex;justify-content:space-between;font-size:.78rem;font-weight:600;color:var(--muted);margin-bottom:.25rem">
+        <span>${f.label}</span><span id="${f.id}-pct">0%</span>
+      </div>
+      <div class="thin-gauge"><div class="thin-gauge-fill" id="${f.id}-bar" style="background:${f.color}"></div></div>
+    </div>`
+  ).join('');
+  function update() {
+    const dur = parseInt(durSl.value);
+    const fit = parseInt(fitSl.value);
+    document.getElementById('s14-dur-label').textContent = dur + ' min';
+    document.getElementById('s14-fit-label').textContent = ['Pradedantysis','Vidutinis','Treniruotas'][fit-1];
+    factors.forEach(f => {
+      const threshold = f.base * (fit === 1 ? 1 : fit === 2 ? f.fitMod : f.fitMod * 1.3);
+      const pct = Math.min(100, Math.round((dur / threshold) * 100));
+      const bar = document.getElementById(f.id+'-bar');
+      const pctEl = document.getElementById(f.id+'-pct');
+      if (bar) { bar.style.width = pct+'%'; bar.style.transition = 'width .6s'; }
+      if (pctEl) pctEl.textContent = pct+'%';
+    });
+    let insight = '';
+    if (dur < 20) insight = 'Trumpas bėgimas: visi nuovargio veiksniai minimalūs. Organizmas tik pradeda „kaisti".';
+    else if (dur < 45) insight = 'Vidutinė trukmė: skysčių netekimas ir centrinis nuovargis pradeda kauptis, tačiau dar valdomi.';
+    else if (dur < 90) insight = 'Ilgesnis bėgimas: glikogenas jau eikvojamas reikšmingai. Hidratacija ir energija tampa svarbūs veiksniai.';
+    else insight = 'Ilgas bėgimas: visi nuovargio mechanizmai aktyvūs. Treniruotas bėgikas juos pasiekia vėliau — bet ne išvengia.';
+    document.getElementById('s14-insight').textContent = insight;
+  }
+  durSl.addEventListener('input', update);
+  fitSl.addEventListener('input', update);
+  update();
+}
+
+// ── DEMO 15: Pacing strategies ──
+function initDemo15() {
+  const distSl = document.getElementById('s15-dist');
+  const paceSl = document.getElementById('s15-pace');
+  function fmt(sec) {
+    const h = Math.floor(sec/3600), m = Math.floor((sec%3600)/60), s = sec%60;
+    return h>0 ? `${h}:${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}` : `${m}:${String(s).padStart(2,'0')}`;
+  }
+  function fmtPace(sec) {
+    return Math.floor(sec/60)+':'+String(sec%60).padStart(2,'0')+' min/km';
+  }
+  function update() {
+    const dist = parseFloat(distSl.value);
+    const pace = parseInt(paceSl.value);
+    document.getElementById('s15-dist-label').textContent = {5:'5K',10:'10K',21:'Pusmaratonis',42:'Maratonas'}[dist];
+    document.getElementById('s15-pace-label').textContent = fmtPace(pace);
+    const evenTime = Math.round(dist * pace);
+    const negPenalty = dist > 10 ? 0.97 : 0.99;
+    const negTime = Math.round(dist * pace * negPenalty);
+    const posPenalty = dist > 21 ? 1.07 : dist > 10 ? 1.05 : 1.02;
+    const posTime = Math.round(dist * pace * posPenalty);
+    document.getElementById('s15-even').textContent = fmt(evenTime);
+    document.getElementById('s15-neg').textContent = fmt(negTime);
+    document.getElementById('s15-pos').textContent = fmt(posTime);
+    const saved = posTime - negTime;
+    const insight = `${dist > 10 ? 'Ilgesnėse distancijose' : '5K ir 10K'} neigiamas splitas gali sutaupyti apie ${fmt(saved)} lyginant su teigiamu splitu. Skirtumas auga kartu su distancija — maratone jis gali siekti 10–15 minučių.`;
+    document.getElementById('s15-insight').textContent = insight;
+  }
+  distSl.addEventListener('change', update);
+  paceSl.addEventListener('input', update);
+  update();
+}
+
+// ── DEMO 16: Load management ──
+function initDemo16() {
+  const kmSl = document.getElementById('s16-km');
+  const wkSl = document.getElementById('s16-weeks');
+  function update() {
+    const km = parseInt(kmSl.value);
+    const weeks = parseInt(wkSl.value);
+    document.getElementById('s16-km-label').textContent = km+' km/sav.';
+    document.getElementById('s16-weeks-label').textContent = weeks+(weeks===1?' savaitė':weeks<10?' savaitės':' savaičių');
+    const musclePct = Math.min(100, Math.round((weeks / 6) * 100));
+    const tendonPct = Math.min(100, Math.round((weeks / 16) * 100));
+    const progressionRisk = km > 50 && weeks < 8 ? 'Aukšta' : km > 35 && weeks < 6 ? 'Vidutinė' : 'Žema';
+    const riskColor = progressionRisk === 'Aukšta' ? '#ef4444' : progressionRisk === 'Vidutinė' ? '#f59e0b' : '#22c55e';
+    document.getElementById('s16-muscle').textContent = musclePct+'%';
+    document.getElementById('s16-muscle').style.color = musclePct > 60 ? '#22c55e' : '#f59e0b';
+    document.getElementById('s16-tendon').textContent = tendonPct+'%';
+    document.getElementById('s16-tendon').style.color = tendonPct > 60 ? '#22c55e' : '#ef4444';
+    document.getElementById('s16-risk').textContent = progressionRisk;
+    document.getElementById('s16-risk').style.color = riskColor;
+    let insight = '';
+    if (progressionRisk === 'Aukšta') insight = `Didelė apimtis per trumpą laiką: raumenys gali susidoroti (${musclePct}% adaptacijos), bet sausgyslės dar ne (${tendonPct}%). Būtent šioje situacijoje atsiranda dauguma perkrovos traumų.`;
+    else if (progressionRisk === 'Vidutinė') insight = `Vidutinė rizika. Raumenų adaptacija (${musclePct}%) lenkia sausgyslių (${tendonPct}%). Atidžiai stebėkite bet kokius sausgyslių signalus.`;
+    else insight = `Saugi zona. ${weeks < 8 ? 'Toliau nuosekliai didinkite — organizmas prisitaikys.' : 'Raumenų ir sausgyslių adaptacija vyksta sinchroniškai. Galite tęsti planingą progresą.'}`;
+    document.getElementById('s16-insight').textContent = insight;
+  }
+  kmSl.addEventListener('input', update);
+  wkSl.addEventListener('input', update);
+  update();
+}
+
+// ── DEMO 17: Pain checker ──
+function initDemo17() {
+  const whereSl = document.getElementById('s17-where');
+  const whenSl  = document.getElementById('s17-when');
+  const intSl   = document.getElementById('s17-intensity');
+  function update() {
+    const where = whereSl.value, when = whenSl.value, intensity = parseInt(intSl.value);
+    document.getElementById('s17-intensity-label').textContent = intensity;
+    let bg = '#f0fdf4', border = '#86efac', color = '#14532d', rec = '';
+    if (intensity >= 6 || when === 'always') {
+      bg='#fef2f2'; border='#fca5a5'; color='#7f1d1d';
+      rec = '🔴 SUSTOKITE. Šis skausmo lygis reikalauja poilsio ir konsultacijos su sporto medicinos specialistu. Nebėkite kol skausmas neišnyksta.';
+    } else if (when === 'during' || (when === 'start' && intensity >= 4)) {
+      bg='#fff7ed'; border='#fdba74'; color='#7c2d12';
+      rec = `🟠 SUMAŽINKITE KRŪVĮ. ${where === 'achilles' || where === 'knee' ? 'Sausgyslių skausmas didėjantis bėgimo metu — rimtas ženklas. ' : ''}Bėkite 30–40% mažesne apimtimi ir stebėkite dinamiką savaitę.`;
+    } else if (when === 'start' && intensity <= 3) {
+      bg='#fefce8'; border='#fde68a'; color='#713f12';
+      rec = `🟡 STEBĖKITE. Skausmas pradžioje, išnykstantis per kelias minutes — dažnai sausgyslės perkrovos ženklas. ${where === 'achilles' ? 'Achilo sausgyslės atveju pradėkite ekscentrinius blauzdos pratimus.' : 'Sumažinkite intensyvumą ir pradėkite stiprinimo pratimus.'} Jei kartojasi — kreipkitės į specialistą.`;
+    } else if (when === 'after') {
+      bg='#f0fdf4'; border='#86efac'; color='#14532d';
+      rec = `🟢 NORMALU. ${where === 'muscle' ? 'Raumenų skausmas po treniruotės (DOMS) — normali adaptacijos dalis. Lengvas judėjimas ir hidratacija pagreitins atsigavimą.' : 'Skausmas tik po bėgimo — stebėkite, ar nemažėja. Jei didėja iš bėgimo į bėgimą — verta konsultuotis.'}`;
+    } else {
+      rec = 'Pasirinkite skausmo pobūdį, kad gautumėte rekomendaciją.';
+    }
+    const resEl = document.getElementById('s17-result');
+    resEl.style.background = bg; resEl.style.borderColor = border; resEl.style.color = color;
+    resEl.textContent = rec;
+  }
+  [whereSl, whenSl, intSl].forEach(el => el.addEventListener('change', update));
+  intSl.addEventListener('input', update);
+  update();
+}
+
+// ── DEMO 18: Consistency calculator ──
+function initDemo18() {
+  const goalSl   = document.getElementById('s18-goal');
+  const consistSl = document.getElementById('s18-consist');
+  function update() {
+    const goal = parseInt(goalSl.value);
+    const consist = parseInt(consistSl.value);
+    document.getElementById('s18-goal-label').textContent = goal+' treniruotė'+(goal===1?'':goal<5?'s':'s')+' / sav.';
+    document.getElementById('s18-consist-label').textContent = consist+'%';
+    const perfect = goal * 52;
+    const real    = Math.round(perfect * consist / 100);
+    const pct     = Math.round((real / perfect) * 100);
+    document.getElementById('s18-perfect').textContent = perfect;
+    document.getElementById('s18-real').textContent = real;
+    document.getElementById('s18-diff').textContent = pct+'%';
+    document.getElementById('s18-real').style.color = consist >= 80 ? '#22c55e' : consist >= 60 ? '#f59e0b' : '#ef4444';
+    let insight = '';
+    if (consist >= 85) insight = `${real} treniruotės per metus — puiku! Net ne tobulas, bet labai pastovus bėgikas kuria solidų pagrindą. Šis reguliarumas per 2–3 metus duoda rezultatus, kurių negali pasiekti heroiška, bet nenuosekli programa.`;
+    else if (consist >= 65) insight = `${real} treniruotės per metus. Tai vis dar pakankamai, kad matytumėte aiškią pažangą. Pabandykite identifikuoti, kas trukdo praleistoms treniruotėms, ir pašalinkite barjerus iš anksto.`;
+    else insight = `${real} treniruotės per metus. Didelis treniruočių skaičius, bet prasta pastovumas — reiškia, kad yra savaičių su daug treniruočių ir ilgų pertraukų. Organizmas geriau reaguoja į nuoseklumą nei į intensyvius, bet nenuoseklius periodus.`;
+    document.getElementById('s18-insight').textContent = insight;
+  }
+  goalSl.addEventListener('input', update);
+  consistSl.addEventListener('input', update);
+  update();
+}
+
+// ── DEMO 19: Watch metrics reliability ──
+function initDemo19() {
+  const metrics = [
+    { name:'GPS atstumas', reliability:'Patikimas', color:'#22c55e', detail:'GPS tikslumas paprastai ±1–3%. Klysta labiau tarp aukštų pastatų ar tankiuose miškuose. Pakankamai tikslus treniruočių stebėjimui.' },
+    { name:'Bėgimo laikas', reliability:'Patikimas', color:'#22c55e', detail:'Tiesiogiai matuojamas. Absoliučiai tikslus.' },
+    { name:'Kadencija', reliability:'Patikimas', color:'#22c55e', detail:'Akcelerometro duomenys — labai tikslūs. Vienas naudingiausių techninių rodiklių pradedantiesiems.' },
+    { name:'Širdies ritmas (krūtinės dirž.)', reliability:'Patikimas', color:'#22c55e', detail:'Elektros signalo matavimas — labai tikslus net intervalinių metu. Jei norite tikslaus HR — naudokite krūtinės diržą.' },
+    { name:'Širdies ritmas (riešo jutikl.)', reliability:'Vidutiniškai patikimas', color:'#f59e0b', detail:'Optinis matavimas yra vidutiniškai tikslus lygaus tempo bėgimui. Intervalinių ar kalnų bėgimų metu atsilieka 10–30 sek. ir gali skirtis iki 15 dūžių.' },
+    { name:'VO₂max įvertinimas', reliability:'Tik orientacinis', color:'#ef4444', detail:'Algoritmas, pagrįstas HR ir tempo santykiu. Gali skirtis 10–15% nuo tikro VO₂max. Naudinga kaip ilgalaikė tendencija, bet absoliutūs skaičiai nepatikimi.' },
+    { name:'Pasirengimo balas / kūno baterija', reliability:'Tik orientacinis', color:'#ef4444', detail:'Statistinis modelis, sukalibruotas vidutinam vartotojui. Gali rodyti "žemą pasirengimą" po blogos nakties net jei fiziologiškai esate gerai. Naudokite kaip vieną iš signalų, ne kaip tiesą.' },
+    { name:'Atsistatymo laikas', reliability:'Tik orientacinis', color:'#ef4444', detail:'Labai apytikslis. Tas pats algoritmas skirtingiems žmonėms duoda skirtingus rezultatus. Naudokite rytinį pulsą ir savijautą kaip tikslesnius atsistatymo rodiklius.' },
+    { name:'Savaitinis kilometražas', reliability:'Patikimas', color:'#22c55e', detail:'GPS duomenų suma — patikimas. Vienas naudingiausių rodiklių krūvio valdymui. Stebėkite jį kas savaitę.' }
+  ];
+  const container = document.getElementById('s19-metrics');
+  let active = -1;
+  function render() {
+    container.innerHTML = metrics.map((m, i) =>
+      `<div onclick="toggleMetric19(${i})" style="padding:.65rem 1rem;border-radius:8px;border:1px solid ${active===i?m.color:'var(--border)'};background:${active===i?'var(--surface)':'var(--bg)'};cursor:pointer;transition:all .2s">
+        <div style="display:flex;justify-content:space-between;align-items:center">
+          <span style="font-size:.88rem;font-weight:600;color:var(--text)">${m.name}</span>
+          <span style="font-size:.7rem;font-weight:700;padding:.2rem .6rem;border-radius:10px;background:${m.color}20;color:${m.color}">${m.reliability}</span>
+        </div>
+        ${active===i?`<p style="font-size:.82rem;color:var(--muted);margin-top:.5rem;line-height:1.65">${m.detail}</p>`:''}
+      </div>`
+    ).join('');
+  }
+  window.toggleMetric19 = function(i) { active = active===i ? -1 : i; render(); };
+  render();
+}
+
 function initDemos() {
-  if (current === 0) initDemo1();
-  if (current === 1) initDemo2();
-  if (current === 2) initDemo3();
-  if (current === 3) initDemo4();
-  if (current === 4) initDemo5();
-  if (current === 5) initDemo6();
-  if (current === 6) initDemo7();
-  if (current === 8) initDemo8();
-  if (current === 9) initDemo9();
+  if (current === 0)  initDemo1();
+  if (current === 1)  initDemo2();
+  if (current === 2)  initDemo3();
+  if (current === 3)  initDemo4();
+  if (current === 4)  initDemo5();
+  if (current === 5)  initDemo6();
+  if (current === 6)  initDemo7();
+  if (current === 8)  initDemo8();
+  if (current === 9)  initDemo9();
   if (current === 10) initDemo10();
   if (current === 11) initDemo11();
+  if (current === 12) initDemo12();
+  if (current === 13) initDemo13();
+  if (current === 14) initDemo14();
+  if (current === 15) initDemo15();
+  if (current === 16) initDemo16();
+  if (current === 17) initDemo17();
+  if (current === 18) initDemo18();
+  if (current === 19) initDemo19();
 }
 
 initDemos();
