@@ -3054,158 +3054,147 @@ function initDemo19() {
   function startBreathing(canvas) {
     if (!canvas) return;
     var W = getCanvasWidth(canvas);
-    var H = Math.round(W * 0.52);
+    var H = Math.round(W * 0.62);
     var ctx = setupCanvas(canvas, W, H);
-    var period = 5; // seconds
+    var period = 5;
     var t0 = null;
 
     function breathAmp(t) {
       var p = (t % period) / period;
-      if (p < 0.40) return ease(p/0.40);
-      if (p < 0.52) return 1;
-      if (p < 0.88) return 1 - ease((p-0.52)/0.36);
-      return 0;
+      if (p < 0.42) return ease(p/0.42);       // inhale
+      if (p < 0.54) return 1;                  // hold
+      if (p < 0.92) return 1 - ease((p-0.54)/0.38); // exhale
+      return 0;                                 // rest
     }
-
     function phaseLabel(t) {
       var p = (t % period) / period;
-      if (p < 0.02 || p > 0.92) return '';
+      if (p < 0.02 || p > 0.94) return '';
       if (p < 0.50) return 'ĮKVĖPIMAS';
       return 'IŠKVĖPIMAS';
     }
 
+    // Draw a small hand resting on the body at (x,y), opening toward the body (left).
+    function drawHand(ctx, x, y, color, active) {
+      ctx.strokeStyle = color; ctx.lineWidth = active ? 2.6 : 2;
+      ctx.lineCap='round';
+      // palm
+      ctx.beginPath(); ctx.arc(x, y, 6, -0.5*Math.PI, 0.5*Math.PI); ctx.stroke();
+      // fingers (toward body, i.e. left)
+      for (var i=-1;i<=1;i++){
+        ctx.beginPath();
+        ctx.moveTo(x, y+i*4);
+        ctx.lineTo(x-7, y+i*4);
+        ctx.stroke();
+      }
+    }
+
     function drawPanel(ctx, px, py, pw, ph, amp, type) {
-      var cx = px + pw/2;
-      var wrong = type === 'chest';
-      var bg    = wrong ? '#fff7f7' : '#f0fdf4';
-      var bord  = wrong ? '#fca5a5' : '#86efac';
-      var hi    = wrong ? '#ef4444' : '#22c55e';
+      var cx = px + pw*0.42;
+      var chest = (type === 'chest');
+      var bg   = chest ? '#fff7f7' : '#f0fdf4';
+      var bord = chest ? '#fca5a5' : '#86efac';
+      var hi   = chest ? '#ef4444' : '#22c55e';
 
-      // panel bg
-      ctx.fillStyle = bg;
-      pill(ctx, px, py, pw, ph, 10); ctx.fill();
-      ctx.strokeStyle = bord; ctx.lineWidth = 1.5;
-      pill(ctx, px, py, pw, ph, 10); ctx.stroke();
+      ctx.fillStyle = bg; pill(ctx, px, py, pw, ph, 10); ctx.fill();
+      ctx.strokeStyle = bord; ctx.lineWidth = 1.5; pill(ctx, px, py, pw, ph, 10); ctx.stroke();
 
-      // titles
-      label(ctx, wrong ? '✕  Krūtininis' : '✓  Diafragminis', cx, py+18, 11, hi, 'center', true);
-      label(ctx, wrong ? 'mažiau efektyvus' : 'efektyvesnis', cx, py+30, 8.5, '#9ca3af');
+      label(ctx, chest ? '✕  Krūtininis' : '✓  Diafragminis', px+pw/2, py+18, 11, hi, 'center', true);
+      label(ctx, chest ? 'kvėpuoja krūtine' : 'kvėpuoja pilvu', px+pw/2, py+30, 8.5, '#9ca3af');
 
-      // body measurements
-      var hy = py+44; // head centre y
-      var nx1= hy+12, nx2=hy+20; // neck
-      var shY = nx2+6; // shoulder line y
-      var torsoTop = shY;
-      var torsoBot = py+ph-22;
-      var midY = torsoTop + (torsoBot-torsoTop)*0.44; // chest/belly split
+      // ── Expansion amounts ──
+      var chestEx = chest ? amp*15 : amp*1.5;   // chest pushes forward
+      var bellyEx = chest ? amp*1.5 : amp*17;   // belly pushes forward
+      var chestLift = chest ? amp*9 : 0;        // shoulders rise (chest breathing)
 
-      // HEAD
-      ctx.beginPath(); ctx.arc(cx, hy, 11, 0, 2*Math.PI);
-      ctx.strokeStyle='#374151'; ctx.lineWidth=1.8; ctx.stroke();
+      // ── Vertical layout (side profile faces RIGHT) ──
+      var topY   = py+46 - chestLift;
+      var hipY   = py+ph-26;
+      var torsoH = hipY - topY;
+      var chestY = topY + torsoH*0.26;
+      var waistY = topY + torsoH*0.55;
+      var bellyY = topY + torsoH*0.74;
+      var backX  = cx - 16;
 
-      // NECK
-      ctx.beginPath(); ctx.moveTo(cx,nx1); ctx.lineTo(cx,nx2);
-      ctx.strokeStyle='#374151'; ctx.lineWidth=1.8; ctx.stroke();
+      // front contour x at each level
+      var fNeck  = cx + 10;
+      var fChest = cx + 16 + chestEx;
+      var fWaist = cx + 7;
+      var fBelly = cx + 13 + bellyEx;
+      var fHip   = cx + 10;
 
-      // SHOULDER
+      // ── TORSO SILHOUETTE ──
       ctx.beginPath();
-      ctx.moveTo(cx-28, shY+2);
-      ctx.bezierCurveTo(cx-18, shY-4, cx+18, shY-4, cx+28, shY+2);
-      ctx.strokeStyle='#374151'; ctx.lineWidth=1.8; ctx.stroke();
-
-      // TORSO OUTLINE (static)
-      var tw = 27, bw = 22;
-      ctx.beginPath();
-      ctx.moveTo(cx-tw, torsoTop+4);
-      ctx.bezierCurveTo(cx-tw-4, midY, cx-bw-4, torsoBot-8, cx-bw+2, torsoBot);
-      ctx.bezierCurveTo(cx-8, torsoBot+6, cx+8, torsoBot+6, cx+bw-2, torsoBot);
-      ctx.bezierCurveTo(cx+bw+4, torsoBot-8, cx+tw+4, midY, cx+tw, torsoTop+4);
-      ctx.strokeStyle='#d1d5db'; ctx.lineWidth=1.5; ctx.stroke();
-
-      // CHEST ZONE highlight
-      var chestAmp  = wrong ? amp : amp*0.06;
-      var chestLift = chestAmp * 9;
-      var chestSwell= chestAmp * 0.10;
-      var cw2 = tw * (1 + chestSwell);
-      ctx.save();
-      ctx.beginPath();
-      ctx.moveTo(cx-cw2, torsoTop+4 - chestLift);
-      ctx.bezierCurveTo(cx-cw2-3, midY-chestLift*0.5, cx-bw-2, midY+2, cx-bw+2, midY+2);
-      ctx.lineTo(cx+bw-2, midY+2);
-      ctx.bezierCurveTo(cx+bw+2, midY+2, cx+cw2+3, midY-chestLift*0.5, cx+cw2, torsoTop+4-chestLift);
+      ctx.moveTo(backX, topY+4);
+      ctx.lineTo(backX, hipY);            // straight back
+      ctx.lineTo(fHip, hipY);             // hip bottom
+      ctx.quadraticCurveTo(fBelly+4, bellyY+6, fBelly, bellyY);      // belly
+      ctx.quadraticCurveTo(fWaist, waistY+4, fWaist, waistY);        // waist tuck
+      ctx.quadraticCurveTo(fChest, chestY+10, fChest, chestY);       // chest
+      ctx.quadraticCurveTo(fNeck+4, topY+10, fNeck, topY+4);         // up to neck
       ctx.closePath();
-      ctx.fillStyle = wrong
-        ? 'rgba(252,165,165,'+(0.18 + chestAmp*0.55)+')'
-        : 'rgba(203,213,225,0.12)';
+      ctx.fillStyle = chest ? 'rgba(252,165,165,0.18)' : 'rgba(134,239,172,0.20)';
       ctx.fill();
+      ctx.strokeStyle = '#9ca3af'; ctx.lineWidth = 1.8; ctx.stroke();
+
+      // ── NECK + HEAD ──
+      var headCx = (backX + fNeck)/2 + 1;
+      ctx.strokeStyle='#374151'; ctx.lineWidth=1.8; ctx.lineCap='round';
+      ctx.beginPath(); ctx.moveTo(headCx-2, topY+4); ctx.lineTo(headCx-2, topY-6); ctx.stroke();
+      ctx.beginPath(); ctx.arc(headCx-2, topY-17, 11, 0, 2*Math.PI); ctx.stroke();
+
+      // ── DIAPHRAGM line (descends on diaphragmatic inhale) ──
+      var diaY = waistY + (chest ? 0 : amp*10);
+      ctx.save(); ctx.setLineDash([4,3]);
+      ctx.strokeStyle = chest ? '#d1d5db' : 'rgba(34,197,94,0.7)'; ctx.lineWidth=1.4;
+      ctx.beginPath(); ctx.moveTo(backX+2, diaY); ctx.lineTo(fWaist+4, diaY); ctx.stroke();
       ctx.restore();
+      if (!chest) label(ctx,'diafragma ↓', backX-4, diaY+3, 6.5, '#22c55e','right');
 
-      // BELLY ZONE highlight
-      var bellyAmp   = wrong ? amp*0.05 : amp;
-      var bellySwell = bellyAmp * 0.18;
-      var bw2 = bw * (1 + bellySwell);
-      ctx.save();
-      ctx.beginPath();
-      ctx.moveTo(cx-bw-2, midY+2);
-      ctx.bezierCurveTo(cx-bw2-5, midY+10, cx-bw2-4, torsoBot-10, cx-bw2+2, torsoBot);
-      ctx.bezierCurveTo(cx-8, torsoBot+6+bellyAmp*4, cx+8, torsoBot+6+bellyAmp*4, cx+bw2-2, torsoBot);
-      ctx.bezierCurveTo(cx+bw2+4, torsoBot-10, cx+bw2+5, midY+10, cx+bw+2, midY+2);
-      ctx.closePath();
-      ctx.fillStyle = wrong
-        ? 'rgba(203,213,225,0.10)'
-        : 'rgba(134,239,172,'+(0.15 + bellyAmp*0.60)+')';
-      ctx.fill();
-      ctx.restore();
+      // ── HANDS (the self-test): one on chest, one on belly ──
+      // Chest hand
+      var chestActive = chest;
+      drawHand(ctx, fChest+8, chestY, chestActive ? hi : '#b6bdc7', chestActive);
+      // Belly hand
+      var bellyActive = !chest;
+      drawHand(ctx, fBelly+8, bellyY, bellyActive ? hi : '#b6bdc7', bellyActive);
 
-      // DIAPHRAGM LINE
-      ctx.beginPath();
-      ctx.moveTo(cx-bw-2, midY+2); ctx.lineTo(cx+bw+2, midY+2);
-      ctx.strokeStyle='#e2e8f0'; ctx.lineWidth=1.2;
-      ctx.setLineDash([4,3]); ctx.stroke(); ctx.setLineDash([]);
-
-      // ARROWS
-      if (wrong && chestAmp > 0.25) {
-        var ao = Math.min(1,(chestAmp-0.25)/0.4);
-        ctx.globalAlpha = ao;
-        var ay0 = torsoTop+4-chestLift;
-        arrow(ctx, cx-14, ay0+14, cx-14, ay0-2, '#ef4444', 2);
-        arrow(ctx, cx,    ay0+10, cx,    ay0-4, '#ef4444', 2);
-        arrow(ctx, cx+14, ay0+14, cx+14, ay0-2, '#ef4444', 2);
+      // ── Motion arrows + zone labels ──
+      if (chest && amp > 0.2) {
+        ctx.globalAlpha = Math.min(1,(amp-0.2)/0.4);
+        arrow(ctx, fChest+18, chestY+8, fChest+18, chestY-10, hi, 2); // chest up
         ctx.globalAlpha = 1;
+        label(ctx,'krūtinė kyla', fChest+22, chestY+2, 7.5, hi,'left',true);
+        label(ctx,'pilvas nejuda', fBelly+22, bellyY+2, 7, '#9ca3af','left');
       }
-      if (!wrong && bellyAmp > 0.25) {
-        var ao2 = Math.min(1,(bellyAmp-0.25)/0.4);
-        var sy = midY + (torsoBot-midY)*0.5;
-        ctx.globalAlpha = ao2;
-        arrow(ctx, cx-bw2+2, sy, cx-bw2-10, sy, '#22c55e', 2);
-        arrow(ctx, cx+bw2-2, sy, cx+bw2+10, sy, '#22c55e', 2);
-        arrow(ctx, cx, midY+4, cx, midY+16, '#22c55e', 2); // diaphragm down
+      if (!chest && amp > 0.2) {
+        ctx.globalAlpha = Math.min(1,(amp-0.2)/0.4);
+        arrow(ctx, fBelly+18, bellyY, fBelly+30, bellyY, hi, 2); // belly out
         ctx.globalAlpha = 1;
+        label(ctx,'pilvas plečiasi', fBelly+26, bellyY+2, 7.5, hi,'left',true);
+        label(ctx,'krūtinė rami', fChest+22, chestY+2, 7, '#9ca3af','left');
       }
-
-      // PHASE LABEL
-      label(ctx, wrong ? 'Pilvas — nejuda' : 'Krūtinė rami', cx, midY-6, 7.5, '#9ca3af');
     }
 
     function frame(ts) {
       if (!t0) t0 = ts;
-      var t = (ts - t0) / 1000;
+      var t = (ts - t0)/1000;
       var amp = breathAmp(t);
       var phase = phaseLabel(t);
 
-      ctx.clearRect(0, 0, W, H);
-      var pad = 6, gap = 10;
-      var pw = (W - pad*2 - gap) / 2;
-      var ph = H - pad*2;
-
+      ctx.clearRect(0,0,W,H);
+      var pad=6, gap=10;
+      var pw=(W-pad*2-gap)/2, ph=H-pad*2;
       drawPanel(ctx, pad, pad, pw, ph, amp, 'chest');
       drawPanel(ctx, pad+pw+gap, pad, pw, ph, amp, 'diaphragm');
 
-      // Shared phase label at bottom centre
       if (phase) {
-        label(ctx, phase, W/2, H-5, 9, '#374151', 'center', true);
+        // phase pill centred at the very bottom
+        ctx.font='700 9px Inter,sans-serif';
+        var tw = ctx.measureText(phase).width;
+        ctx.fillStyle = 'rgba(55,65,81,0.92)';
+        pill(ctx, W/2-tw/2-8, H-17, tw+16, 14, 7); ctx.fill();
+        label(ctx, phase, W/2, H-7, 9, '#fff','center',true);
       }
-
       RAF['breathCanvas'] = requestAnimationFrame(frame);
     }
     if (RAF['breathCanvas']) cancelAnimationFrame(RAF['breathCanvas']);
