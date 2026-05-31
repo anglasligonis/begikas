@@ -3218,161 +3218,168 @@ function initDemo19() {
   function startRunning(canvas) {
     if (!canvas) return;
     var W = getCanvasWidth(canvas);
-    var H = Math.round(W * 0.54);
+    var H = Math.round(W * 0.58);
     var ctx = setupCanvas(canvas, W, H);
-    var period = 1.6;
+    var period = 2.4;   // slower so the strike is easy to follow
     var t0 = null;
 
-    // Draw a single leg-segment from hip with given thigh & shin angles
-    function drawLeg(ctx, hx, hy, thighAngle, shinAngle, color, thick) {
-      var thighLen = H * 0.28;
-      var shinLen  = H * 0.25;
-      var th = thighAngle * Math.PI/180;
-      var kx = hx + Math.sin(th)*thighLen;
-      var ky = hy + Math.cos(th)*thighLen;
-      var sh = (thighAngle + shinAngle) * Math.PI/180;
-      var fx = kx + Math.sin(sh)*shinLen;
-      var fy = ky + Math.cos(sh)*shinLen;
-
-      ctx.strokeStyle = color; ctx.lineWidth = thick||3;
-      ctx.lineCap = 'round';
-      ctx.beginPath(); ctx.moveTo(hx,hy); ctx.lineTo(kx,ky); ctx.stroke();
-      ctx.beginPath(); ctx.moveTo(kx,ky); ctx.lineTo(fx,fy); ctx.stroke();
-      return {kx,ky,fx,fy};
+    // 2-bar inverse kinematics: knee position given hip + foot, equal segments L.
+    // Knee always bends forward (larger x) so it reads as a running knee.
+    function kneePos(hx, hy, fx, fy, L) {
+      var dx = fx-hx, dy = fy-hy;
+      var d = Math.sqrt(dx*dx+dy*dy);
+      d = Math.min(d, 2*L - 0.5);
+      var a = d/2;
+      var h = Math.sqrt(Math.max(0, L*L - a*a));
+      var mx = hx + dx*0.5, my = hy + dy*0.5;
+      var ux = -dy/d, uy = dx/d;
+      var k1x = mx + ux*h, k1y = my + uy*h;
+      var k2x = mx - ux*h, k2y = my - uy*h;
+      return (k1x > k2x) ? {x:k1x,y:k1y} : {x:k2x,y:k2y};
     }
 
-    function drawFigure(ctx, cx, groundY, thighA, backThighA, backShinA, frontShinA, color, isWrong) {
-      var headR = H*0.065;
-      var torsoLen = H*0.22;
-      var lean = isWrong ? 0 : 5; // forward lean in degrees
-      var torsoAngle = lean * Math.PI/180;
-      var hipY = groundY - H*0.50;
-      var shoulderX = cx - Math.sin(torsoAngle)*torsoLen;
-      var shoulderY = hipY - Math.cos(torsoAngle)*torsoLen;
+    // Returns striking-foot position relative to COM cx, for a given phase.
+    // Phase 0..0.45 = stance (foot on ground, slides from strike point to behind);
+    // Phase 0.45..1 = swing (foot lifts, travels back forward to next strike).
+    function footPos(p, cx, groundY, strikeAhead, behind, lift) {
+      if (p < 0.45) {
+        var s = p/0.45;
+        return { x: cx + strikeAhead - s*(strikeAhead+behind), y: groundY, planted:true, strikeProg:s };
+      } else {
+        var sw = (p-0.45)/0.55;
+        return { x: cx - behind + sw*(strikeAhead+behind), y: groundY - Math.sin(sw*Math.PI)*lift, planted:false, strikeProg:1 };
+      }
+    }
 
-      // Back leg
-      var backColor = '#94a3b8';
-      drawLeg(ctx, cx, hipY, backThighA, backShinA, backColor, 2.5);
+    function drawFigure(ctx, cx, groundY, p, isWrong) {
+      var legSeg   = H*0.21;                 // each of thigh/shin
+      var straight = legSeg*2;
+      var baseHipY = groundY - straight*0.94;
+      // gentle vertical bob: lowest at mid-stance, highest at swing
+      var bob = Math.sin(p*2*Math.PI)*H*0.015;
+      var hipY = baseHipY + bob;
+      var hipX = cx;
 
-      // Torso
-      ctx.strokeStyle='#374151'; ctx.lineWidth=2.5; ctx.lineCap='round';
-      ctx.beginPath(); ctx.moveTo(cx, hipY); ctx.lineTo(shoulderX, shoulderY); ctx.stroke();
+      var strikeAhead = isWrong ? W*0.115 : W*0.025;   // KEY difference
+      var behind      = W*0.075;
+      var lift        = H*0.14;
+      var col         = isWrong ? '#ef4444' : '#22c55e';
 
-      // Head
-      ctx.beginPath(); ctx.arc(shoulderX, shoulderY-headR, headR, 0, 2*Math.PI);
+      // ── Bold vertical body-centre line ──
+      ctx.save(); ctx.setLineDash([5,4]);
+      ctx.strokeStyle='#94a3b8'; ctx.lineWidth=1.3;
+      ctx.beginPath(); ctx.moveTo(cx, hipY-straight*0.7); ctx.lineTo(cx, groundY); ctx.stroke();
+      ctx.restore();
+      label(ctx,'kūno centras', cx, groundY+13, 7, '#9ca3af');
+
+      // ── Striking (front, coloured) foot + back (grey) foot ──
+      var front = footPos(p, cx, groundY, strikeAhead, behind, lift);
+      var back  = footPos((p+0.5)%1, cx, groundY, strikeAhead, behind, lift);
+
+      // BACK leg (grey)
+      var bk = kneePos(hipX, hipY, back.x, back.y, legSeg);
+      ctx.strokeStyle='#b6bdc7'; ctx.lineWidth=3; ctx.lineCap='round';
+      ctx.beginPath(); ctx.moveTo(hipX,hipY); ctx.lineTo(bk.x,bk.y); ctx.lineTo(back.x,back.y); ctx.stroke();
+      // back foot
+      ctx.strokeStyle='#b6bdc7'; ctx.lineWidth=2.5;
+      ctx.beginPath(); ctx.moveTo(back.x,back.y); ctx.lineTo(back.x+ (back.x<cx?-9:9), back.y); ctx.stroke();
+
+      // ── TORSO ── (slight forward lean for correct, upright for wrong)
+      var torsoLen = straight*0.62;
+      var lean = isWrong ? -0.04 : 0.12;     // radians; correct leans forward from ankle
+      var shX = hipX + Math.sin(lean)*torsoLen;
+      var shY = hipY - Math.cos(lean)*torsoLen;
+      ctx.strokeStyle='#374151'; ctx.lineWidth=3; ctx.lineCap='round';
+      ctx.beginPath(); ctx.moveTo(hipX,hipY); ctx.lineTo(shX,shY); ctx.stroke();
+
+      // ── HEAD ──
+      var headR=H*0.058;
+      var hX = shX + Math.sin(lean)*headR*1.4, hY = shY - Math.cos(lean)*headR*1.4;
+      ctx.beginPath(); ctx.arc(hX,hY,headR,0,2*Math.PI);
       ctx.strokeStyle='#374151'; ctx.lineWidth=2; ctx.stroke();
 
-      // Front leg
-      var frontColor = isWrong ? '#ef4444' : '#22c55e';
-      var fl = drawLeg(ctx, cx, hipY, thighA, frontShinA, frontColor, 3);
+      // ── ARMS ── swing opposite to legs
+      var armSwing = Math.sin(p*2*Math.PI)*0.5;
+      var armLen=straight*0.34;
+      ctx.strokeStyle='#374151'; ctx.lineWidth=2.2; ctx.lineCap='round';
+      ctx.beginPath(); ctx.moveTo(shX,shY+headR*0.3);
+      ctx.lineTo(shX+Math.sin(armSwing+0.3)*armLen, shY+headR*0.3+Math.cos(armSwing+0.3)*armLen); ctx.stroke();
+      ctx.beginPath(); ctx.moveTo(shX,shY+headR*0.3);
+      ctx.lineTo(shX-Math.sin(armSwing-0.3)*armLen, shY+headR*0.3+Math.cos(armSwing-0.3)*armLen); ctx.stroke();
 
-      // Impact at foot strike (when near ground)
-      var fy = fl.fy;
-      if (fy > groundY - 8) {
-        var impX = fl.fx;
-        ctx.save();
-        ctx.globalAlpha = 1 - (groundY - fy) * 0.12;
-        ctx.beginPath();
-        ctx.ellipse(impX, groundY, isWrong?20:14, 5, 0, 0, 2*Math.PI);
-        ctx.fillStyle = isWrong ? 'rgba(239,68,68,0.3)' : 'rgba(34,197,94,0.3)';
-        ctx.fill();
-        ctx.strokeStyle = isWrong ? '#ef4444' : '#22c55e';
-        ctx.lineWidth = 1.2; ctx.stroke();
-        ctx.restore();
-        // Force arrow
+      // ── FRONT leg (coloured) ──
+      var fk = kneePos(hipX, hipY, front.x, front.y, legSeg);
+      ctx.strokeStyle=col; ctx.lineWidth=3.2; ctx.lineCap='round';
+      ctx.beginPath(); ctx.moveTo(hipX,hipY); ctx.lineTo(fk.x,fk.y); ctx.lineTo(front.x,front.y); ctx.stroke();
+      // front foot pointing forward
+      ctx.strokeStyle=col; ctx.lineWidth=3;
+      ctx.beginPath(); ctx.moveTo(front.x,front.y); ctx.lineTo(front.x+11, front.y); ctx.stroke();
+
+      // hip marker
+      ctx.beginPath(); ctx.arc(hipX,hipY,3.5,0,2*Math.PI); ctx.fillStyle='#374151'; ctx.fill();
+
+      // ── TEACHING MOMENT: at/just-after strike, show the gap foot↔centre ──
+      if (front.planted && front.strikeProg < 0.5) {
+        var fade = 1 - front.strikeProg/0.5;
+        ctx.save(); ctx.globalAlpha = fade;
+        // impact ellipse
+        ctx.beginPath(); ctx.ellipse(front.x, groundY, isWrong?16:11, 4.5, 0,0,2*Math.PI);
+        ctx.fillStyle = isWrong ? 'rgba(239,68,68,0.30)' : 'rgba(34,197,94,0.30)';
+        ctx.fill(); ctx.strokeStyle=col; ctx.lineWidth=1.2; ctx.stroke();
+
+        // horizontal gap bracket between centre and foot
+        var by = groundY - H*0.10;
+        ctx.strokeStyle=col; ctx.lineWidth=1.4;
+        ctx.beginPath(); ctx.moveTo(cx, by); ctx.lineTo(front.x, by); ctx.stroke();
+        ctx.beginPath(); ctx.moveTo(cx, by-4); ctx.lineTo(cx, by+4); ctx.stroke();
+        ctx.beginPath(); ctx.moveTo(front.x, by-4); ctx.lineTo(front.x, by+4); ctx.stroke();
+
+        // force arrow + label
         if (isWrong) {
-          arrow(ctx, impX, groundY-6, cx-18, groundY-28, '#ef4444', 1.8);
+          arrow(ctx, front.x, groundY-7, front.x-26, groundY-30, '#ef4444', 2);
+          label(ctx,'stabdo!', (cx+front.x)/2, by-7, 8, '#ef4444','center',true);
         } else {
-          arrow(ctx, impX, groundY-5, impX, groundY-24, '#22c55e', 1.8);
+          arrow(ctx, front.x, groundY-6, front.x, groundY-30, '#22c55e', 2);
+          label(ctx,'po kūnu', (cx+front.x)/2+6, by-7, 8, '#22c55e','center',true);
         }
+        ctx.restore();
       }
-
-      // Arms
-      var armLen = H*0.14;
-      var armOffset = (thighA > 0) ? -0.4 : 0.4;
-      ctx.strokeStyle='#374151'; ctx.lineWidth=2; ctx.lineCap='round';
-      ctx.beginPath();
-      ctx.moveTo(shoulderX, shoulderY+headR*0.5);
-      ctx.lineTo(shoulderX + Math.sin(armOffset)*armLen, shoulderY + headR*0.5 + Math.cos(-armOffset)*armLen*0.7);
-      ctx.stroke();
-      ctx.beginPath();
-      ctx.moveTo(shoulderX, shoulderY+headR*0.5);
-      ctx.lineTo(shoulderX - Math.sin(armOffset)*armLen, shoulderY + headR*0.5 + Math.cos(armOffset)*armLen*0.7);
-      ctx.stroke();
-
-      // COM dashed line
-      ctx.save(); ctx.setLineDash([4,4]);
-      ctx.strokeStyle='#e2e8f0'; ctx.lineWidth=1;
-      ctx.beginPath(); ctx.moveTo(cx, shoulderY-headR*2.2); ctx.lineTo(cx, groundY); ctx.stroke();
-      ctx.restore();
     }
 
     function frame(ts) {
       if (!t0) t0 = ts;
-      var t = (ts - t0) / 1000;
-      var p = (t % period) / period; // 0..1 cycle
+      var t = (ts - t0)/1000;
+      var p = (t % period)/period;
 
-      // Leg angles: smooth swing
-      // Front thigh: -30° (back) to +35° (forward) for WRONG, -20° to +18° for RIGHT
-      var swing = -0.5 + 0.5*Math.cos(p * 2*Math.PI); // -1..0..1 (-1=back,1=fwd)
+      ctx.clearRect(0,0,W,H);
+      var pad=8, mid=W/2;
+      var groundY = H - 34;
 
-      // Wrong: big forward stride
-      var wFrontThigh = -28 + swing * 32;   // thigh angle
-      var wFrontShin  = swing > 0 ? swing * 22 : 0; // shin kicks out forward
-      var wBackThigh  = -wFrontThigh * 0.8;
-      var wBackShin   = wBackThigh > 5 ? -20 : 0;
+      // panels
+      ctx.fillStyle='#fff7f7'; pill(ctx, pad, pad, mid-pad-4, H-pad*2, 10); ctx.fill();
+      ctx.strokeStyle='#fca5a5'; ctx.lineWidth=1.5; pill(ctx, pad, pad, mid-pad-4, H-pad*2, 10); ctx.stroke();
+      ctx.fillStyle='#f0fdf4'; pill(ctx, mid+4, pad, mid-pad-4, H-pad*2, 10); ctx.fill();
+      ctx.strokeStyle='#86efac'; ctx.lineWidth=1.5; pill(ctx, mid+4, pad, mid-pad-4, H-pad*2, 10); ctx.stroke();
 
-      // Right: compact under-body stride
-      var rFrontThigh = -18 + swing * 18;
-      var rFrontShin  = swing > 0 ? swing * 10 : 0;
-      var rBackThigh  = -rFrontThigh * 0.85;
-      var rBackShin   = rBackThigh > 5 ? -22 : 0;
-
-      ctx.clearRect(0, 0, W, H);
-      var pad = 8, mid = W/2;
-      var groundY = H - 22;
-
-      // Panel backgrounds
-      ctx.fillStyle='#fff7f7';
-      pill(ctx, pad, pad, mid-pad-4, H-pad*2, 10); ctx.fill();
-      ctx.strokeStyle='#fca5a5'; ctx.lineWidth=1.5;
-      pill(ctx, pad, pad, mid-pad-4, H-pad*2, 10); ctx.stroke();
-
-      ctx.fillStyle='#f0fdf4';
-      pill(ctx, mid+4, pad, mid-pad-4, H-pad*2, 10); ctx.fill();
-      ctx.strokeStyle='#86efac'; ctx.lineWidth=1.5;
-      pill(ctx, mid+4, pad, mid-pad-4, H-pad*2, 10); ctx.stroke();
-
-      // Ground lines
+      // ground
       ctx.strokeStyle='#d1d5db'; ctx.lineWidth=1.5; ctx.setLineDash([]);
-      ctx.beginPath(); ctx.moveTo(pad+8, groundY); ctx.lineTo(mid-pad-12, groundY); ctx.stroke();
-      ctx.beginPath(); ctx.moveTo(mid+12, groundY); ctx.lineTo(W-pad-8, groundY); ctx.stroke();
+      ctx.beginPath(); ctx.moveTo(pad+10, groundY); ctx.lineTo(mid-pad-12, groundY); ctx.stroke();
+      ctx.beginPath(); ctx.moveTo(mid+14, groundY); ctx.lineTo(W-pad-10, groundY); ctx.stroke();
 
-      // Titles
-      label(ctx,'✕  Perkrova per žingsnį', mid/2+pad/2, pad+16, 10, '#dc2626','center',true);
-      label(ctx,'✓  Teisingas žingsnis', mid+4+(mid-pad-4)/2, pad+16, 10, '#16a34a','center',true);
-      label(ctx,'koja nusileisdama per toli priekyje', mid/2+pad/2, pad+28, 7.5, '#9ca3af');
-      label(ctx,'koja nusileisdama po kūnu', mid+4+(mid-pad-4)/2, pad+28, 7.5, '#9ca3af');
+      // titles
+      var lcx = mid/2+pad/2, rcx = mid+4+(mid-pad-4)/2;
+      label(ctx,'✕  Perkrova per žingsnį', lcx, pad+15, 10, '#dc2626','center',true);
+      label(ctx,'✓  Teisingas žingsnis', rcx, pad+15, 10, '#16a34a','center',true);
+      label(ctx,'koja krenta toli priekyje', lcx, pad+27, 7.5, '#9ca3af');
+      label(ctx,'koja krenta po kūnu', rcx, pad+27, 7.5, '#9ca3af');
 
-      // Figures
-      var leftCX  = mid/2 + pad/2;
-      var rightCX = mid + 4 + (mid-pad-4)/2;
-
-      ctx.save();
-      ctx.rect(pad, pad, mid-pad-4, H-pad*2);
-      ctx.clip();
-      drawFigure(ctx, leftCX, groundY, wFrontThigh, wBackThigh, wBackShin, wFrontShin, '#ef4444', true);
+      ctx.save(); ctx.beginPath(); ctx.rect(pad, pad+30, mid-pad-4, H-pad*2-30); ctx.clip();
+      drawFigure(ctx, lcx, groundY, p, true);
       ctx.restore();
 
-      ctx.save();
-      ctx.rect(mid+4, pad, mid-pad-4, H-pad*2);
-      ctx.clip();
-      drawFigure(ctx, rightCX, groundY, rFrontThigh, rBackThigh, rBackShin, rFrontShin, '#22c55e', false);
+      ctx.save(); ctx.beginPath(); ctx.rect(mid+4, pad+30, mid-pad-4, H-pad*2-30); ctx.clip();
+      drawFigure(ctx, rcx, groundY, p, false);
       ctx.restore();
-
-      // Bottom labels
-      label(ctx,'Stabdymo jėga ↗', mid/2+pad/2, H-6, 7.5, '#ef4444','center',true);
-      label(ctx,'Vertikali jėga ↓', mid+4+(mid-pad-4)/2, H-6, 7.5, '#22c55e','center',true);
 
       RAF['runCanvas'] = requestAnimationFrame(frame);
     }
