@@ -4,6 +4,14 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Bėgimo Fiziologija — Pradedantiesiems</title>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-3G4SLW2V7C"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-3G4SLW2V7C');
+</script>
 <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
 :root{
@@ -24,8 +32,8 @@ a{color:inherit}
 .progress-fill{height:100%;background:var(--z2);width:0%;transition:width .3s}
 
 /* ── NAV PILLS ── */
-.lesson-nav{display:flex;gap:.5rem;flex-wrap:wrap;padding:1.25rem 2rem .75rem;background:var(--bg);border-bottom:1px solid var(--border);position:sticky;top:64px;z-index:190;overflow:hidden;max-height:300px;transition:max-height .25s ease,padding .25s ease,border-color .25s ease}
-.lesson-nav.nav-collapsed{max-height:0;padding-top:0;padding-bottom:0;border-bottom-color:transparent}
+.lesson-nav{display:flex;gap:.5rem;flex-wrap:wrap;padding:1.25rem 2rem .75rem;background:var(--bg);border-bottom:1px solid var(--border);position:sticky;top:64px;z-index:190;overflow:hidden;transition:max-height .28s ease,padding .28s ease,border-color .28s ease,opacity .2s ease;max-height:320px;will-change:max-height}
+.lesson-nav.nav-collapsed{max-height:0;padding-top:0;padding-bottom:0;border-bottom-color:transparent;opacity:0}
 .nav-toggle-btn{background:none;border:1px solid var(--border);border-radius:6px;padding:.3rem .55rem;cursor:pointer;font-size:.82rem;color:var(--muted);transition:all .2s;line-height:1;font-family:'Inter',sans-serif;flex-shrink:0}
 .nav-toggle-btn:hover{border-color:var(--text);color:var(--text)}
 .lesson-indicator{font-size:.72rem;color:var(--muted);opacity:0;transition:opacity .25s;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:200px;pointer-events:none}
@@ -2077,7 +2085,6 @@ const NAV_LESSON_NAMES = [
 ];
 
 let navCollapsed = false;
-let lastScrollY = window.scrollY;
 
 // Collapse immediately on mobile
 const isMobile = window.innerWidth < 700;
@@ -2107,15 +2114,54 @@ function updateIndicator() {
 
 window.toggleNav = function() { collapseNav(); };
 
-window.addEventListener('scroll', () => {
+// Scroll-driven collapse with hysteresis + rAF debounce.
+// Accumulates scroll direction so a single jitter pixel can't flip it,
+// and ignores scroll events fired during the collapse animation.
+let lastScrollY = window.scrollY;
+let scrollAccum = 0;
+let ticking = false;
+let ignoreScrollUntil = 0;
+const COLLAPSE_THRESHOLD = 36;  // px of sustained down-scroll before hiding
+const EXPAND_THRESHOLD   = 48;  // px of sustained up-scroll before showing
+const TOP_ZONE = 30;            // always show near top
+
+function handleScroll() {
   const y = window.scrollY;
+  const now = performance.now();
+
+  // Skip events that fire while the nav is animating (prevents feedback loop)
+  if (now < ignoreScrollUntil) { lastScrollY = y; ticking = false; return; }
+
   const delta = y - lastScrollY;
-  if (delta > 4 && y > 40 && !navCollapsed) {
-    collapseNav(true);
-  } else if (delta < -4 && navCollapsed) {
-    collapseNav(false);
-  }
   lastScrollY = y;
+
+  // Near the very top: always reveal
+  if (y <= TOP_ZONE) {
+    if (navCollapsed) { collapseNav(false); ignoreScrollUntil = now + 320; }
+    scrollAccum = 0; ticking = false; return;
+  }
+
+  // Reset accumulator when direction flips
+  if ((delta > 0 && scrollAccum < 0) || (delta < 0 && scrollAccum > 0)) scrollAccum = 0;
+  scrollAccum += delta;
+
+  if (scrollAccum > COLLAPSE_THRESHOLD && !navCollapsed) {
+    collapseNav(true);
+    ignoreScrollUntil = now + 320;
+    scrollAccum = 0;
+  } else if (scrollAccum < -EXPAND_THRESHOLD && navCollapsed) {
+    collapseNav(false);
+    ignoreScrollUntil = now + 320;
+    scrollAccum = 0;
+  }
+  ticking = false;
+}
+
+window.addEventListener('scroll', () => {
+  if (!ticking) {
+    ticking = true;
+    requestAnimationFrame(handleScroll);
+  }
 }, { passive: true });
 
 // Keyboard navigation (left/right arrows)
