@@ -24,7 +24,7 @@ a{color:inherit}
 .progress-fill{height:100%;background:var(--z2);width:0%;transition:width .3s}
 
 /* ── NAV PILLS ── */
-.lesson-nav{display:flex;gap:.5rem;flex-wrap:wrap;padding:1.25rem 2rem .75rem;background:var(--bg);border-bottom:1px solid var(--border);position:sticky;top:64px;z-index:190;overflow:hidden;max-height:300px;transition:max-height .35s ease,padding .35s ease,border-color .35s ease}
+.lesson-nav{display:flex;gap:.5rem;flex-wrap:wrap;padding:1.25rem 2rem .75rem;background:var(--bg);border-bottom:1px solid var(--border);position:sticky;top:64px;z-index:190;overflow:hidden;max-height:300px;transition:max-height .25s ease,padding .25s ease,border-color .25s ease}
 .lesson-nav.nav-collapsed{max-height:0;padding-top:0;padding-bottom:0;border-bottom-color:transparent}
 .nav-toggle-btn{background:none;border:1px solid var(--border);border-radius:6px;padding:.3rem .55rem;cursor:pointer;font-size:.82rem;color:var(--muted);transition:all .2s;line-height:1;font-family:'Inter',sans-serif;flex-shrink:0}
 .nav-toggle-btn:hover{border-color:var(--text);color:var(--text)}
@@ -2038,6 +2038,15 @@ const NAV_LESSON_NAMES = [
 let navCollapsed = false;
 let lastScrollY = window.scrollY;
 
+// Collapse immediately on mobile
+const isMobile = window.innerWidth < 700;
+if (isMobile) {
+  document.getElementById('lessonNav').classList.add('nav-collapsed');
+  navCollapsed = true;
+  const btn = document.getElementById('navToggleBtn');
+  if (btn) btn.textContent = '☰';
+}
+
 function collapseNav(force) {
   navCollapsed = (force !== undefined) ? force : !navCollapsed;
   const nav = document.getElementById('lessonNav');
@@ -2059,9 +2068,10 @@ window.toggleNav = function() { collapseNav(); };
 
 window.addEventListener('scroll', () => {
   const y = window.scrollY;
-  if (y > lastScrollY + 20 && y > 80 && !navCollapsed) {
+  const delta = y - lastScrollY;
+  if (delta > 4 && y > 40 && !navCollapsed) {
     collapseNav(true);
-  } else if (y < lastScrollY - 20 && navCollapsed) {
+  } else if (delta < -4 && navCollapsed) {
     collapseNav(false);
   }
   lastScrollY = y;
