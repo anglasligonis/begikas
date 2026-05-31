@@ -183,6 +183,11 @@ input[type=range]::-moz-range-thumb{width:22px;height:22px;background:var(--surf
 .method-rec-why{font-size:.875rem;color:var(--muted);line-height:1.7}
 .method-rec-borrow{margin-top:.75rem;padding:.6rem .85rem;background:var(--surface);border-radius:8px;border:1px solid var(--border);font-size:.82rem;color:#374151;line-height:1.6}
 
+.lesson-illustration{margin:1.75rem 0;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:1.25rem 1.5rem}
+.illustration-title{font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:1.2px;color:var(--light);margin-bottom:1rem;display:flex;align-items:center;gap:.5rem}
+.illustration-title::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--z2);flex-shrink:0}
+.illustration-title svg{width:100%;height:auto;display:block}
+
 /* Summary lesson */
 .summary-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:1.5rem 0}
 @media(max-width:600px){.summary-grid{grid-template-columns:1fr}}
@@ -703,6 +708,12 @@ input[type=range]::-moz-range-thumb{width:22px;height:22px;background:var(--surf
     <p>Svarbu išmokti kvėpuoti <strong>diafragma</strong> (pilvu), o ne krūtine. Tai padidina oro tūrį kiekvienam įkvėpimui.</p>
   </div>
 
+  <div class="lesson-illustration">
+    <div class="illustration-title">Kvėpavimo tipų animacija</div>
+    <canvas id="breathCanvas" style="width:100%;display:block;border-radius:8px"></canvas>
+  </div>
+
+
   <div class="demo">
     <div class="demo-title">Interaktyvus demonstravimas — Kvėpavimo mechanika</div>
 
@@ -840,6 +851,12 @@ input[type=range]::-moz-range-thumb{width:22px;height:22px;background:var(--surf
     <p><strong>Per stiprus kulno smūgis</strong> — ne visi kulno nusileidimą smerkia, tačiau jei nusileisdami galite aiškiai girdėti smūgio garsą, žingsnis tikriausiai per ilgas. Stenkitės, kad koja nusileistų po kūnu, o ne priekyje.</p>
     <p><strong>Tiesus liemuo, ne priekinis palinkimas</strong> — palinkimas iš čiurnos (ne iš juosmens) ~5–10° pirmyn leidžia gravitacijai padėti judėti į priekį. Bėgantys visiškai tiesiai dažnai „stabdo save" kiekvienu žingsniu.</p>
   </div>
+
+  <div class="lesson-illustration">
+    <div class="illustration-title">Žingsnio technika — animuota</div>
+    <canvas id="runCanvas" style="width:100%;display:block;border-radius:8px"></canvas>
+  </div>
+
 
   <div class="callout callout-warn">
     <span class="callout-label">Dažniausios pradedančiųjų traumos</span>
@@ -1259,6 +1276,12 @@ input[type=range]::-moz-range-thumb{width:22px;height:22px;background:var(--surf
     <p>Jėgos treniruotės bėgikams nėra apie raumenų masę. Tikslas — <strong>stabilumas, ekscentrinis stiprumas ir sausgyslių atsparumas</strong>. Tyrimai rodo, kad 6–8 savaičių jėgos programa pagerina bėgimo ekonomiją (mažiau energijos tam pačiam tempui) vidutiniškai 2–8%.</p>
     <p>Svarbiausia: jėgos darbas turi prasidėti <em>prieš</em> atsirandant skausmui. Kaip profilaktika, ne gydymas. Raumenys reaguoja per 4–6 savaites, sausgyslės — per 3–6 mėnesius. <button class="xref" onclick="goLesson(6)">7 pamoka: Technika ir traumos</button></p>
   </div>
+
+  <div class="lesson-illustration">
+    <div class="illustration-title">Keturi pagrindiniai pratimai — animuoti</div>
+    <canvas id="exCanvas" style="width:100%;display:block;border-radius:8px"></canvas>
+  </div>
+
 
   <div class="demo">
     <div class="demo-title">Interaktyvus demonstravimas — Svarbiausi pratimai</div>
@@ -2014,6 +2037,7 @@ function goLesson(n) {
   updateIndicator();
   window.scrollTo({ top: 0, behavior: 'smooth' });
   initDemos();
+  if (window._startAnimForLesson) window._startAnimForLesson(n);
 }
 
 document.querySelectorAll('.nav-pill').forEach((btn, i) => {
@@ -2960,6 +2984,739 @@ function initDemo19() {
   window.toggleMetric19 = function(i) { active = active===i ? -1 : i; render(); };
   render();
 }
+
+// ══════════════════════════════════════════════════════════════
+// CANVAS ILLUSTRATION ANIMATIONS
+// ══════════════════════════════════════════════════════════════
+
+(function(){
+  var RAF = {};  // store cancelAnimationFrame handles keyed by canvas id
+
+  // ── Shared drawing helpers ──────────────────────────────────
+  function pill(ctx, x, y, w, h, r) {
+    r = Math.min(r, w/2, h/2);
+    ctx.beginPath();
+    ctx.moveTo(x+r, y);
+    ctx.lineTo(x+w-r, y);
+    ctx.arcTo(x+w, y, x+w, y+r, r);
+    ctx.lineTo(x+w, y+h-r);
+    ctx.arcTo(x+w, y+h, x+w-r, y+h, r);
+    ctx.lineTo(x+r, y+h);
+    ctx.arcTo(x, y+h, x, y+h-r, r);
+    ctx.lineTo(x, y+r);
+    ctx.arcTo(x, y, x+r, y, r);
+    ctx.closePath();
+  }
+
+  function arrow(ctx, x1,y1, x2,y2, color, w) {
+    w = w||2;
+    var dx=x2-x1, dy=y2-y1, len=Math.sqrt(dx*dx+dy*dy);
+    var ux=dx/len, uy=dy/len;
+    var ax=x2-ux*9, ay=y2-uy*9;
+    ctx.strokeStyle=color; ctx.lineWidth=w;
+    ctx.beginPath(); ctx.moveTo(x1,y1); ctx.lineTo(ax,ay); ctx.stroke();
+    ctx.fillStyle=color;
+    ctx.beginPath();
+    ctx.moveTo(x2, y2);
+    ctx.lineTo(ax-uy*4, ay+ux*4);
+    ctx.lineTo(ax+uy*4, ay-ux*4);
+    ctx.closePath(); ctx.fill();
+  }
+
+  function ease(t){ return t<0.5 ? 2*t*t : -1+(4-2*t)*t; }
+
+  function label(ctx, text, x, y, size, color, align, bold) {
+    ctx.font = (bold?'700 ':'400 ') + (size||11) + 'px Inter,sans-serif';
+    ctx.textAlign = align||'center';
+    ctx.fillStyle = color||'#374151';
+    ctx.fillText(text, x, y);
+  }
+
+  function getCanvasWidth(canvas) {
+    var w = canvas.offsetWidth;
+    if (!w && canvas.parentElement) w = canvas.parentElement.offsetWidth - 32;
+    if (!w) w = 400;
+    return w;
+  }
+  function setupCanvas(canvas, w, h) {
+    var dpr = window.devicePixelRatio||1;
+    canvas.width  = w * dpr;
+    canvas.height = h * dpr;
+    canvas.style.height = h + 'px';
+    var ctx = canvas.getContext('2d');
+    ctx.scale(dpr, dpr);
+    return ctx;
+  }
+
+  // ══════════════════════════════════════════════════════════
+  // BREATHING ANIMATION
+  // ══════════════════════════════════════════════════════════
+  function startBreathing(canvas) {
+    if (!canvas) return;
+    var W = getCanvasWidth(canvas);
+    var H = Math.round(W * 0.52);
+    var ctx = setupCanvas(canvas, W, H);
+    var period = 5; // seconds
+    var t0 = null;
+
+    function breathAmp(t) {
+      var p = (t % period) / period;
+      if (p < 0.40) return ease(p/0.40);
+      if (p < 0.52) return 1;
+      if (p < 0.88) return 1 - ease((p-0.52)/0.36);
+      return 0;
+    }
+
+    function phaseLabel(t) {
+      var p = (t % period) / period;
+      if (p < 0.02 || p > 0.92) return '';
+      if (p < 0.50) return 'ĮKVĖPIMAS';
+      return 'IŠKVĖPIMAS';
+    }
+
+    function drawPanel(ctx, px, py, pw, ph, amp, type) {
+      var cx = px + pw/2;
+      var wrong = type === 'chest';
+      var bg    = wrong ? '#fff7f7' : '#f0fdf4';
+      var bord  = wrong ? '#fca5a5' : '#86efac';
+      var hi    = wrong ? '#ef4444' : '#22c55e';
+
+      // panel bg
+      ctx.fillStyle = bg;
+      pill(ctx, px, py, pw, ph, 10); ctx.fill();
+      ctx.strokeStyle = bord; ctx.lineWidth = 1.5;
+      pill(ctx, px, py, pw, ph, 10); ctx.stroke();
+
+      // titles
+      label(ctx, wrong ? '✕  Krūtininis' : '✓  Diafragminis', cx, py+18, 11, hi, 'center', true);
+      label(ctx, wrong ? 'mažiau efektyvus' : 'efektyvesnis', cx, py+30, 8.5, '#9ca3af');
+
+      // body measurements
+      var hy = py+44; // head centre y
+      var nx1= hy+12, nx2=hy+20; // neck
+      var shY = nx2+6; // shoulder line y
+      var torsoTop = shY;
+      var torsoBot = py+ph-22;
+      var midY = torsoTop + (torsoBot-torsoTop)*0.44; // chest/belly split
+
+      // HEAD
+      ctx.beginPath(); ctx.arc(cx, hy, 11, 0, 2*Math.PI);
+      ctx.strokeStyle='#374151'; ctx.lineWidth=1.8; ctx.stroke();
+
+      // NECK
+      ctx.beginPath(); ctx.moveTo(cx,nx1); ctx.lineTo(cx,nx2);
+      ctx.strokeStyle='#374151'; ctx.lineWidth=1.8; ctx.stroke();
+
+      // SHOULDER
+      ctx.beginPath();
+      ctx.moveTo(cx-28, shY+2);
+      ctx.bezierCurveTo(cx-18, shY-4, cx+18, shY-4, cx+28, shY+2);
+      ctx.strokeStyle='#374151'; ctx.lineWidth=1.8; ctx.stroke();
+
+      // TORSO OUTLINE (static)
+      var tw = 27, bw = 22;
+      ctx.beginPath();
+      ctx.moveTo(cx-tw, torsoTop+4);
+      ctx.bezierCurveTo(cx-tw-4, midY, cx-bw-4, torsoBot-8, cx-bw+2, torsoBot);
+      ctx.bezierCurveTo(cx-8, torsoBot+6, cx+8, torsoBot+6, cx+bw-2, torsoBot);
+      ctx.bezierCurveTo(cx+bw+4, torsoBot-8, cx+tw+4, midY, cx+tw, torsoTop+4);
+      ctx.strokeStyle='#d1d5db'; ctx.lineWidth=1.5; ctx.stroke();
+
+      // CHEST ZONE highlight
+      var chestAmp  = wrong ? amp : amp*0.06;
+      var chestLift = chestAmp * 9;
+      var chestSwell= chestAmp * 0.10;
+      var cw2 = tw * (1 + chestSwell);
+      ctx.save();
+      ctx.beginPath();
+      ctx.moveTo(cx-cw2, torsoTop+4 - chestLift);
+      ctx.bezierCurveTo(cx-cw2-3, midY-chestLift*0.5, cx-bw-2, midY+2, cx-bw+2, midY+2);
+      ctx.lineTo(cx+bw-2, midY+2);
+      ctx.bezierCurveTo(cx+bw+2, midY+2, cx+cw2+3, midY-chestLift*0.5, cx+cw2, torsoTop+4-chestLift);
+      ctx.closePath();
+      ctx.fillStyle = wrong
+        ? 'rgba(252,165,165,'+(0.18 + chestAmp*0.55)+')'
+        : 'rgba(203,213,225,0.12)';
+      ctx.fill();
+      ctx.restore();
+
+      // BELLY ZONE highlight
+      var bellyAmp   = wrong ? amp*0.05 : amp;
+      var bellySwell = bellyAmp * 0.18;
+      var bw2 = bw * (1 + bellySwell);
+      ctx.save();
+      ctx.beginPath();
+      ctx.moveTo(cx-bw-2, midY+2);
+      ctx.bezierCurveTo(cx-bw2-5, midY+10, cx-bw2-4, torsoBot-10, cx-bw2+2, torsoBot);
+      ctx.bezierCurveTo(cx-8, torsoBot+6+bellyAmp*4, cx+8, torsoBot+6+bellyAmp*4, cx+bw2-2, torsoBot);
+      ctx.bezierCurveTo(cx+bw2+4, torsoBot-10, cx+bw2+5, midY+10, cx+bw+2, midY+2);
+      ctx.closePath();
+      ctx.fillStyle = wrong
+        ? 'rgba(203,213,225,0.10)'
+        : 'rgba(134,239,172,'+(0.15 + bellyAmp*0.60)+')';
+      ctx.fill();
+      ctx.restore();
+
+      // DIAPHRAGM LINE
+      ctx.beginPath();
+      ctx.moveTo(cx-bw-2, midY+2); ctx.lineTo(cx+bw+2, midY+2);
+      ctx.strokeStyle='#e2e8f0'; ctx.lineWidth=1.2;
+      ctx.setLineDash([4,3]); ctx.stroke(); ctx.setLineDash([]);
+
+      // ARROWS
+      if (wrong && chestAmp > 0.25) {
+        var ao = Math.min(1,(chestAmp-0.25)/0.4);
+        ctx.globalAlpha = ao;
+        var ay0 = torsoTop+4-chestLift;
+        arrow(ctx, cx-14, ay0+14, cx-14, ay0-2, '#ef4444', 2);
+        arrow(ctx, cx,    ay0+10, cx,    ay0-4, '#ef4444', 2);
+        arrow(ctx, cx+14, ay0+14, cx+14, ay0-2, '#ef4444', 2);
+        ctx.globalAlpha = 1;
+      }
+      if (!wrong && bellyAmp > 0.25) {
+        var ao2 = Math.min(1,(bellyAmp-0.25)/0.4);
+        var sy = midY + (torsoBot-midY)*0.5;
+        ctx.globalAlpha = ao2;
+        arrow(ctx, cx-bw2+2, sy, cx-bw2-10, sy, '#22c55e', 2);
+        arrow(ctx, cx+bw2-2, sy, cx+bw2+10, sy, '#22c55e', 2);
+        arrow(ctx, cx, midY+4, cx, midY+16, '#22c55e', 2); // diaphragm down
+        ctx.globalAlpha = 1;
+      }
+
+      // PHASE LABEL
+      label(ctx, wrong ? 'Pilvas — nejuda' : 'Krūtinė rami', cx, midY-6, 7.5, '#9ca3af');
+    }
+
+    function frame(ts) {
+      if (!t0) t0 = ts;
+      var t = (ts - t0) / 1000;
+      var amp = breathAmp(t);
+      var phase = phaseLabel(t);
+
+      ctx.clearRect(0, 0, W, H);
+      var pad = 6, gap = 10;
+      var pw = (W - pad*2 - gap) / 2;
+      var ph = H - pad*2;
+
+      drawPanel(ctx, pad, pad, pw, ph, amp, 'chest');
+      drawPanel(ctx, pad+pw+gap, pad, pw, ph, amp, 'diaphragm');
+
+      // Shared phase label at bottom centre
+      if (phase) {
+        label(ctx, phase, W/2, H-5, 9, '#374151', 'center', true);
+      }
+
+      RAF['breathCanvas'] = requestAnimationFrame(frame);
+    }
+    if (RAF['breathCanvas']) cancelAnimationFrame(RAF['breathCanvas']);
+    RAF['breathCanvas'] = requestAnimationFrame(frame);
+  }
+
+  // ══════════════════════════════════════════════════════════
+  // RUNNING FORM ANIMATION
+  // ══════════════════════════════════════════════════════════
+  function startRunning(canvas) {
+    if (!canvas) return;
+    var W = getCanvasWidth(canvas);
+    var H = Math.round(W * 0.54);
+    var ctx = setupCanvas(canvas, W, H);
+    var period = 1.6;
+    var t0 = null;
+
+    // Draw a single leg-segment from hip with given thigh & shin angles
+    function drawLeg(ctx, hx, hy, thighAngle, shinAngle, color, thick) {
+      var thighLen = H * 0.28;
+      var shinLen  = H * 0.25;
+      var th = thighAngle * Math.PI/180;
+      var kx = hx + Math.sin(th)*thighLen;
+      var ky = hy + Math.cos(th)*thighLen;
+      var sh = (thighAngle + shinAngle) * Math.PI/180;
+      var fx = kx + Math.sin(sh)*shinLen;
+      var fy = ky + Math.cos(sh)*shinLen;
+
+      ctx.strokeStyle = color; ctx.lineWidth = thick||3;
+      ctx.lineCap = 'round';
+      ctx.beginPath(); ctx.moveTo(hx,hy); ctx.lineTo(kx,ky); ctx.stroke();
+      ctx.beginPath(); ctx.moveTo(kx,ky); ctx.lineTo(fx,fy); ctx.stroke();
+      return {kx,ky,fx,fy};
+    }
+
+    function drawFigure(ctx, cx, groundY, thighA, backThighA, backShinA, frontShinA, color, isWrong) {
+      var headR = H*0.065;
+      var torsoLen = H*0.22;
+      var lean = isWrong ? 0 : 5; // forward lean in degrees
+      var torsoAngle = lean * Math.PI/180;
+      var hipY = groundY - H*0.50;
+      var shoulderX = cx - Math.sin(torsoAngle)*torsoLen;
+      var shoulderY = hipY - Math.cos(torsoAngle)*torsoLen;
+
+      // Back leg
+      var backColor = '#94a3b8';
+      drawLeg(ctx, cx, hipY, backThighA, backShinA, backColor, 2.5);
+
+      // Torso
+      ctx.strokeStyle='#374151'; ctx.lineWidth=2.5; ctx.lineCap='round';
+      ctx.beginPath(); ctx.moveTo(cx, hipY); ctx.lineTo(shoulderX, shoulderY); ctx.stroke();
+
+      // Head
+      ctx.beginPath(); ctx.arc(shoulderX, shoulderY-headR, headR, 0, 2*Math.PI);
+      ctx.strokeStyle='#374151'; ctx.lineWidth=2; ctx.stroke();
+
+      // Front leg
+      var frontColor = isWrong ? '#ef4444' : '#22c55e';
+      var fl = drawLeg(ctx, cx, hipY, thighA, frontShinA, frontColor, 3);
+
+      // Impact at foot strike (when near ground)
+      var fy = fl.fy;
+      if (fy > groundY - 8) {
+        var impX = fl.fx;
+        ctx.save();
+        ctx.globalAlpha = 1 - (groundY - fy) * 0.12;
+        ctx.beginPath();
+        ctx.ellipse(impX, groundY, isWrong?20:14, 5, 0, 0, 2*Math.PI);
+        ctx.fillStyle = isWrong ? 'rgba(239,68,68,0.3)' : 'rgba(34,197,94,0.3)';
+        ctx.fill();
+        ctx.strokeStyle = isWrong ? '#ef4444' : '#22c55e';
+        ctx.lineWidth = 1.2; ctx.stroke();
+        ctx.restore();
+        // Force arrow
+        if (isWrong) {
+          arrow(ctx, impX, groundY-6, cx-18, groundY-28, '#ef4444', 1.8);
+        } else {
+          arrow(ctx, impX, groundY-5, impX, groundY-24, '#22c55e', 1.8);
+        }
+      }
+
+      // Arms
+      var armLen = H*0.14;
+      var armOffset = (thighA > 0) ? -0.4 : 0.4;
+      ctx.strokeStyle='#374151'; ctx.lineWidth=2; ctx.lineCap='round';
+      ctx.beginPath();
+      ctx.moveTo(shoulderX, shoulderY+headR*0.5);
+      ctx.lineTo(shoulderX + Math.sin(armOffset)*armLen, shoulderY + headR*0.5 + Math.cos(-armOffset)*armLen*0.7);
+      ctx.stroke();
+      ctx.beginPath();
+      ctx.moveTo(shoulderX, shoulderY+headR*0.5);
+      ctx.lineTo(shoulderX - Math.sin(armOffset)*armLen, shoulderY + headR*0.5 + Math.cos(armOffset)*armLen*0.7);
+      ctx.stroke();
+
+      // COM dashed line
+      ctx.save(); ctx.setLineDash([4,4]);
+      ctx.strokeStyle='#e2e8f0'; ctx.lineWidth=1;
+      ctx.beginPath(); ctx.moveTo(cx, shoulderY-headR*2.2); ctx.lineTo(cx, groundY); ctx.stroke();
+      ctx.restore();
+    }
+
+    function frame(ts) {
+      if (!t0) t0 = ts;
+      var t = (ts - t0) / 1000;
+      var p = (t % period) / period; // 0..1 cycle
+
+      // Leg angles: smooth swing
+      // Front thigh: -30° (back) to +35° (forward) for WRONG, -20° to +18° for RIGHT
+      var swing = -0.5 + 0.5*Math.cos(p * 2*Math.PI); // -1..0..1 (-1=back,1=fwd)
+
+      // Wrong: big forward stride
+      var wFrontThigh = -28 + swing * 32;   // thigh angle
+      var wFrontShin  = swing > 0 ? swing * 22 : 0; // shin kicks out forward
+      var wBackThigh  = -wFrontThigh * 0.8;
+      var wBackShin   = wBackThigh > 5 ? -20 : 0;
+
+      // Right: compact under-body stride
+      var rFrontThigh = -18 + swing * 18;
+      var rFrontShin  = swing > 0 ? swing * 10 : 0;
+      var rBackThigh  = -rFrontThigh * 0.85;
+      var rBackShin   = rBackThigh > 5 ? -22 : 0;
+
+      ctx.clearRect(0, 0, W, H);
+      var pad = 8, mid = W/2;
+      var groundY = H - 22;
+
+      // Panel backgrounds
+      ctx.fillStyle='#fff7f7';
+      pill(ctx, pad, pad, mid-pad-4, H-pad*2, 10); ctx.fill();
+      ctx.strokeStyle='#fca5a5'; ctx.lineWidth=1.5;
+      pill(ctx, pad, pad, mid-pad-4, H-pad*2, 10); ctx.stroke();
+
+      ctx.fillStyle='#f0fdf4';
+      pill(ctx, mid+4, pad, mid-pad-4, H-pad*2, 10); ctx.fill();
+      ctx.strokeStyle='#86efac'; ctx.lineWidth=1.5;
+      pill(ctx, mid+4, pad, mid-pad-4, H-pad*2, 10); ctx.stroke();
+
+      // Ground lines
+      ctx.strokeStyle='#d1d5db'; ctx.lineWidth=1.5; ctx.setLineDash([]);
+      ctx.beginPath(); ctx.moveTo(pad+8, groundY); ctx.lineTo(mid-pad-12, groundY); ctx.stroke();
+      ctx.beginPath(); ctx.moveTo(mid+12, groundY); ctx.lineTo(W-pad-8, groundY); ctx.stroke();
+
+      // Titles
+      label(ctx,'✕  Perkrova per žingsnį', mid/2+pad/2, pad+16, 10, '#dc2626','center',true);
+      label(ctx,'✓  Teisingas žingsnis', mid+4+(mid-pad-4)/2, pad+16, 10, '#16a34a','center',true);
+      label(ctx,'koja nusileisdama per toli priekyje', mid/2+pad/2, pad+28, 7.5, '#9ca3af');
+      label(ctx,'koja nusileisdama po kūnu', mid+4+(mid-pad-4)/2, pad+28, 7.5, '#9ca3af');
+
+      // Figures
+      var leftCX  = mid/2 + pad/2;
+      var rightCX = mid + 4 + (mid-pad-4)/2;
+
+      ctx.save();
+      ctx.rect(pad, pad, mid-pad-4, H-pad*2);
+      ctx.clip();
+      drawFigure(ctx, leftCX, groundY, wFrontThigh, wBackThigh, wBackShin, wFrontShin, '#ef4444', true);
+      ctx.restore();
+
+      ctx.save();
+      ctx.rect(mid+4, pad, mid-pad-4, H-pad*2);
+      ctx.clip();
+      drawFigure(ctx, rightCX, groundY, rFrontThigh, rBackThigh, rBackShin, rFrontShin, '#22c55e', false);
+      ctx.restore();
+
+      // Bottom labels
+      label(ctx,'Stabdymo jėga ↗', mid/2+pad/2, H-6, 7.5, '#ef4444','center',true);
+      label(ctx,'Vertikali jėga ↓', mid+4+(mid-pad-4)/2, H-6, 7.5, '#22c55e','center',true);
+
+      RAF['runCanvas'] = requestAnimationFrame(frame);
+    }
+    if (RAF['runCanvas']) cancelAnimationFrame(RAF['runCanvas']);
+    RAF['runCanvas'] = requestAnimationFrame(frame);
+  }
+
+  // ══════════════════════════════════════════════════════════
+  // EXERCISE ANIMATIONS
+  // ══════════════════════════════════════════════════════════
+  function startExercises(canvas) {
+    if (!canvas) return;
+    var W = getCanvasWidth(canvas);
+    var H = Math.round(W * 0.70);
+    var ctx = setupCanvas(canvas, W, H);
+    var period = 3.2;
+    var t0 = null;
+
+    function drawExCard(ctx, x, y, w, h, title, muscle, drawFn) {
+      ctx.fillStyle='#f8fafc';
+      pill(ctx, x, y, w, h, 8); ctx.fill();
+      ctx.strokeStyle='#e5e7eb'; ctx.lineWidth=1;
+      pill(ctx, x, y, w, h, 8); ctx.stroke();
+      label(ctx, title, x+w/2, y+14, 8.5, '#374151','center',true);
+      label(ctx, muscle, x+w/2, y+24, 7, '#9ca3af');
+      ctx.save();
+      ctx.rect(x+2, y+28, w-4, h-32);
+      ctx.clip();
+      drawFn(ctx, x+w/2, y+28, w-4, h-32);
+      ctx.restore();
+    }
+
+    // 1. Single leg squat
+    function drawSquat(ctx, cx, ty, tw, th, amp) {
+      var gy = ty + th - 10;
+      // shift figure left so the extended front leg has room on the right
+      cx = cx - tw*0.10;
+      // ground
+      ctx.strokeStyle='#d1d5db'; ctx.lineWidth=1.2;
+      ctx.beginPath(); ctx.moveTo(cx-tw*0.30, gy); ctx.lineTo(cx+tw*0.42, gy); ctx.stroke();
+
+      var headR = th*0.085;
+      var standHipY = gy - th*0.52;          // hip height when standing
+      var hipDrop   = amp * th*0.24;          // how far hip lowers in squat
+      var hipY = standHipY + hipDrop;
+      var hipX = cx;
+
+      // ── SUPPORT LEG (the working leg, stays planted) ──
+      var footX = cx;                          // foot stays under hip
+      var footY = gy;
+      // knee pushes forward as hip drops; stays roughly over the foot
+      var kneeX = cx + (tw*0.02) + amp*tw*0.10;
+      var kneeY = (hipY + footY)/2 + amp*th*0.03;
+      ctx.strokeStyle='#374151'; ctx.lineWidth=3; ctx.lineCap='round';
+      // thigh
+      ctx.beginPath(); ctx.moveTo(hipX, hipY); ctx.lineTo(kneeX, kneeY); ctx.stroke();
+      // shin
+      ctx.beginPath(); ctx.moveTo(kneeX, kneeY); ctx.lineTo(footX, footY); ctx.stroke();
+      // planted foot
+      ctx.fillStyle='#e5e7eb'; ctx.strokeStyle='#9ca3af'; ctx.lineWidth=1;
+      ctx.beginPath(); ctx.ellipse(footX+3, gy, 11, 4, 0, 0, 2*Math.PI); ctx.fill(); ctx.stroke();
+
+      // ── FLOATING LEG (held out in front, clearly visible) ──
+      var fThighEndX = hipX + tw*0.16;
+      var fThighEndY = hipY + th*0.05 + amp*th*0.02;
+      var fShinEndX  = hipX + tw*0.34;
+      var fShinEndY  = fThighEndY - th*0.02 - amp*th*0.06; // lifts slightly as you descend
+      ctx.strokeStyle='#9ca3af'; ctx.lineWidth=2.5; ctx.lineCap='round';
+      ctx.beginPath(); ctx.moveTo(hipX, hipY); ctx.lineTo(fThighEndX, fThighEndY); ctx.stroke();
+      ctx.beginPath(); ctx.moveTo(fThighEndX, fThighEndY); ctx.lineTo(fShinEndX, fShinEndY); ctx.stroke();
+      // small foot on floating leg
+      ctx.strokeStyle='#9ca3af'; ctx.lineWidth=2;
+      ctx.beginPath(); ctx.moveTo(fShinEndX, fShinEndY); ctx.lineTo(fShinEndX+tw*0.05, fShinEndY+2); ctx.stroke();
+
+      // ── TORSO (leans forward as hip lowers — natural squat form) ──
+      var lean = amp*0.32;                     // radians of forward lean
+      var torsoLen = th*0.30;
+      var shoulderX = hipX + Math.sin(lean)*torsoLen;
+      var shoulderY = hipY - Math.cos(lean)*torsoLen;
+      ctx.strokeStyle='#374151'; ctx.lineWidth=2.5; ctx.lineCap='round';
+      ctx.beginPath(); ctx.moveTo(hipX, hipY); ctx.lineTo(shoulderX, shoulderY); ctx.stroke();
+
+      // ── HEAD ──
+      var neckX = shoulderX + Math.sin(lean)*headR*1.3;
+      var neckY = shoulderY - Math.cos(lean)*headR*1.3;
+      ctx.beginPath(); ctx.arc(neckX, neckY, headR, 0, 2*Math.PI);
+      ctx.strokeStyle='#374151'; ctx.lineWidth=1.8; ctx.stroke();
+
+      // ── ARMS reach forward for balance ──
+      ctx.strokeStyle='#374151'; ctx.lineWidth=1.8; ctx.lineCap='round';
+      ctx.beginPath(); ctx.moveTo(shoulderX, shoulderY+headR*0.4);
+      ctx.lineTo(shoulderX + tw*0.18, shoulderY + headR*0.4 + amp*th*0.03);
+      ctx.stroke();
+
+      // ── HIP JOINT marker ──
+      ctx.beginPath(); ctx.arc(hipX, hipY, 3.5, 0, 2*Math.PI);
+      ctx.fillStyle='#374151'; ctx.fill();
+
+      // ── KNEE highlight + vertical guide showing knee tracks over foot ──
+      ctx.beginPath(); ctx.arc(kneeX, kneeY, 5.5, 0, 2*Math.PI);
+      ctx.fillStyle='rgba(34,197,94,'+(0.25+amp*0.45)+')'; ctx.fill();
+      ctx.strokeStyle='#22c55e'; ctx.lineWidth=1.3; ctx.stroke();
+      // dashed vertical guide from knee to foot
+      ctx.save(); ctx.setLineDash([3,3]);
+      ctx.strokeStyle='rgba(34,197,94,0.45)'; ctx.lineWidth=1;
+      ctx.beginPath(); ctx.moveTo(kneeX, kneeY); ctx.lineTo(kneeX, gy); ctx.stroke();
+      ctx.restore();
+
+      // depth label changes with movement
+      label(ctx, amp > 0.6 ? 'apačia' : amp < 0.25 ? 'viršus' : 'leidžiasi', cx+tw*0.30, hipY, 7, '#9ca3af','center');
+      label(ctx,'kelias virš pėdos', cx+tw*0.06, ty+th-1, 6.5, '#22c55e');
+    }
+
+    // 2. Glute bridge
+    function drawBridge(ctx, cx, ty, tw, th, amp) {
+      var gx1=cx-tw*0.42, gx2=cx+tw*0.42;
+      var gy = ty+th*0.82;
+      ctx.strokeStyle='#d1d5db'; ctx.lineWidth=1.2;
+      ctx.beginPath(); ctx.moveTo(gx1,gy); ctx.lineTo(gx2,gy); ctx.stroke();
+      var lift = amp * th*0.32;
+      var shoulderX = cx - tw*0.3;
+      var shoulderY = gy - th*0.08;
+      var hipX = cx + tw*0.02;
+      var hipY = gy - th*0.16 - lift;
+      var footX = cx + tw*0.26;
+      var footY = gy;
+      var kx = (hipX+footX)*0.5 + tw*0.02;
+      var ky = Math.min(hipY, footY) - (footY - hipY)*0.1 + lift*0.2;
+      // head
+      ctx.beginPath(); ctx.arc(shoulderX-th*0.055, shoulderY-th*0.05, th*0.07, 0, 2*Math.PI);
+      ctx.strokeStyle='#374151'; ctx.lineWidth=1.6; ctx.stroke();
+      // upper back on floor
+      ctx.beginPath(); ctx.moveTo(shoulderX, shoulderY); ctx.lineTo(hipX, hipY);
+      ctx.strokeStyle='#374151'; ctx.lineWidth=2; ctx.lineCap='round'; ctx.stroke();
+      // thigh
+      ctx.beginPath(); ctx.moveTo(hipX, hipY); ctx.lineTo(kx, ky);
+      ctx.strokeStyle='#374151'; ctx.lineWidth=2.5; ctx.stroke();
+      // shin
+      ctx.beginPath(); ctx.moveTo(kx, ky); ctx.lineTo(footX, footY);
+      ctx.strokeStyle='#374151'; ctx.lineWidth=2; ctx.stroke();
+      // hip joint
+      ctx.beginPath(); ctx.arc(hipX, hipY, 4, 0, 2*Math.PI);
+      ctx.fillStyle='rgba(34,197,94,0.6)'; ctx.fill();
+      // alignment line
+      if (lift > th*0.05) {
+        ctx.strokeStyle='rgba(34,197,94,0.5)'; ctx.lineWidth=1;
+        ctx.setLineDash([4,3]);
+        ctx.beginPath(); ctx.moveTo(gx1, hipY); ctx.lineTo(gx2, hipY); ctx.stroke();
+        ctx.setLineDash([]);
+      }
+      // feet
+      ctx.fillStyle='#e5e7eb';
+      ctx.beginPath(); ctx.ellipse(footX, gy, 9,3.5, 0,0,2*Math.PI); ctx.fill();
+      ctx.beginPath(); ctx.ellipse(shoulderX, gy, 6,3, 0,0,2*Math.PI); ctx.fill();
+      label(ctx,'dubuo aukštyn', cx, ty+th-1, 6.5, '#22c55e');
+    }
+
+    // 3. Eccentric heel raise
+    function drawHeel(ctx, cx, ty, tw, th, amp) {
+      // amp: 0 = heel up (top), 1 = heel dropped below step (bottom of eccentric)
+      // ── STEP BLOCK ── (left side is the step, forefoot rests on its edge)
+      var stepTopY = ty + th*0.66;
+      var stepX2   = cx - tw*0.02;        // right edge of the step (where toes are)
+      var stepX1   = cx - tw*0.42;
+      var stepBotY = ty + th - 6;
+      ctx.fillStyle='#eef2f6';
+      ctx.fillRect(stepX1, stepTopY, stepX2-stepX1, stepBotY-stepTopY);
+      ctx.strokeStyle='#d1d5db'; ctx.lineWidth=1;
+      ctx.strokeRect(stepX1, stepTopY, stepX2-stepX1, stepBotY-stepTopY);
+      // floor to the right of the step (lower)
+      ctx.strokeStyle='#d1d5db'; ctx.lineWidth=1.2;
+      ctx.beginPath(); ctx.moveTo(stepX2, stepBotY); ctx.lineTo(cx+tw*0.42, stepBotY); ctx.stroke();
+
+      // ── HEEL TRAVEL ── forefoot pivots on step edge; heel + whole body move up/down
+      // bodyRise: positive = body lifted (heel raised). amp 0 -> raised, amp 1 -> dropped
+      var rise = (1 - amp);                 // 1 at top, 0 at bottom
+      var ankleX = stepX2;                  // ankle sits above the step edge
+      var forefootY = stepTopY;             // toes stay on the step surface
+      var heelTravel = th*0.14;             // vertical range of the heel
+      var heelY = stepTopY - rise*heelTravel + (1-rise)*heelTravel*0.6; // up when raised, below edge when dropped
+      var ankleY = forefootY - th*0.04 - rise*heelTravel*0.7;
+
+      var legLen = th*0.30;
+      var bodyLen = th*0.26;
+      var headR  = th*0.075;
+
+      var kneeY = ankleY - legLen*0.5;
+      var hipY  = ankleY - legLen;
+      var hipX  = ankleX;
+
+      // ── FOOT ── forefoot on edge, heel hanging off to the right
+      ctx.strokeStyle='#374151'; ctx.lineWidth=2.5; ctx.lineCap='round';
+      var heelX = ankleX + tw*0.14;
+      var toeX  = ankleX - tw*0.02;
+      // sole line from toe (on step) to heel (hanging)
+      var heelHi = (amp > 0.45);
+      ctx.strokeStyle = heelHi ? '#22c55e' : '#374151';
+      ctx.lineWidth = 3;
+      ctx.beginPath();
+      ctx.moveTo(toeX, forefootY);
+      ctx.lineTo(heelX, heelY);
+      ctx.stroke();
+      // ankle->heel + ankle->toe (foot wedge)
+      ctx.strokeStyle='#374151'; ctx.lineWidth=2;
+      ctx.beginPath(); ctx.moveTo(ankleX, ankleY); ctx.lineTo(toeX, forefootY); ctx.stroke();
+
+      // ── LEG ── (shin + thigh, vertical-ish)
+      ctx.strokeStyle='#374151'; ctx.lineWidth=2.5; ctx.lineCap='round';
+      ctx.beginPath(); ctx.moveTo(ankleX, ankleY); ctx.lineTo(hipX, kneeY); ctx.stroke();   // shin
+      ctx.beginPath(); ctx.moveTo(hipX, kneeY); ctx.lineTo(hipX, hipY); ctx.stroke();        // thigh
+      // knee marker
+      ctx.beginPath(); ctx.arc(hipX, kneeY, 2.5, 0, 2*Math.PI); ctx.fillStyle='#374151'; ctx.fill();
+
+      // ── TORSO + HEAD (upright; whole body rises/falls with the heel) ──
+      var shoulderY = hipY - bodyLen;
+      ctx.strokeStyle='#374151'; ctx.lineWidth=2.5; ctx.lineCap='round';
+      ctx.beginPath(); ctx.moveTo(hipX, hipY); ctx.lineTo(hipX, shoulderY); ctx.stroke();
+      ctx.beginPath(); ctx.arc(hipX, shoulderY-headR, headR, 0, 2*Math.PI);
+      ctx.strokeStyle='#374151'; ctx.lineWidth=1.8; ctx.stroke();
+      // one arm resting on a support (wall) for balance
+      ctx.strokeStyle='#374151'; ctx.lineWidth=1.8;
+      ctx.beginPath(); ctx.moveTo(hipX, shoulderY+bodyLen*0.25);
+      ctx.lineTo(hipX - tw*0.16, shoulderY+bodyLen*0.30); ctx.stroke();
+
+      // ── HEEL HIGHLIGHT + motion arrow ──
+      ctx.beginPath(); ctx.arc(heelX, heelY, 5, 0, 2*Math.PI);
+      ctx.fillStyle = heelHi ? 'rgba(34,197,94,0.5)' : 'rgba(148,163,184,0.4)';
+      ctx.fill();
+      if (heelHi) {
+        ctx.strokeStyle='#22c55e'; ctx.lineWidth=1.3; ctx.stroke();
+      }
+      // big direction arrow on the heel showing slow downward (eccentric) phase
+      if (amp > 0.3 && amp < 0.95) {
+        arrow(ctx, heelX+tw*0.10, heelY-th*0.05, heelX+tw*0.10, heelY+th*0.05, '#22c55e', 2);
+        label(ctx,'3 sek.', heelX+tw*0.13, heelY, 7.5, '#22c55e','left',true);
+      } else if (amp <= 0.3) {
+        // rising phase, small up hint
+        arrow(ctx, heelX+tw*0.10, heelY+th*0.04, heelX+tw*0.10, heelY-th*0.04, '#9ca3af', 1.6);
+      }
+
+      // ── step-edge reference dashed line (heel goes BELOW this) ──
+      ctx.save(); ctx.setLineDash([3,3]);
+      ctx.strokeStyle='rgba(34,197,94,0.4)'; ctx.lineWidth=1;
+      ctx.beginPath(); ctx.moveTo(stepX2, stepTopY); ctx.lineTo(cx+tw*0.30, stepTopY); ctx.stroke();
+      ctx.restore();
+
+      label(ctx, amp > 0.55 ? 'kulnas žemiau laiptelio' : 'kulnas viršuje', cx, ty+th-1, 6.5, heelHi ? '#22c55e' : '#9ca3af');
+    }
+
+    // 4. Bird-dog
+    function drawBirdDog(ctx, cx, ty, tw, th, amp) {
+      var gy = ty+th*0.62;
+      // floor
+      ctx.strokeStyle='#d1d5db'; ctx.lineWidth=1.2;
+      ctx.beginPath(); ctx.moveTo(cx-tw*0.42, gy); ctx.lineTo(cx+tw*0.42, gy); ctx.stroke();
+      var ext = amp; // 0=neutral, 1=full extension
+      // On all fours
+      var spineLen = tw*0.30;
+      var spineX1 = cx - spineLen/2; // rear hip
+      var spineX2 = cx + spineLen/2; // shoulders
+      var spineY  = gy - th*0.28;
+      // spine
+      ctx.beginPath(); ctx.moveTo(spineX1, spineY); ctx.lineTo(spineX2, spineY);
+      ctx.strokeStyle='#374151'; ctx.lineWidth=2.5; ctx.lineCap='round'; ctx.stroke();
+      // head
+      ctx.beginPath(); ctx.arc(spineX2+th*0.07, spineY-th*0.06, th*0.07, 0, 2*Math.PI);
+      ctx.strokeStyle='#374151'; ctx.lineWidth=1.6; ctx.stroke();
+      // support hand
+      ctx.beginPath(); ctx.moveTo(spineX2, spineY); ctx.lineTo(spineX2+tw*0.04, gy);
+      ctx.strokeStyle='#374151'; ctx.lineWidth=2; ctx.stroke();
+      // support knee
+      ctx.beginPath(); ctx.moveTo(spineX1, spineY); ctx.lineTo(spineX1-tw*0.04, gy);
+      ctx.strokeStyle='#374151'; ctx.lineWidth=2; ctx.stroke();
+      // extended arm (forward)
+      var armAngle = ext * 0.25; // radians elevation
+      var armLen = tw*0.30;
+      var axEnd = spineX2 + Math.cos(armAngle)*armLen;
+      var ayEnd = spineY - Math.sin(armAngle)*armLen;
+      ctx.strokeStyle='#22c55e'; ctx.lineWidth=2.5;
+      ctx.beginPath(); ctx.moveTo(spineX2, spineY); ctx.lineTo(axEnd, ayEnd); ctx.stroke();
+      ctx.beginPath(); ctx.arc(axEnd, ayEnd, 4, 0, 2*Math.PI);
+      ctx.fillStyle='rgba(34,197,94,'+(0.2+ext*0.6)+')'; ctx.fill();
+      // extended leg (backward)
+      var legLen = tw*0.30;
+      var lxEnd = spineX1 - Math.cos(armAngle)*legLen;
+      var lyEnd = spineY - Math.sin(armAngle)*legLen;
+      ctx.strokeStyle='#22c55e'; ctx.lineWidth=2.5;
+      ctx.beginPath(); ctx.moveTo(spineX1, spineY); ctx.lineTo(lxEnd, lyEnd); ctx.stroke();
+      ctx.beginPath(); ctx.arc(lxEnd, lyEnd, 4, 0, 2*Math.PI);
+      ctx.fillStyle='rgba(34,197,94,'+(0.2+ext*0.6)+')'; ctx.fill();
+      // alignment dashed line
+      if (ext > 0.3) {
+        ctx.strokeStyle='rgba(34,197,94,'+(ext*0.5)+')'; ctx.lineWidth=1;
+        ctx.setLineDash([4,3]);
+        ctx.beginPath(); ctx.moveTo(lxEnd, spineY); ctx.lineTo(axEnd, spineY); ctx.stroke();
+        ctx.setLineDash([]);
+      }
+      label(ctx,'priešinga ranka ir koja', cx, ty+th-1, 6.5, '#22c55e');
+    }
+
+    function frame(ts) {
+      if (!t0) t0 = ts;
+      var t = (ts - t0) / 1000;
+      // smooth 0-1 oscillation
+      var amp = 0.5 - 0.5*Math.cos(t/period * 2*Math.PI);
+
+      ctx.clearRect(0, 0, W, H);
+      var pad=6, gap=6;
+      var cw = (W-pad*2-gap)/2;
+      var ch = (H-pad*2-gap)/2;
+      var xs = [pad, pad+cw+gap];
+      var ys = [pad, pad+ch+gap];
+
+      drawExCard(ctx, xs[0], ys[0], cw, ch, 'Vienos kojos pritūpimas', 'Keturgalviai · Sėdmenys',
+        function(c,cx,ty,tw,th){ drawSquat(c,cx,ty,tw,th,amp); });
+      drawExCard(ctx, xs[1], ys[0], cw, ch, 'Sėdmenų tiltelis', 'Sėdmenys · Hamstring',
+        function(c,cx,ty,tw,th){ drawBridge(c,cx,ty,tw,th,amp); });
+      drawExCard(ctx, xs[0], ys[1], cw, ch, 'Ekscentrinis kulno kėlimas', 'Blauzda · Achilo sausgyslė',
+        function(c,cx,ty,tw,th){ drawHeel(c,cx,ty,tw,th,amp); });
+      drawExCard(ctx, xs[1], ys[1], cw, ch, 'Bird-dog', 'Šerdis · Nugaros tiesiamieji',
+        function(c,cx,ty,tw,th){ drawBirdDog(c,cx,ty,tw,th,amp); });
+
+      RAF['exCanvas'] = requestAnimationFrame(frame);
+    }
+    if (RAF['exCanvas']) cancelAnimationFrame(RAF['exCanvas']);
+    RAF['exCanvas'] = requestAnimationFrame(frame);
+  }
+
+  // ── Boot each animation when its lesson becomes active ──
+  window._startAnimForLesson = function(lessonIdx) {
+    if (lessonIdx === 4) {
+      var c = document.getElementById('breathCanvas');
+      if (c) { setTimeout(function(){ startBreathing(c); }, 80); }
+    }
+    if (lessonIdx === 6) {
+      var c = document.getElementById('runCanvas');
+      if (c) { setTimeout(function(){ startRunning(c); }, 80); }
+    }
+    if (lessonIdx === 9) {
+      var c = document.getElementById('exCanvas');
+      if (c) { setTimeout(function(){ startExercises(c); }, 80); }
+    }
+  };
+})();
 
 function initDemos() {
   if (current === 0)  initDemo1();
