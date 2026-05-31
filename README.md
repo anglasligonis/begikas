@@ -25,4 +25,4 @@ Kiekvienoje pamokoje yra interaktyvus demonstravimas su slankikliais, kuris paro
 
 ## Licencija
 
-Apache
+Apache 2.0
