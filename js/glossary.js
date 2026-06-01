@@ -48,11 +48,18 @@ function filterGlossary(q) {
 }
 
 function toggleGlossary() {
-  const panel = document.getElementById('glossaryPanel');
-  const overlay = document.getElementById('glossaryOverlay');
-  const open = panel.classList.toggle('open');
-  overlay.classList.toggle('open', open);
-  if (open) document.getElementById('glossarySearch').focus();
+  const dialog = document.getElementById('glossaryDialog');
+  if (dialog.open) {
+    dialog.close();
+  } else {
+    dialog.showModal();
+    document.getElementById('glossarySearch').focus();
+  }
 }
 
 buildGlossary();
+
+// Close on backdrop click (click outside the dialog panel)
+document.getElementById('glossaryDialog').addEventListener('click', (e) => {
+  if (e.target === e.currentTarget) toggleGlossary();
+});

@@ -1,7 +1,7 @@
 const TOTAL = 20;
 let current = 0;
 const visited = new Set([0]);
-const completed = new Set(); // lessons scrolled through / quiz answered
+const completed = new Set(JSON.parse(localStorage.getItem('begimas_completed') || '[]'));
 
 function refreshPills() {
   const pills = document.querySelectorAll('.nav-pill');
@@ -11,6 +11,7 @@ function refreshPills() {
   });
   pills[current].classList.add('active');
   document.getElementById('progressFill').style.width = ((completed.size / TOTAL) * 100) + '%';
+  try { localStorage.setItem('begimas_completed', JSON.stringify([...completed])); } catch(e) {}
 }
 
 function goLesson(n) {

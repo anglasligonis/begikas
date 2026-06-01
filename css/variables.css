@@ -4,6 +4,12 @@
   --z1:#64b5f6;--z2:#66bb6a;--z3:#ffa726;--z4:#ef5350;--z5:#b71c1c;
   --z1bg:#e3f2fd;--z2bg:#e8f5e9;--z3bg:#fff3e0;--z4bg:#ffebee;--z5bg:#ffcdd2;
 }
+@media(prefers-color-scheme:dark){
+  :root{
+    --bg:#111110;--surface:#1e1e1c;--text:#e5e5e3;--muted:#9ca3af;--light:#6b7280;
+    --border:#2e2e2c;
+  }
+}
 *{box-sizing:border-box;margin:0;padding:0}
 body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;line-height:1.6;font-size:16px}
 a{color:inherit}
