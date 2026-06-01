@@ -15,15 +15,22 @@ function refreshPills() {
 }
 
 function goLesson(n) {
-  document.getElementById('lesson-' + current).classList.remove('active');
-  current = n;
-  visited.add(n);
-  document.getElementById('lesson-' + current).classList.add('active');
-  refreshPills();
-  updateIndicator();
-  window.scrollTo({ top: 0, behavior: 'smooth' });
-  initDemos();
-  if (window._startAnimForLesson) window._startAnimForLesson(n);
+  const doSwitch = () => {
+    document.getElementById('lesson-' + current).classList.remove('active');
+    current = n;
+    visited.add(n);
+    document.getElementById('lesson-' + current).classList.add('active');
+    refreshPills();
+    updateIndicator();
+    window.scrollTo({ top: 0, behavior: 'instant' });
+    initDemos();
+    if (window._startAnimForLesson) window._startAnimForLesson(n);
+  };
+  if (document.startViewTransition) {
+    document.startViewTransition(doSwitch);
+  } else {
+    doSwitch();
+  }
 }
 
 document.querySelectorAll('.nav-pill').forEach((btn, i) => {
@@ -131,3 +138,13 @@ document.addEventListener('keydown', (e) => {
   if (e.key === 'ArrowRight' && current < TOTAL - 1) goLesson(current + 1);
   if (e.key === 'ArrowLeft' && current > 0) goLesson(current - 1);
 });
+
+// View Transitions: suppress the fadeUp CSS animation when the browser handles it natively
+if (document.startViewTransition) {
+  document.documentElement.classList.add('has-vt');
+}
+
+// Service Worker (offline support)
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('/sw.js');
+}
