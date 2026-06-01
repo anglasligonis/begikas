@@ -2,14 +2,14 @@ const CACHE = 'begimas-v1';
 const ASSETS = [
   '/',
   '/index.html',
-  '/css/variables.css',
-  '/css/layout.css',
-  '/css/components.css',
-  '/css/lessons.css',
-  '/js/nav.js',
-  '/js/quiz.js',
-  '/js/glossary.js',
-  '/js/demos.js',
+  '/css/variables.css?v=1',
+  '/css/layout.css?v=1',
+  '/css/components.css?v=1',
+  '/css/lessons.css?v=1',
+  '/js/nav.js?v=1',
+  '/js/quiz.js?v=1',
+  '/js/glossary.js?v=1',
+  '/js/demos.js?v=1',
 ];
 
 self.addEventListener('install', e => {
