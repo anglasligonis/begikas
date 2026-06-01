@@ -49,19 +49,12 @@ Kiekviena pamoka turi interaktyvius "slanikliu" demonstravimus, kurie vaizduoja 
 - ✅ **Žodynas** — Integruotas terminų žodynas su ieškos funkcija
 - ✅ **Testai** — Kiekviena pamoka baigiasi trumpu žinių pasitikrinimo testu
 
-## Naudojimas
-
-1. Atidarykite `index.html` naršyklėje
-2. Arba pasibandykite internete: https://begikas.lt (GitHub Pages)
-3. Naršykite pagal numeruotus skyrius arba naudokite numatymo mygtukus
-4. Spauskite žodyno mygtuką (`📖`) norėdami rasti terminų reikšmes
-5. Naudokite klaviatūros rodykles `←` `→` pamokas vertinti
 
 ## Technologijos
 
 - **HTML5** — Semantinė struktūra
 - **CSS3** — Grid, flexbox, animacijos, CSS kintamieji tema
-- **Vanilla JavaScript** — Žadų, interaktyvūs slanikliai, canvas grafika
+- **Vanilla JavaScript** — Interaktyvūs slankikliai, canvas grafika
 - **Canvas API** — Laktatinės kreivės, kvėpavimo mechanikos animacijos
 - **Google Analytics** — Anoniminė statistika
 
