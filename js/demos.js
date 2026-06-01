@@ -1,5 +1,3 @@
-const _demoInitialized = new Set();
-
 // ── DEMO 1: Fiber recruitment ──
 function initDemo1() {
   const sl = document.getElementById('s1');
@@ -1664,8 +1662,6 @@ function initDemo19() {
 })();
 
 function initDemos() {
-  if (_demoInitialized.has(current)) return;
-  _demoInitialized.add(current);
   if (current === 0)  initDemo1();
   if (current === 1)  initDemo2();
   if (current === 2)  initDemo3();

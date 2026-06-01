@@ -1,7 +1,7 @@
 const TOTAL = 20;
 let current = 0;
 const visited = new Set([0]);
-const completed = new Set(JSON.parse(localStorage.getItem('begimas_completed') || '[]'));
+const completed = new Set();
 
 function refreshPills() {
   const pills = document.querySelectorAll('.nav-pill');
@@ -11,7 +11,6 @@ function refreshPills() {
   });
   pills[current].classList.add('active');
   document.getElementById('progressFill').style.width = ((completed.size / TOTAL) * 100) + '%';
-  try { localStorage.setItem('begimas_completed', JSON.stringify([...completed])); } catch(e) {}
 }
 
 function goLesson(n) {
@@ -131,8 +130,3 @@ document.addEventListener('keydown', (e) => {
   if (e.key === 'ArrowRight' && current < TOTAL - 1) goLesson(current + 1);
   if (e.key === 'ArrowLeft' && current > 0) goLesson(current - 1);
 });
-
-// Service Worker (offline support)
-if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.register('/sw.js');
-}
