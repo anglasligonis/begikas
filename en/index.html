@@ -1,0 +1,1254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="referrer" content="no-referrer-when-downgrade">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self'; connect-src https://www.google-analytics.com https://analytics.google.com https://stats.g.doubleclick.net;">
+<title>Running Physiology — For Beginners</title>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-3G4SLW2V7C"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-3G4SLW2V7C');
+</script>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/variables.css?v=1">
+<link rel="stylesheet" href="../css/layout.css?v=1">
+<link rel="stylesheet" href="../css/components.css?v=1">
+<link rel="stylesheet" href="../css/lessons.css?v=1">
+</head>
+<body>
+
+<header class="site-header">
+  <h1>Running <span>physiology</span></h1>
+  <div style="display:flex;align-items:center;gap:.6rem">
+    <span class="lesson-indicator" id="lessonIndicator"></span>
+    <span style="font-size:.78rem;color:var(--muted)" id="lessonCountLabel">20 lessons for beginners</span>
+    <div class="lang-switcher">
+      <a href="../" class="lang-btn" title="Lietuvių">🇱🇹</a>
+      <span class="lang-btn lang-active" title="English">🇬🇧</span>
+    </div>
+    <button class="nav-toggle-btn" id="navToggleBtn" onclick="toggleNav()" title="Show / hide lessons">☰</button>
+    <button class="glossary-btn" onclick="toggleGlossary()">📖 Glossary</button>
+  </div>
+</header>
+<div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
+
+<div class="lesson-nav" id="lessonNav">
+  <button class="nav-pill active" data-lesson="0">1. Why run slowly?</button>
+  <button class="nav-pill" data-lesson="1">2. Heart &amp; pulse</button>
+  <button class="nav-pill" data-lesson="2">3. Energy &amp; fuel</button>
+  <button class="nav-pill" data-lesson="3">4. Lactate</button>
+  <button class="nav-pill" data-lesson="4">5. Breathing</button>
+  <button class="nav-pill" data-lesson="5">6. Heat &amp; hydration</button>
+  <button class="nav-pill" data-lesson="6">7. Running technique</button>
+  <button class="nav-pill" data-lesson="7">8. How to improve?</button>
+  <button class="nav-pill" data-lesson="8">9. Methodologies</button>
+  <button class="nav-pill" data-lesson="9">10. Strength training</button>
+  <button class="nav-pill" data-lesson="10">11. Winter running</button>
+  <button class="nav-pill" data-lesson="11">12. First race</button>
+  <button class="nav-pill" data-lesson="12">13. VO₂max</button>
+  <button class="nav-pill" data-lesson="13">14. Running economy</button>
+  <button class="nav-pill" data-lesson="14">15. Fatigue</button>
+  <button class="nav-pill" data-lesson="15">16. Pace distribution</button>
+  <button class="nav-pill" data-lesson="16">17. Load management</button>
+  <button class="nav-pill" data-lesson="17">18. Pain or injury</button>
+  <button class="nav-pill" data-lesson="18">19. Motivation &amp; consistency</button>
+  <button class="nav-pill" data-lesson="19">20. Running watches</button>
+</div>
+
+<dialog id="glossaryDialog" aria-label="Glossary">
+  <div class="glossary-header">
+    <h2>Glossary</h2>
+    <button class="glossary-close" onclick="toggleGlossary()">✕</button>
+  </div>
+  <div class="glossary-search">
+    <input type="text" id="glossarySearch" placeholder="Search term..." oninput="filterGlossary(this.value)">
+  </div>
+  <div class="glossary-list" id="glossaryList"></div>
+</dialog>
+
+<main>
+
+<!-- ══════════════════════════════════════════
+     LESSON 1 — WHY DO WE RUN SLOWLY?
+     ══════════════════════════════════════════ -->
+<article class="lesson active" id="lesson-0">
+  <div class="lesson-header">
+    <div class="lesson-num">Lesson 1 of 20</div>
+    <h2 class="lesson-title">Why do beginners need to run slowly?</h2>
+    <p class="lesson-intro">Many beginners try to run too fast from day one. Understandable — but physiologically it's a mistake. Here's why.</p>
+  </div>
+
+  <div class="takeaway"><div><strong>Key idea:</strong> 80% of your running should be easy enough that you can hold a conversation. That's not laziness — it's a sports-science-backed principle.</div></div>
+
+  <div style="background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:1.25rem 1.5rem;margin-bottom:2rem">
+    <div style="font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:1.2px;color:var(--light);margin-bottom:.85rem">Course contents</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:.35rem .5rem">
+      <div style="font-size:.85rem;color:var(--muted);display:flex;align-items:baseline;gap:.4rem"><span style="font-size:.65rem;font-weight:700;color:var(--light)">1.</span> Why run slowly?</div>
+      <div style="font-size:.85rem;color:var(--muted);display:flex;align-items:baseline;gap:.4rem"><span style="font-size:.65rem;font-weight:700;color:var(--light)">2.</span> Heart and training zones</div>
+      <div style="font-size:.85rem;color:var(--muted);display:flex;align-items:baseline;gap:.4rem"><span style="font-size:.65rem;font-weight:700;color:var(--light)">3.</span> Fats, glycogen and the wall</div>
+      <div style="font-size:.85rem;color:var(--muted);display:flex;align-items:baseline;gap:.4rem"><span style="font-size:.65rem;font-weight:700;color:var(--light)">4.</span> Lactate — not the enemy</div>
+      <div style="font-size:.85rem;color:var(--muted);display:flex;align-items:baseline;gap:.4rem"><span style="font-size:.65rem;font-weight:700;color:var(--light)">5.</span> Breathing while running</div>
+      <div style="font-size:.85rem;color:var(--muted);display:flex;align-items:baseline;gap:.4rem"><span style="font-size:.65rem;font-weight:700;color:var(--light)">6.</span> Heat and hydration</div>
+      <div style="font-size:.85rem;color:var(--muted);display:flex;align-items:baseline;gap:.4rem"><span style="font-size:.65rem;font-weight:700;color:var(--light)">7.</span> Running technique &amp; injuries</div>
+      <div style="font-size:.85rem;color:var(--muted);display:flex;align-items:baseline;gap:.4rem"><span style="font-size:.65rem;font-weight:700;color:var(--light)">8.</span> How to improve?</div>
+      <div style="font-size:.85rem;color:var(--muted);display:flex;align-items:baseline;gap:.4rem"><span style="font-size:.65rem;font-weight:700;color:var(--light)">9.</span> Training systems</div>
+      <div style="font-size:.85rem;color:var(--muted);display:flex;align-items:baseline;gap:.4rem"><span style="font-size:.65rem;font-weight:700;color:var(--light)">10.</span> Strength training</div>
+      <div style="font-size:.85rem;color:var(--muted);display:flex;align-items:baseline;gap:.4rem"><span style="font-size:.65rem;font-weight:700;color:var(--light)">11.</span> Winter running</div>
+      <div style="font-size:.85rem;color:var(--muted);display:flex;align-items:baseline;gap:.4rem"><span style="font-size:.65rem;font-weight:700;color:var(--light)">12.</span> First race</div>
+      <div style="font-size:.85rem;color:var(--muted);display:flex;align-items:baseline;gap:.4rem"><span style="font-size:.65rem;font-weight:700;color:var(--light)">13.</span> VO₂max</div>
+      <div style="font-size:.85rem;color:var(--muted);display:flex;align-items:baseline;gap:.4rem"><span style="font-size:.65rem;font-weight:700;color:var(--light)">14.</span> Running economy</div>
+      <div style="font-size:.85rem;color:var(--muted);display:flex;align-items:baseline;gap:.4rem"><span style="font-size:.65rem;font-weight:700;color:var(--light)">15.</span> Fatigue</div>
+      <div style="font-size:.85rem;color:var(--muted);display:flex;align-items:baseline;gap:.4rem"><span style="font-size:.65rem;font-weight:700;color:var(--light)">16.</span> Pace distribution</div>
+      <div style="font-size:.85rem;color:var(--muted);display:flex;align-items:baseline;gap:.4rem"><span style="font-size:.65rem;font-weight:700;color:var(--light)">17.</span> Load management</div>
+      <div style="font-size:.85rem;color:var(--muted);display:flex;align-items:baseline;gap:.4rem"><span style="font-size:.65rem;font-weight:700;color:var(--light)">18.</span> Pain vs. injury</div>
+      <div style="font-size:.85rem;color:var(--muted);display:flex;align-items:baseline;gap:.4rem"><span style="font-size:.65rem;font-weight:700;color:var(--light)">19.</span> Motivation &amp; consistency</div>
+      <div style="font-size:.85rem;color:var(--muted);display:flex;align-items:baseline;gap:.4rem"><span style="font-size:.65rem;font-weight:700;color:var(--light)">20.</span> Running watches</div>
+    </div>
+  </div>
+
+  <div class="prose">
+    <p>Your muscles have two types of fibres: <strong>slow-twitch (Type I)</strong> and <strong>fast-twitch (Type II)</strong>. Slow fibres are efficient — they use oxygen and fat as fuel and can work for hours. Fast fibres are powerful, but fatigue quickly.</p>
+    <p>When you run easily, almost only slow fibres work. When you speed up, the body recruits fast-twitch fibres and lactate accumulates faster than it can be cleared <button class="xref" onclick="goLesson(3)">Lesson 4: Lactate</button>. Running becomes hard not because you're weak, but because more and more work falls on the fast-twitch fibres.</p>
+    <p>Speed is built through slow training. <strong>80% of your sessions should be easy</strong> — easy enough to hold a conversation. That's not laziness; it's a principle confirmed by sports science.</p>
+  </div>
+
+  <div class="callout callout-key">
+    <span class="callout-label">The key point</span>
+    <strong>Talk Test:</strong> if you can chat in full sentences while running, your pace is right. If only short replies — you're going too fast.
+  </div>
+
+  <div class="demo">
+    <div class="demo-title">Interactive demo — Muscle fibres</div>
+    <p style="font-size:.88rem;color:var(--muted);margin-bottom:1.25rem">Move the slider and watch how muscle fibre recruitment and energy source change.</p>
+
+    <div class="slider-control">
+      <div class="slider-label">
+        <span>Running pace (effort)</span>
+        <strong id="s1-label">Easy run</strong>
+      </div>
+      <input type="range" id="s1" min="1" max="5" value="1" step="1">
+      <div style="display:flex;justify-content:space-between;font-size:.65rem;color:var(--light);margin-top:3px">
+        <span>Easy</span><span>Moderate</span><span>Hard</span><span>Very hard</span><span>Sprint</span>
+      </div>
+    </div>
+
+    <div class="figure-wrap">
+      <div class="figure-svg-col">
+        <svg viewBox="0 0 100 200" style="width:100%;height:auto">
+          <!-- Simple leg with muscle groups -->
+          <rect x="30" y="10" width="40" height="80" rx="12" fill="#f1f5f9" stroke="#e5e7eb" stroke-width="1.5" id="quad-fill"/>
+          <text x="50" y="40" text-anchor="middle" font-size="7" fill="#9ca3af" font-family="Inter,sans-serif">Quadriceps</text>
+          <text x="50" y="52" text-anchor="middle" font-size="6" fill="#9ca3af" font-family="Inter,sans-serif">(thigh)</text>
+          <rect x="33" y="98" width="34" height="70" rx="10" fill="#f1f5f9" stroke="#e5e7eb" stroke-width="1.5" id="calf-fill"/>
+          <text x="50" y="128" text-anchor="middle" font-size="7" fill="#9ca3af" font-family="Inter,sans-serif">Calf</text>
+          <circle cx="50" cy="93" r="9" fill="#f1f5f9" stroke="#e5e7eb" stroke-width="1.5"/>
+          <text x="50" y="96" text-anchor="middle" font-size="6" fill="#9ca3af" font-family="Inter,sans-serif">knee</text>
+          <!-- fiber type bars -->
+          <text x="10" y="175" text-anchor="middle" font-size="5.5" fill="#9ca3af" font-family="Inter,sans-serif">Type I</text>
+          <rect x="2" y="178" width="16" height="8" rx="2" fill="#e5e7eb"/>
+          <rect x="2" y="178" width="16" height="8" rx="2" fill="var(--z2)" id="fib1-bar"/>
+          <text x="50" y="175" text-anchor="middle" font-size="5.5" fill="#9ca3af" font-family="Inter,sans-serif">Type IIa</text>
+          <rect x="40" y="178" width="20" height="8" rx="2" fill="#e5e7eb"/>
+          <rect x="40" y="178" width="0" height="8" rx="2" fill="var(--z3)" id="fib2a-bar" style="transition:width .5s"/>
+          <text x="88" y="175" text-anchor="middle" font-size="5.5" fill="#9ca3af" font-family="Inter,sans-serif">Type IIx</text>
+          <rect x="80" y="178" width="16" height="8" rx="2" fill="#e5e7eb"/>
+          <rect x="80" y="178" width="0" height="8" rx="2" fill="var(--z4)" id="fib2x-bar" style="transition:width .5s"/>
+        </svg>
+      </div>
+      <div class="figure-info">
+        <div class="metric-row">
+          <div class="metric-card">
+            <div class="mv" id="s1-fib1" style="color:var(--z2)">100%</div>
+            <div class="ml">Type I (%)</div>
+          </div>
+          <div class="metric-card">
+            <div class="mv" id="s1-fib2" style="color:var(--z3)">0%</div>
+            <div class="ml">Type II (%)</div>
+          </div>
+          <div class="metric-card">
+            <div class="mv" id="s1-fuel" style="color:var(--muted)">Fat</div>
+            <div class="ml">Main fuel</div>
+          </div>
+        </div>
+        <div style="margin-top:1rem;padding:.85rem 1rem;border-radius:8px;border:1px solid var(--border);background:var(--bg)">
+          <p id="s1-desc" style="font-size:.88rem;color:var(--muted);line-height:1.7"></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="callout callout-myth">
+    <span class="callout-label">Common myth</span>
+    "No pain, no gain." Not true. Easy running builds your capillary network, trains your muscles to burn fat, and strengthens tendons. It's the foundation on which all speed is built.
+  </div>
+
+  <div class="callout callout-tip">
+    <span class="callout-label">For beginners</span>
+    If continuous running is still difficult, use the <strong>run-walk method</strong>: alternate 1–2 minutes of running with 1 minute of walking. This lets you move for longer, reduces tendon stress, and gradually builds endurance. Many successful runners started exactly this way.
+  </div>
+
+  <div class="quiz" data-correct="1">
+    <div class="quiz-q">What share of training should be easy, conversational runs?</div>
+    <div class="quiz-opts">
+      <button class="quiz-opt">About 20%</button>
+      <button class="quiz-opt">About 80%</button>
+      <button class="quiz-opt">About 50%</button>
+    </div>
+    <div class="quiz-feedback">Yes — about 80% of training should be easy. This builds your aerobic base and allows the body to recover between harder sessions.</div>
+  </div>
+
+  <div class="step-nav">
+    <span class="step-counter">1 / 20</span>
+    <button class="btn-step btn-next" onclick="goLesson(1)">Heart &amp; pulse →</button>
+  </div>
+</article>
+
+<!-- ══════════════════════════════════════════
+     LESSON 2 — HEART & PULSE
+     ══════════════════════════════════════════ -->
+<article class="lesson" id="lesson-1">
+  <div class="lesson-header">
+    <div class="lesson-num">Lesson 2 of 20</div>
+    <h2 class="lesson-title">Heart, pulse and training zones</h2>
+    <p class="lesson-intro">Pulse rate is the simplest indicator of training intensity. But how do you interpret it correctly?</p>
+  </div>
+  <div class="takeaway"><div><strong>Key idea:</strong> Training zones help you run right. 80% of running should be Z1–Z2. Avoid the so-called grey Z3 zone: it's neither easy enough for adaptation nor hard enough for progress.</div></div>
+
+  <div class="prose">
+    <p>Your heart is a pump. Every time a muscle needs more oxygen, it beats faster. <strong>Maximum heart rate (MaxHR)</strong> is the highest rate your heart can reach. It's most accurately measured in a lab, but there's a simple approximation: <strong>220 − age</strong>.</p>
+    <p>Training zones are defined by percentages of MaxHR. The two most important ones: <strong>Zone 2</strong> (60–70% MaxHR) — easy, conversational pace where aerobic adaptation happens; and <strong>Zone 4</strong> (85–95% MaxHR) — the lactate threshold <button class="xref" onclick="goLesson(3)">Lesson 4: Lactate</button>, where running becomes truly hard.</p>
+    <p>A common beginner mistake is spending most training in <strong>Zone 3</strong> (70–85%): it's too hard for easy adaptation and too easy for a meaningful training stimulus. This is known as the "grey zone trap".</p>
+  </div>
+
+  <div class="callout callout-key">
+    <span class="callout-label">How to calculate</span>
+    If you're 35: MaxHR ≈ 220 − 35 = <strong>185 BPM</strong>. Zone 2 = 111–130 BPM. Zone 4 = 157–176 BPM. <strong>Important:</strong> the formula has a ±10–12 BPM margin of error and can be significantly off for some people. If your monitor shows Z2 but running feels hard, trust how you feel, not the numbers.
+  </div>
+
+  <div class="demo">
+    <div class="demo-title">Interactive demo — Training zones</div>
+
+    <div class="slider-control">
+      <div class="slider-label"><span>Your age</span><strong id="s2-age">30 years</strong></div>
+      <input type="range" id="s2-age-sl" min="15" max="70" value="30" step="1">
+    </div>
+    <div class="slider-control">
+      <div class="slider-label"><span>Running intensity</span><strong id="s2-zone-label" style="color:var(--z2)">Zone 2 — Easy</strong></div>
+      <input type="range" id="s2-int" min="50" max="100" value="65" step="1">
+      <div style="display:flex;justify-content:space-between;font-size:.65rem;color:var(--light);margin-top:3px">
+        <span>Rest</span><span>Z1</span><span>Z2</span><span>Z3</span><span>Z4</span><span>Z5</span>
+      </div>
+    </div>
+
+    <div class="zone-bar" style="height:16px;border-radius:8px">
+      <div class="zone-seg" style="flex:1;background:#e0e7ef" title="Z1"></div>
+      <div class="zone-seg" style="flex:1;background:var(--z2)" title="Z2"></div>
+      <div class="zone-seg" style="flex:1;background:var(--z3)" title="Z3"></div>
+      <div class="zone-seg" style="flex:1;background:var(--z4)" title="Z4"></div>
+      <div class="zone-seg" style="flex:1;background:var(--z5)" title="Z5"></div>
+      <div class="zone-marker" id="s2-marker"></div>
+    </div>
+    <div style="display:flex;justify-content:space-between;font-size:.65rem;color:var(--light);margin-top:3px;padding:0 2px">
+      <span>50%</span><span>60%</span><span>70%</span><span>80%</span><span>90%</span><span>100%</span>
+    </div>
+
+    <div class="metric-row">
+      <div class="metric-card"><div class="mv" id="s2-maxhr">190</div><div class="ml">MaxHR (BPM)</div></div>
+      <div class="metric-card"><div class="mv" id="s2-curhr" style="color:var(--z2)">124</div><div class="ml">Current HR</div></div>
+      <div class="metric-card"><div class="mv" id="s2-pct">65%</div><div class="ml">% MaxHR</div></div>
+    </div>
+
+    <div style="margin-top:1rem;padding:.85rem 1rem;border-radius:8px;border:1px solid var(--border);background:var(--bg)">
+      <p id="s2-desc" style="font-size:.88rem;color:var(--muted);line-height:1.7"></p>
+    </div>
+  </div>
+
+  <div class="callout callout-tip">
+    <span class="callout-label">Practical tip</span>
+    If you don't have a heart-rate monitor, use the talk test. Easy (Z2): you can talk freely. Moderate (Z3): short sentences only. Hard (Z4): single-word answers. Very hard (Z5): can't speak at all.
+  </div>
+
+  <div class="quiz" data-correct="2">
+    <div class="quiz-q">What is the "grey zone trap"?</div>
+    <div class="quiz-opts">
+      <button class="quiz-opt">Running too slowly to get any benefit</button>
+      <button class="quiz-opt">Running only at night</button>
+      <button class="quiz-opt">Spending all training in Zone 3 — too hard for easy adaptation, too easy for meaningful speed gains</button>
+    </div>
+    <div class="quiz-feedback">Correct. Zone 3 (70–85% MaxHR) is a "neither here nor there" zone — too hard to be truly easy, and too easy to provide a meaningful training stimulus. Better to run either truly easy (Z2) or truly hard (Z4).</div>
+  </div>
+
+  <div class="step-nav">
+    <button class="btn-step btn-prev" onclick="goLesson(0)">← Back</button>
+    <span class="step-counter">2 / 20</span>
+    <button class="btn-step btn-next" onclick="goLesson(2)">Energy &amp; fuel →</button>
+  </div>
+</article>
+
+<!-- ══════════════════════════════════════════
+     LESSON 3 — ENERGY & FUEL
+     ══════════════════════════════════════════ -->
+<article class="lesson" id="lesson-2">
+  <div class="lesson-header">
+    <div class="lesson-num">Lesson 3 of 20</div>
+    <h2 class="lesson-title">How does the body fuel running?</h2>
+    <p class="lesson-intro">Your body has two main fuel sources. Which one is used depends on your pace — and this determines everything from weight loss to marathon finish times.</p>
+  </div>
+  <div class="takeaway"><div><strong>Key idea:</strong> Fat is a nearly inexhaustible source, but slow. Glycogen is fast, but limited. Slow training teaches the body to conserve glycogen.</div></div>
+
+  <div class="prose">
+    <p><strong>Fat</strong> is a nearly inexhaustible energy source. Even a lean 70 kg person carries ~80,000–100,000 kcal in body fat. But there's an important limit: even a well-trained athlete's body can burn fat no faster than ~0.5–1 g per minute. At high intensity, fat delivers energy too slowly — glycogen becomes unavoidable.</p>
+    <p><strong>Glycogen</strong> — sugar stored in muscles and the liver — is more quickly available, but limited: roughly 1,500–2,000 kcal (enough for ~90 minutes of intense running). When it runs out, the body experiences what marathon runners call <strong>the wall</strong> — a sudden onset of fatigue around the 30–35 km mark.</p>
+    <p>By training slowly, you teach the body to <strong>burn fat more efficiently</strong> and conserve glycogen for longer distances. This is one of the most important physiological adaptations — more in <button class="xref" onclick="goLesson(7)">Lesson 8: How to improve</button>.</p>
+  </div>
+
+  <div class="demo">
+    <div class="demo-title">Interactive demo — Fuel tank depletion</div>
+    <p style="font-size:.88rem;color:var(--muted);margin-bottom:1.25rem">Move the sliders to see how different paces deplete glycogen stores.</p>
+
+    <div class="slider-control">
+      <div class="slider-label"><span>Running intensity</span><strong id="s3-int-label">Easy (Z2)</strong></div>
+      <input type="range" id="s3-int" min="1" max="5" value="2" step="1">
+    </div>
+    <div class="slider-control">
+      <div class="slider-label"><span>Run duration</span><strong id="s3-dur-label">45 min</strong></div>
+      <input type="range" id="s3-dur" min="15" max="180" value="45" step="5">
+    </div>
+
+    <div style="margin:1rem 0">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:.3rem">
+        <span style="font-size:.78rem;font-weight:600;color:var(--muted)">GLYCOGEN</span>
+        <span id="s3-gly-pct" style="font-size:.82rem;font-weight:600">100%</span>
+      </div>
+      <div class="fuel-tank">
+        <div class="fuel-fill" id="s3-gly-fill" style="width:100%;background:#3b82f6"></div>
+        <div class="fuel-label" id="s3-gly-label">Full</div>
+      </div>
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-top:.85rem;margin-bottom:.3rem">
+        <span style="font-size:.78rem;font-weight:600;color:var(--muted)">FAT (inexhaustible)</span>
+        <span style="font-size:.82rem;font-weight:600;color:var(--muted)">∞</span>
+      </div>
+      <div class="fuel-tank" style="background:#fef3c7">
+        <div class="fuel-fill" id="s3-fat-fill" style="width:100%;background:#f59e0b"></div>
+        <div class="fuel-label" style="color:#92400e" id="s3-fat-label">Active</div>
+      </div>
+    </div>
+
+    <div class="metric-row">
+      <div class="metric-card"><div class="mv" id="s3-fatpct" style="color:#f59e0b">60%</div><div class="ml">Fat (% of fuel)</div></div>
+      <div class="metric-card"><div class="mv" id="s3-carpct" style="color:#3b82f6">40%</div><div class="ml">Glycogen (% of fuel)</div></div>
+      <div class="metric-card"><div class="mv" id="s3-wall">—</div><div class="ml">Wall after (min)</div></div>
+    </div>
+
+    <div style="margin-top:1rem;padding:.85rem 1rem;border-radius:8px;border:1px solid var(--border);background:var(--bg)">
+      <p id="s3-desc" style="font-size:.88rem;color:var(--muted);line-height:1.7"></p>
+    </div>
+  </div>
+
+  <div class="callout callout-warn">
+    <span class="callout-label">The marathon wall</span>
+    Around the 32–35 km mark, many marathon runners hit a sudden slowdown. The cause: depleted glycogen. The fix: train slowly for longer (building fat efficiency) and take energy gels from the 45-minute mark.
+  </div>
+
+  <div class="callout callout-tip">
+    <span class="callout-label">Nutrition around training</span>
+    <strong>Before (1–3 hrs):</strong> an easily digestible carbohydrate source (banana, oats, bread). Avoid heavy, fatty foods. <strong>After a longer or hard session (within ~1 hr):</strong> carbohydrates to replenish glycogen and protein for muscle recovery (e.g. cottage cheese with fruit, yogurt, a sandwich). After an easy short run, no special nutrition is needed — a normal meal is fine.
+  </div>
+
+  <div class="quiz" data-correct="0">
+    <div class="quiz-q">Why does the marathon wall occur?</div>
+    <div class="quiz-opts">
+      <button class="quiz-opt">Glycogen stores run out</button>
+      <button class="quiz-opt">Fat runs out</button>
+      <button class="quiz-opt">Too much lactate in the blood</button>
+    </div>
+    <div class="quiz-feedback">Yes. Glycogen stores are limited (~90 min of intense running). When they run out, the body is forced to rely on slow fat oxidation — causing the sudden slowdown. The fix: train fat burning and consume carbohydrates during the run.</div>
+  </div>
+
+  <div class="step-nav">
+    <button class="btn-step btn-prev" onclick="goLesson(1)">← Back</button>
+    <span class="step-counter">3 / 20</span>
+    <button class="btn-step btn-next" onclick="goLesson(3)">Lactate →</button>
+  </div>
+</article>
+
+<!-- ══════════════════════════════════════════
+     LESSON 4 — LACTATE
+     ══════════════════════════════════════════ -->
+<article class="lesson" id="lesson-3">
+  <div class="lesson-header">
+    <div class="lesson-num">Lesson 4 of 20</div>
+    <h2 class="lesson-title">Lactate — not the enemy, but a signal</h2>
+    <p class="lesson-intro">Lactate has a bad reputation. "Lactic acid will burn your muscles!" In reality, that's not quite true. Here's what actually happens.</p>
+  </div>
+  <div class="takeaway"><div><strong>Key idea:</strong> Lactate is not the enemy — it's a fuel. The burning sensation is caused by hydrogen ions, not lactate. The lactate threshold rises with training.</div></div>
+
+  <div class="prose">
+    <p>When a muscle is short of oxygen, it breaks down glucose and produces lactate. This is normal and happens constantly. <strong>The problem lies not in the lactate itself, but in the hydrogen ions (H⁺) produced alongside it</strong>, which acidify the muscle environment. That's what causes the burning sensation and fatigue.</p>
+    <p>Lactate is itself an energy source — the heart burns it, and other muscles take it up and use it. It only accumulates when it's produced faster than it can be cleared.</p>
+    <p><strong>The lactate threshold</strong> — the intensity (see <button class="xref" onclick="goLesson(1)">Lesson 2: Zones</button>) beyond which lactate begins to accumulate exponentially. An experienced runner reaches this threshold much later (at a higher pace) than an untrained one. The goal of training is to push this threshold as high as possible.</p>
+  </div>
+
+  <div class="demo">
+    <div class="demo-title">Interactive demo — Lactate curve</div>
+    <p style="font-size:.88rem;color:var(--muted);margin-bottom:1.25rem">Move the sliders and watch how lactate rises with intensity, and how fitness level shifts the curve.</p>
+
+    <div class="slider-control">
+      <div class="slider-label"><span>Running intensity (% MaxHR)</span><strong id="s4-pct">65%</strong></div>
+      <input type="range" id="s4-int" min="50" max="100" value="65" step="1">
+    </div>
+    <div class="slider-control" style="margin-top:.75rem">
+      <div class="slider-label"><span>Fitness level</span><strong id="s4-fit-label">Intermediate</strong></div>
+      <input type="range" id="s4-fit" min="1" max="3" value="2" step="1">
+      <div style="display:flex;justify-content:space-between;font-size:.65rem;color:var(--light);margin-top:3px">
+        <span>Beginner</span><span>Intermediate</span><span>Trained</span>
+      </div>
+    </div>
+
+    <canvas id="lactate-canvas" height="160"></canvas>
+
+    <div class="metric-row" style="margin-top:.75rem">
+      <div class="metric-card"><div class="mv" id="s4-lac" style="color:#ef4444">1.8</div><div class="ml">Lactate (mmol/L)</div></div>
+      <div class="metric-card"><div class="mv" id="s4-thr-label" style="color:var(--z2)">Low</div><div class="ml">Lactate level</div></div>
+      <div class="metric-card"><div class="mv" id="s4-thr-pct">75%</div><div class="ml">Threshold HR (% MaxHR)</div></div>
+    </div>
+    <div style="margin-top:.75rem;padding:.7rem 1rem;border-radius:8px;background:#fefce8;border:1px solid #fde68a;font-size:.82rem;color:#713f12;line-height:1.65">
+      <strong>What does "threshold HR" mean?</strong> It's the point — as a percentage of your maximum heart rate — beyond which lactate accumulates faster than it's cleared. For example, if your MaxHR is 190 and your threshold is <span id="s4-thr-explain">75%</span>, that means around <span id="s4-thr-bpm">~143 BPM</span> running will become noticeably harder. <strong>This threshold rises with training</strong> — so as you move the upper slider, you'll see the curve shift to the right.
+    </div>
+
+    <div style="margin-top:1rem;padding:.85rem 1rem;border-radius:8px;border:1px solid var(--border);background:var(--bg)">
+      <p id="s4-desc" style="font-size:.88rem;color:var(--muted);line-height:1.7"></p>
+    </div>
+  </div>
+
+  <div class="callout callout-myth">
+    <span class="callout-label">Common myth</span>
+    "Next-day muscle soreness is caused by lactic acid." Not true. Delayed onset muscle soreness (DOMS) comes from micro-tears in the muscle fibres — not from lactate. Lactate clears from the blood within a few hours of finishing a run.
+  </div>
+
+  <div class="quiz" data-correct="1">
+    <div class="quiz-q">What actually causes the burning sensation in your muscles?</div>
+    <div class="quiz-opts">
+      <button class="quiz-opt">Lactate itself</button>
+      <button class="quiz-opt">Hydrogen ions (H⁺) that acidify the muscle environment</button>
+      <button class="quiz-opt">Lactic acid that builds up the next day</button>
+    </div>
+    <div class="quiz-feedback">Exactly. Lactate is actually a useful fuel. The burning is caused by the hydrogen ions produced alongside it, which lower muscle pH. Next-day soreness (DOMS) is micro-tears — not lactate.</div>
+  </div>
+
+  <div class="step-nav">
+    <button class="btn-step btn-prev" onclick="goLesson(2)">← Back</button>
+    <span class="step-counter">4 / 20</span>
+    <button class="btn-step btn-next" onclick="goLesson(4)">Breathing →</button>
+  </div>
+</article>
+
+<!-- ══════════════════════════════════════════
+     LESSON 5 — BREATHING
+     ══════════════════════════════════════════ -->
+<article class="lesson" id="lesson-4">
+  <div class="lesson-header">
+    <div class="lesson-num">Lesson 5 of 20</div>
+    <h2 class="lesson-title">Breathing while running: nose or mouth?</h2>
+    <p class="lesson-intro">Breathing is the primary way to supply muscles with oxygen. How you breathe matters more than most people think.</p>
+  </div>
+  <div class="takeaway"><div><strong>Key idea:</strong> Easy pace — breathe through your nose. Hard pace — breathe through your mouth. Breathing is driven by CO₂, not by a lack of oxygen.</div></div>
+
+  <div class="prose">
+    <p>Breathing is not controlled by a lack of oxygen. It's controlled by <strong>CO₂ levels in the blood</strong>. When CO₂ builds up, the brain signals you to inhale. That's why, once you learn to tolerate slightly more CO₂, you breathe more calmly and efficiently.</p>
+    <p><strong>Nasal breathing</strong> — slower, but higher quality. The nose warms and humidifies the air, produces nitric oxide (which dilates the pulmonary blood vessels), and encourages diaphragmatic breathing. For easy and moderate pace — it's the best option.</p>
+    <p>When intensity exceeds ~70% MaxHR, nasal breathing can no longer meet the demand for air. At that point <strong>the mouth becomes essential</strong>, and that's completely normal. Don't try to breathe through your nose during interval sessions — it hinders rather than helps.</p>
+    <p>It's important to learn to breathe with the <strong>diaphragm</strong> (belly breathing), not the chest. This draws more air with each breath.</p>
+  </div>
+
+  <div class="lesson-illustration">
+    <div class="illustration-title">Breathing types animation</div>
+    <canvas id="breathCanvas" style="width:100%;display:block;border-radius:8px"></canvas>
+  </div>
+
+  <div class="demo">
+    <div class="demo-title">Interactive demo — Breathing mechanics</div>
+
+    <div class="slider-control">
+      <div class="slider-label"><span>Running intensity</span><strong id="s5-label">Easy run</strong></div>
+      <input type="range" id="s5-int" min="1" max="5" value="1" step="1">
+    </div>
+
+    <div style="display:flex;gap:2rem;align-items:center;flex-wrap:wrap;margin-top:1rem">
+      <div style="text-align:center">
+        <div style="font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.8px;color:var(--muted);margin-bottom:.5rem">Lung volume</div>
+        <svg viewBox="0 0 120 100" style="width:140px;height:auto">
+          <ellipse cx="40" cy="55" rx="22" ry="20" fill="#dbeafe" stroke="#93c5fd" stroke-width="1.5" id="lung-l"/>
+          <ellipse cx="80" cy="55" rx="22" ry="20" fill="#dbeafe" stroke="#93c5fd" stroke-width="1.5" id="lung-r"/>
+          <path d="M60 20 L60 45" stroke="#60a5fa" stroke-width="2.5" stroke-linecap="round"/>
+          <path d="M60 42 Q48 48 40 52" stroke="#60a5fa" stroke-width="1.8" fill="none" stroke-linecap="round"/>
+          <path d="M60 42 Q72 48 80 52" stroke="#60a5fa" stroke-width="1.8" fill="none" stroke-linecap="round"/>
+          <text x="60" y="95" text-anchor="middle" font-size="7" fill="#6b7280" font-family="Inter,sans-serif" id="lung-vol-label">~0.5 L / breath</text>
+        </svg>
+      </div>
+      <div style="flex:1;min-width:180px">
+        <div class="metric-row" style="margin-top:0">
+          <div class="metric-card"><div class="mv" id="s5-rr" style="color:#3b82f6">15</div><div class="ml">Breaths/min</div></div>
+          <div class="metric-card"><div class="mv" id="s5-tv">0.5 L</div><div class="ml">Air volume</div></div>
+          <div class="metric-card"><div class="mv" id="s5-route" style="color:var(--z2)">Nose</div><div class="ml">Route</div></div>
+        </div>
+        <div style="margin-top:.85rem;padding:.75rem;border-radius:8px;background:var(--bg);border:1px solid var(--border)">
+          <p id="s5-desc" style="font-size:.88rem;color:var(--muted);line-height:1.7"></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="callout callout-tip">
+    <span class="callout-label">Practical tip</span>
+    Learn to breathe with your belly: lie down and place a hand on your stomach. When you inhale, your belly should rise — not your chest. Practise this at rest and it will become automatic while running.
+  </div>
+
+  <div class="quiz" data-correct="2">
+    <div class="quiz-q">What actually controls breathing while running?</div>
+    <div class="quiz-opts">
+      <button class="quiz-opt">A lack of oxygen in the blood</button>
+      <button class="quiz-opt">Muscle fatigue</button>
+      <button class="quiz-opt">A rise in CO₂ levels in the blood</button>
+    </div>
+    <div class="quiz-feedback">Correct. Breathing is triggered not by a lack of oxygen, but by the build-up of carbon dioxide (CO₂). That's why training CO₂ tolerance lets you breathe more calmly and efficiently.</div>
+  </div>
+
+  <div class="step-nav">
+    <button class="btn-step btn-prev" onclick="goLesson(3)">← Back</button>
+    <span class="step-counter">5 / 20</span>
+    <button class="btn-step btn-next" onclick="goLesson(5)">Heat &amp; hydration →</button>
+  </div>
+</article>
+
+<!-- ══════════════════════════════════════════
+     LESSON 6 — HEAT & HYDRATION
+     ══════════════════════════════════════════ -->
+<article class="lesson" id="lesson-5">
+  <div class="lesson-header">
+    <div class="lesson-num">Lesson 6 of 20</div>
+    <h2 class="lesson-title">Heat, sweating and hydration</h2>
+    <p class="lesson-intro">Running slows in summer. That's a normal physiological response. Here's why — and what to do about it.</p>
+  </div>
+  <div class="takeaway"><div><strong>Key idea:</strong> Above 25°C, slow down and drink every 15 minutes. Even 2% dehydration significantly reduces performance.</div></div>
+
+  <div class="prose">
+    <p>Running generates a lot of heat — muscles are only about 25% efficient, and the remaining 75% becomes heat. It must be removed to keep body temperature from straying too far from 37°C.</p>
+    <p>The body does this mainly through <strong>sweating</strong>. But to do so, blood is redirected to the skin — the same blood that muscles would otherwise need. On a hot day, the heart must serve two demands at once, so heart rate rises even at the same pace — this is known as cardiac drift.</p>
+    <p>That's why, at the same pace, heart rate on a hot day can be 10–20 BPM higher than on a cool one. It means that on a hot day you need to <strong>slow down</strong> to stay in the same training zone.</p>
+    <p>Even <strong>2% dehydration</strong> (1.4 kg for a 70 kg person) significantly reduces aerobic capacity. Drink before you run; while running, don't wait until you feel thirsty.</p>
+  </div>
+
+  <div class="demo">
+    <div class="demo-title">Interactive demo — Heat effects</div>
+
+    <div class="slider-control">
+      <div class="slider-label"><span>Ambient temperature</span><strong id="s6-temp-label">15°C — Cool</strong></div>
+      <input type="range" id="s6-temp" min="5" max="40" value="15" step="1">
+    </div>
+    <div class="slider-control">
+      <div class="slider-label"><span>Run duration</span><strong id="s6-dur-label">30 min</strong></div>
+      <input type="range" id="s6-dur" min="10" max="120" value="30" step="5">
+    </div>
+
+    <div class="metric-row">
+      <div class="metric-card"><div class="mv" id="s6-core" style="color:#3b82f6">38.2°C</div><div class="ml">Body temp.</div></div>
+      <div class="metric-card"><div class="mv" id="s6-sweat">0.6 L</div><div class="ml">Sweat/hr</div></div>
+      <div class="metric-card"><div class="mv" id="s6-pace-hit" style="color:var(--z2)">–0%</div><div class="ml">Pace penalty</div></div>
+      <div class="metric-card"><div class="mv" id="s6-drink">150 ml</div><div class="ml">Recommended per 15 min</div></div>
+    </div>
+
+    <div style="margin-top:1rem;padding:.85rem 1rem;border-radius:8px;border:1px solid var(--border);background:var(--bg)">
+      <p id="s6-desc" style="font-size:.88rem;color:var(--muted);line-height:1.7"></p>
+    </div>
+  </div>
+
+  <div class="callout callout-key">
+    <span class="callout-label">Practical rule</span>
+    Above 25°C, slow down by roughly 6–8% for every 5°C above 15°C. On a 30°C day, run about 10–15% slower than in cool conditions. Drink ~150–200 ml every 15 minutes, even if you don't feel thirsty.
+  </div>
+
+  <div class="quiz" data-correct="0">
+    <div class="quiz-q">Why do you need to slow down on a hot day?</div>
+    <div class="quiz-opts">
+      <button class="quiz-opt">Blood is redirected to the skin for cooling, so heart rate rises at the same pace</button>
+      <button class="quiz-opt">Muscles weaken in the heat</button>
+      <button class="quiz-opt">There is less oxygen in hot air</button>
+    </div>
+    <div class="quiz-feedback">Yes. The heart must supply both muscles and skin (for cooling), so the same pace requires a higher heart rate. To stay in the same training zone, you need to slow down.</div>
+  </div>
+
+  <div class="step-nav">
+    <button class="btn-step btn-prev" onclick="goLesson(4)">← Back</button>
+    <span class="step-counter">6 / 20</span>
+    <button class="btn-step btn-next" onclick="goLesson(6)">Running technique →</button>
+  </div>
+</article>
+
+<!-- ══════════════════════════════════════════
+     LESSON 7 — RUNNING TECHNIQUE
+     ══════════════════════════════════════════ -->
+<article class="lesson" id="lesson-6">
+  <div class="lesson-header">
+    <div class="lesson-num">Lesson 7 of 20</div>
+    <h2 class="lesson-title">Running technique and injury prevention</h2>
+    <p class="lesson-intro">Injuries are the main reason beginners give up running. Most of them can be prevented by changing a few simple things.</p>
+  </div>
+  <div class="takeaway"><div><strong>Key idea:</strong> Increase your cadence to 170–180 SPM. It's one of the simplest ways to reduce knee load and injury risk.</div></div>
+
+  <div class="prose">
+    <p>Running technique doesn't need to be perfect — it needs to be <strong>safe and efficient</strong>. There's no single correct running style: elite runners look very different from each other. But there are a few common mistakes that cause most beginner injuries.</p>
+    <p><strong>Overstriding</strong> — the most common mistake. It happens when the foot lands far in front of the body's centre of mass and acts as a brake. Every such stride sends impact force straight to the knee joint. The fix: shorten your stride and increase your cadence (steps per minute) to 170–180 SPM.</p>
+    <p><strong>Arm swing crossing the midline</strong> — when your arms swing inward rather than straight forward and back, the body compensates by rotating. This wastes energy and loads the lower back muscles. Keep your elbows at ~90°, wrists relaxed — arm swing should go straight forward.</p>
+    <p><strong>Heavy heel strike</strong> — not everyone condemns a heel landing, but if you can clearly hear the impact as your foot lands, your stride is probably too long. Try to land your foot under your body, not in front of it.</p>
+    <p><strong>Trunk upright, lean slight — from the ankles</strong>, ~5–10° forward — lets gravity help you move forward. Those who stand completely upright often brake themselves with every step.</p>
+  </div>
+
+  <div class="lesson-illustration">
+    <div class="illustration-title">Stride technique — animated</div>
+    <canvas id="runCanvas" style="width:100%;display:block;border-radius:8px"></canvas>
+  </div>
+
+  <div class="callout callout-warn">
+    <span class="callout-label">Most common beginner injuries</span>
+    <strong>IT band syndrome (ITBS)</strong> — pain on the outside of the knee, often from increasing mileage too quickly. <strong>Shin splints</strong> — pain along the shinbone, often from hard surfaces and rapid volume increases. <strong>Plantar fasciitis</strong> — heel pain, often from weak foot muscles and poor shoes. For all three: reduce volume, strengthen weak areas, switch to a softer surface. Strength training helps prevent many of these injuries — see <button class="xref" onclick="goLesson(9)">Lesson 10: Strength training</button>.
+  </div>
+
+  <div class="demo">
+    <div class="demo-title">Interactive demo — Cadence and impact force</div>
+    <p style="font-size:.88rem;color:var(--muted);margin-bottom:1.25rem">Move the slider and watch how cadence affects stride length and impact force on the knee joint.</p>
+
+    <div class="slider-control">
+      <div class="slider-label"><span>Cadence (steps per minute)</span><strong id="s7-cad-label">170 SPM</strong></div>
+      <input type="range" id="s7-cad" min="150" max="190" value="170" step="1">
+      <div style="display:flex;justify-content:space-between;font-size:.65rem;color:var(--light);margin-top:3px">
+        <span>Too low</span><span>Optimal</span><span>Very high</span>
+      </div>
+    </div>
+
+    <div class="metric-row">
+      <div class="metric-card">
+        <div class="mv" id="s7-force" style="color:#ef4444">2.5×</div>
+        <div class="ml">Impact force (× body weight)</div>
+      </div>
+      <div class="metric-card">
+        <div class="mv" id="s7-contact">240 ms</div>
+        <div class="ml">Contact time</div>
+      </div>
+      <div class="metric-card">
+        <div class="mv" id="s7-rating" style="color:#f59e0b">Moderate</div>
+        <div class="ml">Risk level</div>
+      </div>
+    </div>
+
+    <div style="margin-top:1rem;padding:.85rem 1rem;border-radius:8px;border:1px solid var(--border);background:var(--bg)">
+      <p id="s7-desc" style="font-size:.88rem;color:var(--muted);line-height:1.7"></p>
+    </div>
+  </div>
+
+  <div class="callout callout-tip">
+    <span class="callout-label">Practical tip</span>
+    To increase cadence: play music at 170–180 BPM and try to match your footfall to the beat. Or run with a metronome app. Increase by 5 SPM per week — a sudden change can cause shin pain.
+  </div>
+
+  <div class="callout callout-key">
+    <span class="callout-label">Warm-up and cool-down</span>
+    <strong>Before running:</strong> 5–10 min easy walking or slow jogging + dynamic exercises (leg swings, squats). This prepares muscles and joints and reduces injury risk. <strong>After running:</strong> 5 min slow walking to let your heart rate drop gradually. Save static stretching for later — it's unnecessary before a run and can even be counterproductive.
+  </div>
+
+  <div class="callout callout-tip">
+    <span class="callout-label">About shoes</span>
+    For beginners, the most important thing is comfortable, correctly sized running shoes (leave ~1 cm of space at the toes). You don't need to buy the most expensive or carbon-plated shoes. It's best to visit a specialist running store where staff can help choose based on your foot shape and running style. Replace shoes approximately every 600–800 km.
+  </div>
+
+  <div class="quiz" data-correct="1">
+    <div class="quiz-q">What is the simplest way to reduce impact force on the knee?</div>
+    <div class="quiz-opts">
+      <button class="quiz-opt">Run with an upright trunk</button>
+      <button class="quiz-opt">Increase cadence and shorten stride</button>
+      <button class="quiz-opt">Run only on soft surfaces</button>
+    </div>
+    <div class="quiz-feedback">Correct. A higher cadence (170–180 SPM) with a shorter stride means your foot lands under your body, not in front of it — reducing braking force and knee load. Increase cadence gradually, ~5 SPM per week.</div>
+  </div>
+
+  <div class="step-nav">
+    <button class="btn-step btn-prev" onclick="goLesson(5)">← Back</button>
+    <span class="step-counter">7 / 20</span>
+    <button class="btn-step btn-next" onclick="goLesson(7)">How to improve? →</button>
+  </div>
+</article>
+
+<!-- ══════════════════════════════════════════
+     LESSON 8 — HOW TO IMPROVE
+     ══════════════════════════════════════════ -->
+<article class="lesson" id="lesson-7">
+  <div class="lesson-header">
+    <div class="lesson-num">Lesson 8 of 20</div>
+    <h2 class="lesson-title">How does a runner actually improve?</h2>
+    <p class="lesson-intro">Speed increases not through willpower, but through specific biological adaptations. These only happen when you train correctly.</p>
+  </div>
+
+  <div class="prose">
+    <p>Every time you run, you put your body under stress. Afterwards, as it recovers, the body becomes slightly stronger — this is called <strong>supercompensation</strong>. But only when the stress was appropriate and the rest sufficient.</p>
+    <p>Specific adaptations that make you faster:</p>
+    <p><strong>Heart:</strong> the volume of the left ventricle increases — with each beat the heart pumps more blood. After months of training, resting heart rate drops.</p>
+    <p><strong>Muscles:</strong> mitochondria (the cell's energy factories) multiply, the capillary network becomes denser, and muscles learn to use more oxygen per minute.</p>
+    <p><strong>Tendons and bones:</strong> strengthen more slowly than muscles — this is the most common cause of injury in beginners who increase volume too quickly.</p>
+    <p>The most important principle — the <strong>10% rule</strong>: don't increase weekly mileage by more than 10%. It's not an absolute rule: for some, especially beginners, 5% is safer. Muscles adapt in 2–3 weeks. Bones and tendons — in 3–6 months. If your body sends warning signals earlier, listen to it, not the calendar.</p>
+    <p><strong>Sleep and rest</strong> — not a luxury, but part of training. Adaptation happens not during the run, but during sleep, when the body repairs muscle fibres, produces growth hormone, and consolidates neuromotor skills. Fewer than 7 hours of sleep consistently slows progress and increases injury risk.</p>
+  </div>
+
+  <div class="callout callout-key">
+    <span class="callout-label">Beginner plan (summary)</span>
+    <strong>80% of sessions</strong> — easy (you can talk). <strong>15%</strong> — moderate (tempo). <strong>5%</strong> — intense (intervals). Increase mileage no faster than ~10% per week. After every hard session — an easy day or rest. Sleep 7–9 hrs.
+  </div>
+
+  <div class="summary-grid">
+    <div class="summary-card">
+      <span class="sc-num" style="color:var(--z2)">80%</span>
+      <h3>Easy sessions (Z2)</h3>
+      <p>Builds aerobic base, trains fat burning, doesn't raise injury risk.</p>
+    </div>
+    <div class="summary-card">
+      <span class="sc-num" style="color:var(--z3)">10%</span>
+      <h3>Tempo runs (Z3–Z4)</h3>
+      <p>Raises the lactate threshold. Hard but sustainable 20–40 min running.</p>
+    </div>
+    <div class="summary-card">
+      <span class="sc-num" style="color:#8b5cf6">7–9 hrs.</span>
+      <h3>Sleep and rest</h3>
+      <p>Adaptation happens during sleep. Fewer than 7 hrs slows progress and raises injury risk.</p>
+    </div>
+    <div class="summary-card">
+      <span class="sc-num" style="color:var(--z4)">Every 3–4 wks.</span>
+      <h3>Recovery week</h3>
+      <p>Reduce volume by 30–40%. Adaptation happens during rest, not running.</p>
+    </div>
+    <div class="summary-card">
+      <span class="sc-num" style="color:#64748b">3–6 months</span>
+      <h3>Patience</h3>
+      <p>Tendons strengthen more slowly than muscles. Don't run too much too soon.</p>
+    </div>
+  </div>
+
+  <div class="callout callout-tip">
+    <span class="callout-label">One of the most important tips</span>
+    The best training session is the one you can repeat next week. Healthy, consistent running always beats heroic but injury-causing running.
+  </div>
+
+  <div class="quiz" data-correct="2">
+    <div class="quiz-q">When does physical adaptation (getting stronger) actually happen?</div>
+    <div class="quiz-opts">
+      <button class="quiz-opt">During the run itself</button>
+      <button class="quiz-opt">Immediately after finishing</button>
+      <button class="quiz-opt">During rest and sleep after training</button>
+    </div>
+    <div class="quiz-feedback">Yes. Training is only the stimulus — the actual strengthening (supercompensation) happens during recovery, especially sleep. That's why rest and 7–9 hrs of sleep are just as important a part of training as running itself.</div>
+  </div>
+
+  <div class="step-nav">
+    <button class="btn-step btn-prev" onclick="goLesson(6)">← Back</button>
+    <span class="step-counter">8 / 20</span>
+    <button class="btn-step btn-next" onclick="goLesson(8)">Methodologies →</button>
+  </div>
+
+  <div class="kbd-hint">Tip: use the <kbd>←</kbd> and <kbd>→</kbd> arrow keys to navigate lessons</div>
+</article>
+
+<!-- ══════════════════════════════════════════
+     LESSON 9 — METHODOLOGIES
+     ══════════════════════════════════════════ -->
+<article class="lesson" id="lesson-8">
+  <div class="lesson-header">
+    <div class="lesson-num">Lesson 9 of 20</div>
+    <h2 class="lesson-title">Training systems</h2>
+    <p class="lesson-intro">The world's best runners train very differently. What actually works — and what can you borrow from them?</p>
+  </div>
+  <div class="takeaway"><div><strong>Key idea:</strong> All systems share one trait: 70–80% of training is easy. The methodologies differ; the principle does not.</div></div>
+
+  <div class="prose">
+    <p>There is no single "correct" training system. But there are several well-researched systems used by elite runners, grounded in solid physiological logic. Each has its strengths, limitations, and the contexts where it works best.</p>
+    <p>It's important to understand: even the best training systems are <strong>principles, not recipes</strong>. A beginner doesn't need to copy Jakob Ingebrigtsen's training programme — but they can understand <em>why</em> it works and borrow the core logic.</p>
+  </div>
+
+  <!-- ── 1. NORWEGIAN ── -->
+  <div class="method-card norwegian">
+    <div class="method-name">Norwegian double-threshold system</div>
+    <div class="method-sub">Gjert Ingebrigtsen · Jakob Ingebrigtsen, Filip Ingebrigtsen, Gustav Iden</div>
+    <div class="method-badges">
+      <span class="method-badge">High volume</span>
+      <span class="method-badge">Not for beginners</span>
+      <span class="method-badge">5K–marathon</span>
+      <span class="method-badge">Coach supervision required</span>
+    </div>
+    <div class="method-body">
+      Principle: two threshold sessions <em>per day</em> — morning and evening — with easy running in between. Intensity is precisely controlled via lactate tests: each threshold session ends at ~2–2.5 mmol/L, never exceeding the threshold. High-intensity intervals (VO₂ Max) are barely used.
+      <br><br>
+      The logic is simple: enormous threshold volume → the threshold rises → you can run faster before lactate accumulates. The Norwegian method requires an excellent aerobic base and continuous lactate monitoring — without these, it doesn't work.
+    </div>
+    <div class="ibar-wrap">
+      <div class="ibar-title">Intensity distribution</div>
+      <div class="ibar">
+        <div class="ibar-seg" style="flex:30;background:var(--z1)"></div>
+        <div class="ibar-seg" style="flex:42;background:var(--z2)"></div>
+        <div class="ibar-seg" style="flex:3;background:var(--z3)"></div>
+        <div class="ibar-seg" style="flex:23;background:var(--z4)"></div>
+        <div class="ibar-seg" style="flex:2;background:var(--z5)"></div>
+      </div>
+      <div class="ibar-legend">
+        <span style="--c:var(--z1)"><span style="display:inline-block;width:8px;height:8px;border-radius:2px;background:var(--z1)"></span>Z1 30%</span>
+        <span><span style="display:inline-block;width:8px;height:8px;border-radius:2px;background:var(--z2)"></span>Z2 42%</span>
+        <span><span style="display:inline-block;width:8px;height:8px;border-radius:2px;background:var(--z3)"></span>Z3 3%</span>
+        <span><span style="display:inline-block;width:8px;height:8px;border-radius:2px;background:var(--z4)"></span>Z4 23%</span>
+        <span><span style="display:inline-block;width:8px;height:8px;border-radius:2px;background:var(--z5)"></span>Z5 2%</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── 2. KENYAN ── -->
+  <div class="method-card kenyan">
+    <div class="method-name">Kenyan / Ethiopian model — massive volume, run slowly</div>
+    <div class="method-sub">Eliud Kipchoge, Kenenisa Bekele, Patrick Sang (coach)</div>
+    <div class="method-badges">
+      <span class="method-badge">160–220 km/week</span>
+      <span class="method-badge">Altitude 2000m+</span>
+      <span class="method-badge">Marathon / long distances</span>
+      <span class="method-badge">Group running</span>
+    </div>
+    <div class="method-body">
+      Principle: incredibly high volume (160–220 km per week), mostly slow, at altitude. In Iten (Kenya, ~2400 m) and Bekoji (Ethiopia, ~3000 m), children run to school and work from an early age — the aerobic base is built over decades before serious competition.
+      <br><br>
+      Speed develops not through frequent intense training, but through an extraordinary aerobic base and altitude adaptation. Group running helps maintain pace and motivation even in very easy sessions.
+    </div>
+    <div class="ibar-wrap">
+      <div class="ibar-title">Intensity distribution</div>
+      <div class="ibar">
+        <div class="ibar-seg" style="flex:50;background:var(--z1)"></div>
+        <div class="ibar-seg" style="flex:33;background:var(--z2)"></div>
+        <div class="ibar-seg" style="flex:7;background:var(--z3)"></div>
+        <div class="ibar-seg" style="flex:8;background:var(--z4)"></div>
+        <div class="ibar-seg" style="flex:2;background:var(--z5)"></div>
+      </div>
+      <div class="ibar-legend">
+        <span><span style="display:inline-block;width:8px;height:8px;border-radius:2px;background:var(--z1)"></span>Z1 50%</span>
+        <span><span style="display:inline-block;width:8px;height:8px;border-radius:2px;background:var(--z2)"></span>Z2 33%</span>
+        <span><span style="display:inline-block;width:8px;height:8px;border-radius:2px;background:var(--z3)"></span>Z3 7%</span>
+        <span><span style="display:inline-block;width:8px;height:8px;border-radius:2px;background:var(--z4)"></span>Z4 8%</span>
+        <span><span style="display:inline-block;width:8px;height:8px;border-radius:2px;background:var(--z5)"></span>Z5 2%</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── 3. POLARIZED ── -->
+  <div class="method-card polarized">
+    <div class="method-name">Polarised model (80/20)</div>
+    <div class="method-sub">Stephen Seiler · Research-backed model</div>
+    <div class="method-badges">
+      <span class="method-badge">Research-backed</span>
+      <span class="method-badge">Moderate–high volume</span>
+      <span class="method-badge">All distances</span>
+      <span class="method-badge">Suitable for amateurs</span>
+    </div>
+    <div class="method-body">
+      A model of elite athletes researched by Stephen Seiler: 80% very easy training, 20% very hard. The middle zone (Z3) is deliberately avoided — that "comfortable-hard" zone where most amateurs spend most of their training is neither easy enough for aerobic base-building nor hard enough for higher-intensity adaptation.
+      <br><br>
+      Research with elite swimmers, cyclists and runners consistently shows that the polarised model outperforms traditional "moderate intensity everywhere". Highly suited to amateurs, as it reduces injury risk and allows long-term training without overtraining.
+    </div>
+    <div class="ibar-wrap">
+      <div class="ibar-title">Intensity distribution</div>
+      <div class="ibar">
+        <div class="ibar-seg" style="flex:45;background:var(--z1)"></div>
+        <div class="ibar-seg" style="flex:35;background:var(--z2)"></div>
+        <div class="ibar-seg" style="flex:0;background:var(--z3)"></div>
+        <div class="ibar-seg" style="flex:15;background:var(--z4)"></div>
+        <div class="ibar-seg" style="flex:5;background:var(--z5)"></div>
+      </div>
+      <div class="ibar-legend">
+        <span><span style="display:inline-block;width:8px;height:8px;border-radius:2px;background:var(--z1)"></span>Z1 45%</span>
+        <span><span style="display:inline-block;width:8px;height:8px;border-radius:2px;background:var(--z2)"></span>Z2 35%</span>
+        <span><span style="display:inline-block;width:8px;height:8px;border-radius:2px;background:var(--z3)"></span>Z3 0%</span>
+        <span><span style="display:inline-block;width:8px;height:8px;border-radius:2px;background:var(--z4)"></span>Z4 15%</span>
+        <span><span style="display:inline-block;width:8px;height:8px;border-radius:2px;background:var(--z5)"></span>Z5 5%</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── 4. LYDIARD ── -->
+  <div class="method-card lydiard">
+    <div class="method-name">Lydiard system — aerobic base</div>
+    <div class="method-sub">Arthur Lydiard · New Zealand · 1950s–60s</div>
+    <div class="method-badges">
+      <span class="method-badge">Historically influential</span>
+      <span class="method-badge">High volume</span>
+      <span class="method-badge">Marathon / half marathon</span>
+      <span class="method-badge">Long base-building</span>
+    </div>
+    <div class="method-body">
+      The system developed by Arthur Lydiard: first, high volume (160+ km per week) at a purely aerobic pace — months without intensive intervals. Only then: hill running, intervals, speed work. The system produced several Olympic champions (Peter Snell, Murray Halberg) and fundamentally changed the understanding of running training worldwide.
+      <br><br>
+      The core idea: without a solid aerobic base, no speed work will reach its full potential. Lydiard's influence is felt in every modern training system — the polarised model, the Norwegian school and Kenyan practice.
+    </div>
+    <div class="ibar-wrap">
+      <div class="ibar-title">Intensity distribution (base phase)</div>
+      <div class="ibar">
+        <div class="ibar-seg" style="flex:60;background:var(--z1)"></div>
+        <div class="ibar-seg" style="flex:30;background:var(--z2)"></div>
+        <div class="ibar-seg" style="flex:5;background:var(--z3)"></div>
+        <div class="ibar-seg" style="flex:4;background:var(--z4)"></div>
+        <div class="ibar-seg" style="flex:1;background:var(--z5)"></div>
+      </div>
+      <div class="ibar-legend">
+        <span><span style="display:inline-block;width:8px;height:8px;border-radius:2px;background:var(--z1)"></span>Z1 60%</span>
+        <span><span style="display:inline-block;width:8px;height:8px;border-radius:2px;background:var(--z2)"></span>Z2 30%</span>
+        <span><span style="display:inline-block;width:8px;height:8px;border-radius:2px;background:var(--z3)"></span>Z3 5%</span>
+        <span><span style="display:inline-block;width:8px;height:8px;border-radius:2px;background:var(--z4)"></span>Z4 4%</span>
+        <span><span style="display:inline-block;width:8px;height:8px;border-radius:2px;background:var(--z5)"></span>Z5 1%</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── 5. DANIELS ── -->
+  <div class="method-card daniels">
+    <div class="method-name">Daniels' formula (VDOT system)</div>
+    <div class="method-sub">Jack Daniels · "Daniels' Running Formula" (1998)</div>
+    <div class="method-badges">
+      <span class="method-badge">Structured</span>
+      <span class="method-badge">Moderate volume</span>
+      <span class="method-badge">5K–marathon</span>
+      <span class="method-badge">Suitable for amateurs</span>
+    </div>
+    <div class="method-body">
+      A system developed by Jack Daniels that calculates a runner's physiological capacity (VDOT) from race results and sets 5 precise training zones with specific paces: Easy (E), Marathon (M), Threshold (T), Interval (I) and Repetition (R). Each run type has a clear physiological purpose.
+      <br><br>
+      Very popular among amateurs for its specificity — you know exactly what pace to run in every session. The system automatically recalibrates as performance improves. A good choice for those who prefer structure and a clear system.
+    </div>
+    <div class="ibar-wrap">
+      <div class="ibar-title">Intensity distribution</div>
+      <div class="ibar">
+        <div class="ibar-seg" style="flex:30;background:var(--z1)"></div>
+        <div class="ibar-seg" style="flex:35;background:var(--z2)"></div>
+        <div class="ibar-seg" style="flex:10;background:var(--z3)"></div>
+        <div class="ibar-seg" style="flex:15;background:var(--z4)"></div>
+        <div class="ibar-seg" style="flex:10;background:var(--z5)"></div>
+      </div>
+      <div class="ibar-legend">
+        <span><span style="display:inline-block;width:8px;height:8px;border-radius:2px;background:var(--z1)"></span>Z1 30%</span>
+        <span><span style="display:inline-block;width:8px;height:8px;border-radius:2px;background:var(--z2)"></span>Z2 35%</span>
+        <span><span style="display:inline-block;width:8px;height:8px;border-radius:2px;background:var(--z3)"></span>Z3 10%</span>
+        <span><span style="display:inline-block;width:8px;height:8px;border-radius:2px;background:var(--z4)"></span>Z4 15%</span>
+        <span><span style="display:inline-block;width:8px;height:8px;border-radius:2px;background:var(--z5)"></span>Z5 10%</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="callout callout-myth">
+    <span class="callout-label">Common myth</span>
+    "Kenyans are fast because of genetics." In reality, the biggest factors are living at altitude, running from childhood, and decades of accumulated high-volume aerobic base. Genetics may provide an advantage, but Kipchoge and Bekele run 200+ km a week not because it comes easily — but because it's the only path to that level.
+  </div>
+
+  <div class="callout callout-warn">
+    <span class="callout-label">Norwegian system — not for beginners</span>
+    Double-threshold requires an excellent aerobic base and continuous lactate monitoring. Without coach supervision and regular lactate tests, this system easily becomes two hard sessions per day — a fast route to overtraining or injury.
+  </div>
+
+  <div class="demo">
+    <div class="demo-title">Interactive demo — Which training system suits you?</div>
+    <p style="font-size:.88rem;color:var(--muted);margin-bottom:1.25rem">Choose your goal and the time you have — you'll get a recommendation and a tip on what you can borrow from that system right now.</p>
+
+    <div class="method-picker">
+      <div class="method-pick-group">
+        <label for="s8-goal">Your goal</label>
+        <select id="s8-goal" class="scandi-select" style="width:100%">
+          <option value="5k">Improve 5K time</option>
+          <option value="half">First half marathon</option>
+          <option value="marathon">Marathon finish</option>
+          <option value="health">Health and longevity</option>
+        </select>
+      </div>
+      <div class="method-pick-group">
+        <label for="s8-time">Weekly training time</label>
+        <select id="s8-time" class="scandi-select" style="width:100%">
+          <option value="low">Up to 4 hrs/week</option>
+          <option value="mid" selected>4–8 hrs/week</option>
+          <option value="high">8+ hrs/week</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="method-rec" id="s8-rec">
+      <div class="method-rec-header">
+        <div class="method-rec-dot" id="s8-rec-dot"></div>
+        <div class="method-rec-name" id="s8-rec-name"></div>
+      </div>
+      <div class="method-rec-why" id="s8-rec-why"></div>
+      <div class="method-rec-borrow" id="s8-rec-borrow"></div>
+    </div>
+  </div>
+
+  <div class="callout callout-tip">
+    <span class="callout-label">Universal principle</span>
+    In all five training systems — Norwegian, Kenyan, polarised, Lydiard and Daniels — one trait dominates: <strong>the majority of training is easy</strong>. Whichever system you choose, the 80/20 principle applies to all.
+  </div>
+
+  <div class="quiz" data-correct="1">
+    <div class="quiz-q">What single trait is common to all training systems discussed here?</div>
+    <div class="quiz-opts">
+      <button class="quiz-opt">Training twice a day</button>
+      <button class="quiz-opt">The majority of training is easy, regardless of the system</button>
+      <button class="quiz-opt">Only interval running is used</button>
+    </div>
+    <div class="quiz-feedback">Yes. From Norwegian double-threshold to Kenyan high volume — 70–80% of training is done at an easy, conversational pace everywhere. This is a consistent pattern: the aerobic base is the foundation of every training system.</div>
+  </div>
+
+  <div class="step-nav">
+    <button class="btn-step btn-prev" onclick="goLesson(7)">← Back</button>
+    <span class="step-counter">9 / 20</span>
+    <button class="btn-step btn-next" onclick="goLesson(9)">Strength training →</button>
+  </div>
+
+  <div class="kbd-hint">Tip: use the <kbd>←</kbd> and <kbd>→</kbd> arrow keys to navigate lessons</div>
+</article>
+
+<!-- ══════════════════════════════════════════
+     LESSON 10 — STRENGTH TRAINING
+     ══════════════════════════════════════════ -->
+<article class="lesson" id="lesson-9">
+  <div class="lesson-header">
+    <div class="lesson-num">Lesson 10 of 20</div>
+    <h2 class="lesson-title">Strength training for runners</h2>
+    <p class="lesson-intro">Running alone doesn't protect against injuries. Strength work is not a supplementary activity — it's an essential part of a running programme.</p>
+  </div>
+
+  <div class="takeaway"><div><strong>Key idea:</strong> 2 strength sessions per week reduce injury risk, improve running economy and let you run faster — even without adding kilometres.</div></div>
+
+  <div class="prose">
+    <p>Running is a single-leg movement — with every stride, the entire body weight falls on one foot. This demands considerable <strong>hip, gluteal and core stability strength</strong>. When these muscles are too weak, impact force is redistributed to the knees, shins and ankles — where most running injuries begin.</p>
+    <p>Runners don't aim for muscle mass with strength training. The goal is <strong>stability, eccentric strength and tendon resilience</strong>. Research shows that a 6–8 week strength programme improves running economy (less energy for the same pace) by an average of 2–8%.</p>
+    <p>Most importantly: start strength work <em>before</em> pain appears — as prevention, not treatment. Muscles respond in 4–6 weeks, tendons in 3–6 months. <button class="xref" onclick="goLesson(6)">Lesson 7: Technique and injuries</button></p>
+  </div>
+
+  <div class="lesson-illustration">
+    <div class="illustration-title">Four key exercises — animated</div>
+    <canvas id="exCanvas" style="width:100%;display:block;border-radius:8px"></canvas>
+  </div>
+
+  <div class="demo">
+    <div class="demo-title">Interactive demo — Key exercises</div>
+    <p style="font-size:.88rem;color:var(--muted);margin-bottom:1rem">Choose your weak area — you'll get a recommendation for the most important exercises.</p>
+    <div class="slider-control">
+      <div class="slider-label"><span>Weak area / most common injury</span><strong id="s9-area-label">Knee</strong></div>
+      <select id="s9-area" class="scandi-select" style="width:100%;margin-top:.4rem">
+        <option value="knee">Knee pain (ITBS, runner's knee)</option>
+        <option value="shin">Inner shin pain (shin splints)</option>
+        <option value="achilles">Achilles tendon</option>
+        <option value="hip">Hip weakness, stride instability</option>
+        <option value="core">Core instability, lower back pain</option>
+      </select>
+    </div>
+    <div style="margin-top:1rem;padding:.85rem 1rem;border-radius:8px;border:1px solid var(--border);background:var(--bg)">
+      <p id="s9-why" style="font-size:.85rem;color:var(--muted);line-height:1.7;margin-bottom:.75rem"></p>
+    </div>
+    <div id="s9-exercises" class="exercise-grid"></div>
+  </div>
+
+  <div class="callout callout-tip">
+    <span class="callout-label">How to integrate</span>
+    Do strength sessions <strong>after an easy run</strong> or on separate days — not before a hard interval session. 2× per week, 20–30 min. Start with bodyweight exercises — weights are only needed once 3×12 reps feel easy.
+  </div>
+
+  <div class="callout callout-warn">
+    <span class="callout-label">Common mistake</span>
+    Beginners often start strength training only when they're already in pain. By then the tendon or joint is already damaged. Better: 15 min of calf and hip exercises 2× per week from the very first week of running.
+  </div>
+
+  <div class="quiz" data-correct="1">
+    <div class="quiz-q">Why does strength training improve running economy?</div>
+    <div class="quiz-opts">
+      <button class="quiz-opt">It increases muscle mass, making running more powerful</button>
+      <button class="quiz-opt">It improves stability and elastic tissue energy return, so less energy is wasted</button>
+      <button class="quiz-opt">It raises maximum heart rate</button>
+    </div>
+    <div class="quiz-feedback">Exactly. Strength work improves tendon elasticity and the function of stabilising muscles — meaning less energy is wasted on compensatory movements and the body transfers force to the ground more efficiently.</div>
+  </div>
+
+  <div class="step-nav">
+    <button class="btn-step btn-prev" onclick="goLesson(8)">← Back</button>
+    <span class="step-counter">10 / 20</span>
+    <button class="btn-step btn-next" onclick="goLesson(10)">Winter running →</button>
+  </div>
+</article>
+
+<!-- ══════════════════════════════════════════
+     LESSON 11 — WINTER RUNNING (stub)
+     ══════════════════════════════════════════ -->
+<article class="lesson" id="lesson-10">
+  <div class="lesson-header">
+    <div class="lesson-num">Lesson 11 of 20</div>
+    <h2 class="lesson-title">Winter running</h2>
+  </div>
+  <p style="color:var(--muted);padding:2rem 0">Translation coming soon.</p>
+  <div class="step-nav">
+    <button class="btn-step btn-prev" onclick="goLesson(9)">← Back</button>
+    <span class="step-counter">11 / 20</span>
+    <button class="btn-step btn-next" onclick="goLesson(11)">First race →</button>
+  </div>
+</article>
+
+<!-- ══════════════════════════════════════════
+     LESSON 12 — FIRST RACE (stub)
+     ══════════════════════════════════════════ -->
+<article class="lesson" id="lesson-11">
+  <div class="lesson-header">
+    <div class="lesson-num">Lesson 12 of 20</div>
+    <h2 class="lesson-title">Your first race</h2>
+  </div>
+  <p style="color:var(--muted);padding:2rem 0">Translation coming soon.</p>
+  <div class="step-nav">
+    <button class="btn-step btn-prev" onclick="goLesson(10)">← Back</button>
+    <span class="step-counter">12 / 20</span>
+    <button class="btn-step btn-next" onclick="goLesson(12)">VO₂max →</button>
+  </div>
+</article>
+
+<!-- ══════════════════════════════════════════
+     LESSON 13 — VO₂MAX (stub)
+     ══════════════════════════════════════════ -->
+<article class="lesson" id="lesson-12">
+  <div class="lesson-header">
+    <div class="lesson-num">Lesson 13 of 20</div>
+    <h2 class="lesson-title">VO₂max</h2>
+  </div>
+  <p style="color:var(--muted);padding:2rem 0">Translation coming soon.</p>
+  <div class="step-nav">
+    <button class="btn-step btn-prev" onclick="goLesson(11)">← Back</button>
+    <span class="step-counter">13 / 20</span>
+    <button class="btn-step btn-next" onclick="goLesson(13)">Running economy →</button>
+  </div>
+</article>
+
+<!-- ══════════════════════════════════════════
+     LESSON 14 — RUNNING ECONOMY (stub)
+     ══════════════════════════════════════════ -->
+<article class="lesson" id="lesson-13">
+  <div class="lesson-header">
+    <div class="lesson-num">Lesson 14 of 20</div>
+    <h2 class="lesson-title">Running economy</h2>
+  </div>
+  <p style="color:var(--muted);padding:2rem 0">Translation coming soon.</p>
+  <div class="step-nav">
+    <button class="btn-step btn-prev" onclick="goLesson(12)">← Back</button>
+    <span class="step-counter">14 / 20</span>
+    <button class="btn-step btn-next" onclick="goLesson(14)">Fatigue →</button>
+  </div>
+</article>
+
+<!-- ══════════════════════════════════════════
+     LESSON 15 — FATIGUE (stub)
+     ══════════════════════════════════════════ -->
+<article class="lesson" id="lesson-14">
+  <div class="lesson-header">
+    <div class="lesson-num">Lesson 15 of 20</div>
+    <h2 class="lesson-title">Fatigue</h2>
+  </div>
+  <p style="color:var(--muted);padding:2rem 0">Translation coming soon.</p>
+  <div class="step-nav">
+    <button class="btn-step btn-prev" onclick="goLesson(13)">← Back</button>
+    <span class="step-counter">15 / 20</span>
+    <button class="btn-step btn-next" onclick="goLesson(15)">Pace distribution →</button>
+  </div>
+</article>
+
+<!-- ══════════════════════════════════════════
+     LESSON 16 — PACE DISTRIBUTION (stub)
+     ══════════════════════════════════════════ -->
+<article class="lesson" id="lesson-15">
+  <div class="lesson-header">
+    <div class="lesson-num">Lesson 16 of 20</div>
+    <h2 class="lesson-title">Pace distribution</h2>
+  </div>
+  <p style="color:var(--muted);padding:2rem 0">Translation coming soon.</p>
+  <div class="step-nav">
+    <button class="btn-step btn-prev" onclick="goLesson(14)">← Back</button>
+    <span class="step-counter">16 / 20</span>
+    <button class="btn-step btn-next" onclick="goLesson(16)">Load management →</button>
+  </div>
+</article>
+
+<!-- ══════════════════════════════════════════
+     LESSON 17 — LOAD MANAGEMENT (stub)
+     ══════════════════════════════════════════ -->
+<article class="lesson" id="lesson-16">
+  <div class="lesson-header">
+    <div class="lesson-num">Lesson 17 of 20</div>
+    <h2 class="lesson-title">Load management</h2>
+  </div>
+  <p style="color:var(--muted);padding:2rem 0">Translation coming soon.</p>
+  <div class="step-nav">
+    <button class="btn-step btn-prev" onclick="goLesson(15)">← Back</button>
+    <span class="step-counter">17 / 20</span>
+    <button class="btn-step btn-next" onclick="goLesson(17)">Pain or injury →</button>
+  </div>
+</article>
+
+<!-- ══════════════════════════════════════════
+     LESSON 18 — PAIN OR INJURY (stub)
+     ══════════════════════════════════════════ -->
+<article class="lesson" id="lesson-17">
+  <div class="lesson-header">
+    <div class="lesson-num">Lesson 18 of 20</div>
+    <h2 class="lesson-title">Pain or injury?</h2>
+  </div>
+  <p style="color:var(--muted);padding:2rem 0">Translation coming soon.</p>
+  <div class="step-nav">
+    <button class="btn-step btn-prev" onclick="goLesson(16)">← Back</button>
+    <span class="step-counter">18 / 20</span>
+    <button class="btn-step btn-next" onclick="goLesson(18)">Motivation →</button>
+  </div>
+</article>
+
+<!-- ══════════════════════════════════════════
+     LESSON 19 — MOTIVATION (stub)
+     ══════════════════════════════════════════ -->
+<article class="lesson" id="lesson-18">
+  <div class="lesson-header">
+    <div class="lesson-num">Lesson 19 of 20</div>
+    <h2 class="lesson-title">Motivation and consistency</h2>
+  </div>
+  <p style="color:var(--muted);padding:2rem 0">Translation coming soon.</p>
+  <div class="step-nav">
+    <button class="btn-step btn-prev" onclick="goLesson(17)">← Back</button>
+    <span class="step-counter">19 / 20</span>
+    <button class="btn-step btn-next" onclick="goLesson(19)">Running watches →</button>
+  </div>
+</article>
+
+<!-- ══════════════════════════════════════════
+     LESSON 20 — RUNNING WATCHES (stub)
+     ══════════════════════════════════════════ -->
+<article class="lesson" id="lesson-19">
+  <div class="lesson-header">
+    <div class="lesson-num">Lesson 20 of 20</div>
+    <h2 class="lesson-title">Running watches and data</h2>
+  </div>
+  <p style="color:var(--muted);padding:2rem 0">Translation coming soon.</p>
+  <div class="step-nav">
+    <button class="btn-step btn-prev" onclick="goLesson(18)">← Back</button>
+    <span class="step-counter">20 / 20</span>
+    <button class="btn-step btn-next" onclick="goLesson(0)" style="background:var(--z2);color:#fff">&#10003; Start over</button>
+  </div>
+  <div class="kbd-hint">Tip: use the <kbd>←</kbd> and <kbd>→</kbd> arrow keys to navigate lessons</div>
+</article>
+
+</main>
+
+<script defer src="js/nav.js?v=1"></script>
+<script defer src="../js/quiz.js?v=1"></script>
+<script defer src="js/glossary.js?v=1"></script>
+<script defer src="js/demos.js?v=1"></script>
+</body>
+</html>
