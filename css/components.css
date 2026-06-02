@@ -1,3 +1,9 @@
+/* ── LANGUAGE SWITCHER ── */
+.lang-switcher{display:flex;gap:.25rem;align-items:center;margin-right:.25rem}
+.lang-btn{font-size:1.15rem;line-height:1;border-radius:4px;padding:.15rem .25rem;opacity:.45;transition:opacity .2s;text-decoration:none;border:none;background:none;cursor:pointer}
+.lang-btn:hover{opacity:.85}
+.lang-btn.lang-active{opacity:1;cursor:default}
+
 /* ── PROSE ── */
 .prose{font-size:.97rem;line-height:1.8;color:#374151}
 .prose p{margin-bottom:1.1rem}
