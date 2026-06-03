@@ -1851,10 +1851,9 @@ function initDemos() {
   if (current === 16) initDemo16();
   if (current === 17) initDemo17();
   if (current === 18) initDemo18();
-  if (current === 19) initDemo19();
+  if (current === 19) { initDemo19(); initDemo22(); }
   if (current === 20) initDemo20();
   if (current === 21) initDemo21();
-  if (current === 22) initDemo22();
 }
 
 initDemos();

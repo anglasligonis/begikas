@@ -1660,6 +1660,186 @@ function initDemo19() {
   };
 })();
 
+// ── DEMO 20: Atsigavimo pasiruošimas ──
+function initDemo20() {
+  const hoursSl   = document.getElementById('s20-hours');
+  const qualitySl = document.getElementById('s20-quality');
+  if (!hoursSl || !qualitySl) return;
+  const qualityLabels = ['Prasta', 'Vidutinė', 'Gera', 'Labai gera', 'Puiki'];
+  function update() {
+    const hours   = parseFloat(hoursSl.value);
+    const quality = parseInt(qualitySl.value);
+    document.getElementById('s20-hours-label').textContent   = hours + ' val.';
+    document.getElementById('s20-quality-label').textContent = qualityLabels[quality - 1];
+
+    const hoursScore   = Math.max(0, Math.min(60, (hours - 4) / 5 * 60));
+    const qualityScore = (quality - 1) / 4 * 40;
+    const adapt = Math.round(hoursScore + qualityScore);
+
+    const statusLabels = adapt >= 85 ? ['Puiki',      '#22c55e'] :
+                         adapt >= 65 ? ['Gera',       '#22c55e'] :
+                         adapt >= 45 ? ['Vidutinė',   '#f59e0b'] :
+                         adapt >= 25 ? ['Maža',       '#ef4444'] :
+                                       ['Labai maža', '#ef4444'];
+    const sessionRec = adapt >= 80 ? 'Sunkios treniruotės galima' :
+                       adapt >= 60 ? 'Lengva ar vidutinė' :
+                       adapt >= 40 ? 'Tik lengvas bėgimas' :
+                                     'Poilsis ar ėjimas';
+
+    document.getElementById('s20-adapt').textContent   = adapt + '%';
+    document.getElementById('s20-adapt').style.color   = statusLabels[1];
+    document.getElementById('s20-status').textContent  = statusLabels[0];
+    document.getElementById('s20-status').style.color  = statusLabels[1];
+    document.getElementById('s20-session').textContent = sessionRec;
+    document.getElementById('s20-session').style.color = statusLabels[1];
+
+    let desc;
+    if (adapt >= 80) {
+      desc = `${hours} val. ${qualityLabels[quality-1].toLowerCase()} miegas suteikia stiprų adaptacijos langą. Augimo hormonas kulminuoja per pirmąjį gilaus miego ciklą — tokios trukmės ir kokybės miegas suteikia 2–3 pilnus ciklus. Sunkios treniruotės šiandien duos pilną treniruočių naudą. Ramybės pulsas tikriausiai ties baze arba žemiau.`;
+    } else if (adapt >= 60) {
+      desc = `Pakankamai geras atsigavimas, bet ne optimalus. Miegas pakankamas treniruotei, tačiau intensyvūs intervalai gali neduoti pilnos adaptacijos. Lengvas ar vidutinis bėgimas yra geresnis pasirinkimas. Pasirūpinkite miego kokybe šiąnakt, kad nepradėtumėte kaupti deficito.`;
+    } else if (adapt >= 40) {
+      desc = `Nepakankamas atsigavimas. Gilaus miego ciklai tikriausiai buvo sutrumpinti, ribojant HGH išskyrimą ir baltymų sintezę. Lengvas bėgimas tinkamas — jis gerina kraujo apytaką ir aktyviai padeda atsigauti, nedidindamas streso. Venkite jokio intensyvumo šiandien. Patikrinkite ramybės pulsą — jei pakilęs, tai patvirtina sprendimą bėgti lengvai.`;
+    } else {
+      desc = `Labai mažas atsigavimas. Esant ${hours} val. ${qualityLabels[quality-1].toLowerCase()} miegui, organizmas nebaigė pakankamų atsistatymo ciklų. Intensyvios treniruotės šiandien tik didina krūvį nesuteikdamos adaptacijos — rytoj atvyksite pavargę, o ne pailsėję. Poilsis, ėjimas arba 20 min labai lengvo judėjimo.`;
+    }
+    document.getElementById('s20-desc').textContent = desc;
+  }
+  hoursSl.addEventListener('input', update);
+  qualitySl.addEventListener('input', update);
+  update();
+}
+
+// ── DEMO 21: Kasdienės Mitybos tikslai ──
+function initDemo21() {
+  const weightSl  = document.getElementById('s21-weight');
+  const sessionSl = document.getElementById('s21-session');
+  if (!weightSl || !sessionSl) return;
+  const sessionLabels = {
+    rest:     'Poilsio diena',
+    easy:     'Lengvas bėgimas (Z2)',
+    moderate: 'Vidutinis tempo bėgimas',
+    hard:     'Sunkūs intervalai / varžybų pastangos',
+    long:     'Ilgas bėgimas (90+ min)'
+  };
+  const carbPerKg  = { rest: 3.0, easy: 4.0, moderate: 5.5, hard: 7.0, long: 8.0 };
+  const postWindow = { rest: '—', easy: '60 min', moderate: '45 min', hard: '30 min', long: '30 min' };
+
+  function update() {
+    const w = parseInt(weightSl.value);
+    const s = sessionSl.value;
+    document.getElementById('s21-weight-label').textContent  = w + ' kg';
+    document.getElementById('s21-session-label').textContent = sessionLabels[s];
+
+    const carbs   = Math.round(w * carbPerKg[s]);
+    const protein = Math.round(w * 1.8);
+    document.getElementById('s21-carbs').textContent   = carbs + ' g';
+    document.getElementById('s21-protein').textContent = protein + ' g';
+    document.getElementById('s21-window').textContent  = postWindow[s];
+
+    const descs = {
+      rest: `Poilsio dieną angliavandenių poreikis žymiai mažesnis — ${carbs} g pakanka glikogenui palaikyti neslopinant riebalų deginimo adaptacijos. Išlaikykite ${protein} g baltymų sausgyslių atstatymui po vakarykštės treniruotės. Ideali diena magniu turtingiems valgymams (riešutai, tamsios daržovės) ir geležies įsisavinimui (raudona mėsa ar ankštiniai su vitaminu C).`,
+      easy: `Lengvi Z2 bėgimai daugiausia naudoja riebalus kurui — prieš treniruotę glikogeno papildymo nereikia. Dienos ${carbs} g angliavandenių yra pakankama. Sutelkite dėmesį į ${protein} g baltymų, paskirstytų per 4 valgius (~30 g per valgymą) — tai kur vyksta sausgyslių kolageno sintezė. Retkarčiais bėgimas nevalgius lengvomis dienomis yra tinkamas ir ugdo riebalų deginimo pajėgumą.`,
+      moderate: `Tempo bėgimas reikšmingai naudoja glikogeną. Valgykite angliavandeniais turtingą patiekalą likus 2–3 val. (avižiniai dribsniai, ryžiai ar duona). Dienos tikslas: ${carbs} g. Po treniruotės 45 minučių langas svarbus — siekite 1 g/kg angliavandenių (${w} g) ir ${Math.round(w * 0.4)} g baltymų kuo greičiau.`,
+      hard: `Sunkūs intervalai žymiai eikvoja glikogeną. Pradėkite treniruotę su pilnomis atsargomis: valgykite ${Math.round(w * 1.5)} g angliavandenių likus 2–3 val. 30 minučių langas po treniruotės yra kritiškai svarbus — ${Math.round(w)} g angliavandenių + 25–30 g baltymų nedelsiant. Dienos tikslas: ${carbs} g. Hidratacija ir elektrolitai svarbesni sunkiomis dienomis.`,
+      long: `Ilgi bėgimai (90+ min) — didžiausias savaitės angliavandenių poreikis. Iš anksto papildykite vakare prieš: ${Math.round(w * 1.5)} g lengvai virškinamų angliavandenių ir dar kartą likus 2–3 val. Bėgimo metu gelius ar angliavandenius vartokite kas 45 min. Po bėgimo: ${Math.round(w)} g angliavandenių + 30 g baltymų per 30 minučių. Dienos iš viso: ${carbs} g.`
+    };
+    document.getElementById('s21-desc').textContent = descs[s];
+  }
+  weightSl.addEventListener('input', update);
+  sessionSl.addEventListener('change', update);
+  update();
+}
+
+// ── DEMO 22: Treniruočių modelių analizatorius ──
+function initDemo22() {
+  const hrSl    = document.getElementById('s22-hr');
+  const driftSl = document.getElementById('s22-drift');
+  const jumpSl  = document.getElementById('s22-jump');
+  if (!hrSl || !driftSl || !jumpSl) return;
+
+  function signal(label, value, color, detail) {
+    return `<div style="padding:.6rem 1rem;border-radius:8px;border:1px solid ${color}40;background:${color}08;display:flex;align-items:flex-start;gap:.75rem">
+      <span style="font-size:.75rem;font-weight:700;padding:.2rem .55rem;border-radius:10px;background:${color}20;color:${color};white-space:nowrap;margin-top:.1rem">${value}</span>
+      <div><div style="font-size:.82rem;font-weight:600;color:var(--text);margin-bottom:.2rem">${label}</div>
+      <div style="font-size:.78rem;color:var(--muted);line-height:1.6">${detail}</div></div>
+    </div>`;
+  }
+
+  function update() {
+    const hr    = parseInt(hrSl.value);
+    const drift = parseInt(driftSl.value);
+    const jump  = parseInt(jumpSl.value);
+
+    document.getElementById('s22-hr-label').textContent    = (hr >= 0 ? '+' : '') + hr + ' k/min';
+    document.getElementById('s22-drift-label').textContent = drift + '%';
+    document.getElementById('s22-jump-label').textContent  = '+' + jump + '%';
+
+    let hrColor, hrVal, hrDetail;
+    if (hr <= 0) {
+      hrColor = '#22c55e'; hrVal = 'Normalus';
+      hrDetail = 'Ties baze arba žemiau — pilnas atsigavimas po paskutinių treniruočių. Organizmas apdorojo treniruočių stresą. Sunkios treniruotės tinkamos.';
+    } else if (hr <= 4) {
+      hrColor = '#84cc16'; hrVal = 'Šiek tiek pakilęs';
+      hrDetail = 'Mažas padidėjimas — vis dar normalios svyravimo ribose. Gali atspindėti vakarykštę treniruotę. Lengvas bėgimas tinkamas; palaukite su intervalais iki rytojaus.';
+    } else if (hr <= 7) {
+      hrColor = '#f59e0b'; hrVal = 'Pakilęs';
+      hrDetail = 'Aiškiai virš bazės. Organizmas vis dar apdoroja neseną treniruočių krūvį. Šiandien — tik lengvas bėgimas ar poilsis. Jei taip tęsiasi 3+ dienas, mažinkite bendrą apimtį.';
+    } else {
+      hrColor = '#ef4444'; hrVal = 'Aukštas';
+      hrDetail = `${hr} k/min virš bazės — aiškus pervargimo signalas. Kartu su bet kuriuo kitu pakilusiu rodikliu tai yra galutinis poilsio dienos signalas. Pirma atmeskite ligą — pakilęs ramybės pulsas yra ir ankstyvas infekcijos simptomas.`;
+    }
+
+    let driftColor, driftVal, driftDetail;
+    if (drift <= 5) {
+      driftColor = '#22c55e'; driftVal = 'Geras';
+      driftDetail = 'Mažas nukrypimas — jūsų lengvas tempas yra tikrai aerobinis. Pulsas stabilus viso bėgimo metu, tai reiškia, kad esate gerai Z2 ribose ir širdies ir kraujagyslių sistema nedirba sunkiai jį palaikydama.';
+    } else if (drift <= 10) {
+      driftColor = '#f59e0b'; driftVal = 'Vidutinis';
+      driftDetail = 'Pastebimas nukrypimas. Jūsų pradinis tempas gali būti šiek tiek per greitas Z2, arba esate lengvai dehidratuoti. Pabandykite pradėti 10–15 sek/km lėčiau ir patikrinkite, ar nukrypimas sumažėja žemiau 5%.';
+    } else {
+      driftColor = '#ef4444'; driftVal = 'Didelis';
+      driftDetail = `${drift}% nukrypimas reiškia, kad jūsų lengvi bėgimai nėra lengvi. Tikriausiai bėgate Z3 riboje — pakankamai, kad kaupiamas nuovargis, bet nepakankamai realiai slenkstinei adaptacijai. Tai pilkoji zona. Lėtinkite, kol nukrypimas sumažės žemiau 8%.`;
+    }
+
+    let jumpColor, jumpVal, jumpDetail;
+    if (jump <= 10) {
+      jumpColor = '#22c55e'; jumpVal = 'Saugus';
+      jumpDetail = 'Kilometražo padidėjimas neviršija 10% gairės. Raumenys ir sausgyslės turi pakankamai laiko prisitaikyti prie naujo krūvio. Tęskite šiuo tempu ir kas 3–4 savaites planuokite mažesnio krūvio savaitę.';
+    } else if (jump <= 20) {
+      jumpColor = '#f59e0b'; jumpVal = 'Atsargiai';
+      jumpDetail = `${jump}% šuolis viršija saugią gairę. Raumenys prisitaiko per 1–2 savaites; sausgyslės — per 4–8 savaites. Traumų rizikos langas atviras. Atidžiai stebėkite blauzdinės, Achilo sausgyslės ir kelio signalus šią savaitę.`;
+    } else {
+      jumpColor = '#ef4444'; jumpVal = 'Didelė rizika';
+      jumpDetail = `${jump}% yra reikšmingas krūvio šuolis. Tai vienas iš stipriausių pervargimo traumų prognozuotojų mėgėjų bėgikams. Net jei jaučiatės gerai — kitą savaitę sumažinkite apimtį, kad absorbuotumėte šuolį prieš vėl didindami.`;
+    }
+
+    document.getElementById('s22-signals').innerHTML =
+      signal('Ramybės pulso tendencija', hrVal, hrColor, hrDetail) +
+      signal('Pulso nukrypimas lengvame bėgime', driftVal, driftColor, driftDetail) +
+      signal('Savaitinis kilometražo šuolis', jumpVal, jumpColor, jumpDetail);
+
+    const issues = [hrVal, driftVal, jumpVal].filter(v => v === 'Aukštas' || v === 'Didelė rizika' || v === 'Pakilęs').length;
+    const cautions = [hrVal, driftVal, jumpVal].filter(v => v === 'Atsargiai' || v === 'Vidutinis' || v === 'Šiek tiek pakilęs').length;
+    let summary;
+    if (issues >= 2) {
+      summary = 'Keli raudoni signalai: šiandien — poilsis ar aktyvus atsistatymas. Du ar daugiau vienu metu ignoruojamų perkrovos signalų — taip vystosi pervargimo traumos. Jos retai praneša apie save vienu aiškiu įspėjimu.';
+    } else if (issues === 1) {
+      summary = 'Vienas raudonas signalas: reaguokite kol nesikaupia. Vienas perkrovos signalas, į kurį reaguojama laiku, paprastai išsisprendžia per 1–3 dienas. Tas pats signalas, ignoruojamas savaitę, dažnai tampa trauma.';
+    } else if (cautions >= 2) {
+      summary = 'Du geltoni signalai: veikite atsargiai. Lengva treniruotė tinkama, bet šiandien — jokio intensyvumo. Peržvelkite paskutines 2 savaites — geltonų signalų modelis dažnai reiškia, kad bendras treniruočių krūvis per aukštas be pakankamo atsigavimo.';
+    } else {
+      summary = 'Signalai atrodo sveiki. Jūsų treniruočių krūvis, atsigavimas ir lengvų bėgimų kokybė yra geroje srityje. Tęskite savaitinį stebėjimą — šie rodikliai naudingiausiai vertinami kaip tendencijos, o ne pavieniai rodmenys.';
+    }
+    document.getElementById('s22-summary').textContent = summary;
+  }
+
+  hrSl.addEventListener('input', update);
+  driftSl.addEventListener('input', update);
+  jumpSl.addEventListener('input', update);
+  update();
+}
+
 function initDemos() {
   if (current === 0)  initDemo1();
   if (current === 1)  initDemo2();
@@ -1679,7 +1859,9 @@ function initDemos() {
   if (current === 16) initDemo16();
   if (current === 17) initDemo17();
   if (current === 18) initDemo18();
-  if (current === 19) initDemo19();
+  if (current === 19) { initDemo19(); initDemo22(); }
+  if (current === 20) initDemo20();
+  if (current === 21) initDemo21();
 }
 
 initDemos();

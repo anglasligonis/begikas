@@ -1,4 +1,4 @@
-const TOTAL = 20;
+const TOTAL = 22;
 let current = 0;
 const visited = new Set([0]);
 const completed = new Set();
@@ -41,7 +41,8 @@ const NAV_LESSON_NAMES = [
   '10. Jėgos treniruotės','11. Žiemos bėgimas','12. Pirmos varžybos',
   '13. VO₂max','14. Bėgimo ekonomija','15. Nuovargis',
   '16. Tempo paskirstymas','17. Krūvio valdymas','18. Skausmas ar trauma',
-  '19. Motyvacija','20. Bėgimo laikrodžiai'
+  '19. Motyvacija','20. Bėgimo laikrodžiai',
+  '21. Miegas ir atsigavimas','22. Kasdienė Mityba'
 ];
 
 let navCollapsed = false;
