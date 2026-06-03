@@ -1,4 +1,4 @@
-const TOTAL = 20;
+const TOTAL = 23;
 let current = 0;
 const visited = new Set([0]);
 const completed = new Set();
@@ -41,7 +41,8 @@ const NAV_LESSON_NAMES = [
   '10. Strength training', '11. Winter running', '12. First race',
   '13. VO₂max', '14. Running economy', '15. Fatigue',
   '16. Pace distribution', '17. Load management', '18. Pain or injury',
-  '19. Motivation', '20. Running watches'
+  '19. Motivation', '20. Running watches',
+  '21. Sleep & recovery', '22. Daily nutrition', '23. Reading your data'
 ];
 
 let navCollapsed = false;

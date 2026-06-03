@@ -915,6 +915,191 @@ function initDemo19() {
   render();
 }
 
+// ── DEMO 20: Sleep & Recovery readiness ──
+function initDemo20() {
+  const hoursSl   = document.getElementById('s20-hours');
+  const qualitySl = document.getElementById('s20-quality');
+  if (!hoursSl || !qualitySl) return;
+  const qualityLabels = ['Poor', 'Fair', 'Good', 'Very good', 'Excellent'];
+  function update() {
+    const hours   = parseFloat(hoursSl.value);
+    const quality = parseInt(qualitySl.value);
+    document.getElementById('s20-hours-label').textContent   = hours + ' hours';
+    document.getElementById('s20-quality-label').textContent = qualityLabels[quality - 1];
+
+    // Adaptation window: hours scored 0-60 (4h=0, 9h=60), quality scored 0-40
+    const hoursScore   = Math.max(0, Math.min(60, (hours - 4) / 5 * 60));
+    const qualityScore = (quality - 1) / 4 * 40;
+    const adapt = Math.round(hoursScore + qualityScore);
+
+    const statusLabels = adapt >= 85 ? ['Excellent', '#22c55e'] :
+                         adapt >= 65 ? ['Good',      '#22c55e'] :
+                         adapt >= 45 ? ['Moderate',  '#f59e0b'] :
+                         adapt >= 25 ? ['Low',       '#ef4444'] :
+                                       ['Very low',  '#ef4444'];
+    const sessionRec = adapt >= 80 ? 'Hard session OK' :
+                       adapt >= 60 ? 'Easy or moderate' :
+                       adapt >= 40 ? 'Easy run only' :
+                                     'Rest or walk';
+
+    document.getElementById('s20-adapt').textContent   = adapt + '%';
+    document.getElementById('s20-adapt').style.color   = statusLabels[1];
+    document.getElementById('s20-status').textContent  = statusLabels[0];
+    document.getElementById('s20-status').style.color  = statusLabels[1];
+    document.getElementById('s20-session').textContent = sessionRec;
+    document.getElementById('s20-session').style.color = statusLabels[1];
+
+    let desc;
+    if (adapt >= 80) {
+      desc = `${hours} hours of ${qualityLabels[quality-1].toLowerCase()} sleep gives a strong adaptation window. Growth hormone peaks during your first cycle of deep sleep — with this quality and duration you likely got 2–3 full cycles. A hard session today will produce full training gains. Resting HR is likely at or below your baseline.`;
+    } else if (adapt >= 60) {
+      desc = `Reasonable recovery, but not optimal. You got enough sleep to benefit from training, but a hard interval session may not produce full adaptation. An easy or moderate run is a better choice. Prioritise sleep tonight to avoid accumulating a deficit.`;
+    } else if (adapt >= 40) {
+      desc = `Below-threshold recovery. Deep sleep cycles were likely cut short, limiting HGH release and protein synthesis. Easy running is fine — it promotes blood flow and active recovery without adding stress. Avoid any intensity today. Check your resting HR: if it is elevated, confirm your decision to go easy.`;
+    } else {
+      desc = `Very low recovery. With ${hours} hours of ${qualityLabels[quality-1].toLowerCase()} sleep, your body has not completed adequate repair cycles. Training at intensity today adds load without producing adaptation — you will arrive at tomorrow's session more fatigued, not less. Rest, walk, or do 20 minutes of very easy movement only.`;
+    }
+    document.getElementById('s20-desc').textContent = desc;
+  }
+  hoursSl.addEventListener('input', update);
+  qualitySl.addEventListener('input', update);
+  update();
+}
+
+// ── DEMO 21: Daily nutrition targets ──
+function initDemo21() {
+  const weightSl  = document.getElementById('s21-weight');
+  const sessionSl = document.getElementById('s21-session');
+  if (!weightSl || !sessionSl) return;
+  const sessionLabels = {
+    rest:     'Rest day',
+    easy:     'Easy run (Z2)',
+    moderate: 'Moderate tempo run',
+    hard:     'Hard intervals / race effort',
+    long:     'Long run (90+ min)'
+  };
+  // carb g/kg targets by session type
+  const carbPerKg = { rest: 3.0, easy: 4.0, moderate: 5.5, hard: 7.0, long: 8.0 };
+  const postWindow = { rest: '—', easy: '60 min', moderate: '45 min', hard: '30 min', long: '30 min' };
+
+  function update() {
+    const w = parseInt(weightSl.value);
+    const s = sessionSl.value;
+    document.getElementById('s21-weight-label').textContent  = w + ' kg';
+    document.getElementById('s21-session-label').textContent = sessionLabels[s];
+
+    const carbs   = Math.round(w * carbPerKg[s]);
+    const protein = Math.round(w * 1.8); // 1.8 g/kg midpoint
+    document.getElementById('s21-carbs').textContent   = carbs + ' g';
+    document.getElementById('s21-protein').textContent = protein + ' g';
+    document.getElementById('s21-window').textContent  = postWindow[s];
+
+    const descs = {
+      rest: `On a rest day, carbohydrate needs drop significantly — ${carbs} g total is enough to maintain glycogen without impeding the fat-burning adaptation you are building. Keep protein at ${protein} g to support tendon repair from yesterday's session. This is an ideal day for a magnesium-rich meal (nuts, dark greens) and ensuring iron absorption (red meat or legumes with vitamin C).`,
+      easy: `Easy Z2 runs use mostly fat for fuel, so you don't need a glycogen top-up beforehand. ${carbs} g of carbohydrate across the day is sufficient. Prioritise ${protein} g of protein distributed across 4 meals (~30 g per meal) — this is where tendon collagen synthesis happens. If you run fasted occasionally on easy days, that is fine and builds fat-burning capacity.`,
+      moderate: `A tempo run draws meaningfully on glycogen. Have a carbohydrate-rich meal 2–3 hours before (oats, rice, or bread). Total daily target: ${carbs} g. After the session, the 45-minute recovery window matters — aim for 1 g/kg carbs (${w} g) plus ${Math.round(w * 0.4)} g protein as quickly as practical.`,
+      hard: `Hard intervals deplete glycogen significantly. Start the session with full stores: eat ${Math.round(w * 1.5)} g of carbohydrate 2–3 hours before. The 30-minute post-session window is critical — ${Math.round(w)} g carbs + 25–30 g protein immediately. Total daily target: ${carbs} g. Hydration and electrolytes matter more on hard days.`,
+      long: `Long runs (90+ min) are the highest carbohydrate demand of the week. Pre-load with ${Math.round(w * 1.5)} g of easily digestible carbs the evening before and again 2–3 hours before the run. During the run, take gels or carbohydrates every 45 minutes. Post-run: ${Math.round(w)} g carbs + 30 g protein within 30 minutes. Total daily: ${carbs} g.`
+    };
+    document.getElementById('s21-desc').textContent = descs[s];
+  }
+  weightSl.addEventListener('input', update);
+  sessionSl.addEventListener('change', update);
+  update();
+}
+
+// ── DEMO 22: Training pattern analyser ──
+function initDemo22() {
+  const hrSl    = document.getElementById('s22-hr');
+  const driftSl = document.getElementById('s22-drift');
+  const jumpSl  = document.getElementById('s22-jump');
+  if (!hrSl || !driftSl || !jumpSl) return;
+
+  function signal(label, value, color, detail) {
+    return `<div style="padding:.6rem 1rem;border-radius:8px;border:1px solid ${color}40;background:${color}08;display:flex;align-items:flex-start;gap:.75rem">
+      <span style="font-size:.75rem;font-weight:700;padding:.2rem .55rem;border-radius:10px;background:${color}20;color:${color};white-space:nowrap;margin-top:.1rem">${value}</span>
+      <div><div style="font-size:.82rem;font-weight:600;color:var(--text);margin-bottom:.2rem">${label}</div>
+      <div style="font-size:.78rem;color:var(--muted);line-height:1.6">${detail}</div></div>
+    </div>`;
+  }
+
+  function update() {
+    const hr    = parseInt(hrSl.value);
+    const drift = parseInt(driftSl.value);
+    const jump  = parseInt(jumpSl.value);
+
+    document.getElementById('s22-hr-label').textContent    = (hr >= 0 ? '+' : '') + hr + ' bpm';
+    document.getElementById('s22-drift-label').textContent = drift + '%';
+    document.getElementById('s22-jump-label').textContent  = '+' + jump + '%';
+
+    // Signal 1: Resting HR
+    let hrColor, hrVal, hrDetail;
+    if (hr <= 0) {
+      hrColor = '#22c55e'; hrVal = 'Normal';
+      hrDetail = 'At or below baseline — full recovery from recent sessions. The body has processed training stress. Hard sessions are appropriate.';
+    } else if (hr <= 4) {
+      hrColor = '#84cc16'; hrVal = 'Slightly elevated';
+      hrDetail = 'Minor elevation — still within normal variation. Could reflect yesterday\'s session. An easy run is fine; hold off on intervals until tomorrow.';
+    } else if (hr <= 7) {
+      hrColor = '#f59e0b'; hrVal = 'Elevated';
+      hrDetail = 'Clearly above baseline. Body is still processing recent training load. Stick to easy running or rest today. If this persists 3+ days, reduce overall volume.';
+    } else {
+      hrColor = '#ef4444'; hrVal = 'High';
+      hrDetail = `${hr} bpm above baseline is a clear overreaching signal. Combined with any other elevated marker, this is a definitive rest day. Rule out illness first — elevated resting HR is also an early symptom of infection.`;
+    }
+
+    // Signal 2: HR drift
+    let driftColor, driftVal, driftDetail;
+    if (drift <= 5) {
+      driftColor = '#22c55e'; driftVal = 'Good';
+      driftDetail = 'Low drift — your easy pace is truly aerobic. Heart rate is stable throughout, meaning you are well inside Z2 and the cardiovascular system is not working hard to maintain it.';
+    } else if (drift <= 10) {
+      driftColor = '#f59e0b'; driftVal = 'Moderate';
+      driftDetail = 'Some drift detected. Your starting pace may be slightly too fast for Z2, or you are mildly dehydrated. Try starting 10–15 sec/km slower and see if drift reduces below 5%.';
+    } else {
+      driftColor = '#ef4444'; driftVal = 'High';
+      driftDetail = `${drift}% drift means your easy runs are not easy. You are likely running at the Z3 boundary — enough to accumulate fatigue but not enough to produce threshold adaptations. This is the grey zone. Slow down until drift falls below 8%.`;
+    }
+
+    // Signal 3: Mileage jump
+    let jumpColor, jumpVal, jumpDetail;
+    if (jump <= 10) {
+      jumpColor = '#22c55e'; jumpVal = 'Safe';
+      jumpDetail = 'Mileage increase within the 10% guideline. Both muscles and tendons have enough time to adapt to the new load. Continue this rate and add a down-week every 3–4 weeks.';
+    } else if (jump <= 20) {
+      jumpColor = '#f59e0b'; jumpVal = 'Caution';
+      jumpDetail = `A ${jump}% jump is above the safe guideline. Muscles adapt in 1–2 weeks; tendons take 4–8 weeks. The injury risk window is open. Monitor for shin, Achilles and knee signals closely this week.`;
+    } else {
+      jumpColor = '#ef4444'; jumpVal = 'High risk';
+      jumpDetail = `${jump}% is a significant load spike. This is one of the strongest predictors of overuse injury in recreational runners. If you feel fine, reduce next week's volume to absorb the jump before increasing again.`;
+    }
+
+    document.getElementById('s22-signals').innerHTML =
+      signal('Resting HR trend', hrVal, hrColor, hrDetail) +
+      signal('HR drift during easy run', driftVal, driftColor, driftDetail) +
+      signal('Weekly mileage jump', jumpVal, jumpColor, jumpDetail);
+
+    const issues = [hrVal, driftVal, jumpVal].filter(v => v === 'High' || v === 'High risk' || v === 'Elevated').length;
+    const cautions = [hrVal, driftVal, jumpVal].filter(v => v === 'Caution' || v === 'Moderate' || v === 'Slightly elevated').length;
+    let summary;
+    if (issues >= 2) {
+      summary = 'Multiple red signals: this is a rest or active-recovery day. Ignoring two or more overload signals simultaneously is how overuse injuries develop — they rarely announce themselves with one clear warning.';
+    } else if (issues === 1) {
+      summary = 'One red signal: address it before it compounds. A single overload signal responded to early typically resolves in 1–3 days. The same signal ignored for a week often becomes an injury.';
+    } else if (cautions >= 2) {
+      summary = 'Two amber signals: proceed with caution. An easy session is fine, but no intensity today. Review your past 2 weeks — a pattern of amber signals usually means overall training load has crept too high without adequate recovery.';
+    } else {
+      summary = 'Signals look healthy. Your training load, recovery and easy-run quality are in a good range. Keep monitoring weekly — these signals are most useful as trends, not single readings.';
+    }
+    document.getElementById('s22-summary').textContent = summary;
+  }
+
+  hrSl.addEventListener('input', update);
+  driftSl.addEventListener('input', update);
+  jumpSl.addEventListener('input', update);
+  update();
+}
+
 // ══════════════════════════════════════════════════════════════
 // CANVAS ILLUSTRATION ANIMATIONS
 // ══════════════════════════════════════════════════════════════
@@ -1630,16 +1815,16 @@ function initDemo19() {
   // ── Boot each animation when its lesson becomes active ──
   window._startAnimForLesson = function(lessonIdx) {
     if (lessonIdx === 4) {
-      var c = document.getElementById('breathCanvas');
-      if (c) { setTimeout(function(){ startBreathing(c); }, 80); }
+      var cBreath = document.getElementById('breathCanvas');
+      if (cBreath) { setTimeout(function(){ startBreathing(cBreath); }, 80); }
     }
     if (lessonIdx === 6) {
-      var c = document.getElementById('runCanvas');
-      if (c) { setTimeout(function(){ startRunning(c); }, 80); }
+      var cRun = document.getElementById('runCanvas');
+      if (cRun) { setTimeout(function(){ startRunning(cRun); }, 80); }
     }
     if (lessonIdx === 9) {
-      var c = document.getElementById('exCanvas');
-      if (c) { setTimeout(function(){ startExercises(c); }, 80); }
+      var cEx = document.getElementById('exCanvas');
+      if (cEx) { setTimeout(function(){ startExercises(cEx); }, 80); }
     }
     if (lessonIdx === 13) {
       setTimeout(function(){ if(window._initEcoCanvas) window._initEcoCanvas(); }, 80);
@@ -1667,4 +1852,10 @@ function initDemos() {
   if (current === 17) initDemo17();
   if (current === 18) initDemo18();
   if (current === 19) initDemo19();
+  if (current === 20) initDemo20();
+  if (current === 21) initDemo21();
+  if (current === 22) initDemo22();
 }
+
+initDemos();
+updateIndicator();

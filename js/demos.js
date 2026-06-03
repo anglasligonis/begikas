@@ -265,7 +265,6 @@ function initDemo6() {
     document.getElementById('s6-dur-label').textContent = dur + ' min';
 
     const sweatBase = 0.4 + (temp - 5) * 0.03;
-    const totalSweat = (sweatBase * dur / 60).toFixed(2);
     const coreRise = 0.8 + (temp > 20 ? (temp - 20) * 0.05 : 0) + dur * 0.004;
     const core = Math.min(40.5, 37.0 + coreRise).toFixed(1);
     const pacePenalty = temp <= 15 ? 0 : Math.round((temp - 15) * 0.012 * 100);
@@ -1644,16 +1643,16 @@ function initDemo19() {
   // ── Boot each animation when its lesson becomes active ──
   window._startAnimForLesson = function(lessonIdx) {
     if (lessonIdx === 4) {
-      var c = document.getElementById('breathCanvas');
-      if (c) { setTimeout(function(){ startBreathing(c); }, 80); }
+      var cBreath = document.getElementById('breathCanvas');
+      if (cBreath) { setTimeout(function(){ startBreathing(cBreath); }, 80); }
     }
     if (lessonIdx === 6) {
-      var c = document.getElementById('runCanvas');
-      if (c) { setTimeout(function(){ startRunning(c); }, 80); }
+      var cRun = document.getElementById('runCanvas');
+      if (cRun) { setTimeout(function(){ startRunning(cRun); }, 80); }
     }
     if (lessonIdx === 9) {
-      var c = document.getElementById('exCanvas');
-      if (c) { setTimeout(function(){ startExercises(c); }, 80); }
+      var cEx = document.getElementById('exCanvas');
+      if (cEx) { setTimeout(function(){ startExercises(cEx); }, 80); }
     }
     if (lessonIdx === 13) {
       setTimeout(function(){ if(window._initEcoCanvas) window._initEcoCanvas(); }, 80);
