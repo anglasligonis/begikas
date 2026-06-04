@@ -20,7 +20,10 @@ function goLesson(n) {
   document.getElementById('lesson-' + current).classList.add('active');
   refreshPills();
   updateIndicator();
-  window.scrollTo({ top: 0, behavior: 'smooth' });
+  ignoreScrollUntil = performance.now() + 600;
+  lastScrollY = 0;
+  scrollAccum = 0;
+  window.scrollTo(0, 0);
   initDemos();
   if (window._startAnimForLesson) window._startAnimForLesson(n);
 }
@@ -92,6 +95,10 @@ function handleScroll() {
 
   // Skip events that fire while the nav is animating (prevents feedback loop)
   if (now < ignoreScrollUntil) { lastScrollY = y; ticking = false; return; }
+
+  // On mobile, skip scroll-driven toggle — it causes layout jumps as the
+  // sticky nav shifts in/out of document flow during touch momentum scrolling
+  if (window.innerWidth < 700) { lastScrollY = y; ticking = false; return; }
 
   const delta = y - lastScrollY;
   lastScrollY = y;
