@@ -38,9 +38,14 @@ main{max-width:820px;margin:0 auto;padding:2.5rem 2rem 6rem}
 /* Responsive */
 @media(max-width:600px){
   .site-header{padding:1rem}
+  /* Hide the wide lesson-count label — causes header overflow on narrow screens.
+     The lesson-indicator shows the active lesson name instead when nav is collapsed. */
+  #lessonCountLabel{display:none}
   main{padding:1.5rem 1rem 5rem}
   .lesson-title{font-size:1.5rem}
   .figure-wrap{flex-direction:column}
   .figure-svg-col{width:120px;margin:0 auto}
   .metric-row{gap:.5rem}
+  /* Match main-content side padding; allow nav to scroll when >70vh of lessons shown */
+  .lesson-nav{padding-left:1rem;padding-right:1rem;max-height:70vh;overflow-y:auto}
 }

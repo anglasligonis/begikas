@@ -57,6 +57,10 @@ if (isMobile) {
   navCollapsed = true;
   const btn = document.getElementById('navToggleBtn');
   if (btn) btn.textContent = '☰';
+  // Show current lesson name in header indicator (lessonCountLabel is hidden on mobile via CSS)
+  updateIndicator();
+  const ind = document.getElementById('lessonIndicator');
+  if (ind) ind.style.opacity = '1';
 }
 
 function collapseNav(force) {
