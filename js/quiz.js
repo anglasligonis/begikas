@@ -16,6 +16,7 @@ document.querySelectorAll('.quiz').forEach(quiz => {
         opt.innerHTML += '<span class="mark">✗</span>';
         opts[correctIdx].classList.add('correct');
         opts[correctIdx].innerHTML += '<span class="mark">✓</span>';
+        feedback.classList.add('wrong');
       }
       feedback.classList.add('show');
       // Mark lesson complete once quiz is answered
