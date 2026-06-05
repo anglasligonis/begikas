@@ -1,70 +1,213 @@
-/* Methodology cards */
-.method-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:1.25rem 1.5rem;margin-bottom:.85rem;border-left:4px solid var(--border);transition:box-shadow .2s}
-.method-card:hover{box-shadow:0 4px 16px rgba(0,0,0,.06)}
-.method-card.norwegian{border-left-color:#3b82f6}
-.method-card.kenyan{border-left-color:#ef4444}
-.method-card.polarized{border-left-color:#22c55e}
-.method-card.lydiard{border-left-color:#f59e0b}
-.method-card.daniels{border-left-color:#8b5cf6}
-.method-name{font-size:1rem;font-weight:600;margin-bottom:.15rem}
-.method-sub{font-size:.75rem;color:var(--muted);margin-bottom:.6rem;font-style:italic}
-.method-badges{display:flex;gap:.35rem;flex-wrap:wrap;margin-bottom:.75rem}
-.method-badge{font-size:.62rem;font-weight:600;padding:.2rem .55rem;border-radius:10px;border:1px solid var(--border);background:var(--bg);color:var(--muted);text-transform:uppercase;letter-spacing:.4px}
-.method-body{font-size:.875rem;color:#374151;line-height:1.7;margin-bottom:.85rem}
-.ibar-wrap{margin-top:.5rem}
-.ibar-title{font-size:.62rem;font-weight:700;text-transform:uppercase;letter-spacing:.8px;color:var(--light);margin-bottom:.3rem}
-.ibar{display:flex;height:10px;border-radius:5px;overflow:hidden;gap:1px;width:100%}
-.ibar-seg{height:100%;transition:flex .4s}
-.ibar-legend{display:flex;gap:.75rem;margin-top:.3rem;flex-wrap:wrap}
-.ibar-legend span{font-size:.6rem;color:var(--muted);display:flex;align-items:center;gap:.3rem}
-.ibar-legend span::before{content:'';width:8px;height:8px;border-radius:2px;flex-shrink:0}
-.method-picker{display:flex;gap:.75rem;flex-wrap:wrap;margin-bottom:1rem}
-.method-pick-group{display:flex;flex-direction:column;gap:.3rem;flex:1;min-width:200px}
-.method-pick-group label{font-size:.72rem;font-weight:600;text-transform:uppercase;letter-spacing:.8px;color:var(--muted)}
-.method-rec{background:var(--bg);border:2px solid var(--border);border-radius:var(--radius);padding:1.25rem 1.5rem;transition:border-color .3s}
-.method-rec-header{display:flex;align-items:center;gap:.6rem;margin-bottom:.5rem}
-.method-rec-dot{width:12px;height:12px;border-radius:50%;flex-shrink:0}
-.method-rec-name{font-weight:700;font-size:1rem}
-.method-rec-why{font-size:.875rem;color:var(--muted);line-height:1.7}
-.method-rec-borrow{margin-top:.75rem;padding:.6rem .85rem;background:var(--surface);border-radius:8px;border:1px solid var(--border);font-size:.82rem;color:#374151;line-height:1.6}
+/* ── METHODOLOGY CARDS (lesson 9) ── */
+.method-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--border);
+  padding: 1.25rem 1.5rem;
+  margin-bottom: .85rem;
+  transition: border-left-color .2s;
+}
+.method-card:hover { border-left-color: var(--z3); }
+.method-card.norwegian  { border-left-color: var(--z1); }
+.method-card.kenyan     { border-left-color: var(--z5); }
+.method-card.polarized  { border-left-color: var(--z2); }
+.method-card.lydiard    { border-left-color: var(--z3); }
+.method-card.daniels    { border-left-color: #8b5cf6; }
 
-.lesson-illustration{margin:1.75rem 0;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:1.25rem 1.5rem}
-.illustration-title{font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:1.2px;color:var(--light);margin-bottom:1rem;display:flex;align-items:center;gap:.5rem}
-.illustration-title::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--z2);flex-shrink:0}
-.illustration-title svg{width:100%;height:auto;display:block}
+.method-name { font-size: .95rem; font-weight: 700; margin-bottom: .15rem; color: var(--text); }
+.method-sub { font-size: .75rem; color: var(--muted); margin-bottom: .6rem; font-style: italic; }
 
-/* Summary lesson */
-.summary-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:1.5rem 0}
-@media(max-width:600px){.summary-grid{grid-template-columns:1fr}}
-.summary-card{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:1rem 1.25rem}
-.summary-card h3{font-size:.85rem;font-weight:600;margin-bottom:.35rem}
-.summary-card p{font-size:.82rem;color:var(--muted);line-height:1.6}
-.summary-card .sc-num{font-size:1.6rem;font-weight:300;letter-spacing:-.5px;display:block;margin-bottom:.1rem}
+.method-badges { display: flex; gap: .35rem; flex-wrap: wrap; margin-bottom: .75rem; }
+.method-badge {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: .56rem;
+  font-weight: 700;
+  letter-spacing: .08em;
+  padding: .18rem .55rem;
+  border: 1px solid var(--border);
+  background: var(--bg);
+  color: var(--muted);
+  text-transform: uppercase;
+}
 
-/* Exercise cards (lesson 10) */
-.exercise-grid{display:grid;grid-template-columns:1fr 1fr;gap:.75rem;margin:1.25rem 0}
-@media(max-width:600px){.exercise-grid{grid-template-columns:1fr}}
-.exercise-card{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:1rem 1.25rem}
-.exercise-name{font-size:.95rem;font-weight:600;margin-bottom:.2rem}
-.exercise-tag{font-size:.62rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.6px;margin-bottom:.45rem;display:block}
-.exercise-desc{font-size:.83rem;color:var(--muted);line-height:1.6}
-.exercise-sets{font-size:.75rem;font-weight:600;color:var(--text);margin-top:.4rem;padding:.25rem .6rem;background:var(--bg);border-radius:6px;border:1px solid var(--border);display:inline-block}
+.method-body { font-size: .875rem; color: #484848; line-height: 1.72; margin-bottom: .85rem; }
 
-/* Race day timeline (lesson 12) */
-.race-timeline{margin:1.25rem 0}
-.timeline-step{display:flex;gap:1rem;margin-bottom:.85rem;padding-left:1.25rem;border-left:2px solid var(--border);position:relative}
-.timeline-step::before{content:'';position:absolute;left:-7px;top:.55rem;width:12px;height:12px;border-radius:50%;background:var(--z2);border:2px solid var(--bg)}
-.timeline-step.warn::before{background:var(--z3)}
-.timeline-step.alert::before{background:var(--z4)}
-.timeline-time{font-weight:700;font-size:.82rem;color:var(--text);min-width:96px;padding-top:.35rem}
-.timeline-body h4{font-size:.9rem;font-weight:600;margin-bottom:.15rem}
-.timeline-body p{font-size:.82rem;color:var(--muted);line-height:1.6}
+.ibar-wrap { margin-top: .5rem; }
+.ibar-title {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: .56rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .1em;
+  color: var(--light);
+  margin-bottom: .3rem;
+}
+.ibar { display: flex; height: 8px; overflow: hidden; gap: 1px; width: 100%; }
+.ibar-seg { height: 100%; transition: flex .4s; }
+.ibar-legend { display: flex; gap: .75rem; margin-top: .3rem; flex-wrap: wrap; }
+.ibar-legend span {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: .54rem;
+  color: var(--muted);
+  display: flex;
+  align-items: center;
+  gap: .3rem;
+}
+.ibar-legend span::before { content: ''; width: 8px; height: 8px; flex-shrink: 0; }
 
-/* Winter layers demo (lesson 11) */
-.layer-row{display:flex;flex-direction:column;gap:.5rem;margin:1rem 0}
-.layer-item{display:flex;align-items:center;gap:.75rem;padding:.6rem .9rem;border-radius:8px;border:1px solid var(--border);background:var(--bg);font-size:.85rem;transition:all .3s}
-.layer-item.active{background:#eff6ff;border-color:#93c5fd}
-.layer-item.removed{opacity:.25;text-decoration:line-through}
-.layer-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0}
-.layer-name{font-weight:600;flex:1}
-.layer-note{font-size:.75rem;color:var(--muted)}
+.method-picker { display: flex; gap: .75rem; flex-wrap: wrap; margin-bottom: 1rem; }
+.method-pick-group { display: flex; flex-direction: column; gap: .3rem; flex: 1; min-width: 200px; }
+.method-pick-group label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: .58rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .1em;
+  color: var(--muted);
+}
+
+.method-rec {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--z3);
+  padding: 1.25rem 1.5rem;
+  transition: border-left-color .3s;
+}
+.method-rec-header { display: flex; align-items: center; gap: .6rem; margin-bottom: .5rem; }
+.method-rec-dot { width: 10px; height: 10px; flex-shrink: 0; }
+.method-rec-name { font-weight: 700; font-size: .95rem; color: var(--text); }
+.method-rec-why { font-size: .875rem; color: var(--muted); line-height: 1.7; }
+.method-rec-borrow {
+  margin-top: .75rem;
+  padding: .6rem .85rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  font-size: .82rem;
+  color: #484848;
+  line-height: 1.65;
+}
+
+/* ── LESSON ILLUSTRATION ── */
+.lesson-illustration {
+  margin: 1.75rem 0;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  padding: 1.25rem 1.5rem;
+}
+.illustration-title {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: .58rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .14em;
+  color: var(--muted);
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+}
+.illustration-title::before { content: ''; width: 6px; height: 6px; background: var(--z2); flex-shrink: 0; }
+.illustration-title svg { width: 100%; height: auto; display: block; }
+
+/* ── SUMMARY CARDS (lesson 20) ── */
+.summary-grid { display: grid; grid-template-columns: 1fr 1fr; gap: .85rem; margin: 1.5rem 0; }
+@media(max-width:600px) { .summary-grid { grid-template-columns: 1fr; } }
+.summary-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  padding: 1rem 1.25rem;
+}
+.summary-card h3 { font-size: .85rem; font-weight: 700; margin-bottom: .35rem; color: var(--text); }
+.summary-card p { font-size: .82rem; color: var(--muted); line-height: 1.65; }
+.summary-card .sc-num {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 1.6rem;
+  font-weight: 700;
+  display: block;
+  margin-bottom: .1rem;
+  color: var(--text);
+}
+
+/* ── EXERCISE CARDS (lesson 10) ── */
+.exercise-grid { display: grid; grid-template-columns: 1fr 1fr; gap: .75rem; margin: 1.25rem 0; }
+@media(max-width:600px) { .exercise-grid { grid-template-columns: 1fr; } }
+.exercise-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  padding: 1rem 1.25rem;
+}
+.exercise-name { font-size: .92rem; font-weight: 700; margin-bottom: .2rem; color: var(--text); }
+.exercise-tag {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: .56rem;
+  font-weight: 700;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: .1em;
+  margin-bottom: .45rem;
+  display: block;
+}
+.exercise-desc { font-size: .83rem; color: var(--muted); line-height: 1.65; }
+.exercise-sets {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: .68rem;
+  font-weight: 700;
+  color: var(--text);
+  margin-top: .5rem;
+  padding: .2rem .6rem;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  display: inline-block;
+  letter-spacing: .04em;
+}
+
+/* ── RACE TIMELINE (lesson 12) ── */
+.race-timeline { margin: 1.25rem 0; }
+.timeline-step {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: .85rem;
+  padding-left: 1.25rem;
+  border-left: 2px solid var(--border);
+  position: relative;
+}
+.timeline-step::before {
+  content: '';
+  position: absolute;
+  left: -6px; top: .55rem;
+  width: 10px; height: 10px;
+  background: var(--z2);
+  border: 2px solid var(--bg);
+}
+.timeline-step.warn::before  { background: var(--z3); }
+.timeline-step.alert::before { background: var(--z4); }
+.timeline-time {
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 700;
+  font-size: .75rem;
+  letter-spacing: .04em;
+  color: var(--text);
+  min-width: 96px;
+  padding-top: .35rem;
+  flex-shrink: 0;
+}
+.timeline-body h4 { font-size: .9rem; font-weight: 600; margin-bottom: .15rem; color: var(--text); }
+.timeline-body p { font-size: .82rem; color: var(--muted); line-height: 1.65; }
+
+/* ── WINTER LAYERS (lesson 11) ── */
+.layer-row { display: flex; flex-direction: column; gap: .45rem; margin: 1rem 0; }
+.layer-item {
+  display: flex;
+  align-items: center;
+  gap: .75rem;
+  padding: .6rem .9rem;
+  border: 1px solid var(--border);
+  background: var(--bg);
+  font-size: .85rem;
+  transition: all .25s;
+}
+.layer-item.active { background: var(--z1bg); border-color: var(--z1); }
+.layer-item.removed { opacity: .25; text-decoration: line-through; }
+.layer-dot { width: 8px; height: 8px; flex-shrink: 0; }
+.layer-name { font-weight: 700; flex: 1; color: var(--text); }
+.layer-note { font-size: .75rem; color: var(--muted); }
