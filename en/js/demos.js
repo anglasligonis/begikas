@@ -18,7 +18,7 @@ function initDemo1() {
     document.getElementById('s1-fib1').textContent = fib1[v - 1] + '%';
     document.getElementById('s1-fib2').textContent = fib2[v - 1] + '%';
     document.getElementById('s1-fuel').textContent = fuels[v - 1];
-    document.getElementById('s1-fuel').style.color = v <= 2 ? '#f59e0b' : '#3b82f6';
+    document.getElementById('s1-fuel').style.color = v <= 2 ? '#D97706' : '#3b82f6';
     document.getElementById('s1-desc').textContent = descs[v - 1];
     // SVG bars
     document.getElementById('fib2a-bar').setAttribute('width', (fib2[v-1] * 0.15).toFixed(1));
@@ -93,12 +93,12 @@ function initDemo3() {
     document.getElementById('s3-gly-pct').textContent = Math.round(glyLeft) + '%';
     const fillEl = document.getElementById('s3-gly-fill');
     fillEl.style.width = glyLeft + '%';
-    fillEl.style.background = glyLeft > 50 ? '#3b82f6' : glyLeft > 20 ? '#f59e0b' : '#ef4444';
+    fillEl.style.background = glyLeft > 50 ? '#3b82f6' : glyLeft > 20 ? '#D97706' : '#DC2626';
     document.getElementById('s3-gly-label').textContent = glyLeft <= 0 ? 'DEPLETED' : glyLeft < 20 ? 'Critical' : glyLeft < 50 ? 'Low' : 'Sufficient';
     document.getElementById('s3-fat-fill').style.width = (fat > 0 ? 100 : 15) + '%';
     document.getElementById('s3-fat-label').textContent = fat > 50 ? 'Active (primary)' : fat > 0 ? 'Active (secondary)' : 'Minimal';
     document.getElementById('s3-wall').textContent = depletionPerMin[iv] > 0 ? wallMin + ' min' : '—';
-    document.getElementById('s3-wall').style.color = wallMin < dur ? '#ef4444' : 'var(--text)';
+    document.getElementById('s3-wall').style.color = wallMin < dur ? '#DC2626' : 'var(--text)';
     const descs = [
       `Easy pace: ${fat}% of fuel from fat, ${carb}% from glycogen. Glycogen depletes slowly — you can run for a long time without risking the wall.`,
       `Moderate pace: glycogen becomes a key fuel source. After ~${wallMin} min without extra nutrition, stores will run out.`,
@@ -179,7 +179,7 @@ function initDemo4() {
     const lac = getLactate(currentPct, fitLevel);
     const cy_ = pad.t + ch - Math.min(ch, (lac / 12) * ch);
     ctx.beginPath(); ctx.arc(cx_, cy_, 6, 0, Math.PI * 2);
-    ctx.fillStyle = lac > 4 ? '#ef4444' : lac > 2 ? '#f59e0b' : '#22c55e';
+    ctx.fillStyle = lac > 4 ? '#DC2626' : lac > 2 ? '#D97706' : '#10B981';
     ctx.fill();
     ctx.strokeStyle = '#fff'; ctx.lineWidth = 2; ctx.stroke();
   }
@@ -193,10 +193,10 @@ function initDemo4() {
     document.getElementById('s4-fit-label').textContent = fitLabels[fit - 1];
     const lac = getLactate(pct, fit);
     document.getElementById('s4-lac').textContent = Math.max(0, lac).toFixed(1);
-    document.getElementById('s4-lac').style.color = lac > 4 ? '#ef4444' : lac > 2.5 ? '#f59e0b' : '#22c55e';
+    document.getElementById('s4-lac').style.color = lac > 4 ? '#DC2626' : lac > 2.5 ? '#D97706' : '#10B981';
     const lvl = lac < 2 ? 'Low (normal)' : lac < 4 ? 'Moderate (threshold)' : 'High (accumulating)';
     document.getElementById('s4-thr-label').textContent = lvl;
-    document.getElementById('s4-thr-label').style.color = lac < 2 ? '#22c55e' : lac < 4 ? '#f59e0b' : '#ef4444';
+    document.getElementById('s4-thr-label').style.color = lac < 2 ? '#10B981' : lac < 4 ? '#D97706' : '#DC2626';
     document.getElementById('s4-thr-pct').textContent = thr + '%';
     const thrExplain = document.getElementById('s4-thr-explain');
     const thrBpm = document.getElementById('s4-thr-bpm');
@@ -265,10 +265,10 @@ function initDemo6() {
     const per15       = Math.round(sweatBase * 1000 / 4 * 0.8);
 
     document.getElementById('s6-core').textContent = core + '°C';
-    document.getElementById('s6-core').style.color = parseFloat(core) > 39.5 ? '#ef4444' : parseFloat(core) > 38.5 ? '#f59e0b' : '#3b82f6';
+    document.getElementById('s6-core').style.color = parseFloat(core) > 39.5 ? '#DC2626' : parseFloat(core) > 38.5 ? '#D97706' : '#3b82f6';
     document.getElementById('s6-sweat').textContent = sweatBase.toFixed(1) + ' L';
     document.getElementById('s6-pace-hit').textContent = (pacePenalty > 0 ? '–' : '') + pacePenalty + '%';
-    document.getElementById('s6-pace-hit').style.color = pacePenalty > 8 ? '#ef4444' : pacePenalty > 3 ? '#f59e0b' : '#22c55e';
+    document.getElementById('s6-pace-hit').style.color = pacePenalty > 8 ? '#DC2626' : pacePenalty > 3 ? '#D97706' : '#10B981';
     document.getElementById('s6-drink').textContent = per15 + ' ml';
 
     let desc;
@@ -293,17 +293,17 @@ function initDemo7() {
     const force = Math.max(1.5, Math.min(3.5, forceBase));
     const contactMs = Math.round(320 - (cad - 150) * 3.2);
     document.getElementById('s7-force').textContent = force.toFixed(1) + '×';
-    document.getElementById('s7-force').style.color = force > 2.8 ? '#ef4444' : force > 2.2 ? '#f59e0b' : '#22c55e';
+    document.getElementById('s7-force').style.color = force > 2.8 ? '#DC2626' : force > 2.2 ? '#D97706' : '#10B981';
     document.getElementById('s7-contact').textContent = Math.max(150, contactMs) + ' ms';
     let rating, rColor, desc;
     if (cad < 160) {
-      rating = 'High risk'; rColor = '#ef4444';
+      rating = 'High risk'; rColor = '#DC2626';
       desc = `${cad} SPM — too low. Your stride is probably too long, with the foot landing too far in front of the body. An impact force of ${force.toFixed(1)}× body weight poses a high risk of knee and shin injuries.`;
     } else if (cad < 168) {
-      rating = 'Moderate risk'; rColor = '#f59e0b';
+      rating = 'Moderate risk'; rColor = '#D97706';
       desc = `${cad} SPM — acceptable, but there's room to improve. Try increasing by 5 SPM per week towards the 170–180 range.`;
     } else if (cad <= 182) {
-      rating = 'Optimal'; rColor = '#22c55e';
+      rating = 'Optimal'; rColor = '#10B981';
       desc = `${cad} SPM — excellent. This is the range most experienced runners work in. Ground contact time is short and impact force is minimal.`;
     } else {
       rating = 'Very high'; rColor = '#94a3b8';
@@ -322,17 +322,17 @@ function initDemo8() {
   const timeS = document.getElementById('s8-time');
   const recs = {
     '5k-low':       { name:"Daniels' formula",         color:'#8b5cf6', why:"With limited time, Daniels' VDOT system is the most efficient — every session has a clear purpose and precise pace. You don't need high volume: 3 structured sessions per week deliver solid results.", borrow:"Borrow this: calculate your VDOT from your last 5K time (vdoto.com) and use the resulting zones at least for your easy runs." },
-    '5k-mid':       { name:'Polarised model',           color:'#22c55e', why:'The 80/20 method works great for 5K with moderate volume. 2–3 easy sessions per week + 1 truly hard one (intervals) gives clear progress without fatigue.', borrow:'Borrow this: guard your Z3 carefully — if a run feels "comfortably hard", that\'s probably the grey zone. Run either slower or faster.' },
+    '5k-mid':       { name:'Polarised model',           color:'#10B981', why:'The 80/20 method works great for 5K with moderate volume. 2–3 easy sessions per week + 1 truly hard one (intervals) gives clear progress without fatigue.', borrow:'Borrow this: guard your Z3 carefully — if a run feels "comfortably hard", that\'s probably the grey zone. Run either slower or faster.' },
     '5k-high':      { name:'Norwegian training system', color:'#3b82f6', why:'With 8+ hrs/week you can start experimenting with double sessions. Focus on threshold pace — two lactate-threshold sessions per week (not per day) delivers excellent results.', borrow:'Borrow this: once a week, run twice — an easy 30–40 min in the morning, then a 20–30 min threshold run in the evening.' },
     'half-low':     { name:"Daniels' formula",          color:'#8b5cf6', why:"For a half marathon with limited time, Daniels' system offers a clear structure: long run at the weekend + one quality session + easy days. Not much, but purposeful.", borrow:"Borrow this: the weekend long run should always be truly easy (you can talk) — that's Daniels' E pace, not marathon pace." },
-    'half-mid':     { name:'Lydiard system',            color:'#f59e0b', why:"For a half marathon with moderate volume, Lydiard's principle works beautifully: 8–10 weeks of aerobic base building (long, slow runs), then 3–4 weeks of threshold work. Your legs will be strong at the finish.", borrow:"Borrow this: before starting speed work, run only easily for 8 weeks. It's boring, but the aerobic base pays off." },
-    'half-high':    { name:'Polarised model',           color:'#22c55e', why:'With high volume, the polarised model lets you run a lot without overtraining. 80% easy sessions + 1–2 truly hard ones per week is the ideal ratio for a half marathon.', borrow:'Borrow this: one long run per week (16–22 km) at a truly easy pace is the cornerstone of half-marathon training.' },
-    'marathon-low': { name:'Lydiard system',            color:'#f59e0b', why:"For a marathon even with limited time, Lydiard's principle is paramount: long, easy weekend runs build fat efficiency and tendon resilience. Better 3 sessions per week with a long weekend run than 5 average ones.", borrow:'Borrow this: every week — one run longer than all the rest. Gradually build to 28–30 km before the marathon.' },
-    'marathon-mid': { name:'Polarised model',           color:'#22c55e', why:'For a marathon with moderate volume, the 80/20 method lets you run enough without overtraining. Long easy weekend runs + 1 threshold session per week is the classic recipe.', borrow:'Borrow this: marathon pace = the Z2/Z3 boundary. "Marathon pace" sessions are very effective, but must be balanced with a lot of easier running.' },
-    'marathon-high':{ name:'Kenyan / Ethiopian model',  color:'#ef4444', why:"With high volume, Kenyan logic holds: the more easy running, the better the fat metabolism and aerobic base. 80–90% of all kilometres must be truly easy — even if it feels too easy.", borrow:"Borrow this: if you're running 60+ km/week, check — is 80% of it really easy? Many runners go too fast on easy days and too slow on hard ones." },
-    'health-low':   { name:'Polarised model',           color:'#22c55e', why:'For health and longevity, the polarised model is ideal: fewest injuries, great enjoyment, sustainable for decades. Even 3 sessions per week (2 easy + 1 harder) delivers significant health benefits.', borrow:'Borrow this: 30 min of easy running 3× per week is enough. The key is consistency, not intensity.' },
-    'health-mid':   { name:'Polarised model',           color:'#22c55e', why:"With moderate volume, the polarised model lets you enjoy running without overtraining. 80% of sessions should be enjoyable — if running is always hard, that's not healthy long-term.", borrow:'Borrow this: a Sunday long run at a truly easy pace is one of the healthiest habits you can build. Even 60–90 min in Z1/Z2 does wonders for heart and metabolic health.' },
-    'health-high':  { name:'Lydiard system',            color:'#f59e0b', why:"With plenty of time, Lydiard's aerobic base principle is the most sustainable over the long term. Large volumes of easy running without overtraining build the capillary network, improve metabolic health and extend an active life.", borrow:"Borrow this: if you love running a lot — run a lot, but slowly. Speed comes naturally once the aerobic base is strong." }
+    'half-mid':     { name:'Lydiard system',            color:'#D97706', why:"For a half marathon with moderate volume, Lydiard's principle works beautifully: 8–10 weeks of aerobic base building (long, slow runs), then 3–4 weeks of threshold work. Your legs will be strong at the finish.", borrow:"Borrow this: before starting speed work, run only easily for 8 weeks. It's boring, but the aerobic base pays off." },
+    'half-high':    { name:'Polarised model',           color:'#10B981', why:'With high volume, the polarised model lets you run a lot without overtraining. 80% easy sessions + 1–2 truly hard ones per week is the ideal ratio for a half marathon.', borrow:'Borrow this: one long run per week (16–22 km) at a truly easy pace is the cornerstone of half-marathon training.' },
+    'marathon-low': { name:'Lydiard system',            color:'#D97706', why:"For a marathon even with limited time, Lydiard's principle is paramount: long, easy weekend runs build fat efficiency and tendon resilience. Better 3 sessions per week with a long weekend run than 5 average ones.", borrow:'Borrow this: every week — one run longer than all the rest. Gradually build to 28–30 km before the marathon.' },
+    'marathon-mid': { name:'Polarised model',           color:'#10B981', why:'For a marathon with moderate volume, the 80/20 method lets you run enough without overtraining. Long easy weekend runs + 1 threshold session per week is the classic recipe.', borrow:'Borrow this: marathon pace = the Z2/Z3 boundary. "Marathon pace" sessions are very effective, but must be balanced with a lot of easier running.' },
+    'marathon-high':{ name:'Kenyan / Ethiopian model',  color:'#DC2626', why:"With high volume, Kenyan logic holds: the more easy running, the better the fat metabolism and aerobic base. 80–90% of all kilometres must be truly easy — even if it feels too easy.", borrow:"Borrow this: if you're running 60+ km/week, check — is 80% of it really easy? Many runners go too fast on easy days and too slow on hard ones." },
+    'health-low':   { name:'Polarised model',           color:'#10B981', why:'For health and longevity, the polarised model is ideal: fewest injuries, great enjoyment, sustainable for decades. Even 3 sessions per week (2 easy + 1 harder) delivers significant health benefits.', borrow:'Borrow this: 30 min of easy running 3× per week is enough. The key is consistency, not intensity.' },
+    'health-mid':   { name:'Polarised model',           color:'#10B981', why:"With moderate volume, the polarised model lets you enjoy running without overtraining. 80% of sessions should be enjoyable — if running is always hard, that's not healthy long-term.", borrow:'Borrow this: a Sunday long run at a truly easy pace is one of the healthiest habits you can build. Even 60–90 min in Z1/Z2 does wonders for heart and metabolic health.' },
+    'health-high':  { name:'Lydiard system',            color:'#D97706', why:"With plenty of time, Lydiard's aerobic base principle is the most sustainable over the long term. Large volumes of easy running without overtraining build the capillary network, improve metabolic health and extend an active life.", borrow:"Borrow this: if you love running a lot — run a lot, but slowly. Speed comes naturally once the aerobic base is strong." }
   };
   function update() {
     const key = goalS.value + '-' + timeS.value;
@@ -527,7 +527,7 @@ function initDemo12() {
     document.getElementById('s12-fit-label').textContent = d.label;
     document.getElementById('s12-vo2a').textContent = d.vo2;
     document.getElementById('s12-eco').textContent = d.eco;
-    document.getElementById('s12-eco').style.color = ['#ef4444','#f59e0b','#22c55e'][parseInt(sl.value)-1];
+    document.getElementById('s12-eco').style.color = ['#DC2626','#D97706','#10B981'][parseInt(sl.value)-1];
     document.getElementById('s12-10k').textContent = d.time;
     document.getElementById('s12-insight').textContent = d.insight;
   }
@@ -602,7 +602,7 @@ function initDemo13() {
     for (let i=1; i<=maxX; i++) ctx.lineTo(px(i), py(econs(i)));
     for (let i=maxX; i>=1; i--) ctx.lineTo(px(i), py(espor(i)));
     ctx.closePath();
-    ctx.fillStyle='rgba(34,197,94,0.08)';
+    ctx.fillStyle='rgba(16,185,129,0.08)';
     ctx.fill(); ctx.restore();
 
     // ── Phase labels on chart ──
@@ -626,11 +626,11 @@ function initDemo13() {
       const fx=px(i), fy=py(econs(i));
       i===1 ? ctx.moveTo(fx,fy) : ctx.lineTo(fx,fy);
     }
-    ctx.strokeStyle='#22c55e'; ctx.lineWidth=2.5; ctx.stroke();
+    ctx.strokeStyle='#10B981'; ctx.lineWidth=2.5; ctx.stroke();
 
     // ── Legend ──
     ctx.font='700 8.5px Inter,sans-serif'; ctx.textAlign='left';
-    ctx.fillStyle='#22c55e'; ctx.fillRect(pad.left+4, pad.top+14, 14, 2.5);
+    ctx.fillStyle='#10B981'; ctx.fillRect(pad.left+4, pad.top+14, 14, 2.5);
     ctx.fillText('Consistent', pad.left+20, pad.top+18);
     ctx.fillStyle='#94a3b8';
     ctx.setLineDash([4,3]);
@@ -648,7 +648,7 @@ function initDemo13() {
     // ── Dots at marker ──
     const cy1=py(econs(y)), cy2=py(espor(y));
     ctx.beginPath(); ctx.arc(mx, cy1, 5, 0, 2*Math.PI);
-    ctx.fillStyle='#22c55e'; ctx.fill();
+    ctx.fillStyle='#10B981'; ctx.fill();
     ctx.beginPath(); ctx.arc(mx, cy2, 5, 0, 2*Math.PI);
     ctx.fillStyle='#94a3b8'; ctx.fill();
 
@@ -724,8 +724,8 @@ function initDemo14() {
   const fitSl = document.getElementById('s14-fit');
   const factors = [
     { id:'f-glycogen', label:'Glycogen depletion', color:'#3b82f6', base:120, fitMod:1.3 },
-    { id:'f-dehydr',   label:'Fluid loss',         color:'#f59e0b', base:90,  fitMod:1.1 },
-    { id:'f-heat',     label:'Body overheating',   color:'#ef4444', base:80,  fitMod:1.2 },
+    { id:'f-dehydr',   label:'Fluid loss',         color:'#D97706', base:90,  fitMod:1.1 },
+    { id:'f-heat',     label:'Body overheating',   color:'#DC2626', base:80,  fitMod:1.2 },
     { id:'f-central',  label:'Central fatigue',    color:'#8b5cf6', base:100, fitMod:1.25 }
   ];
   const barsEl = document.getElementById('s14-fatigue-bars');
@@ -807,11 +807,11 @@ function initDemo16() {
     const musclePct = Math.min(100, Math.round((weeks / 6) * 100));
     const tendonPct = Math.min(100, Math.round((weeks / 16) * 100));
     const progressionRisk = km > 50 && weeks < 8 ? 'High' : km > 35 && weeks < 6 ? 'Moderate' : 'Low';
-    const riskColor = progressionRisk === 'High' ? '#ef4444' : progressionRisk === 'Moderate' ? '#f59e0b' : '#22c55e';
+    const riskColor = progressionRisk === 'High' ? '#DC2626' : progressionRisk === 'Moderate' ? '#D97706' : '#10B981';
     document.getElementById('s16-muscle').textContent = musclePct+'%';
-    document.getElementById('s16-muscle').style.color = musclePct > 60 ? '#22c55e' : '#f59e0b';
+    document.getElementById('s16-muscle').style.color = musclePct > 60 ? '#10B981' : '#D97706';
     document.getElementById('s16-tendon').textContent = tendonPct+'%';
-    document.getElementById('s16-tendon').style.color = tendonPct > 60 ? '#22c55e' : '#ef4444';
+    document.getElementById('s16-tendon').style.color = tendonPct > 60 ? '#10B981' : '#DC2626';
     document.getElementById('s16-risk').textContent = progressionRisk;
     document.getElementById('s16-risk').style.color = riskColor;
     let insight = '';
@@ -873,7 +873,7 @@ function initDemo18() {
     document.getElementById('s18-perfect').textContent = perfect;
     document.getElementById('s18-real').textContent = real;
     document.getElementById('s18-diff').textContent = pct+'%';
-    document.getElementById('s18-real').style.color = consist >= 80 ? '#22c55e' : consist >= 60 ? '#f59e0b' : '#ef4444';
+    document.getElementById('s18-real').style.color = consist >= 80 ? '#10B981' : consist >= 60 ? '#D97706' : '#DC2626';
     let insight = '';
     if (consist >= 85) insight = `${real} sessions per year — excellent! Even an imperfect but very consistent runner builds a solid base. This regularity delivers results over 2–3 years that a heroic but inconsistent programme never can.`;
     else if (consist >= 65) insight = `${real} sessions per year. That's still enough to see clear progress. Try to identify what causes missed sessions and remove the barriers in advance.`;
@@ -888,24 +888,24 @@ function initDemo18() {
 // ── DEMO 19: Watch metrics reliability ──
 function initDemo19() {
   const metrics = [
-    { name:'GPS distance', reliability:'Reliable', color:'#22c55e', detail:'GPS accuracy is typically ±1–3%. It errs more among tall buildings or in dense forest. Accurate enough for tracking training.' },
-    { name:'Run time', reliability:'Reliable', color:'#22c55e', detail:'Measured directly. Absolutely accurate.' },
-    { name:'Cadence', reliability:'Reliable', color:'#22c55e', detail:'Accelerometer data — very accurate. One of the most useful technical metrics for beginners.' },
-    { name:'Heart rate (chest strap)', reliability:'Reliable', color:'#22c55e', detail:'Electrical signal measurement — very accurate even during intervals. If you want accurate HR — use a chest strap.' },
-    { name:'Heart rate (wrist sensor)', reliability:'Moderately reliable', color:'#f59e0b', detail:'Optical measurement is moderately accurate for steady-pace running. During intervals or hill runs it lags 10–30 sec and can differ by up to 15 beats.' },
-    { name:'VO₂max estimate', reliability:'Indicative only', color:'#ef4444', detail:'An algorithm based on the HR-to-pace ratio. It can differ 10–15% from your true VO₂max. Useful as a long-term trend, but the absolute numbers are unreliable.' },
-    { name:'Readiness score / body battery', reliability:'Indicative only', color:'#ef4444', detail:'A statistical model calibrated for the average user. It may show "low readiness" after a bad night even if you\'re physiologically fine. Use it as one signal, not as the truth.' },
-    { name:'Recovery time', reliability:'Indicative only', color:'#ef4444', detail:'Very approximate. The same algorithm gives different results for different people. Use your morning pulse and how you feel as more accurate recovery indicators.' },
-    { name:'Weekly mileage', reliability:'Reliable', color:'#22c55e', detail:'A sum of GPS data — a reliable metric. One of the most useful metrics for load management. Track it every week.' }
+    { name:'GPS distance', reliability:'Reliable', color:'#10B981', detail:'GPS accuracy is typically ±1–3%. It errs more among tall buildings or in dense forest. Accurate enough for tracking training.' },
+    { name:'Run time', reliability:'Reliable', color:'#10B981', detail:'Measured directly. Absolutely accurate.' },
+    { name:'Cadence', reliability:'Reliable', color:'#10B981', detail:'Accelerometer data — very accurate. One of the most useful technical metrics for beginners.' },
+    { name:'Heart rate (chest strap)', reliability:'Reliable', color:'#10B981', detail:'Electrical signal measurement — very accurate even during intervals. If you want accurate HR — use a chest strap.' },
+    { name:'Heart rate (wrist sensor)', reliability:'Moderately reliable', color:'#D97706', detail:'Optical measurement is moderately accurate for steady-pace running. During intervals or hill runs it lags 10–30 sec and can differ by up to 15 beats.' },
+    { name:'VO₂max estimate', reliability:'Indicative only', color:'#DC2626', detail:'An algorithm based on the HR-to-pace ratio. It can differ 10–15% from your true VO₂max. Useful as a long-term trend, but the absolute numbers are unreliable.' },
+    { name:'Readiness score / body battery', reliability:'Indicative only', color:'#DC2626', detail:'A statistical model calibrated for the average user. It may show "low readiness" after a bad night even if you\'re physiologically fine. Use it as one signal, not as the truth.' },
+    { name:'Recovery time', reliability:'Indicative only', color:'#DC2626', detail:'Very approximate. The same algorithm gives different results for different people. Use your morning pulse and how you feel as more accurate recovery indicators.' },
+    { name:'Weekly mileage', reliability:'Reliable', color:'#10B981', detail:'A sum of GPS data — a reliable metric. One of the most useful metrics for load management. Track it every week.' }
   ];
   const container = document.getElementById('s19-metrics');
   let active = -1;
   function render() {
     container.innerHTML = metrics.map((m, i) =>
-      `<div onclick="toggleMetric19(${i})" style="padding:.65rem 1rem;border-radius:8px;border:1px solid ${active===i?m.color:'var(--border)'};background:${active===i?'var(--surface)':'var(--bg)'};cursor:pointer;transition:all .2s">
+      `<div onclick="toggleMetric19(${i})" style="padding:.65rem 1rem;border:1px solid ${active===i?m.color:'var(--border)'};background:${active===i?'var(--surface)':'var(--bg)'};cursor:pointer;transition:all .2s">
         <div style="display:flex;justify-content:space-between;align-items:center">
           <span style="font-size:.88rem;font-weight:600;color:var(--text)">${m.name}</span>
-          <span style="font-size:.7rem;font-weight:700;padding:.2rem .6rem;border-radius:10px;background:${m.color}20;color:${m.color}">${m.reliability}</span>
+          <span style="font-size:.7rem;font-weight:700;padding:.2rem .6rem;background:${m.color}20;color:${m.color}">${m.reliability}</span>
         </div>
         ${active===i?`<p style="font-size:.82rem;color:var(--muted);margin-top:.5rem;line-height:1.65">${m.detail}</p>`:''}
       </div>`
@@ -932,11 +932,11 @@ function initDemo20() {
     const qualityScore = (quality - 1) / 4 * 40;
     const adapt = Math.round(hoursScore + qualityScore);
 
-    const statusLabels = adapt >= 85 ? ['Excellent', '#22c55e'] :
-                         adapt >= 65 ? ['Good',      '#22c55e'] :
-                         adapt >= 45 ? ['Moderate',  '#f59e0b'] :
-                         adapt >= 25 ? ['Low',       '#ef4444'] :
-                                       ['Very low',  '#ef4444'];
+    const statusLabels = adapt >= 85 ? ['Excellent', '#10B981'] :
+                         adapt >= 65 ? ['Good',      '#10B981'] :
+                         adapt >= 45 ? ['Moderate',  '#D97706'] :
+                         adapt >= 25 ? ['Low',       '#DC2626'] :
+                                       ['Very low',  '#DC2626'];
     const sessionRec = adapt >= 80 ? 'Hard session OK' :
                        adapt >= 60 ? 'Easy or moderate' :
                        adapt >= 40 ? 'Easy run only' :
@@ -1016,8 +1016,8 @@ function initDemo22() {
   if (!hrSl || !driftSl || !jumpSl) return;
 
   function signal(label, value, color, detail) {
-    return `<div style="padding:.6rem 1rem;border-radius:8px;border:1px solid ${color}40;background:${color}08;display:flex;align-items:flex-start;gap:.75rem">
-      <span style="font-size:.75rem;font-weight:700;padding:.2rem .55rem;border-radius:10px;background:${color}20;color:${color};white-space:nowrap;margin-top:.1rem">${value}</span>
+    return `<div style="padding:.6rem 1rem;border:1px solid ${color}40;background:${color}08;display:flex;align-items:flex-start;gap:.75rem">
+      <span style="font-size:.75rem;font-weight:700;padding:.2rem .55rem;background:${color}20;color:${color};white-space:nowrap;margin-top:.1rem">${value}</span>
       <div><div style="font-size:.82rem;font-weight:600;color:var(--text);margin-bottom:.2rem">${label}</div>
       <div style="font-size:.78rem;color:var(--muted);line-height:1.6">${detail}</div></div>
     </div>`;
@@ -1035,42 +1035,42 @@ function initDemo22() {
     // Signal 1: Resting HR
     let hrColor, hrVal, hrDetail;
     if (hr <= 0) {
-      hrColor = '#22c55e'; hrVal = 'Normal';
+      hrColor = '#10B981'; hrVal = 'Normal';
       hrDetail = 'At or below baseline — full recovery from recent sessions. The body has processed training stress. Hard sessions are appropriate.';
     } else if (hr <= 4) {
       hrColor = '#84cc16'; hrVal = 'Slightly elevated';
       hrDetail = 'Minor elevation — still within normal variation. Could reflect yesterday\'s session. An easy run is fine; hold off on intervals until tomorrow.';
     } else if (hr <= 7) {
-      hrColor = '#f59e0b'; hrVal = 'Elevated';
+      hrColor = '#D97706'; hrVal = 'Elevated';
       hrDetail = 'Clearly above baseline. Body is still processing recent training load. Stick to easy running or rest today. If this persists 3+ days, reduce overall volume.';
     } else {
-      hrColor = '#ef4444'; hrVal = 'High';
+      hrColor = '#DC2626'; hrVal = 'High';
       hrDetail = `${hr} bpm above baseline is a clear overreaching signal. Combined with any other elevated marker, this is a definitive rest day. Rule out illness first — elevated resting HR is also an early symptom of infection.`;
     }
 
     // Signal 2: HR drift
     let driftColor, driftVal, driftDetail;
     if (drift <= 5) {
-      driftColor = '#22c55e'; driftVal = 'Good';
+      driftColor = '#10B981'; driftVal = 'Good';
       driftDetail = 'Low drift — your easy pace is truly aerobic. Heart rate is stable throughout, meaning you are well inside Z2 and the cardiovascular system is not working hard to maintain it.';
     } else if (drift <= 10) {
-      driftColor = '#f59e0b'; driftVal = 'Moderate';
+      driftColor = '#D97706'; driftVal = 'Moderate';
       driftDetail = 'Some drift detected. Your starting pace may be slightly too fast for Z2, or you are mildly dehydrated. Try starting 10–15 sec/km slower and see if drift reduces below 5%.';
     } else {
-      driftColor = '#ef4444'; driftVal = 'High';
+      driftColor = '#DC2626'; driftVal = 'High';
       driftDetail = `${drift}% drift means your easy runs are not easy. You are likely running at the Z3 boundary — enough to accumulate fatigue but not enough to produce threshold adaptations. This is the grey zone. Slow down until drift falls below 8%.`;
     }
 
     // Signal 3: Mileage jump
     let jumpColor, jumpVal, jumpDetail;
     if (jump <= 10) {
-      jumpColor = '#22c55e'; jumpVal = 'Safe';
+      jumpColor = '#10B981'; jumpVal = 'Safe';
       jumpDetail = 'Mileage increase within the 10% guideline. Both muscles and tendons have enough time to adapt to the new load. Continue this rate and add a down-week every 3–4 weeks.';
     } else if (jump <= 20) {
-      jumpColor = '#f59e0b'; jumpVal = 'Caution';
+      jumpColor = '#D97706'; jumpVal = 'Caution';
       jumpDetail = `A ${jump}% jump is above the safe guideline. Muscles adapt in 1–2 weeks; tendons take 4–8 weeks. The injury risk window is open. Monitor for shin, Achilles and knee signals closely this week.`;
     } else {
-      jumpColor = '#ef4444'; jumpVal = 'High risk';
+      jumpColor = '#DC2626'; jumpVal = 'High risk';
       jumpDetail = `${jump}% is a significant load spike. This is one of the strongest predictors of overuse injury in recreational runners. If you feel fine, reduce next week's volume to absorb the jump before increasing again.`;
     }
 
@@ -1208,7 +1208,7 @@ function initDemo22() {
       var chest = (type === 'chest');
       var bg   = chest ? '#fff7f7' : '#f0fdf4';
       var bord = chest ? '#fca5a5' : '#86efac';
-      var hi   = chest ? '#ef4444' : '#22c55e';
+      var hi   = chest ? '#DC2626' : '#10B981';
 
       ctx.fillStyle = bg; pill(ctx, px, py, pw, ph, 10); ctx.fill();
       ctx.strokeStyle = bord; ctx.lineWidth = 1.5; pill(ctx, px, py, pw, ph, 10); ctx.stroke();
@@ -1260,10 +1260,10 @@ function initDemo22() {
       // ── DIAPHRAGM line (descends on diaphragmatic inhale) ──
       var diaY = waistY + (chest ? 0 : amp*10);
       ctx.save(); ctx.setLineDash([4,3]);
-      ctx.strokeStyle = chest ? '#d1d5db' : 'rgba(34,197,94,0.7)'; ctx.lineWidth=1.4;
+      ctx.strokeStyle = chest ? '#d1d5db' : 'rgba(16,185,129,0.7)'; ctx.lineWidth=1.4;
       ctx.beginPath(); ctx.moveTo(backX+2, diaY); ctx.lineTo(fWaist+4, diaY); ctx.stroke();
       ctx.restore();
-      if (!chest) label(ctx,'diaphragm ↓', backX-4, diaY+3, 6.5, '#22c55e','right');
+      if (!chest) label(ctx,'diaphragm ↓', backX-4, diaY+3, 6.5, '#10B981','right');
 
       // ── HANDS (the self-test): one on chest, one on belly ──
       // Chest hand
@@ -1367,7 +1367,7 @@ function initDemo22() {
       var strikeAhead = isWrong ? W*0.115 : W*0.025;   // KEY difference
       var behind      = W*0.075;
       var lift        = H*0.14;
-      var col         = isWrong ? '#ef4444' : '#22c55e';
+      var col         = isWrong ? '#DC2626' : '#10B981';
 
       // ── Bold vertical body-centre line ──
       ctx.save(); ctx.setLineDash([5,4]);
@@ -1428,7 +1428,7 @@ function initDemo22() {
         ctx.save(); ctx.globalAlpha = fade;
         // impact ellipse
         ctx.beginPath(); ctx.ellipse(front.x, groundY, isWrong?16:11, 4.5, 0,0,2*Math.PI);
-        ctx.fillStyle = isWrong ? 'rgba(239,68,68,0.30)' : 'rgba(34,197,94,0.30)';
+        ctx.fillStyle = isWrong ? 'rgba(220,38,38,0.30)' : 'rgba(16,185,129,0.30)';
         ctx.fill(); ctx.strokeStyle=col; ctx.lineWidth=1.2; ctx.stroke();
 
         // horizontal gap bracket between centre and foot
@@ -1440,11 +1440,11 @@ function initDemo22() {
 
         // force arrow + label
         if (isWrong) {
-          arrow(ctx, front.x, groundY-7, front.x-26, groundY-30, '#ef4444', 2);
-          label(ctx,'braking!', (cx+front.x)/2, by-7, 8, '#ef4444','center',true);
+          arrow(ctx, front.x, groundY-7, front.x-26, groundY-30, '#DC2626', 2);
+          label(ctx,'braking!', (cx+front.x)/2, by-7, 8, '#DC2626','center',true);
         } else {
-          arrow(ctx, front.x, groundY-6, front.x, groundY-30, '#22c55e', 2);
-          label(ctx,'under body', (cx+front.x)/2+6, by-7, 8, '#22c55e','center',true);
+          arrow(ctx, front.x, groundY-6, front.x, groundY-30, '#10B981', 2);
+          label(ctx,'under body', (cx+front.x)/2+6, by-7, 8, '#10B981','center',true);
         }
         ctx.restore();
       }
@@ -1584,17 +1584,17 @@ function initDemo22() {
 
       // ── KNEE highlight + vertical guide showing knee tracks over foot ──
       ctx.beginPath(); ctx.arc(kneeX, kneeY, 5.5, 0, 2*Math.PI);
-      ctx.fillStyle='rgba(34,197,94,'+(0.25+amp*0.45)+')'; ctx.fill();
-      ctx.strokeStyle='#22c55e'; ctx.lineWidth=1.3; ctx.stroke();
+      ctx.fillStyle='rgba(16,185,129,'+(0.25+amp*0.45)+')'; ctx.fill();
+      ctx.strokeStyle='#10B981'; ctx.lineWidth=1.3; ctx.stroke();
       // dashed vertical guide from knee to foot
       ctx.save(); ctx.setLineDash([3,3]);
-      ctx.strokeStyle='rgba(34,197,94,0.45)'; ctx.lineWidth=1;
+      ctx.strokeStyle='rgba(16,185,129,0.45)'; ctx.lineWidth=1;
       ctx.beginPath(); ctx.moveTo(kneeX, kneeY); ctx.lineTo(kneeX, gy); ctx.stroke();
       ctx.restore();
 
       // depth label changes with movement
       label(ctx, amp > 0.6 ? 'bottom' : amp < 0.25 ? 'top' : 'descending', cx+tw*0.30, hipY, 7, '#9ca3af','center');
-      label(ctx,'knee over foot', cx+tw*0.06, ty+th-1, 6.5, '#22c55e');
+      label(ctx,'knee over foot', cx+tw*0.06, ty+th-1, 6.5, '#10B981');
     }
 
     // 2. Glute bridge
@@ -1626,10 +1626,10 @@ function initDemo22() {
       ctx.strokeStyle='#374151'; ctx.lineWidth=2; ctx.stroke();
       // hip joint
       ctx.beginPath(); ctx.arc(hipX, hipY, 4, 0, 2*Math.PI);
-      ctx.fillStyle='rgba(34,197,94,0.6)'; ctx.fill();
+      ctx.fillStyle='rgba(16,185,129,0.6)'; ctx.fill();
       // alignment line
       if (lift > th*0.05) {
-        ctx.strokeStyle='rgba(34,197,94,0.5)'; ctx.lineWidth=1;
+        ctx.strokeStyle='rgba(16,185,129,0.5)'; ctx.lineWidth=1;
         ctx.setLineDash([4,3]);
         ctx.beginPath(); ctx.moveTo(gx1, hipY); ctx.lineTo(gx2, hipY); ctx.stroke();
         ctx.setLineDash([]);
@@ -1638,7 +1638,7 @@ function initDemo22() {
       ctx.fillStyle='#e5e7eb';
       ctx.beginPath(); ctx.ellipse(footX, gy, 9,3.5, 0,0,2*Math.PI); ctx.fill();
       ctx.beginPath(); ctx.ellipse(shoulderX, gy, 6,3, 0,0,2*Math.PI); ctx.fill();
-      label(ctx,'hips up', cx, ty+th-1, 6.5, '#22c55e');
+      label(ctx,'hips up', cx, ty+th-1, 6.5, '#10B981');
     }
 
     // 3. Eccentric heel raise
@@ -1680,7 +1680,7 @@ function initDemo22() {
       var toeX  = ankleX - tw*0.02;
       // sole line from toe (on step) to heel (hanging)
       var heelHi = (amp > 0.45);
-      ctx.strokeStyle = heelHi ? '#22c55e' : '#374151';
+      ctx.strokeStyle = heelHi ? '#10B981' : '#374151';
       ctx.lineWidth = 3;
       ctx.beginPath();
       ctx.moveTo(toeX, forefootY);
@@ -1710,15 +1710,15 @@ function initDemo22() {
 
       // ── HEEL HIGHLIGHT + motion arrow ──
       ctx.beginPath(); ctx.arc(heelX, heelY, 5, 0, 2*Math.PI);
-      ctx.fillStyle = heelHi ? 'rgba(34,197,94,0.5)' : 'rgba(148,163,184,0.4)';
+      ctx.fillStyle = heelHi ? 'rgba(16,185,129,0.5)' : 'rgba(148,163,184,0.4)';
       ctx.fill();
       if (heelHi) {
-        ctx.strokeStyle='#22c55e'; ctx.lineWidth=1.3; ctx.stroke();
+        ctx.strokeStyle='#10B981'; ctx.lineWidth=1.3; ctx.stroke();
       }
       // big direction arrow on the heel showing slow downward (eccentric) phase
       if (amp > 0.3 && amp < 0.95) {
-        arrow(ctx, heelX+tw*0.10, heelY-th*0.05, heelX+tw*0.10, heelY+th*0.05, '#22c55e', 2);
-        label(ctx,'3 sec', heelX+tw*0.13, heelY, 7.5, '#22c55e','left',true);
+        arrow(ctx, heelX+tw*0.10, heelY-th*0.05, heelX+tw*0.10, heelY+th*0.05, '#10B981', 2);
+        label(ctx,'3 sec', heelX+tw*0.13, heelY, 7.5, '#10B981','left',true);
       } else if (amp <= 0.3) {
         // rising phase, small up hint
         arrow(ctx, heelX+tw*0.10, heelY+th*0.04, heelX+tw*0.10, heelY-th*0.04, '#9ca3af', 1.6);
@@ -1726,11 +1726,11 @@ function initDemo22() {
 
       // ── step-edge reference dashed line (heel goes BELOW this) ──
       ctx.save(); ctx.setLineDash([3,3]);
-      ctx.strokeStyle='rgba(34,197,94,0.4)'; ctx.lineWidth=1;
+      ctx.strokeStyle='rgba(16,185,129,0.4)'; ctx.lineWidth=1;
       ctx.beginPath(); ctx.moveTo(stepX2, stepTopY); ctx.lineTo(cx+tw*0.30, stepTopY); ctx.stroke();
       ctx.restore();
 
-      label(ctx, amp > 0.55 ? 'heel below step' : 'heel raised', cx, ty+th-1, 6.5, heelHi ? '#22c55e' : '#9ca3af');
+      label(ctx, amp > 0.55 ? 'heel below step' : 'heel raised', cx, ty+th-1, 6.5, heelHi ? '#10B981' : '#9ca3af');
     }
 
     // 4. Bird-dog
@@ -1762,26 +1762,26 @@ function initDemo22() {
       var armLen = tw*0.30;
       var axEnd = spineX2 + Math.cos(armAngle)*armLen;
       var ayEnd = spineY - Math.sin(armAngle)*armLen;
-      ctx.strokeStyle='#22c55e'; ctx.lineWidth=2.5;
+      ctx.strokeStyle='#10B981'; ctx.lineWidth=2.5;
       ctx.beginPath(); ctx.moveTo(spineX2, spineY); ctx.lineTo(axEnd, ayEnd); ctx.stroke();
       ctx.beginPath(); ctx.arc(axEnd, ayEnd, 4, 0, 2*Math.PI);
-      ctx.fillStyle='rgba(34,197,94,'+(0.2+ext*0.6)+')'; ctx.fill();
+      ctx.fillStyle='rgba(16,185,129,'+(0.2+ext*0.6)+')'; ctx.fill();
       // extended leg (backward)
       var legLen = tw*0.30;
       var lxEnd = spineX1 - Math.cos(armAngle)*legLen;
       var lyEnd = spineY - Math.sin(armAngle)*legLen;
-      ctx.strokeStyle='#22c55e'; ctx.lineWidth=2.5;
+      ctx.strokeStyle='#10B981'; ctx.lineWidth=2.5;
       ctx.beginPath(); ctx.moveTo(spineX1, spineY); ctx.lineTo(lxEnd, lyEnd); ctx.stroke();
       ctx.beginPath(); ctx.arc(lxEnd, lyEnd, 4, 0, 2*Math.PI);
-      ctx.fillStyle='rgba(34,197,94,'+(0.2+ext*0.6)+')'; ctx.fill();
+      ctx.fillStyle='rgba(16,185,129,'+(0.2+ext*0.6)+')'; ctx.fill();
       // alignment dashed line
       if (ext > 0.3) {
-        ctx.strokeStyle='rgba(34,197,94,'+(ext*0.5)+')'; ctx.lineWidth=1;
+        ctx.strokeStyle='rgba(16,185,129,'+(ext*0.5)+')'; ctx.lineWidth=1;
         ctx.setLineDash([4,3]);
         ctx.beginPath(); ctx.moveTo(lxEnd, spineY); ctx.lineTo(axEnd, spineY); ctx.stroke();
         ctx.setLineDash([]);
       }
-      label(ctx,'opposite arm and leg', cx, ty+th-1, 6.5, '#22c55e');
+      label(ctx,'opposite arm and leg', cx, ty+th-1, 6.5, '#10B981');
     }
 
     function frame(ts) {

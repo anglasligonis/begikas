@@ -20,7 +20,10 @@ function goLesson(n) {
   document.getElementById('lesson-' + current).classList.add('active');
   refreshPills();
   updateIndicator();
-  window.scrollTo({ top: 0, behavior: 'smooth' });
+  ignoreScrollUntil = performance.now() + 600;
+  lastScrollY = 0;
+  scrollAccum = 0;
+  window.scrollTo(0, 0);
   initDemos();
   if (window._startAnimForLesson) window._startAnimForLesson(n);
 }
@@ -28,7 +31,6 @@ function goLesson(n) {
 document.querySelectorAll('.nav-pill').forEach((btn, i) => {
   btn.addEventListener('click', () => {
     goLesson(i);
-    // Auto-collapse after picking a lesson on small screens
     if (window.innerWidth < 700) collapseNav(true);
   });
 });
@@ -45,31 +47,16 @@ const NAV_LESSON_NAMES = [
   '21. Sleep & recovery', '22. Daily nutrition'
 ];
 
-let navCollapsed = false;
-
-// Collapse immediately on mobile
-const isMobile = window.innerWidth < 700;
-if (isMobile) {
-  document.getElementById('lessonNav').classList.add('nav-collapsed');
-  navCollapsed = true;
-  const btn = document.getElementById('navToggleBtn');
-  if (btn) btn.textContent = '☰';
-  // Show current lesson name in header indicator (lessonCountLabel is hidden on mobile via CSS)
-  updateIndicator();
-  const ind = document.getElementById('lessonIndicator');
-  if (ind) ind.style.opacity = '1';
-}
+// Drawer starts collapsed; always show indicator
+let navCollapsed = true;
+updateIndicator();
 
 function collapseNav(force) {
   navCollapsed = (force !== undefined) ? force : !navCollapsed;
   const nav = document.getElementById('lessonNav');
   const btn = document.getElementById('navToggleBtn');
-  const ind = document.getElementById('lessonIndicator');
-  const lbl = document.getElementById('lessonCountLabel');
   nav.classList.toggle('nav-collapsed', navCollapsed);
-  if (btn) btn.textContent = navCollapsed ? '☰' : '✕';
-  if (ind) ind.style.opacity = navCollapsed ? '1' : '0';
-  if (lbl) lbl.style.opacity = navCollapsed ? '0' : '1';
+  if (btn) btn.textContent = navCollapsed ? '☰ Lessons' : '✕ Close';
 }
 
 function updateIndicator() {
@@ -79,43 +66,30 @@ function updateIndicator() {
 
 window.toggleNav = function() { collapseNav(); };
 
-// Scroll-driven collapse with hysteresis + rAF debounce.
-// Accumulates scroll direction so a single jitter pixel can't flip it,
-// and ignores scroll events fired during the collapse animation.
 let lastScrollY = window.scrollY;
 let scrollAccum = 0;
 let ticking = false;
 let ignoreScrollUntil = 0;
-const COLLAPSE_THRESHOLD = 36;  // px of sustained down-scroll before hiding
-const EXPAND_THRESHOLD   = 48;  // px of sustained up-scroll before showing
-const TOP_ZONE = 30;            // always show near top
+const COLLAPSE_THRESHOLD = 36;
+const EXPAND_THRESHOLD   = 48;
+const TOP_ZONE = 30;
 
 function handleScroll() {
   const y = window.scrollY;
   const now = performance.now();
 
-  // Skip events that fire while the nav is animating (prevents feedback loop)
   if (now < ignoreScrollUntil) { lastScrollY = y; ticking = false; return; }
+
+  if (window.innerWidth < 700) { lastScrollY = y; ticking = false; return; }
 
   const delta = y - lastScrollY;
   lastScrollY = y;
 
-  // Near the very top: always reveal
-  if (y <= TOP_ZONE) {
-    if (navCollapsed) { collapseNav(false); ignoreScrollUntil = now + 320; }
-    scrollAccum = 0; ticking = false; return;
-  }
-
-  // Reset accumulator when direction flips
   if ((delta > 0 && scrollAccum < 0) || (delta < 0 && scrollAccum > 0)) scrollAccum = 0;
   scrollAccum += delta;
 
   if (scrollAccum > COLLAPSE_THRESHOLD && !navCollapsed) {
     collapseNav(true);
-    ignoreScrollUntil = now + 320;
-    scrollAccum = 0;
-  } else if (scrollAccum < -EXPAND_THRESHOLD && navCollapsed) {
-    collapseNav(false);
     ignoreScrollUntil = now + 320;
     scrollAccum = 0;
   }
@@ -129,7 +103,6 @@ window.addEventListener('scroll', () => {
   }
 }, { passive: true });
 
-// Keyboard navigation (left/right arrows)
 document.addEventListener('keydown', (e) => {
   if (e.target.tagName === 'INPUT' || e.target.tagName === 'BUTTON') return;
   if (e.key === 'ArrowRight' && current < TOTAL - 1) goLesson(current + 1);

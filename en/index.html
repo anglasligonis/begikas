@@ -14,52 +14,67 @@
   gtag('js', new Date());
   gtag('config', 'G-3G4SLW2V7C');
 </script>
-<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../css/variables.css?v=1">
-<link rel="stylesheet" href="../css/layout.css?v=1">
-<link rel="stylesheet" href="../css/components.css?v=1">
-<link rel="stylesheet" href="../css/lessons.css?v=1">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=JetBrains+Mono:wght@400;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/variables.css?v=2">
+<link rel="stylesheet" href="../css/layout.css?v=2">
+<link rel="stylesheet" href="../css/components.css?v=4">
+<link rel="stylesheet" href="../css/lessons.css?v=3">
+<link rel="stylesheet" href="../css/landing.css?v=1">
 </head>
 <body>
 
-<header class="site-header">
-  <h1>Running <span>physiology</span></h1>
-  <div style="display:flex;align-items:center;gap:.6rem">
+<!-- Fixed zone rail -->
+<div class="zone-rail"></div>
+<div class="zone-runner"></div>
+<div class="zone-labels">
+  <span class="zone-label">Z5</span>
+  <span class="zone-label">Z4</span>
+  <span class="zone-label">Z3</span>
+  <span class="zone-label">Z2</span>
+  <span class="zone-label">Z1</span>
+</div>
+
+<!-- Top nav -->
+<nav class="topnav">
+  <span class="topnav-brand">Running Physiology</span>
+  <div class="topnav-right">
+    <div class="nav-pulse"></div>
     <span class="lesson-indicator" id="lessonIndicator"></span>
-    <span style="font-size:.78rem;color:var(--muted)" id="lessonCountLabel">22 lessons for beginners</span>
-    <div class="lang-switcher">
-      <a href="../" class="lang-btn" title="Lietuvių">🇱🇹</a>
-      <span class="lang-btn lang-active" title="English">🇬🇧</span>
-    </div>
-    <button class="nav-toggle-btn" id="navToggleBtn" onclick="toggleNav()" title="Show / hide lessons">☰</button>
-    <button class="glossary-btn" onclick="toggleGlossary()">📖 Glossary</button>
+    <div class="tnav-sep"></div>
+    <a href="../" class="tnav-link">LT</a>
+    <div class="tnav-sep"></div>
+    <span class="tnav-link lang-active">EN</span>
+    <div class="tnav-sep"></div>
+    <button class="tnav-link" onclick="toggleGlossary()">Glossary</button>
+    <button class="nav-toggle-btn" id="navToggleBtn" onclick="toggleNav()">☰ Lessons</button>
   </div>
-</header>
+</nav>
 <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
 
-<div class="lesson-nav" id="lessonNav">
-  <button class="nav-pill active" data-lesson="0">1. Why run slowly?</button>
-  <button class="nav-pill" data-lesson="1">2. Heart &amp; pulse</button>
-  <button class="nav-pill" data-lesson="2">3. Energy &amp; fuel</button>
-  <button class="nav-pill" data-lesson="3">4. Lactate</button>
-  <button class="nav-pill" data-lesson="4">5. Breathing</button>
-  <button class="nav-pill" data-lesson="5">6. Heat &amp; hydration</button>
-  <button class="nav-pill" data-lesson="6">7. Running technique</button>
-  <button class="nav-pill" data-lesson="7">8. How to improve?</button>
-  <button class="nav-pill" data-lesson="8">9. Methodologies</button>
-  <button class="nav-pill" data-lesson="9">10. Strength training</button>
-  <button class="nav-pill" data-lesson="10">11. Winter running</button>
-  <button class="nav-pill" data-lesson="11">12. First race</button>
-  <button class="nav-pill" data-lesson="12">13. VO₂max</button>
-  <button class="nav-pill" data-lesson="13">14. Running economy</button>
-  <button class="nav-pill" data-lesson="14">15. Fatigue</button>
-  <button class="nav-pill" data-lesson="15">16. Pace distribution</button>
-  <button class="nav-pill" data-lesson="16">17. Load management</button>
-  <button class="nav-pill" data-lesson="17">18. Pain or injury</button>
-  <button class="nav-pill" data-lesson="18">19. Motivation &amp; consistency</button>
-  <button class="nav-pill" data-lesson="19">20. Running watches</button>
-  <button class="nav-pill" data-lesson="20">21. Sleep &amp; recovery</button>
-  <button class="nav-pill" data-lesson="21">22. Daily nutrition</button>
+<!-- Lesson nav drawer -->
+<div class="lesson-nav nav-collapsed" id="lessonNav">
+  <button class="nav-pill active" data-lesson="0">01</button>
+  <button class="nav-pill" data-lesson="1">02</button>
+  <button class="nav-pill" data-lesson="2">03</button>
+  <button class="nav-pill" data-lesson="3">04</button>
+  <button class="nav-pill" data-lesson="4">05</button>
+  <button class="nav-pill" data-lesson="5">06</button>
+  <button class="nav-pill" data-lesson="6">07</button>
+  <button class="nav-pill" data-lesson="7">08</button>
+  <button class="nav-pill" data-lesson="8">09</button>
+  <button class="nav-pill" data-lesson="9">10</button>
+  <button class="nav-pill" data-lesson="10">11</button>
+  <button class="nav-pill" data-lesson="11">12</button>
+  <button class="nav-pill" data-lesson="12">13</button>
+  <button class="nav-pill" data-lesson="13">14</button>
+  <button class="nav-pill" data-lesson="14">15</button>
+  <button class="nav-pill" data-lesson="15">16</button>
+  <button class="nav-pill" data-lesson="16">17</button>
+  <button class="nav-pill" data-lesson="17">18</button>
+  <button class="nav-pill" data-lesson="18">19</button>
+  <button class="nav-pill" data-lesson="19">20</button>
+  <button class="nav-pill" data-lesson="20">21</button>
+  <button class="nav-pill" data-lesson="21">22</button>
 </div>
 
 <dialog id="glossaryDialog" aria-label="Glossary">
@@ -73,7 +88,227 @@
   <div class="glossary-list" id="glossaryList"></div>
 </dialog>
 
-<main>
+<!-- ══════════════════════════════════════════
+     LANDING PAGE
+     ══════════════════════════════════════════ -->
+<section id="landing">
+
+  <!-- HERO -->
+  <div class="lp-hero">
+    <div class="lp-hero-left">
+      <span class="ghost-word">RUN</span>
+      <div class="lp-hero-content">
+
+        <div class="lp-eyebrow">
+          <span class="lp-eyebrow-line"></span>
+          Free course &middot; 22 lessons
+        </div>
+
+        <h1 class="lp-title">
+          <span class="t-line"><span class="t-inner">Understand</span></span>
+          <span class="t-line"><span class="t-inner">your</span></span>
+          <span class="t-line"><span class="t-inner">body.</span></span>
+        </h1>
+
+        <p class="lp-intro">
+          Most beginners run too fast and too long. Not out of laziness —
+          nobody explained how a trained body actually works.
+          This course fixes that: concise, clear, grounded in sports science.
+        </p>
+
+        <div class="ekg-wrap">
+          <svg class="ekg-svg" viewBox="0 0 600 40" preserveAspectRatio="none">
+            <line class="ekg-bg-line" x1="0" y1="20" x2="600" y2="20"/>
+            <path class="ekg-trace" pathLength="1000"
+              d="M0,20 L155,20 L165,18 L170,22 L175,20 L179,20 L181,20
+                 L183,4 L190,38 L194,20 L198,20 L207,12 L216,20 L600,20"/>
+          </svg>
+        </div>
+
+        <div class="lp-stats">
+          <div class="lp-stat">
+            <span class="lp-stat-val" data-to="22" data-sfx="">0</span>
+            <span class="lp-stat-lbl">Lessons</span>
+          </div>
+          <div class="lp-stat">
+            <span class="lp-stat-val">5–10</span>
+            <span class="lp-stat-lbl">Min / lesson</span>
+          </div>
+          <div class="lp-stat">
+            <span class="lp-stat-val" data-to="80" data-sfx="%">0%</span>
+            <span class="lp-stat-lbl">Easy running</span>
+          </div>
+        </div>
+
+        <div class="lp-cta-group">
+          <button class="lp-cta" onclick="startCourse(0)">Start the course →</button>
+          <span class="lp-cta-note">Free.<br>No sign-up.</span>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="lp-hero-right">
+      <img class="lp-hero-photo" src="../images/Man-Running.jpg" alt="Runner">
+      <div class="lp-hero-chips">
+        <div class="lp-hero-chip lp-hc-z1">
+          <span class="lp-chip-lbl">Zone</span>
+          <span class="lp-chip-val" style="color:var(--z1)">Z1 — Aerobic base</span>
+        </div>
+        <div class="lp-hero-chip lp-hc-z2">
+          <span class="lp-chip-lbl">Heart rate</span>
+          <span class="lp-chip-val" style="color:var(--z2)">115–135 bpm</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- WHY -->
+  <div class="lp-section">
+    <div class="lp-why-grid">
+      <div>
+        <p class="lp-why-tag lp-reveal">About the course</p>
+        <h2 class="lp-why-heading lp-reveal">No gym.<br>No coach.<br>Just understanding.</h2>
+      </div>
+      <div class="lp-why-body lp-reveal">
+        <p>The world's best runners train slowly — 80&nbsp;% of the time their heart rate is low. That's not a coincidence. It's physiology.</p>
+        <p>In this course you'll learn why slow running builds the aerobic foundation, how energy moves through your muscles, what your heart rate really means, and how your body adapts week after week.</p>
+        <p>No magic. Just science — explained like a human being.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- TOPICS -->
+  <div class="lp-section lp-section--surface">
+    <p class="lp-eyebrow-sec lp-reveal">What you'll learn</p>
+    <h2 class="lp-sec-title lp-reveal">22 lessons. From heart rate to sleep.</h2>
+    <div class="lp-topics-grid">
+      <div class="lp-topic-card"><div class="lp-topic-dot" style="background:var(--z1)"></div><div class="lp-topic-name">Training zones</div><div class="lp-topic-desc">Why Z2 is the most important zone and how to find it</div></div>
+      <div class="lp-topic-card"><div class="lp-topic-dot" style="background:var(--z2)"></div><div class="lp-topic-name">Heart &amp; energy</div><div class="lp-topic-desc">How fuel reaches your muscles and why it matters</div></div>
+      <div class="lp-topic-card"><div class="lp-topic-dot" style="background:var(--z4)"></div><div class="lp-topic-name">Lactate</div><div class="lp-topic-desc">What it actually is and when it shows up</div></div>
+      <div class="lp-topic-card"><div class="lp-topic-dot" style="background:var(--z2)"></div><div class="lp-topic-name">Breathing</div><div class="lp-topic-desc">Why nose breathing isn't weird — it's technique</div></div>
+      <div class="lp-topic-card"><div class="lp-topic-dot" style="background:var(--z3)"></div><div class="lp-topic-name">Running form</div><div class="lp-topic-desc">What changes in your stride when fatigue sets in</div></div>
+      <div class="lp-topic-card"><div class="lp-topic-dot" style="background:var(--z1)"></div><div class="lp-topic-name">Recovery &amp; sleep</div><div class="lp-topic-desc">Adaptation happens after the run, not during it</div></div>
+      <div class="lp-topic-card"><div class="lp-topic-dot" style="background:var(--z5)"></div><div class="lp-topic-name">VO₂max</div><div class="lp-topic-desc">What this number means and whether it's worth chasing</div></div>
+      <div class="lp-topic-card"><div class="lp-topic-dot" style="background:var(--z2)"></div><div class="lp-topic-name">Nutrition</div><div class="lp-topic-desc">How to eat so your body has fuel for the long run</div></div>
+    </div>
+  </div>
+
+  <!-- HOW IT WORKS -->
+  <div class="lp-section">
+    <p class="lp-eyebrow-sec lp-reveal">How it works</p>
+    <h2 class="lp-sec-title lp-reveal">Read at your own pace.</h2>
+    <div class="lp-how-steps">
+      <div class="lp-how-step">
+        <div class="lp-step-num">01</div>
+        <div class="lp-step-title">Pick a lesson</div>
+        <div class="lp-step-body">Each lesson stands on its own. There's no required order — start with whatever interests you most.</div>
+      </div>
+      <div class="lp-how-step">
+        <div class="lp-step-num">02</div>
+        <div class="lp-step-title">Read and explore</div>
+        <div class="lp-step-body">A short text, an interactive demo, and a few comprehension questions. Around 5–10 minutes per lesson.</div>
+      </div>
+      <div class="lp-how-step">
+        <div class="lp-step-num">03</div>
+        <div class="lp-step-title">Come back any time</div>
+        <div class="lp-step-body">The course stays open indefinitely. No deadlines, no passwords, no fees. Your progress is saved in the browser.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PULL QUOTE -->
+  <div class="lp-section lp-section--surface" style="display:flex;justify-content:center;text-align:center;">
+    <blockquote class="lp-quote-inner lp-reveal">
+      <div class="lp-quote-lines">
+        <span class="lp-quote-dash"></span>
+        <span class="lp-quote-mark">Sports science</span>
+        <span class="lp-quote-dash"></span>
+      </div>
+      <p class="lp-quote-text">"80 percent of your training should feel too easy. That's not weakness — that's strategy."</p>
+      <footer class="lp-quote-src">Principle of the polarised training model</footer>
+    </blockquote>
+  </div>
+
+  <!-- ZONE CHART -->
+  <div class="lp-section">
+    <p class="lp-eyebrow-sec lp-reveal">Intensity zones</p>
+    <h2 class="lp-sec-title lp-reveal">Every run has its zone.</h2>
+    <div class="lp-zone-rows">
+      <div class="lp-zone-row">
+        <div class="lp-zr-label"><span class="lp-zr-num" style="color:var(--z5)">Z5</span><span class="lp-zr-name">Maximum</span></div>
+        <div class="lp-zr-track"><div class="lp-zr-fill" style="--w:10%;background:var(--z5)"></div></div>
+        <div class="lp-zr-meta">&gt;185 bpm<br>5–10 %</div>
+      </div>
+      <div class="lp-zone-row">
+        <div class="lp-zr-label"><span class="lp-zr-num" style="color:var(--z4)">Z4</span><span class="lp-zr-name">Anaerobic</span></div>
+        <div class="lp-zr-track"><div class="lp-zr-fill" style="--w:20%;background:var(--z4)"></div></div>
+        <div class="lp-zr-meta">165–185 bpm<br>10–15 %</div>
+      </div>
+      <div class="lp-zone-row">
+        <div class="lp-zr-label"><span class="lp-zr-num" style="color:var(--z3)">Z3</span><span class="lp-zr-name">Aerobic</span></div>
+        <div class="lp-zr-track"><div class="lp-zr-fill" style="--w:36%;background:var(--z3)"></div></div>
+        <div class="lp-zr-meta">150–165 bpm<br>15–20 %</div>
+      </div>
+      <div class="lp-zone-row">
+        <div class="lp-zr-label"><span class="lp-zr-num" style="color:var(--z2)">Z2</span><span class="lp-zr-name">Aerobic base</span></div>
+        <div class="lp-zr-track"><div class="lp-zr-fill" style="--w:60%;background:var(--z2)"></div></div>
+        <div class="lp-zr-meta">130–150 bpm<br>30–35 %</div>
+      </div>
+      <div class="lp-zone-row">
+        <div class="lp-zr-label"><span class="lp-zr-num" style="color:var(--z1)">Z1</span><span class="lp-zr-name">Recovery</span></div>
+        <div class="lp-zr-track"><div class="lp-zr-fill" style="--w:86%;background:var(--z1)"></div></div>
+        <div class="lp-zr-meta">&lt;130 bpm<br>40–45 %</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FINAL CTA -->
+  <div class="lp-section lp-section--dark lp-final-cta">
+    <p class="lp-final-label lp-reveal">Start now</p>
+    <h2 class="lp-final-title lp-reveal">Begin with lesson one.</h2>
+    <p class="lp-final-body lp-reveal">The first lesson answers the question every beginner asks: <em>why do I need to run slowly if I want to run faster?</em> The answer might surprise you.</p>
+    <div class="lp-final-actions lp-reveal">
+      <button class="lp-cta" onclick="startCourse(0)">Lesson 01: Why run slowly? →</button>
+      <span class="lp-final-note">Free &middot; No sign-up &middot; 5–10 min.</span>
+    </div>
+  </div>
+
+  <!-- LESSON STRIP -->
+  <div class="lp-lesson-strip">
+    <div class="lp-strip-head">
+      <span class="lp-strip-lbl">All course lessons</span>
+      <span class="lp-strip-hint">← scroll →</span>
+    </div>
+    <div class="lp-lesson-track" id="lpLessonTrack">
+      <div class="lp-lcard" data-start-lesson="0"><div class="lp-l-dot" style="background:var(--z1)"></div><div class="lp-l-num">01</div><div class="lp-l-title">Why run slowly?</div></div>
+      <div class="lp-lcard" data-start-lesson="1"><div class="lp-l-dot" style="background:var(--z2)"></div><div class="lp-l-num">02</div><div class="lp-l-title">Heart &amp; pulse</div></div>
+      <div class="lp-lcard" data-start-lesson="2"><div class="lp-l-dot" style="background:var(--z3)"></div><div class="lp-l-num">03</div><div class="lp-l-title">Energy &amp; fuel</div></div>
+      <div class="lp-lcard" data-start-lesson="3"><div class="lp-l-dot" style="background:var(--z4)"></div><div class="lp-l-num">04</div><div class="lp-l-title">Lactate</div></div>
+      <div class="lp-lcard" data-start-lesson="4"><div class="lp-l-dot" style="background:var(--z2)"></div><div class="lp-l-num">05</div><div class="lp-l-title">Breathing</div></div>
+      <div class="lp-lcard" data-start-lesson="5"><div class="lp-l-dot" style="background:var(--z3)"></div><div class="lp-l-num">06</div><div class="lp-l-title">Heat &amp; hydration</div></div>
+      <div class="lp-lcard" data-start-lesson="6"><div class="lp-l-dot" style="background:var(--z1)"></div><div class="lp-l-num">07</div><div class="lp-l-title">Running form</div></div>
+      <div class="lp-lcard" data-start-lesson="7"><div class="lp-l-dot" style="background:var(--z4)"></div><div class="lp-l-num">08</div><div class="lp-l-title">How to improve?</div></div>
+      <div class="lp-lcard" data-start-lesson="8"><div class="lp-l-dot" style="background:var(--z3)"></div><div class="lp-l-num">09</div><div class="lp-l-title">Methodologies</div></div>
+      <div class="lp-lcard" data-start-lesson="9"><div class="lp-l-dot" style="background:var(--z4)"></div><div class="lp-l-num">10</div><div class="lp-l-title">Strength training</div></div>
+      <div class="lp-lcard" data-start-lesson="10"><div class="lp-l-dot" style="background:var(--z2)"></div><div class="lp-l-num">11</div><div class="lp-l-title">Winter running</div></div>
+      <div class="lp-lcard" data-start-lesson="11"><div class="lp-l-dot" style="background:var(--z5)"></div><div class="lp-l-num">12</div><div class="lp-l-title">First race</div></div>
+      <div class="lp-lcard" data-start-lesson="12"><div class="lp-l-dot" style="background:var(--z5)"></div><div class="lp-l-num">13</div><div class="lp-l-title">VO₂max</div></div>
+      <div class="lp-lcard" data-start-lesson="13"><div class="lp-l-dot" style="background:var(--z3)"></div><div class="lp-l-num">14</div><div class="lp-l-title">Running economy</div></div>
+      <div class="lp-lcard" data-start-lesson="14"><div class="lp-l-dot" style="background:var(--z4)"></div><div class="lp-l-num">15</div><div class="lp-l-title">Fatigue</div></div>
+      <div class="lp-lcard" data-start-lesson="15"><div class="lp-l-dot" style="background:var(--z4)"></div><div class="lp-l-num">16</div><div class="lp-l-title">Pace distribution</div></div>
+      <div class="lp-lcard" data-start-lesson="16"><div class="lp-l-dot" style="background:var(--z3)"></div><div class="lp-l-num">17</div><div class="lp-l-title">Load management</div></div>
+      <div class="lp-lcard" data-start-lesson="17"><div class="lp-l-dot" style="background:var(--z4)"></div><div class="lp-l-num">18</div><div class="lp-l-title">Pain or injury</div></div>
+      <div class="lp-lcard" data-start-lesson="18"><div class="lp-l-dot" style="background:var(--z2)"></div><div class="lp-l-num">19</div><div class="lp-l-title">Motivation &amp; consistency</div></div>
+      <div class="lp-lcard" data-start-lesson="19"><div class="lp-l-dot" style="background:var(--z2)"></div><div class="lp-l-num">20</div><div class="lp-l-title">Running watches</div></div>
+      <div class="lp-lcard" data-start-lesson="20"><div class="lp-l-dot" style="background:var(--z1)"></div><div class="lp-l-num">21</div><div class="lp-l-title">Sleep &amp; recovery</div></div>
+      <div class="lp-lcard" data-start-lesson="21"><div class="lp-l-dot" style="background:var(--z2)"></div><div class="lp-l-num">22</div><div class="lp-l-title">Daily nutrition</div></div>
+    </div>
+  </div>
+
+</section>
+
+<main style="display:none">
 
 <!-- ══════════════════════════════════════════
      LESSON 1 — WHY DO WE RUN SLOWLY?
@@ -87,7 +322,7 @@
 
   <div class="takeaway"><div><strong>Key idea:</strong> 80% of your running should be easy enough that you can hold a conversation. That's not laziness — it's a sports-science-backed principle.</div></div>
 
-  <div style="background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:1.25rem 1.5rem;margin-bottom:2rem">
+  <div style="background:var(--surface);border:1px solid var(--border);padding:1.25rem 1.5rem;margin-bottom:2rem">
     <div style="font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:1.2px;color:var(--light);margin-bottom:.85rem">Course contents</div>
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:.35rem .5rem">
       <div style="font-size:.85rem;color:var(--muted);display:flex;align-items:baseline;gap:.4rem"><span style="font-size:.65rem;font-weight:700;color:var(--light)">1.</span> Why run slowly?</div>
@@ -128,7 +363,7 @@
 
   <div class="demo">
     <div class="demo-title">Interactive demo — Muscle fibres</div>
-    <p style="font-size:.88rem;color:var(--muted);margin-bottom:1.25rem">Move the slider and watch how muscle fibre recruitment and energy source change.</p>
+    <p class="demo-note">Move the slider and watch how muscle fibre recruitment and energy source change.</p>
 
     <div class="slider-control">
       <div class="slider-label">
@@ -136,7 +371,7 @@
         <strong id="s1-label">Easy run</strong>
       </div>
       <input type="range" id="s1" min="1" max="5" value="1" step="1">
-      <div style="display:flex;justify-content:space-between;font-size:.65rem;color:var(--light);margin-top:3px">
+      <div class="demo-range-labels">
         <span>Easy</span><span>Moderate</span><span>Hard</span><span>Very hard</span><span>Sprint</span>
       </div>
     </div>
@@ -179,7 +414,7 @@
             <div class="ml">Main fuel</div>
           </div>
         </div>
-        <div style="margin-top:1rem;padding:.85rem 1rem;border-radius:8px;border:1px solid var(--border);background:var(--bg)">
+        <div class="demo-desc">
           <p id="s1-desc" style="font-size:.88rem;color:var(--muted);line-height:1.7"></p>
         </div>
       </div>
@@ -244,12 +479,12 @@
     <div class="slider-control">
       <div class="slider-label"><span>Running intensity</span><strong id="s2-zone-label" style="color:var(--z2)">Zone 2 — Easy</strong></div>
       <input type="range" id="s2-int" min="50" max="100" value="65" step="1">
-      <div style="display:flex;justify-content:space-between;font-size:.65rem;color:var(--light);margin-top:3px">
+      <div class="demo-range-labels">
         <span>Rest</span><span>Z1</span><span>Z2</span><span>Z3</span><span>Z4</span><span>Z5</span>
       </div>
     </div>
 
-    <div class="zone-bar" style="height:16px;border-radius:8px">
+    <div class="zone-bar" style="height:16px">
       <div class="zone-seg" style="flex:1;background:#e0e7ef" title="Z1"></div>
       <div class="zone-seg" style="flex:1;background:var(--z2)" title="Z2"></div>
       <div class="zone-seg" style="flex:1;background:var(--z3)" title="Z3"></div>
@@ -267,7 +502,7 @@
       <div class="metric-card"><div class="mv" id="s2-pct">65%</div><div class="ml">% MaxHR</div></div>
     </div>
 
-    <div style="margin-top:1rem;padding:.85rem 1rem;border-radius:8px;border:1px solid var(--border);background:var(--bg)">
+    <div class="demo-desc">
       <p id="s2-desc" style="font-size:.88rem;color:var(--muted);line-height:1.7"></p>
     </div>
   </div>
@@ -313,7 +548,7 @@
 
   <div class="demo">
     <div class="demo-title">Interactive demo — Fuel tank depletion</div>
-    <p style="font-size:.88rem;color:var(--muted);margin-bottom:1.25rem">Move the sliders to see how different paces deplete glycogen stores.</p>
+    <p class="demo-note">Move the sliders to see how different paces deplete glycogen stores.</p>
 
     <div class="slider-control">
       <div class="slider-label"><span>Running intensity</span><strong id="s3-int-label">Easy (Z2)</strong></div>
@@ -349,7 +584,7 @@
       <div class="metric-card"><div class="mv" id="s3-wall">—</div><div class="ml">Wall after (min)</div></div>
     </div>
 
-    <div style="margin-top:1rem;padding:.85rem 1rem;border-radius:8px;border:1px solid var(--border);background:var(--bg)">
+    <div class="demo-desc">
       <p id="s3-desc" style="font-size:.88rem;color:var(--muted);line-height:1.7"></p>
     </div>
   </div>
@@ -400,7 +635,7 @@
 
   <div class="demo">
     <div class="demo-title">Interactive demo — Lactate curve</div>
-    <p style="font-size:.88rem;color:var(--muted);margin-bottom:1.25rem">Move the sliders and watch how lactate rises with intensity, and how fitness level shifts the curve.</p>
+    <p class="demo-note">Move the sliders and watch how lactate rises with intensity, and how fitness level shifts the curve.</p>
 
     <div class="slider-control">
       <div class="slider-label"><span>Running intensity (% MaxHR)</span><strong id="s4-pct">65%</strong></div>
@@ -409,7 +644,7 @@
     <div class="slider-control" style="margin-top:.75rem">
       <div class="slider-label"><span>Fitness level</span><strong id="s4-fit-label">Intermediate</strong></div>
       <input type="range" id="s4-fit" min="1" max="3" value="2" step="1">
-      <div style="display:flex;justify-content:space-between;font-size:.65rem;color:var(--light);margin-top:3px">
+      <div class="demo-range-labels">
         <span>Beginner</span><span>Intermediate</span><span>Trained</span>
       </div>
     </div>
@@ -421,11 +656,11 @@
       <div class="metric-card"><div class="mv" id="s4-thr-label" style="color:var(--z2)">Low</div><div class="ml">Lactate level</div></div>
       <div class="metric-card"><div class="mv" id="s4-thr-pct">75%</div><div class="ml">Threshold HR (% MaxHR)</div></div>
     </div>
-    <div style="margin-top:.75rem;padding:.7rem 1rem;border-radius:8px;background:#fefce8;border:1px solid #fde68a;font-size:.82rem;color:#713f12;line-height:1.65">
+    <div class="demo-insight demo-insight-warn">
       <strong>What does "threshold HR" mean?</strong> It's the point — as a percentage of your maximum heart rate — beyond which lactate accumulates faster than it's cleared. For example, if your MaxHR is 190 and your threshold is <span id="s4-thr-explain">75%</span>, that means around <span id="s4-thr-bpm">~143 BPM</span> running will become noticeably harder. <strong>This threshold rises with training</strong> — so as you move the upper slider, you'll see the curve shift to the right.
     </div>
 
-    <div style="margin-top:1rem;padding:.85rem 1rem;border-radius:8px;border:1px solid var(--border);background:var(--bg)">
+    <div class="demo-desc">
       <p id="s4-desc" style="font-size:.88rem;color:var(--muted);line-height:1.7"></p>
     </div>
   </div>
@@ -472,7 +707,7 @@
 
   <div class="lesson-illustration">
     <div class="illustration-title">Breathing types animation</div>
-    <canvas id="breathCanvas" style="width:100%;display:block;border-radius:8px"></canvas>
+    <canvas id="breathCanvas" style="width:100%;display:block"></canvas>
   </div>
 
   <div class="demo">
@@ -501,7 +736,7 @@
           <div class="metric-card"><div class="mv" id="s5-tv">0.5 L</div><div class="ml">Air volume</div></div>
           <div class="metric-card"><div class="mv" id="s5-route" style="color:var(--z2)">Nose</div><div class="ml">Route</div></div>
         </div>
-        <div style="margin-top:.85rem;padding:.75rem;border-radius:8px;background:var(--bg);border:1px solid var(--border)">
+        <div style="margin-top:.85rem;padding:.75rem;background:var(--bg);border:1px solid var(--border)">
           <p id="s5-desc" style="font-size:.88rem;color:var(--muted);line-height:1.7"></p>
         </div>
       </div>
@@ -567,7 +802,7 @@
       <div class="metric-card"><div class="mv" id="s6-drink">150 ml</div><div class="ml">Recommended per 15 min</div></div>
     </div>
 
-    <div style="margin-top:1rem;padding:.85rem 1rem;border-radius:8px;border:1px solid var(--border);background:var(--bg)">
+    <div class="demo-desc">
       <p id="s6-desc" style="font-size:.88rem;color:var(--muted);line-height:1.7"></p>
     </div>
   </div>
@@ -615,7 +850,7 @@
 
   <div class="lesson-illustration">
     <div class="illustration-title">Stride technique — animated</div>
-    <canvas id="runCanvas" style="width:100%;display:block;border-radius:8px"></canvas>
+    <canvas id="runCanvas" style="width:100%;display:block"></canvas>
   </div>
 
   <div class="callout callout-warn">
@@ -625,12 +860,12 @@
 
   <div class="demo">
     <div class="demo-title">Interactive demo — Cadence and impact force</div>
-    <p style="font-size:.88rem;color:var(--muted);margin-bottom:1.25rem">Move the slider and watch how cadence affects stride length and impact force on the knee joint.</p>
+    <p class="demo-note">Move the slider and watch how cadence affects stride length and impact force on the knee joint.</p>
 
     <div class="slider-control">
       <div class="slider-label"><span>Cadence (steps per minute)</span><strong id="s7-cad-label">170 SPM</strong></div>
       <input type="range" id="s7-cad" min="150" max="190" value="170" step="1">
-      <div style="display:flex;justify-content:space-between;font-size:.65rem;color:var(--light);margin-top:3px">
+      <div class="demo-range-labels">
         <span>Too low</span><span>Optimal</span><span>Very high</span>
       </div>
     </div>
@@ -650,7 +885,7 @@
       </div>
     </div>
 
-    <div style="margin-top:1rem;padding:.85rem 1rem;border-radius:8px;border:1px solid var(--border);background:var(--bg)">
+    <div class="demo-desc">
       <p id="s7-desc" style="font-size:.88rem;color:var(--muted);line-height:1.7"></p>
     </div>
   </div>
@@ -696,6 +931,8 @@
     <h2 class="lesson-title">How does a runner actually improve?</h2>
     <p class="lesson-intro">Speed increases not through willpower, but through specific biological adaptations. These only happen when you train correctly.</p>
   </div>
+
+  <div class="takeaway"><div><strong>Key idea:</strong> Your body improves during recovery, not during the run. Sleep 7–9 hours and increase your weekly volume by no more than 10% per week.</div></div>
 
   <div class="prose">
     <p>Every time you run, you put your body under stress. Afterwards, as it recovers, the body becomes slightly stronger — this is called <strong>supercompensation</strong>. But only when the stress was appropriate and the rest sufficient.</p>
@@ -805,11 +1042,11 @@
         <div class="ibar-seg" style="flex:2;background:var(--z5)"></div>
       </div>
       <div class="ibar-legend">
-        <span style="--c:var(--z1)"><span style="display:inline-block;width:8px;height:8px;border-radius:2px;background:var(--z1)"></span>Z1 30%</span>
-        <span><span style="display:inline-block;width:8px;height:8px;border-radius:2px;background:var(--z2)"></span>Z2 42%</span>
-        <span><span style="display:inline-block;width:8px;height:8px;border-radius:2px;background:var(--z3)"></span>Z3 3%</span>
-        <span><span style="display:inline-block;width:8px;height:8px;border-radius:2px;background:var(--z4)"></span>Z4 23%</span>
-        <span><span style="display:inline-block;width:8px;height:8px;border-radius:2px;background:var(--z5)"></span>Z5 2%</span>
+        <span style="--c:var(--z1)"><span style="display:inline-block;width:8px;height:8px;background:var(--z1)"></span>Z1 30%</span>
+        <span><span style="display:inline-block;width:8px;height:8px;background:var(--z2)"></span>Z2 42%</span>
+        <span><span style="display:inline-block;width:8px;height:8px;background:var(--z3)"></span>Z3 3%</span>
+        <span><span style="display:inline-block;width:8px;height:8px;background:var(--z4)"></span>Z4 23%</span>
+        <span><span style="display:inline-block;width:8px;height:8px;background:var(--z5)"></span>Z5 2%</span>
       </div>
     </div>
   </div>
@@ -839,11 +1076,11 @@
         <div class="ibar-seg" style="flex:2;background:var(--z5)"></div>
       </div>
       <div class="ibar-legend">
-        <span><span style="display:inline-block;width:8px;height:8px;border-radius:2px;background:var(--z1)"></span>Z1 50%</span>
-        <span><span style="display:inline-block;width:8px;height:8px;border-radius:2px;background:var(--z2)"></span>Z2 33%</span>
-        <span><span style="display:inline-block;width:8px;height:8px;border-radius:2px;background:var(--z3)"></span>Z3 7%</span>
-        <span><span style="display:inline-block;width:8px;height:8px;border-radius:2px;background:var(--z4)"></span>Z4 8%</span>
-        <span><span style="display:inline-block;width:8px;height:8px;border-radius:2px;background:var(--z5)"></span>Z5 2%</span>
+        <span><span style="display:inline-block;width:8px;height:8px;background:var(--z1)"></span>Z1 50%</span>
+        <span><span style="display:inline-block;width:8px;height:8px;background:var(--z2)"></span>Z2 33%</span>
+        <span><span style="display:inline-block;width:8px;height:8px;background:var(--z3)"></span>Z3 7%</span>
+        <span><span style="display:inline-block;width:8px;height:8px;background:var(--z4)"></span>Z4 8%</span>
+        <span><span style="display:inline-block;width:8px;height:8px;background:var(--z5)"></span>Z5 2%</span>
       </div>
     </div>
   </div>
@@ -873,11 +1110,11 @@
         <div class="ibar-seg" style="flex:5;background:var(--z5)"></div>
       </div>
       <div class="ibar-legend">
-        <span><span style="display:inline-block;width:8px;height:8px;border-radius:2px;background:var(--z1)"></span>Z1 45%</span>
-        <span><span style="display:inline-block;width:8px;height:8px;border-radius:2px;background:var(--z2)"></span>Z2 35%</span>
-        <span><span style="display:inline-block;width:8px;height:8px;border-radius:2px;background:var(--z3)"></span>Z3 0%</span>
-        <span><span style="display:inline-block;width:8px;height:8px;border-radius:2px;background:var(--z4)"></span>Z4 15%</span>
-        <span><span style="display:inline-block;width:8px;height:8px;border-radius:2px;background:var(--z5)"></span>Z5 5%</span>
+        <span><span style="display:inline-block;width:8px;height:8px;background:var(--z1)"></span>Z1 45%</span>
+        <span><span style="display:inline-block;width:8px;height:8px;background:var(--z2)"></span>Z2 35%</span>
+        <span><span style="display:inline-block;width:8px;height:8px;background:var(--z3)"></span>Z3 0%</span>
+        <span><span style="display:inline-block;width:8px;height:8px;background:var(--z4)"></span>Z4 15%</span>
+        <span><span style="display:inline-block;width:8px;height:8px;background:var(--z5)"></span>Z5 5%</span>
       </div>
     </div>
   </div>
@@ -907,11 +1144,11 @@
         <div class="ibar-seg" style="flex:1;background:var(--z5)"></div>
       </div>
       <div class="ibar-legend">
-        <span><span style="display:inline-block;width:8px;height:8px;border-radius:2px;background:var(--z1)"></span>Z1 60%</span>
-        <span><span style="display:inline-block;width:8px;height:8px;border-radius:2px;background:var(--z2)"></span>Z2 30%</span>
-        <span><span style="display:inline-block;width:8px;height:8px;border-radius:2px;background:var(--z3)"></span>Z3 5%</span>
-        <span><span style="display:inline-block;width:8px;height:8px;border-radius:2px;background:var(--z4)"></span>Z4 4%</span>
-        <span><span style="display:inline-block;width:8px;height:8px;border-radius:2px;background:var(--z5)"></span>Z5 1%</span>
+        <span><span style="display:inline-block;width:8px;height:8px;background:var(--z1)"></span>Z1 60%</span>
+        <span><span style="display:inline-block;width:8px;height:8px;background:var(--z2)"></span>Z2 30%</span>
+        <span><span style="display:inline-block;width:8px;height:8px;background:var(--z3)"></span>Z3 5%</span>
+        <span><span style="display:inline-block;width:8px;height:8px;background:var(--z4)"></span>Z4 4%</span>
+        <span><span style="display:inline-block;width:8px;height:8px;background:var(--z5)"></span>Z5 1%</span>
       </div>
     </div>
   </div>
@@ -941,11 +1178,11 @@
         <div class="ibar-seg" style="flex:10;background:var(--z5)"></div>
       </div>
       <div class="ibar-legend">
-        <span><span style="display:inline-block;width:8px;height:8px;border-radius:2px;background:var(--z1)"></span>Z1 30%</span>
-        <span><span style="display:inline-block;width:8px;height:8px;border-radius:2px;background:var(--z2)"></span>Z2 35%</span>
-        <span><span style="display:inline-block;width:8px;height:8px;border-radius:2px;background:var(--z3)"></span>Z3 10%</span>
-        <span><span style="display:inline-block;width:8px;height:8px;border-radius:2px;background:var(--z4)"></span>Z4 15%</span>
-        <span><span style="display:inline-block;width:8px;height:8px;border-radius:2px;background:var(--z5)"></span>Z5 10%</span>
+        <span><span style="display:inline-block;width:8px;height:8px;background:var(--z1)"></span>Z1 30%</span>
+        <span><span style="display:inline-block;width:8px;height:8px;background:var(--z2)"></span>Z2 35%</span>
+        <span><span style="display:inline-block;width:8px;height:8px;background:var(--z3)"></span>Z3 10%</span>
+        <span><span style="display:inline-block;width:8px;height:8px;background:var(--z4)"></span>Z4 15%</span>
+        <span><span style="display:inline-block;width:8px;height:8px;background:var(--z5)"></span>Z5 10%</span>
       </div>
     </div>
   </div>
@@ -962,7 +1199,7 @@
 
   <div class="demo">
     <div class="demo-title">Interactive demo — Which training system suits you?</div>
-    <p style="font-size:.88rem;color:var(--muted);margin-bottom:1.25rem">Choose your goal and the time you have — you'll get a recommendation and a tip on what you can borrow from that system right now.</p>
+    <p class="demo-note">Choose your goal and the time you have — you'll get a recommendation and a tip on what you can borrow from that system right now.</p>
 
     <div class="method-picker">
       <div class="method-pick-group">
@@ -1038,12 +1275,12 @@
 
   <div class="lesson-illustration">
     <div class="illustration-title">Four key exercises — animated</div>
-    <canvas id="exCanvas" style="width:100%;display:block;border-radius:8px"></canvas>
+    <canvas id="exCanvas" style="width:100%;display:block"></canvas>
   </div>
 
   <div class="demo">
     <div class="demo-title">Interactive demo — Key exercises</div>
-    <p style="font-size:.88rem;color:var(--muted);margin-bottom:1rem">Choose your weak area — you'll get a recommendation for the most important exercises.</p>
+    <p class="demo-note" style="margin-bottom:1rem">Choose your weak area — you'll get a recommendation for the most important exercises.</p>
     <div class="slider-control">
       <div class="slider-label"><span>Weak area / most common injury</span><strong id="s9-area-label">Knee</strong></div>
       <select id="s9-area" class="scandi-select" style="width:100%;margin-top:.4rem">
@@ -1054,7 +1291,7 @@
         <option value="core">Core instability, lower back pain</option>
       </select>
     </div>
-    <div style="margin-top:1rem;padding:.85rem 1rem;border-radius:8px;border:1px solid var(--border);background:var(--bg)">
+    <div class="demo-desc">
       <p id="s9-why" style="font-size:.85rem;color:var(--muted);line-height:1.7;margin-bottom:.75rem"></p>
     </div>
     <div id="s9-exercises" class="exercise-grid"></div>
@@ -1108,14 +1345,14 @@
 
   <div class="demo">
     <div class="demo-title">Interactive demo — Clothing layers by temperature</div>
-    <p style="font-size:.88rem;color:var(--muted);margin-bottom:1rem">Move the temperature slider to see the recommended clothing for that temperature.</p>
+    <p class="demo-note" style="margin-bottom:1rem">Move the temperature slider to see the recommended clothing for that temperature.</p>
     <div class="slider-control">
       <div class="slider-label"><span>Ambient temperature</span><strong id="s10-temp-label">+5°C</strong></div>
       <input type="range" id="s10-temp" min="-25" max="10" value="5" step="1">
-      <div style="display:flex;justify-content:space-between;font-size:.65rem;color:var(--light);margin-top:3px"><span>−25°C</span><span>−15°C</span><span>−5°C</span><span>0°C</span><span>+10°C</span></div>
+      <div class="demo-range-labels"><span>−25°C</span><span>−15°C</span><span>−5°C</span><span>0°C</span><span>+10°C</span></div>
     </div>
     <div id="s10-layers" class="layer-row"></div>
-    <div style="margin-top:.75rem;padding:.75rem 1rem;border-radius:8px;background:var(--bg);border:1px solid var(--border)">
+    <div class="demo-insight">
       <p id="s10-advice" style="font-size:.88rem;color:var(--muted);line-height:1.7"></p>
     </div>
   </div>
@@ -1168,7 +1405,7 @@
 
   <div class="demo">
     <div class="demo-title">Interactive demo — Race day schedule</div>
-    <p style="font-size:.88rem;color:var(--muted);margin-bottom:1rem">Choose your distance and get a recommended race-day plan.</p>
+    <p class="demo-note" style="margin-bottom:1rem">Choose your distance and get a recommended race-day plan.</p>
     <div class="slider-control">
       <div class="slider-label"><span>Distance</span><strong id="s11-dist-label">5K</strong></div>
       <select id="s11-dist" class="scandi-select" style="width:100%;margin-top:.4rem">
@@ -1244,18 +1481,18 @@
 
   <div class="demo">
     <div class="demo-title">Interactive demo — VO₂max and running economy</div>
-    <p style="font-size:.88rem;color:var(--muted);margin-bottom:1.25rem">Two runners: the same VO₂max, different running economy. Adjust the fitness level and watch how economy can compensate for a lower VO₂max.</p>
+    <p class="demo-note">Two runners: the same VO₂max, different running economy. Adjust the fitness level and watch how economy can compensate for a lower VO₂max.</p>
     <div class="slider-control">
       <div class="slider-label"><span>Fitness level</span><strong id="s12-fit-label">Intermediate</strong></div>
       <input type="range" id="s12-fit" min="1" max="3" value="2" step="1">
-      <div style="display:flex;justify-content:space-between;font-size:.65rem;color:var(--light);margin-top:3px"><span>Beginner</span><span>Intermediate</span><span>Trained</span></div>
+      <div class="demo-range-labels"><span>Beginner</span><span>Intermediate</span><span>Trained</span></div>
     </div>
     <div class="metric-row">
       <div class="metric-card"><div class="mv" id="s12-vo2a" style="color:#3b82f6">52</div><div class="ml">Runner A VO₂max</div></div>
       <div class="metric-card"><div class="mv" id="s12-eco" style="color:var(--z2)">Moderate</div><div class="ml">Economy (A)</div></div>
       <div class="metric-card"><div class="mv" id="s12-10k" style="color:var(--text)">52:00</div><div class="ml">10K time (Runner A)</div></div>
     </div>
-    <div style="margin-top:.75rem;padding:.75rem 1rem;background:#f0fdf4;border-radius:8px;border:1px solid #86efac;font-size:.82rem;color:#14532d;line-height:1.65" id="s12-insight"></div>
+    <div class="demo-insight demo-insight-ok" id="s12-insight"></div>
   </div>
 
   <div class="quiz" data-correct="1">
@@ -1311,7 +1548,7 @@
 
   <div class="demo">
     <div class="demo-title">Interactive demo — Economy gains over time</div>
-    <p style="font-size:.88rem;color:var(--muted);margin-bottom:1rem">Move the years slider or click on the chart. Two curves show a consistent and an inconsistent runner — the difference compounds over decades.</p>
+    <p class="demo-note" style="margin-bottom:1rem">Move the years slider or click on the chart. Two curves show a consistent and an inconsistent runner — the difference compounds over decades.</p>
     <div class="slider-control" style="margin-bottom:.6rem">
       <div class="slider-label"><span>Years of running</span><strong id="s13-years-label">5 years</strong></div>
       <input type="range" id="s13-years" min="1" max="20" value="5" step="1">
@@ -1322,7 +1559,7 @@
       <input type="range" id="s13-base" min="30" max="90" value="60" step="5">
       <div style="display:flex;justify-content:space-between;font-size:.65rem;color:var(--light);margin-top:2px"><span>30 min</span><span>45</span><span>60</span><span>75</span><span>90 min</span></div>
     </div>
-    <canvas id="ecoCanvas" style="width:100%;display:block;border-radius:8px;cursor:crosshair"></canvas>
+    <canvas id="ecoCanvas" style="width:100%;display:block;cursor:crosshair"></canvas>
     <div class="metric-row" style="margin-top:.75rem">
       <div class="metric-card">
         <div class="mv" id="s13-cons" style="color:#22c55e">−18%</div>
@@ -1337,7 +1574,7 @@
         <div class="ml">10K difference</div>
       </div>
     </div>
-    <div style="margin-top:.75rem;padding:.75rem 1rem;background:var(--bg);border-radius:8px;border:1px solid var(--border);font-size:.88rem;color:var(--muted);line-height:1.65" id="s13-insight"></div>
+    <div class="demo-insight" id="s13-insight"></div>
   </div>
 
   <div class="quiz" data-correct="1">
@@ -1393,7 +1630,7 @@
 
   <div class="demo">
     <div class="demo-title">Interactive demo — Fatigue factors</div>
-    <p style="font-size:.88rem;color:var(--muted);margin-bottom:1.25rem">Move the sliders to see how different fatigue factors accumulate over a longer run.</p>
+    <p class="demo-note">Move the sliders to see how different fatigue factors accumulate over a longer run.</p>
     <div class="slider-control">
       <div class="slider-label"><span>Run duration</span><strong id="s14-dur-label">30 min</strong></div>
       <input type="range" id="s14-dur" min="10" max="150" value="30" step="5">
@@ -1403,7 +1640,7 @@
       <input type="range" id="s14-fit" min="1" max="3" value="2" step="1">
     </div>
     <div id="s14-fatigue-bars" style="margin-top:1rem;display:flex;flex-direction:column;gap:.5rem"></div>
-    <div style="margin-top:.75rem;padding:.75rem 1rem;background:var(--bg);border-radius:8px;border:1px solid var(--border);font-size:.88rem;color:var(--muted);line-height:1.65" id="s14-insight"></div>
+    <div class="demo-insight" id="s14-insight"></div>
   </div>
 
   <div class="quiz" data-correct="1">
@@ -1460,7 +1697,7 @@
 
   <div class="demo">
     <div class="demo-title">Interactive demo — Comparing split strategies</div>
-    <p style="font-size:.88rem;color:var(--muted);margin-bottom:1.25rem">Choose your distance and target pace to see how positive, even and negative splits compare in finish time.</p>
+    <p class="demo-note">Choose your distance and target pace to see how positive, even and negative splits compare in finish time.</p>
     <div class="slider-control">
       <div class="slider-label"><span>Distance</span><strong id="s15-dist-label">10K</strong></div>
       <select id="s15-dist" class="scandi-select" style="width:100%;margin-top:.35rem">
@@ -1479,7 +1716,7 @@
       <div class="metric-card"><div class="mv" id="s15-neg" style="color:#3b82f6">54:10</div><div class="ml">Negative split</div></div>
       <div class="metric-card"><div class="mv" id="s15-pos" style="color:var(--z4)">57:30</div><div class="ml">Positive split</div></div>
     </div>
-    <div style="margin-top:.75rem;padding:.75rem 1rem;background:var(--bg);border-radius:8px;border:1px solid var(--border);font-size:.88rem;color:var(--muted);line-height:1.65" id="s15-insight"></div>
+    <div class="demo-insight" id="s15-insight"></div>
   </div>
 
   <div class="quiz" data-correct="0">
@@ -1534,7 +1771,7 @@
 
   <div class="demo">
     <div class="demo-title">Interactive demo — Load growth and adaptation</div>
-    <p style="font-size:.88rem;color:var(--muted);margin-bottom:1.25rem">Move the sliders and watch how muscle and tendon adaptation diverge — and when injury risk appears.</p>
+    <p class="demo-note">Move the sliders and watch how muscle and tendon adaptation diverge — and when injury risk appears.</p>
     <div class="slider-control">
       <div class="slider-label"><span>Weekly mileage</span><strong id="s16-km-label">30 km/week</strong></div>
       <input type="range" id="s16-km" min="10" max="80" value="30" step="5">
@@ -1548,7 +1785,7 @@
       <div class="metric-card"><div class="mv" id="s16-tendon" style="color:var(--z3)">30%</div><div class="ml">Tendon adaptation</div></div>
       <div class="metric-card"><div class="mv" id="s16-risk" style="color:var(--z2)">Low</div><div class="ml">Injury risk</div></div>
     </div>
-    <div style="margin-top:.75rem;padding:.75rem 1rem;background:var(--bg);border-radius:8px;border:1px solid var(--border);font-size:.88rem;color:var(--muted);line-height:1.65" id="s16-insight"></div>
+    <div class="demo-insight" id="s16-insight"></div>
   </div>
 
   <div class="quiz" data-correct="0">
@@ -1604,7 +1841,7 @@
 
   <div class="demo">
     <div class="demo-title">Interactive demo — Symptom checker</div>
-    <p style="font-size:.88rem;color:var(--muted);margin-bottom:1rem">Select your pain characteristics to get a general recommendation. This is not a medical diagnosis — it is a decision-support tool only.</p>
+    <p class="demo-note" style="margin-bottom:1rem">Select your pain characteristics to get a general recommendation. This is not a medical diagnosis — it is a decision-support tool only.</p>
     <div style="display:flex;flex-direction:column;gap:.75rem;margin-bottom:1rem">
       <div class="method-pick-group">
         <label>Where does it hurt?</label>
@@ -1633,7 +1870,7 @@
         </div>
       </div>
     </div>
-    <div id="s17-result" style="padding:1rem 1.25rem;border-radius:10px;border:2px solid var(--border);background:var(--bg);font-size:.88rem;line-height:1.7;color:var(--text)"></div>
+    <div id="s17-result" style="padding:1rem 1.25rem;border:2px solid var(--border);background:var(--bg);font-size:.88rem;line-height:1.7;color:var(--text)"></div>
   </div>
 
   <div class="quiz" data-correct="1">
@@ -1689,7 +1926,7 @@
 
   <div class="demo">
     <div class="demo-title">Interactive demo — The power of consistency</div>
-    <p style="font-size:.88rem;color:var(--muted);margin-bottom:1.25rem">Compare a "perfect" and a "consistent" runner over a year. See why showing up regularly beats chasing perfection.</p>
+    <p class="demo-note">Compare a "perfect" and a "consistent" runner over a year. See why showing up regularly beats chasing perfection.</p>
     <div class="slider-control">
       <div class="slider-label"><span>Training goal (sessions per week)</span><strong id="s18-goal-label">3 sessions</strong></div>
       <input type="range" id="s18-goal" min="2" max="5" value="3" step="1">
@@ -1703,7 +1940,7 @@
       <div class="metric-card"><div class="mv" id="s18-real" style="color:var(--z2)">125</div><div class="ml">"Consistent" runner</div></div>
       <div class="metric-card"><div class="mv" id="s18-diff" style="color:var(--z3)">80%</div><div class="ml">Sessions vs. max</div></div>
     </div>
-    <div style="margin-top:.75rem;padding:.75rem 1rem;background:var(--bg);border-radius:8px;border:1px solid var(--border);font-size:.88rem;color:var(--muted);line-height:1.65" id="s18-insight"></div>
+    <div class="demo-insight" id="s18-insight"></div>
   </div>
 
   <div class="quiz" data-correct="1">
@@ -1759,7 +1996,7 @@
 
   <div class="demo">
     <div class="demo-title">Interactive demo — Metric reliability scale</div>
-    <p style="font-size:.88rem;color:var(--muted);margin-bottom:1rem">Tap a metric to see how reliable it is and why.</p>
+    <p class="demo-note" style="margin-bottom:1rem">Tap a metric to see how reliable it is and why.</p>
     <div id="s19-metrics" style="display:flex;flex-direction:column;gap:.5rem;margin-top:.5rem"></div>
   </div>
 
@@ -1806,7 +2043,7 @@
 
   <div class="demo">
     <div class="demo-title">Interactive demo — Training pattern analyser</div>
-    <p style="font-size:.88rem;color:var(--muted);margin-bottom:1.25rem">Adjust the sliders to match your recent training patterns. Each signal is assessed independently.</p>
+    <p class="demo-note">Adjust the sliders to match your recent training patterns. Each signal is assessed independently.</p>
 
     <div class="slider-control">
       <div class="slider-label">
@@ -1814,7 +2051,7 @@
         <strong id="s22-hr-label">+0 bpm</strong>
       </div>
       <input type="range" id="s22-hr" min="-5" max="15" value="0" step="1">
-      <div style="display:flex;justify-content:space-between;font-size:.65rem;color:var(--light);margin-top:3px">
+      <div class="demo-range-labels">
         <span>−5 bpm</span><span>+0</span><span>+5</span><span>+10</span><span>+15 bpm</span>
       </div>
     </div>
@@ -1825,7 +2062,7 @@
         <strong id="s22-drift-label">5%</strong>
       </div>
       <input type="range" id="s22-drift" min="0" max="25" value="5" step="1">
-      <div style="display:flex;justify-content:space-between;font-size:.65rem;color:var(--light);margin-top:3px">
+      <div class="demo-range-labels">
         <span>0%</span><span>5%</span><span>10%</span><span>15%</span><span>25%+</span>
       </div>
     </div>
@@ -1836,13 +2073,13 @@
         <strong id="s22-jump-label">+8%</strong>
       </div>
       <input type="range" id="s22-jump" min="0" max="40" value="8" step="1">
-      <div style="display:flex;justify-content:space-between;font-size:.65rem;color:var(--light);margin-top:3px">
+      <div class="demo-range-labels">
         <span>0%</span><span>+10%</span><span>+20%</span><span>+30%</span><span>+40%</span>
       </div>
     </div>
 
     <div id="s22-signals" style="margin-top:1.25rem;display:flex;flex-direction:column;gap:.6rem"></div>
-    <div style="margin-top:1rem;padding:.85rem 1rem;border-radius:8px;border:1px solid var(--border);background:var(--bg)">
+    <div class="demo-desc">
       <p id="s22-summary" style="font-size:.88rem;color:var(--muted);line-height:1.7"></p>
     </div>
   </div>
@@ -1894,7 +2131,7 @@
 
   <div class="demo">
     <div class="demo-title">Interactive demo — Recovery readiness</div>
-    <p style="font-size:.88rem;color:var(--muted);margin-bottom:1.25rem">Set last night's sleep hours and quality. See how it affects today's adaptation window and what kind of training is appropriate.</p>
+    <p class="demo-note">Set last night's sleep hours and quality. See how it affects today's adaptation window and what kind of training is appropriate.</p>
 
     <div class="slider-control">
       <div class="slider-label">
@@ -1902,7 +2139,7 @@
         <strong id="s20-hours-label">7 hours</strong>
       </div>
       <input type="range" id="s20-hours" min="4" max="10" value="7" step="0.5">
-      <div style="display:flex;justify-content:space-between;font-size:.65rem;color:var(--light);margin-top:3px">
+      <div class="demo-range-labels">
         <span>4 h</span><span>6 h</span><span>8 h</span><span>10 h</span>
       </div>
     </div>
@@ -1913,7 +2150,7 @@
         <strong id="s20-quality-label">Good</strong>
       </div>
       <input type="range" id="s20-quality" min="1" max="5" value="3" step="1">
-      <div style="display:flex;justify-content:space-between;font-size:.65rem;color:var(--light);margin-top:3px">
+      <div class="demo-range-labels">
         <span>Poor</span><span>Fair</span><span>Good</span><span>Very good</span><span>Excellent</span>
       </div>
     </div>
@@ -1932,7 +2169,7 @@
         <div class="ml">Recommended today</div>
       </div>
     </div>
-    <div style="margin-top:1rem;padding:.85rem 1rem;border-radius:8px;border:1px solid var(--border);background:var(--bg)">
+    <div class="demo-desc">
       <p id="s20-desc" style="font-size:.88rem;color:var(--muted);line-height:1.7"></p>
     </div>
   </div>
@@ -1995,7 +2232,7 @@
 
   <div class="demo">
     <div class="demo-title">Interactive demo — Daily nutrition targets</div>
-    <p style="font-size:.88rem;color:var(--muted);margin-bottom:1.25rem">Select your body weight and today's session type to see recommended carbohydrate and protein targets.</p>
+    <p class="demo-note">Select your body weight and today's session type to see recommended carbohydrate and protein targets.</p>
 
     <div class="slider-control">
       <div class="slider-label">
@@ -2003,7 +2240,7 @@
         <strong id="s21-weight-label">70 kg</strong>
       </div>
       <input type="range" id="s21-weight" min="45" max="110" value="70" step="5">
-      <div style="display:flex;justify-content:space-between;font-size:.65rem;color:var(--light);margin-top:3px">
+      <div class="demo-range-labels">
         <span>45 kg</span><span>65 kg</span><span>85 kg</span><span>110 kg</span>
       </div>
     </div>
@@ -2013,7 +2250,7 @@
         <span>Today's session</span>
         <strong id="s21-session-label">Easy run (Z2)</strong>
       </div>
-      <select id="s21-session" style="width:100%;padding:.5rem .75rem;border:1px solid var(--border);border-radius:8px;background:var(--bg);font-size:.9rem;margin-top:.4rem">
+      <select id="s21-session" style="width:100%;padding:.5rem .75rem;border:1px solid var(--border);background:var(--bg);font-size:.9rem;margin-top:.4rem">
         <option value="rest">Rest day</option>
         <option value="easy" selected>Easy run (Z2)</option>
         <option value="moderate">Moderate tempo run</option>
@@ -2036,7 +2273,7 @@
         <div class="ml">Post-run window</div>
       </div>
     </div>
-    <div style="margin-top:1rem;padding:.85rem 1rem;border-radius:8px;border:1px solid var(--border);background:var(--bg)">
+    <div class="demo-desc">
       <p id="s21-desc" style="font-size:.88rem;color:var(--muted);line-height:1.7"></p>
     </div>
   </div>
@@ -2062,9 +2299,10 @@
 
 </main>
 
-<script defer src="js/nav.js?v=1"></script>
-<script defer src="../js/quiz.js?v=1"></script>
-<script defer src="js/glossary.js?v=1"></script>
-<script defer src="js/demos.js?v=1"></script>
+<script defer src="js/nav.js?v=2"></script>
+<script defer src="../js/quiz.js?v=2"></script>
+<script defer src="js/glossary.js?v=2"></script>
+<script defer src="js/demos.js?v=2"></script>
+<script defer src="../js/landing.js?v=1"></script>
 </body>
 </html>
