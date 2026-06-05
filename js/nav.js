@@ -48,31 +48,16 @@ const NAV_LESSON_NAMES = [
   '21. Miegas ir atsigavimas','22. Kasdienė Mityba'
 ];
 
-let navCollapsed = false;
-
-// Collapse immediately on mobile
-const isMobile = window.innerWidth < 700;
-if (isMobile) {
-  document.getElementById('lessonNav').classList.add('nav-collapsed');
-  navCollapsed = true;
-  const btn = document.getElementById('navToggleBtn');
-  if (btn) btn.textContent = '☰';
-  // Show current lesson name in header indicator (lessonCountLabel is hidden on mobile via CSS)
-  updateIndicator();
-  const ind = document.getElementById('lessonIndicator');
-  if (ind) ind.style.opacity = '1';
-}
+// Drawer starts collapsed (nav-collapsed set in HTML); always show indicator
+let navCollapsed = true;
+updateIndicator();
 
 function collapseNav(force) {
   navCollapsed = (force !== undefined) ? force : !navCollapsed;
   const nav = document.getElementById('lessonNav');
   const btn = document.getElementById('navToggleBtn');
-  const ind = document.getElementById('lessonIndicator');
-  const lbl = document.getElementById('lessonCountLabel');
   nav.classList.toggle('nav-collapsed', navCollapsed);
-  if (btn) btn.textContent = navCollapsed ? '☰' : '✕';
-  if (ind) ind.style.opacity = navCollapsed ? '1' : '0';
-  if (lbl) lbl.style.opacity = navCollapsed ? '0' : '1';
+  if (btn) btn.textContent = navCollapsed ? '☰ Pamokos' : '✕ Uždaryti';
 }
 
 function updateIndicator() {
@@ -107,22 +92,13 @@ function handleScroll() {
   const delta = y - lastScrollY;
   lastScrollY = y;
 
-  // Near the very top: always reveal
-  if (y <= TOP_ZONE) {
-    if (navCollapsed) { collapseNav(false); ignoreScrollUntil = now + 320; }
-    scrollAccum = 0; ticking = false; return;
-  }
-
   // Reset accumulator when direction flips
   if ((delta > 0 && scrollAccum < 0) || (delta < 0 && scrollAccum > 0)) scrollAccum = 0;
   scrollAccum += delta;
 
+  // Only auto-collapse on sustained downward scroll; user opens drawer manually
   if (scrollAccum > COLLAPSE_THRESHOLD && !navCollapsed) {
     collapseNav(true);
-    ignoreScrollUntil = now + 320;
-    scrollAccum = 0;
-  } else if (scrollAccum < -EXPAND_THRESHOLD && navCollapsed) {
-    collapseNav(false);
     ignoreScrollUntil = now + 320;
     scrollAccum = 0;
   }

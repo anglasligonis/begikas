@@ -14,7 +14,7 @@
   gtag('js', new Date());
   gtag('config', 'G-3G4SLW2V7C');
 </script>
-<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=JetBrains+Mono:wght@400;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/variables.css?v=1">
 <link rel="stylesheet" href="css/layout.css?v=1">
 <link rel="stylesheet" href="css/components.css?v=1">
@@ -22,44 +22,58 @@
 </head>
 <body>
 
-<header class="site-header">
-  <h1>Bėgimo <span>fiziologija</span></h1>
-  <div style="display:flex;align-items:center;gap:.6rem">
+<!-- Fixed zone rail -->
+<div class="zone-rail"></div>
+<div class="zone-runner"></div>
+<div class="zone-labels">
+  <span class="zone-label">Z5</span>
+  <span class="zone-label">Z4</span>
+  <span class="zone-label">Z3</span>
+  <span class="zone-label">Z2</span>
+  <span class="zone-label">Z1</span>
+</div>
+
+<!-- Top nav -->
+<nav class="topnav">
+  <span class="topnav-brand">Bėgimo Fiziologija</span>
+  <div class="topnav-right">
+    <div class="nav-pulse"></div>
     <span class="lesson-indicator" id="lessonIndicator"></span>
-    <span style="font-size:.78rem;color:var(--muted)" id="lessonCountLabel">22 pamokų pradedantiesiems</span>
-    <div class="lang-switcher">
-      <span class="lang-btn lang-active" title="Lietuvių">🇱🇹</span>
-      <a href="/en/" class="lang-btn" title="English">🇬🇧</a>
-    </div>
-    <button class="nav-toggle-btn" id="navToggleBtn" onclick="toggleNav()" title="Rodyti / slėpti pamokas">☰</button>
-    <button class="glossary-btn" onclick="toggleGlossary()">📖 Žodynas</button>
+    <div class="tnav-sep"></div>
+    <span class="tnav-link lang-active">LT</span>
+    <div class="tnav-sep"></div>
+    <a href="/en/" class="tnav-link">EN</a>
+    <div class="tnav-sep"></div>
+    <button class="tnav-link" onclick="toggleGlossary()">Žodynas</button>
+    <button class="nav-toggle-btn" id="navToggleBtn" onclick="toggleNav()">☰ Pamokos</button>
   </div>
-</header>
+</nav>
 <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
 
-<div class="lesson-nav" id="lessonNav">
-  <button class="nav-pill active" data-lesson="0">1. Kodėl bėgame lėtai?</button>
-  <button class="nav-pill" data-lesson="1">2. Širdis ir pulsas</button>
-  <button class="nav-pill" data-lesson="2">3. Energija ir kuras</button>
-  <button class="nav-pill" data-lesson="3">4. Laktatas</button>
-  <button class="nav-pill" data-lesson="4">5. Kvėpavimas</button>
-  <button class="nav-pill" data-lesson="5">6. Karštis ir hidratacija</button>
-  <button class="nav-pill" data-lesson="6">7. Bėgimo technika</button>
-  <button class="nav-pill" data-lesson="7">8. Kaip tobulėti?</button>
-  <button class="nav-pill" data-lesson="8">9. Metodologijos</button>
-  <button class="nav-pill" data-lesson="9">10. Jėgos treniruotės</button>
-  <button class="nav-pill" data-lesson="10">11. Žiemos bėgimas</button>
-  <button class="nav-pill" data-lesson="11">12. Pirmos varžybos</button>
-  <button class="nav-pill" data-lesson="12">13. VO₂max</button>
-  <button class="nav-pill" data-lesson="13">14. Bėgimo ekonomija</button>
-  <button class="nav-pill" data-lesson="14">15. Nuovargis</button>
-  <button class="nav-pill" data-lesson="15">16. Tempo paskirstymas</button>
-  <button class="nav-pill" data-lesson="16">17. Krūvio valdymas</button>
-  <button class="nav-pill" data-lesson="17">18. Skausmas ar trauma</button>
-  <button class="nav-pill" data-lesson="18">19. Motyvacija ir pastovumas</button>
-  <button class="nav-pill" data-lesson="19">20. Bėgimo laikrodžiai</button>
-  <button class="nav-pill" data-lesson="20">21. Miegas ir atsigavimas</button>
-  <button class="nav-pill" data-lesson="21">22. Kasdienė Mityba</button>
+<!-- Lesson nav drawer -->
+<div class="lesson-nav nav-collapsed" id="lessonNav">
+  <button class="nav-pill active" data-lesson="0">01</button>
+  <button class="nav-pill" data-lesson="1">02</button>
+  <button class="nav-pill" data-lesson="2">03</button>
+  <button class="nav-pill" data-lesson="3">04</button>
+  <button class="nav-pill" data-lesson="4">05</button>
+  <button class="nav-pill" data-lesson="5">06</button>
+  <button class="nav-pill" data-lesson="6">07</button>
+  <button class="nav-pill" data-lesson="7">08</button>
+  <button class="nav-pill" data-lesson="8">09</button>
+  <button class="nav-pill" data-lesson="9">10</button>
+  <button class="nav-pill" data-lesson="10">11</button>
+  <button class="nav-pill" data-lesson="11">12</button>
+  <button class="nav-pill" data-lesson="12">13</button>
+  <button class="nav-pill" data-lesson="13">14</button>
+  <button class="nav-pill" data-lesson="14">15</button>
+  <button class="nav-pill" data-lesson="15">16</button>
+  <button class="nav-pill" data-lesson="16">17</button>
+  <button class="nav-pill" data-lesson="17">18</button>
+  <button class="nav-pill" data-lesson="18">19</button>
+  <button class="nav-pill" data-lesson="19">20</button>
+  <button class="nav-pill" data-lesson="20">21</button>
+  <button class="nav-pill" data-lesson="21">22</button>
 </div>
 
 <dialog id="glossaryDialog" aria-label="Žodynas">
