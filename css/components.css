@@ -293,6 +293,18 @@ input[type=range]::-moz-range-thumb {
   padding: 1.5rem 1.75rem;
   margin: 2.25rem 0;
 }
+.quiz::before {
+  display: block;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: .52rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .18em;
+  color: var(--z1);
+  margin-bottom: 1.1rem;
+}
+:lang(lt) .quiz::before { content: 'Tikrink žinias'; }
+:lang(en) .quiz::before { content: 'Test your knowledge'; }
 .quiz-q {
   font-size: .92rem;
   font-weight: 600;
@@ -355,6 +367,10 @@ input[type=range]::-moz-range-thumb {
   display: none;
 }
 .quiz-feedback.show { display: block; }
+.quiz-feedback.show:not(.wrong) { background: var(--z2bg); border-color: var(--z2); color: #064e35; }
+.quiz-feedback.show:not(.wrong)::before { display: block; font-weight: 600; color: var(--z2); margin-bottom: .3rem; }
+:lang(lt) .quiz-feedback.show:not(.wrong)::before { content: 'Teisingai!'; }
+:lang(en) .quiz-feedback.show:not(.wrong)::before { content: 'Correct!'; }
 .quiz-feedback.wrong { background: var(--z5bg); border-color: var(--z5); }
 .quiz-feedback.wrong::before { display: block; font-weight: 600; color: #991b1b; margin-bottom: .3rem; }
 :lang(lt) .quiz-feedback.wrong::before { content: 'Neteisingai — teisingas atsakymas pažymėtas žaliai:'; }
@@ -492,10 +508,12 @@ input[type=range]::-moz-range-thumb {
 .glossary-entry:last-child { border-bottom: none; }
 .glossary-entry.hidden { display: none; }
 .glossary-term {
-  font-size: .9rem;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: .82rem;
   font-weight: 700;
   color: var(--text);
   margin-bottom: .25rem;
+  letter-spacing: .03em;
 }
 .glossary-def { font-size: .84rem; color: var(--muted); line-height: 1.7; }
 
