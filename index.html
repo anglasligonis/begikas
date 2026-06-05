@@ -15,10 +15,11 @@
   gtag('config', 'G-3G4SLW2V7C');
 </script>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=JetBrains+Mono:wght@400;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/variables.css?v=1">
-<link rel="stylesheet" href="css/layout.css?v=1">
-<link rel="stylesheet" href="css/components.css?v=1">
-<link rel="stylesheet" href="css/lessons.css?v=1">
+<link rel="stylesheet" href="css/variables.css?v=2">
+<link rel="stylesheet" href="css/layout.css?v=2">
+<link rel="stylesheet" href="css/components.css?v=2">
+<link rel="stylesheet" href="css/lessons.css?v=2">
+<link rel="stylesheet" href="css/landing.css?v=1">
 </head>
 <body>
 
@@ -87,7 +88,227 @@
   <div class="glossary-list" id="glossaryList"></div>
 </dialog>
 
-<main>
+<!-- ══════════════════════════════════════════
+     LANDING PAGE
+     ══════════════════════════════════════════ -->
+<section id="landing">
+
+  <!-- HERO -->
+  <div class="lp-hero">
+    <div class="lp-hero-left">
+      <span class="ghost-word">BĖG</span>
+      <div class="lp-hero-content">
+
+        <div class="lp-eyebrow">
+          <span class="lp-eyebrow-line"></span>
+          Nemokamas kursas &middot; 22 pamokos
+        </div>
+
+        <h1 class="lp-title">
+          <span class="t-line"><span class="t-inner">Suprask</span></span>
+          <span class="t-line"><span class="t-inner">savo</span></span>
+          <span class="t-line"><span class="t-inner">kūną.</span></span>
+        </h1>
+
+        <p class="lp-intro">
+          Dauguma pradedančiųjų bėga per greitai ir per ilgai. Ne iš tinginio —
+          tiesiog niekas nepaaiškino, kaip iš tikrųjų veikia treniruotas kūnas.
+          Šis kursas tai ištaiso: trumpai, aiškiai, remiantis sporto mokslu.
+        </p>
+
+        <div class="ekg-wrap">
+          <svg class="ekg-svg" viewBox="0 0 600 40" preserveAspectRatio="none">
+            <line class="ekg-bg-line" x1="0" y1="20" x2="600" y2="20"/>
+            <path class="ekg-trace" pathLength="1000"
+              d="M0,20 L155,20 L165,18 L170,22 L175,20 L179,20 L181,20
+                 L183,4 L190,38 L194,20 L198,20 L207,12 L216,20 L600,20"/>
+          </svg>
+        </div>
+
+        <div class="lp-stats">
+          <div class="lp-stat">
+            <span class="lp-stat-val" data-to="22" data-sfx="">0</span>
+            <span class="lp-stat-lbl">Pamokos</span>
+          </div>
+          <div class="lp-stat">
+            <span class="lp-stat-val">5–10</span>
+            <span class="lp-stat-lbl">Min / pamoka</span>
+          </div>
+          <div class="lp-stat">
+            <span class="lp-stat-val" data-to="80" data-sfx="%">0%</span>
+            <span class="lp-stat-lbl">Lėtos treniruotės</span>
+          </div>
+        </div>
+
+        <div class="lp-cta-group">
+          <button class="lp-cta" onclick="startCourse(0)">Pradėti kursą →</button>
+          <span class="lp-cta-note">Nemokama.<br>Be registracijos.</span>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="lp-hero-right">
+      <img class="lp-hero-photo" src="images/Man-Running.jpg" alt="Bėgikas">
+      <div class="lp-hero-chips">
+        <div class="lp-hero-chip lp-hc-z1">
+          <span class="lp-chip-lbl">Zona</span>
+          <span class="lp-chip-val" style="color:var(--z1)">Z1 — Aerobinė bazė</span>
+        </div>
+        <div class="lp-hero-chip lp-hc-z2">
+          <span class="lp-chip-lbl">Pulsas</span>
+          <span class="lp-chip-val" style="color:var(--z2)">115–135 bpm</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- WHY -->
+  <div class="lp-section">
+    <div class="lp-why-grid">
+      <div>
+        <p class="lp-why-tag lp-reveal">Apie kursą</p>
+        <h2 class="lp-why-heading lp-reveal">Ne sporto&nbsp;salė.<br>Ne treneris.<br>Tik supratimas.</h2>
+      </div>
+      <div class="lp-why-body lp-reveal">
+        <p>Geriausi bėgikai pasaulyje treniruojasi lėtai — 80&nbsp;% laiko jų pulsas būna žemas. Tai ne atsitiktinumas. Tai fiziologija.</p>
+        <p>Šiame kurse sužinosite, kodėl lėtas bėgimas stato aerobinį pagrindą, kaip energija juda raumenyse, ko iš tikrųjų reiškia jūsų pulsas ir kaip kūnas prisitaiko prie krūvio bėgant savaitė po savaitės.</p>
+        <p>Jokios magijos. Tik mokslas — papasakotas žmogiškai.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- TOPICS -->
+  <div class="lp-section lp-section--surface">
+    <p class="lp-eyebrow-sec lp-reveal">Ko išmoksite</p>
+    <h2 class="lp-sec-title lp-reveal">22 pamokos. Nuo pulso iki miego.</h2>
+    <div class="lp-topics-grid">
+      <div class="lp-topic-card"><div class="lp-topic-dot" style="background:var(--z1)"></div><div class="lp-topic-name">Treniruočių zonos</div><div class="lp-topic-desc">Kodėl Z2 yra svarbiausia zona ir kaip ją rasti</div></div>
+      <div class="lp-topic-card"><div class="lp-topic-dot" style="background:var(--z2)"></div><div class="lp-topic-name">Širdis ir energija</div><div class="lp-topic-desc">Kaip kuras patenka į raumenis ir kodėl tai svarbu</div></div>
+      <div class="lp-topic-card"><div class="lp-topic-dot" style="background:var(--z4)"></div><div class="lp-topic-name">Laktatas</div><div class="lp-topic-desc">Kas tai iš tikrųjų yra ir kada jis pasirodo</div></div>
+      <div class="lp-topic-card"><div class="lp-topic-dot" style="background:var(--z2)"></div><div class="lp-topic-name">Kvėpavimas</div><div class="lp-topic-desc">Kodėl bėgti nosimi — ne keistenybė, o technika</div></div>
+      <div class="lp-topic-card"><div class="lp-topic-dot" style="background:var(--z3)"></div><div class="lp-topic-name">Bėgimo technika</div><div class="lp-topic-desc">Kas keičiasi žingsnyje, kai kūnas pavargsta</div></div>
+      <div class="lp-topic-card"><div class="lp-topic-dot" style="background:var(--z1)"></div><div class="lp-topic-name">Atsigavimas ir miegas</div><div class="lp-topic-desc">Treniruotė vyksta po bėgimo, ne per jį</div></div>
+      <div class="lp-topic-card"><div class="lp-topic-dot" style="background:var(--z5)"></div><div class="lp-topic-name">VO₂max</div><div class="lp-topic-desc">Ką ši vertė reiškia ir ar tikrai verta jos siekti</div></div>
+      <div class="lp-topic-card"><div class="lp-topic-dot" style="background:var(--z2)"></div><div class="lp-topic-name">Mityba</div><div class="lp-topic-desc">Kaip valgyti, kad kūnas turėtų degalų ilgam</div></div>
+    </div>
+  </div>
+
+  <!-- HOW IT WORKS -->
+  <div class="lp-section">
+    <p class="lp-eyebrow-sec lp-reveal">Kaip tai veikia</p>
+    <h2 class="lp-sec-title lp-reveal">Skaitykite savo tempu.</h2>
+    <div class="lp-how-steps">
+      <div class="lp-how-step">
+        <div class="lp-step-num">01</div>
+        <div class="lp-step-title">Pasirinkite pamoką</div>
+        <div class="lp-step-body">Kiekvieną pamoką galima skaityti atskirai. Nėra privalomos tvarkos — galite pradėti nuo to, kas labiausiai domina.</div>
+      </div>
+      <div class="lp-how-step">
+        <div class="lp-step-num">02</div>
+        <div class="lp-step-title">Skaitykite ir žiūrėkite</div>
+        <div class="lp-step-body">Trumpas tekstas, interaktyvi demonstracija ir keli klausimai pasitikrinimui. Vidutiniškai 5–10 minučių per pamoką.</div>
+      </div>
+      <div class="lp-how-step">
+        <div class="lp-step-num">03</div>
+        <div class="lp-step-title">Grįžkite kada norite</div>
+        <div class="lp-step-body">Kursas išlieka atviras neribotam laikui. Nėra terminų, slaptažodžių ar mokesčių. Jūsų eiga išsaugoma naršyklėje.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PULL QUOTE -->
+  <div class="lp-section lp-section--surface" style="display:flex;justify-content:center;text-align:center;">
+    <blockquote class="lp-quote-inner lp-reveal">
+      <div class="lp-quote-lines">
+        <span class="lp-quote-dash"></span>
+        <span class="lp-quote-mark">Sporto mokslas</span>
+        <span class="lp-quote-dash"></span>
+      </div>
+      <p class="lp-quote-text">„80 procentų treniruočių turėtų jaustis per lengvos. Tai ne silpnumas — tai strategija."</p>
+      <footer class="lp-quote-src">Polarizuoto treniruočių modelio principas</footer>
+    </blockquote>
+  </div>
+
+  <!-- ZONE CHART -->
+  <div class="lp-section">
+    <p class="lp-eyebrow-sec lp-reveal">Intensyvumo zonos</p>
+    <h2 class="lp-sec-title lp-reveal">Kiekvienas bėgimas turi savo zoną</h2>
+    <div class="lp-zone-rows">
+      <div class="lp-zone-row">
+        <div class="lp-zr-label"><span class="lp-zr-num" style="color:var(--z5)">Z5</span><span class="lp-zr-name">Maksimalus</span></div>
+        <div class="lp-zr-track"><div class="lp-zr-fill" style="--w:10%;background:var(--z5)"></div></div>
+        <div class="lp-zr-meta">&gt;185 bpm<br>5–10 %</div>
+      </div>
+      <div class="lp-zone-row">
+        <div class="lp-zr-label"><span class="lp-zr-num" style="color:var(--z4)">Z4</span><span class="lp-zr-name">Anaerobinis</span></div>
+        <div class="lp-zr-track"><div class="lp-zr-fill" style="--w:20%;background:var(--z4)"></div></div>
+        <div class="lp-zr-meta">165–185 bpm<br>10–15 %</div>
+      </div>
+      <div class="lp-zone-row">
+        <div class="lp-zr-label"><span class="lp-zr-num" style="color:var(--z3)">Z3</span><span class="lp-zr-name">Aerobinis</span></div>
+        <div class="lp-zr-track"><div class="lp-zr-fill" style="--w:36%;background:var(--z3)"></div></div>
+        <div class="lp-zr-meta">150–165 bpm<br>15–20 %</div>
+      </div>
+      <div class="lp-zone-row">
+        <div class="lp-zr-label"><span class="lp-zr-num" style="color:var(--z2)">Z2</span><span class="lp-zr-name">Aerobinė bazė</span></div>
+        <div class="lp-zr-track"><div class="lp-zr-fill" style="--w:60%;background:var(--z2)"></div></div>
+        <div class="lp-zr-meta">130–150 bpm<br>30–35 %</div>
+      </div>
+      <div class="lp-zone-row">
+        <div class="lp-zr-label"><span class="lp-zr-num" style="color:var(--z1)">Z1</span><span class="lp-zr-name">Atsistatymas</span></div>
+        <div class="lp-zr-track"><div class="lp-zr-fill" style="--w:86%;background:var(--z1)"></div></div>
+        <div class="lp-zr-meta">&lt;130 bpm<br>40–45 %</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FINAL CTA -->
+  <div class="lp-section lp-section--dark lp-final-cta">
+    <p class="lp-final-label lp-reveal">Pradėkite dabar</p>
+    <h2 class="lp-final-title lp-reveal">Pradėkite nuo pirmos pamokos.</h2>
+    <p class="lp-final-body lp-reveal">Pirmoji pamoka atsako į klausimą, kurį užduoda kiekvienas pradedantysis: <em>kodėl reikia bėgti lėtai, jei noriu bėgti greičiau?</em> Atsakymas nustebins.</p>
+    <div class="lp-final-actions lp-reveal">
+      <button class="lp-cta" onclick="startCourse(0)">Pamoka 01: Kodėl bėgame lėtai? →</button>
+      <span class="lp-final-note">Nemokama &middot; Be registracijos &middot; 5–10 min.</span>
+    </div>
+  </div>
+
+  <!-- LESSON STRIP -->
+  <div class="lp-lesson-strip">
+    <div class="lp-strip-head">
+      <span class="lp-strip-lbl">Viso kurso pamokos</span>
+      <span class="lp-strip-hint">← slinkti →</span>
+    </div>
+    <div class="lp-lesson-track" id="lpLessonTrack">
+      <div class="lp-lcard" data-start-lesson="0"><div class="lp-l-dot" style="background:var(--z1)"></div><div class="lp-l-num">01</div><div class="lp-l-title">Kodėl bėgame lėtai?</div></div>
+      <div class="lp-lcard" data-start-lesson="1"><div class="lp-l-dot" style="background:var(--z2)"></div><div class="lp-l-num">02</div><div class="lp-l-title">Širdis ir pulsas</div></div>
+      <div class="lp-lcard" data-start-lesson="2"><div class="lp-l-dot" style="background:var(--z3)"></div><div class="lp-l-num">03</div><div class="lp-l-title">Energija ir kuras</div></div>
+      <div class="lp-lcard" data-start-lesson="3"><div class="lp-l-dot" style="background:var(--z4)"></div><div class="lp-l-num">04</div><div class="lp-l-title">Laktatas</div></div>
+      <div class="lp-lcard" data-start-lesson="4"><div class="lp-l-dot" style="background:var(--z2)"></div><div class="lp-l-num">05</div><div class="lp-l-title">Kvėpavimas</div></div>
+      <div class="lp-lcard" data-start-lesson="5"><div class="lp-l-dot" style="background:var(--z3)"></div><div class="lp-l-num">06</div><div class="lp-l-title">Karštis ir hidratacija</div></div>
+      <div class="lp-lcard" data-start-lesson="6"><div class="lp-l-dot" style="background:var(--z1)"></div><div class="lp-l-num">07</div><div class="lp-l-title">Bėgimo technika</div></div>
+      <div class="lp-lcard" data-start-lesson="7"><div class="lp-l-dot" style="background:var(--z4)"></div><div class="lp-l-num">08</div><div class="lp-l-title">Kaip tobulėti?</div></div>
+      <div class="lp-lcard" data-start-lesson="8"><div class="lp-l-dot" style="background:var(--z3)"></div><div class="lp-l-num">09</div><div class="lp-l-title">Metodologijos</div></div>
+      <div class="lp-lcard" data-start-lesson="9"><div class="lp-l-dot" style="background:var(--z4)"></div><div class="lp-l-num">10</div><div class="lp-l-title">Jėgos treniruotės</div></div>
+      <div class="lp-lcard" data-start-lesson="10"><div class="lp-l-dot" style="background:var(--z2)"></div><div class="lp-l-num">11</div><div class="lp-l-title">Žiemos bėgimas</div></div>
+      <div class="lp-lcard" data-start-lesson="11"><div class="lp-l-dot" style="background:var(--z5)"></div><div class="lp-l-num">12</div><div class="lp-l-title">Pirmos varžybos</div></div>
+      <div class="lp-lcard" data-start-lesson="12"><div class="lp-l-dot" style="background:var(--z5)"></div><div class="lp-l-num">13</div><div class="lp-l-title">VO₂max</div></div>
+      <div class="lp-lcard" data-start-lesson="13"><div class="lp-l-dot" style="background:var(--z3)"></div><div class="lp-l-num">14</div><div class="lp-l-title">Bėgimo ekonomija</div></div>
+      <div class="lp-lcard" data-start-lesson="14"><div class="lp-l-dot" style="background:var(--z4)"></div><div class="lp-l-num">15</div><div class="lp-l-title">Nuovargis</div></div>
+      <div class="lp-lcard" data-start-lesson="15"><div class="lp-l-dot" style="background:var(--z4)"></div><div class="lp-l-num">16</div><div class="lp-l-title">Tempo paskirstymas</div></div>
+      <div class="lp-lcard" data-start-lesson="16"><div class="lp-l-dot" style="background:var(--z3)"></div><div class="lp-l-num">17</div><div class="lp-l-title">Krūvio valdymas</div></div>
+      <div class="lp-lcard" data-start-lesson="17"><div class="lp-l-dot" style="background:var(--z4)"></div><div class="lp-l-num">18</div><div class="lp-l-title">Skausmas ar trauma</div></div>
+      <div class="lp-lcard" data-start-lesson="18"><div class="lp-l-dot" style="background:var(--z2)"></div><div class="lp-l-num">19</div><div class="lp-l-title">Motyvacija ir pastovumas</div></div>
+      <div class="lp-lcard" data-start-lesson="19"><div class="lp-l-dot" style="background:var(--z2)"></div><div class="lp-l-num">20</div><div class="lp-l-title">Bėgimo laikrodžiai</div></div>
+      <div class="lp-lcard" data-start-lesson="20"><div class="lp-l-dot" style="background:var(--z1)"></div><div class="lp-l-num">21</div><div class="lp-l-title">Miegas ir atsigavimas</div></div>
+      <div class="lp-lcard" data-start-lesson="21"><div class="lp-l-dot" style="background:var(--z2)"></div><div class="lp-l-num">22</div><div class="lp-l-title">Kasdienė Mityba</div></div>
+    </div>
+  </div>
+
+</section>
+
+<main style="display:none">
 
 <!-- ══════════════════════════════════════════
      PAMOKA 1 — KODĖL BĖGAME LĖTAI?
@@ -2081,9 +2302,10 @@
 </main>
 
 
-<script defer src="js/nav.js?v=1"></script>
-<script defer src="js/quiz.js?v=1"></script>
-<script defer src="js/glossary.js?v=1"></script>
-<script defer src="js/demos.js?v=1"></script>
+<script defer src="js/nav.js?v=2"></script>
+<script defer src="js/quiz.js?v=2"></script>
+<script defer src="js/glossary.js?v=2"></script>
+<script defer src="js/demos.js?v=2"></script>
+<script defer src="js/landing.js?v=1"></script>
 </body>
 </html>
