@@ -18,7 +18,7 @@
 <link rel="stylesheet" href="css/variables.css?v=2">
 <link rel="stylesheet" href="css/layout.css?v=2">
 <link rel="stylesheet" href="css/components.css?v=2">
-<link rel="stylesheet" href="css/lessons.css?v=2">
+<link rel="stylesheet" href="css/lessons.css?v=3">
 <link rel="stylesheet" href="css/landing.css?v=1">
 </head>
 <body>
@@ -322,7 +322,7 @@
 
   <div class="takeaway"><div><strong>Pagrindinė mintis:</strong> 80% jūsų bėgimo turėtų būti toks lengvas, kad galėtumėte laisvai kalbėtis. Tai ne tingėjimas, o sporto mokslo patvirtintas principas.</div></div>
 
-  <div style="background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:1.25rem 1.5rem;margin-bottom:2rem">
+  <div style="background:var(--surface);border:1px solid var(--border);padding:1.25rem 1.5rem;margin-bottom:2rem">
     <div style="font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:1.2px;color:var(--light);margin-bottom:.85rem">Šio kurso turinys</div>
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:.35rem .5rem">
       <div style="font-size:.85rem;color:var(--muted);display:flex;align-items:baseline;gap:.4rem"><span style="font-size:.65rem;font-weight:700;color:var(--light)">1.</span> Kodėl bėgti lėtai?</div>
@@ -363,7 +363,7 @@
 
   <div class="demo">
     <div class="demo-title">Interaktyvus demonstravimas — Raumenų skaidulos</div>
-    <p style="font-size:.88rem;color:var(--muted);margin-bottom:1.25rem">Slinkite slankiklį ir stebėkite, kaip keičiasi raumenų skaidulų aktyvacija ir energijos šaltinis.</p>
+    <p class="demo-note">Slinkite slankiklį ir stebėkite, kaip keičiasi raumenų skaidulų aktyvacija ir energijos šaltinis.</p>
 
     <div class="slider-control">
       <div class="slider-label">
@@ -414,7 +414,7 @@
             <div class="ml">Pagrindinis kuras</div>
           </div>
         </div>
-        <div style="margin-top:1rem;padding:.85rem 1rem;border-radius:8px;border:1px solid var(--border);background:var(--bg)">
+        <div class="demo-desc">
           <p id="s1-desc" style="font-size:.88rem;color:var(--muted);line-height:1.7"></p>
         </div>
       </div>
@@ -484,7 +484,7 @@
       </div>
     </div>
 
-    <div class="zone-bar" style="height:16px;border-radius:8px">
+    <div class="zone-bar" style="height:16px">
       <div class="zone-seg" style="flex:1;background:#e0e7ef" title="Z1"></div>
       <div class="zone-seg" style="flex:1;background:var(--z2)" title="Z2"></div>
       <div class="zone-seg" style="flex:1;background:var(--z3)" title="Z3"></div>
@@ -502,7 +502,7 @@
       <div class="metric-card"><div class="mv" id="s2-pct">65%</div><div class="ml">% MaksPP</div></div>
     </div>
 
-    <div style="margin-top:1rem;padding:.85rem 1rem;border-radius:8px;border:1px solid var(--border);background:var(--bg)">
+    <div class="demo-desc">
       <p id="s2-desc" style="font-size:.88rem;color:var(--muted);line-height:1.7"></p>
     </div>
   </div>
@@ -548,7 +548,7 @@
 
   <div class="demo">
     <div class="demo-title">Interaktyvus demonstravimas — Kuro bako eikvojimas</div>
-    <p style="font-size:.88rem;color:var(--muted);margin-bottom:1.25rem">Slinkite, kad pamatytumėte, kaip skirtingas tempas eikvoja glikogeno atsargas.</p>
+    <p class="demo-note">Slinkite, kad pamatytumėte, kaip skirtingas tempas eikvoja glikogeno atsargas.</p>
 
     <div class="slider-control">
       <div class="slider-label"><span>Bėgimo intensyvumas</span><strong id="s3-int-label">Lengvas (Z2)</strong></div>
@@ -584,7 +584,7 @@
       <div class="metric-card"><div class="mv" id="s3-wall">—</div><div class="ml">„Siena" po (min)</div></div>
     </div>
 
-    <div style="margin-top:1rem;padding:.85rem 1rem;border-radius:8px;border:1px solid var(--border);background:var(--bg)">
+    <div class="demo-desc">
       <p id="s3-desc" style="font-size:.88rem;color:var(--muted);line-height:1.7"></p>
     </div>
   </div>
@@ -635,7 +635,7 @@
 
   <div class="demo">
     <div class="demo-title">Interaktyvus demonstravimas — Laktatinė kreivė</div>
-    <p style="font-size:.88rem;color:var(--muted);margin-bottom:1.25rem">Slinkite ir stebėkite, kaip laktatas auga su intensyvumu ir kaip treniruotumas keičia kreivę.</p>
+    <p class="demo-note">Slinkite ir stebėkite, kaip laktatas auga su intensyvumu ir kaip treniruotumas keičia kreivę.</p>
 
     <div class="slider-control">
       <div class="slider-label"><span>Bėgimo intensyvumas (% MaksPP)</span><strong id="s4-pct">65%</strong></div>
@@ -656,11 +656,11 @@
       <div class="metric-card"><div class="mv" id="s4-thr-label" style="color:var(--z2)">Žemas</div><div class="ml">Laktatinis lygis</div></div>
       <div class="metric-card"><div class="mv" id="s4-thr-pct">75%</div><div class="ml">Slenkstinis pulsas (% MaksPP)</div></div>
     </div>
-    <div style="margin-top:.75rem;padding:.7rem 1rem;border-radius:8px;background:#fefce8;border:1px solid #fde68a;font-size:.82rem;color:#713f12;line-height:1.65">
+    <div class="demo-insight demo-insight-warn">
       <strong>Ką reiškia „slenkstinis pulsas"?</strong> Tai riba — kaip procentas nuo jūsų maksimalaus pulso — kurią perėjus laktatas pradeda kauptis greičiau nei perdirbamas. Pavyzdžiui, jei jūsų MaksPP yra 190, o slenkstinis pulsas <span id="s4-thr-explain">75%</span>, tai reiškia, kad ties <span id="s4-thr-bpm">~143 BPM</span> bėgimas taps ženkliai sunkesnis. <strong>Ši riba kyla su treniruotumu</strong> — todėl keisdami viršutinį slankiklį matysite, kaip kreivė slenka dešinėn.
     </div>
 
-    <div style="margin-top:1rem;padding:.85rem 1rem;border-radius:8px;border:1px solid var(--border);background:var(--bg)">
+    <div class="demo-desc">
       <p id="s4-desc" style="font-size:.88rem;color:var(--muted);line-height:1.7"></p>
     </div>
   </div>
@@ -707,7 +707,7 @@
 
   <div class="lesson-illustration">
     <div class="illustration-title">Kvėpavimo tipų animacija</div>
-    <canvas id="breathCanvas" style="width:100%;display:block;border-radius:8px"></canvas>
+    <canvas id="breathCanvas" style="width:100%;display:block"></canvas>
   </div>
 
 
@@ -737,7 +737,7 @@
           <div class="metric-card"><div class="mv" id="s5-tv">0.5 L</div><div class="ml">Oro tūris</div></div>
           <div class="metric-card"><div class="mv" id="s5-route" style="color:var(--z2)">Nosis</div><div class="ml">Kelias</div></div>
         </div>
-        <div style="margin-top:.85rem;padding:.75rem;border-radius:8px;background:var(--bg);border:1px solid var(--border)">
+        <div style="margin-top:.85rem;padding:.75rem;background:var(--bg);border:1px solid var(--border)">
           <p id="s5-desc" style="font-size:.88rem;color:var(--muted);line-height:1.7"></p>
         </div>
       </div>
@@ -803,7 +803,7 @@
       <div class="metric-card"><div class="mv" id="s6-drink">150 ml</div><div class="ml">Rekomenduojama kas 15 min</div></div>
     </div>
 
-    <div style="margin-top:1rem;padding:.85rem 1rem;border-radius:8px;border:1px solid var(--border);background:var(--bg)">
+    <div class="demo-desc">
       <p id="s6-desc" style="font-size:.88rem;color:var(--muted);line-height:1.7"></p>
     </div>
   </div>
@@ -851,7 +851,7 @@
 
   <div class="lesson-illustration">
     <div class="illustration-title">Žingsnio technika — animuota</div>
-    <canvas id="runCanvas" style="width:100%;display:block;border-radius:8px"></canvas>
+    <canvas id="runCanvas" style="width:100%;display:block"></canvas>
   </div>
 
 
@@ -862,7 +862,7 @@
 
   <div class="demo">
     <div class="demo-title">Interaktyvus demonstravimas — Kadencija ir smūgio jėga</div>
-    <p style="font-size:.88rem;color:var(--muted);margin-bottom:1.25rem">Slinkite ir stebėkite, kaip kadencija veikia žingsnio ilgį ir smūgio jėgą į kelio sąnarį.</p>
+    <p class="demo-note">Slinkite ir stebėkite, kaip kadencija veikia žingsnio ilgį ir smūgio jėgą į kelio sąnarį.</p>
 
     <div class="slider-control">
       <div class="slider-label"><span>Kadencija (žingsniai per minutę)</span><strong id="s7-cad-label">170 SPM</strong></div>
@@ -887,7 +887,7 @@
       </div>
     </div>
 
-    <div style="margin-top:1rem;padding:.85rem 1rem;border-radius:8px;border:1px solid var(--border);background:var(--bg)">
+    <div class="demo-desc">
       <p id="s7-desc" style="font-size:.88rem;color:var(--muted);line-height:1.7"></p>
     </div>
   </div>
@@ -933,6 +933,8 @@
     <h2 class="lesson-title">Kaip iš tikrųjų tobulėja bėgikas?</h2>
     <p class="lesson-intro">Greitis didėja ne dėl valios, o dėl konkrečių biologinių prisitaikymų. Jos vyksta tik tada, kai treniruojatės teisingai.</p>
   </div>
+
+  <div class="takeaway"><div><strong>Pagrindinė mintis:</strong> Kūnas tobulėja atsigavimo metu, ne bėgimo. Miegokite 7–9 val. ir didinkite savaitinį kilometražą ne daugiau kaip 10% per savaitę.</div></div>
 
   <div class="prose">
     <p>Kiekvieną kartą bėgdami jūs suteikiate organizmui stresą. Vėliau, atsigaudamas, kūnas tampa šiek tiek stipresnis — tai vadinama <strong>superkompensacija</strong>. Bet tik tada, kai stresas buvo tinkamas ir poilsis pakankamas.</p>
@@ -1042,11 +1044,11 @@
         <div class="ibar-seg" style="flex:2;background:var(--z5)"></div>
       </div>
       <div class="ibar-legend">
-        <span style="--c:var(--z1)"><span style="display:inline-block;width:8px;height:8px;border-radius:2px;background:var(--z1)"></span>Z1 30%</span>
-        <span><span style="display:inline-block;width:8px;height:8px;border-radius:2px;background:var(--z2)"></span>Z2 42%</span>
-        <span><span style="display:inline-block;width:8px;height:8px;border-radius:2px;background:var(--z3)"></span>Z3 3%</span>
-        <span><span style="display:inline-block;width:8px;height:8px;border-radius:2px;background:var(--z4)"></span>Z4 23%</span>
-        <span><span style="display:inline-block;width:8px;height:8px;border-radius:2px;background:var(--z5)"></span>Z5 2%</span>
+        <span style="--c:var(--z1)"><span style="display:inline-block;width:8px;height:8px;background:var(--z1)"></span>Z1 30%</span>
+        <span><span style="display:inline-block;width:8px;height:8px;background:var(--z2)"></span>Z2 42%</span>
+        <span><span style="display:inline-block;width:8px;height:8px;background:var(--z3)"></span>Z3 3%</span>
+        <span><span style="display:inline-block;width:8px;height:8px;background:var(--z4)"></span>Z4 23%</span>
+        <span><span style="display:inline-block;width:8px;height:8px;background:var(--z5)"></span>Z5 2%</span>
       </div>
     </div>
   </div>
@@ -1076,11 +1078,11 @@
         <div class="ibar-seg" style="flex:2;background:var(--z5)"></div>
       </div>
       <div class="ibar-legend">
-        <span><span style="display:inline-block;width:8px;height:8px;border-radius:2px;background:var(--z1)"></span>Z1 50%</span>
-        <span><span style="display:inline-block;width:8px;height:8px;border-radius:2px;background:var(--z2)"></span>Z2 33%</span>
-        <span><span style="display:inline-block;width:8px;height:8px;border-radius:2px;background:var(--z3)"></span>Z3 7%</span>
-        <span><span style="display:inline-block;width:8px;height:8px;border-radius:2px;background:var(--z4)"></span>Z4 8%</span>
-        <span><span style="display:inline-block;width:8px;height:8px;border-radius:2px;background:var(--z5)"></span>Z5 2%</span>
+        <span><span style="display:inline-block;width:8px;height:8px;background:var(--z1)"></span>Z1 50%</span>
+        <span><span style="display:inline-block;width:8px;height:8px;background:var(--z2)"></span>Z2 33%</span>
+        <span><span style="display:inline-block;width:8px;height:8px;background:var(--z3)"></span>Z3 7%</span>
+        <span><span style="display:inline-block;width:8px;height:8px;background:var(--z4)"></span>Z4 8%</span>
+        <span><span style="display:inline-block;width:8px;height:8px;background:var(--z5)"></span>Z5 2%</span>
       </div>
     </div>
   </div>
@@ -1110,11 +1112,11 @@
         <div class="ibar-seg" style="flex:5;background:var(--z5)"></div>
       </div>
       <div class="ibar-legend">
-        <span><span style="display:inline-block;width:8px;height:8px;border-radius:2px;background:var(--z1)"></span>Z1 45%</span>
-        <span><span style="display:inline-block;width:8px;height:8px;border-radius:2px;background:var(--z2)"></span>Z2 35%</span>
-        <span><span style="display:inline-block;width:8px;height:8px;border-radius:2px;background:var(--z3)"></span>Z3 0%</span>
-        <span><span style="display:inline-block;width:8px;height:8px;border-radius:2px;background:var(--z4)"></span>Z4 15%</span>
-        <span><span style="display:inline-block;width:8px;height:8px;border-radius:2px;background:var(--z5)"></span>Z5 5%</span>
+        <span><span style="display:inline-block;width:8px;height:8px;background:var(--z1)"></span>Z1 45%</span>
+        <span><span style="display:inline-block;width:8px;height:8px;background:var(--z2)"></span>Z2 35%</span>
+        <span><span style="display:inline-block;width:8px;height:8px;background:var(--z3)"></span>Z3 0%</span>
+        <span><span style="display:inline-block;width:8px;height:8px;background:var(--z4)"></span>Z4 15%</span>
+        <span><span style="display:inline-block;width:8px;height:8px;background:var(--z5)"></span>Z5 5%</span>
       </div>
     </div>
   </div>
@@ -1144,11 +1146,11 @@
         <div class="ibar-seg" style="flex:1;background:var(--z5)"></div>
       </div>
       <div class="ibar-legend">
-        <span><span style="display:inline-block;width:8px;height:8px;border-radius:2px;background:var(--z1)"></span>Z1 60%</span>
-        <span><span style="display:inline-block;width:8px;height:8px;border-radius:2px;background:var(--z2)"></span>Z2 30%</span>
-        <span><span style="display:inline-block;width:8px;height:8px;border-radius:2px;background:var(--z3)"></span>Z3 5%</span>
-        <span><span style="display:inline-block;width:8px;height:8px;border-radius:2px;background:var(--z4)"></span>Z4 4%</span>
-        <span><span style="display:inline-block;width:8px;height:8px;border-radius:2px;background:var(--z5)"></span>Z5 1%</span>
+        <span><span style="display:inline-block;width:8px;height:8px;background:var(--z1)"></span>Z1 60%</span>
+        <span><span style="display:inline-block;width:8px;height:8px;background:var(--z2)"></span>Z2 30%</span>
+        <span><span style="display:inline-block;width:8px;height:8px;background:var(--z3)"></span>Z3 5%</span>
+        <span><span style="display:inline-block;width:8px;height:8px;background:var(--z4)"></span>Z4 4%</span>
+        <span><span style="display:inline-block;width:8px;height:8px;background:var(--z5)"></span>Z5 1%</span>
       </div>
     </div>
   </div>
@@ -1178,11 +1180,11 @@
         <div class="ibar-seg" style="flex:10;background:var(--z5)"></div>
       </div>
       <div class="ibar-legend">
-        <span><span style="display:inline-block;width:8px;height:8px;border-radius:2px;background:var(--z1)"></span>Z1 30%</span>
-        <span><span style="display:inline-block;width:8px;height:8px;border-radius:2px;background:var(--z2)"></span>Z2 35%</span>
-        <span><span style="display:inline-block;width:8px;height:8px;border-radius:2px;background:var(--z3)"></span>Z3 10%</span>
-        <span><span style="display:inline-block;width:8px;height:8px;border-radius:2px;background:var(--z4)"></span>Z4 15%</span>
-        <span><span style="display:inline-block;width:8px;height:8px;border-radius:2px;background:var(--z5)"></span>Z5 10%</span>
+        <span><span style="display:inline-block;width:8px;height:8px;background:var(--z1)"></span>Z1 30%</span>
+        <span><span style="display:inline-block;width:8px;height:8px;background:var(--z2)"></span>Z2 35%</span>
+        <span><span style="display:inline-block;width:8px;height:8px;background:var(--z3)"></span>Z3 10%</span>
+        <span><span style="display:inline-block;width:8px;height:8px;background:var(--z4)"></span>Z4 15%</span>
+        <span><span style="display:inline-block;width:8px;height:8px;background:var(--z5)"></span>Z5 10%</span>
       </div>
     </div>
   </div>
@@ -1200,7 +1202,7 @@
   <!-- DEMO -->
   <div class="demo">
     <div class="demo-title">Interaktyvus demonstravimas — Kuri treniruočių sistema tinka jums?</div>
-    <p style="font-size:.88rem;color:var(--muted);margin-bottom:1.25rem">Pasirinkite savo tikslą ir turimą laiką — gausite rekomendaciją ir patarimą, ką galite pasiskolinti iš šios treniruočių sistemos jau dabar.</p>
+    <p class="demo-note">Pasirinkite savo tikslą ir turimą laiką — gausite rekomendaciją ir patarimą, ką galite pasiskolinti iš šios treniruočių sistemos jau dabar.</p>
 
     <div class="method-picker">
       <div class="method-pick-group">
@@ -1276,13 +1278,13 @@
 
   <div class="lesson-illustration">
     <div class="illustration-title">Keturi pagrindiniai pratimai — animuoti</div>
-    <canvas id="exCanvas" style="width:100%;display:block;border-radius:8px"></canvas>
+    <canvas id="exCanvas" style="width:100%;display:block"></canvas>
   </div>
 
 
   <div class="demo">
     <div class="demo-title">Interaktyvus demonstravimas — Svarbiausi pratimai</div>
-    <p style="font-size:.88rem;color:var(--muted);margin-bottom:1rem">Pasirinkite savo silpnąją vietą — gausite svarbiausių pratimų rekomendaciją.</p>
+    <p class="demo-note" style="margin-bottom:1rem">Pasirinkite savo silpnąją vietą — gausite svarbiausių pratimų rekomendaciją.</p>
     <div class="slider-control">
       <div class="slider-label"><span>Silpnoji vieta / dažniausia trauma</span><strong id="s9-area-label">Kelis</strong></div>
       <select id="s9-area" class="scandi-select" style="width:100%;margin-top:.4rem">
@@ -1293,7 +1295,7 @@
         <option value="core">Šerdies nestabilumas, juosmens skausmas</option>
       </select>
     </div>
-    <div style="margin-top:1rem;padding:.85rem 1rem;border-radius:8px;border:1px solid var(--border);background:var(--bg)">
+    <div class="demo-desc">
       <p id="s9-why" style="font-size:.85rem;color:var(--muted);line-height:1.7;margin-bottom:.75rem"></p>
     </div>
     <div id="s9-exercises" class="exercise-grid"></div>
@@ -1347,14 +1349,14 @@
 
   <div class="demo">
     <div class="demo-title">Interaktyvus demonstravimas — Aprangos sluoksniai pagal temperatūrą</div>
-    <p style="font-size:.88rem;color:var(--muted);margin-bottom:1rem">Slinkite temperatūros slankiklį — matysite rekomenduojamą aprangą.</p>
+    <p class="demo-note" style="margin-bottom:1rem">Slinkite temperatūros slankiklį — matysite rekomenduojamą aprangą.</p>
     <div class="slider-control">
       <div class="slider-label"><span>Aplinkos temperatūra</span><strong id="s10-temp-label">+5°C</strong></div>
       <input type="range" id="s10-temp" min="-25" max="10" value="5" step="1">
       <div style="display:flex;justify-content:space-between;font-size:.65rem;color:var(--light);margin-top:3px"><span>−25°C</span><span>−15°C</span><span>−5°C</span><span>0°C</span><span>+10°C</span></div>
     </div>
     <div id="s10-layers" class="layer-row"></div>
-    <div style="margin-top:.75rem;padding:.75rem 1rem;border-radius:8px;background:var(--bg);border:1px solid var(--border)">
+    <div class="demo-insight">
       <p id="s10-advice" style="font-size:.88rem;color:var(--muted);line-height:1.7"></p>
     </div>
   </div>
@@ -1407,7 +1409,7 @@
 
   <div class="demo">
     <div class="demo-title">Interaktyvus demonstravimas — Varžybų dienos tvarkaraštis</div>
-    <p style="font-size:.88rem;color:var(--muted);margin-bottom:1rem">Pasirinkite distanciją — gausite rekomenduojamą varžybų dienos planą.</p>
+    <p class="demo-note" style="margin-bottom:1rem">Pasirinkite distanciją — gausite rekomenduojamą varžybų dienos planą.</p>
     <div class="slider-control">
       <div class="slider-label"><span>Distancija</span><strong id="s11-dist-label">5K</strong></div>
       <select id="s11-dist" class="scandi-select" style="width:100%;margin-top:.4rem">
@@ -1484,7 +1486,7 @@
 
   <div class="demo">
     <div class="demo-title">Interaktyvus demonstravimas — VO₂max ir bėgimo ekonomija</div>
-    <p style="font-size:.88rem;color:var(--muted);margin-bottom:1.25rem">Du bėgikai: vienodas VO₂max, skirtinga bėgimo ekonomija. Pakeiskite treniruotumo lygį ir stebėkite, kaip ekonomija gali kompensuoti žemesnį VO₂max.</p>
+    <p class="demo-note">Du bėgikai: vienodas VO₂max, skirtinga bėgimo ekonomija. Pakeiskite treniruotumo lygį ir stebėkite, kaip ekonomija gali kompensuoti žemesnį VO₂max.</p>
     <div class="slider-control">
       <div class="slider-label"><span>Treniruotumo lygis</span><strong id="s12-fit-label">Vidutinis</strong></div>
       <input type="range" id="s12-fit" min="1" max="3" value="2" step="1">
@@ -1495,7 +1497,7 @@
       <div class="metric-card"><div class="mv" id="s12-eco" style="color:var(--z2)">Vidutinė</div><div class="ml">Ekonomija (A)</div></div>
       <div class="metric-card"><div class="mv" id="s12-10k" style="color:var(--text)">52:00</div><div class="ml">10K rezultatas (A)</div></div>
     </div>
-    <div style="margin-top:.75rem;padding:.75rem 1rem;background:#f0fdf4;border-radius:8px;border:1px solid #86efac;font-size:.82rem;color:#14532d;line-height:1.65" id="s12-insight"></div>
+    <div class="demo-insight demo-insight-ok" id="s12-insight"></div>
   </div>
 
   <div class="quiz" data-correct="1">
@@ -1551,7 +1553,7 @@
 
   <div class="demo">
     <div class="demo-title">Interaktyvus demonstravimas — Ekonomijos augimas laike</div>
-    <p style="font-size:.88rem;color:var(--muted);margin-bottom:1rem">Slinkite metų slankiklį arba spustelėkite ant grafiko. Dvi kreivės rodo nuoseklų ir nenuoseklų bėgiką — skirtumas kaupiasi dešimtmečiais.</p>
+    <p class="demo-note" style="margin-bottom:1rem">Slinkite metų slankiklį arba spustelėkite ant grafiko. Dvi kreivės rodo nuoseklų ir nenuoseklų bėgiką — skirtumas kaupiasi dešimtmečiais.</p>
     <div class="slider-control" style="margin-bottom:.6rem">
       <div class="slider-label"><span>Metai bėgant</span><strong id="s13-years-label">5 metai</strong></div>
       <input type="range" id="s13-years" min="1" max="20" value="5" step="1">
@@ -1562,7 +1564,7 @@
       <input type="range" id="s13-base" min="30" max="90" value="60" step="5">
       <div style="display:flex;justify-content:space-between;font-size:.65rem;color:var(--light);margin-top:2px"><span>30 min</span><span>45</span><span>60</span><span>75</span><span>90 min</span></div>
     </div>
-    <canvas id="ecoCanvas" style="width:100%;display:block;border-radius:8px;cursor:crosshair"></canvas>
+    <canvas id="ecoCanvas" style="width:100%;display:block;cursor:crosshair"></canvas>
     <div class="metric-row" style="margin-top:.75rem">
       <div class="metric-card">
         <div class="mv" id="s13-cons" style="color:#22c55e">−18%</div>
@@ -1577,7 +1579,7 @@
         <div class="ml">Skirtumas 10K</div>
       </div>
     </div>
-    <div style="margin-top:.75rem;padding:.75rem 1rem;background:var(--bg);border-radius:8px;border:1px solid var(--border);font-size:.88rem;color:var(--muted);line-height:1.65" id="s13-insight"></div>
+    <div class="demo-insight" id="s13-insight"></div>
   </div>
 
   <div class="quiz" data-correct="1">
@@ -1633,7 +1635,7 @@
 
   <div class="demo">
     <div class="demo-title">Interaktyvus demonstravimas — Nuovargio veiksniai</div>
-    <p style="font-size:.88rem;color:var(--muted);margin-bottom:1.25rem">Slinkite, kad pamatytumėte, kaip skirtingi nuovargio veiksniai kaupiasi ilgesnio bėgimo metu.</p>
+    <p class="demo-note">Slinkite, kad pamatytumėte, kaip skirtingi nuovargio veiksniai kaupiasi ilgesnio bėgimo metu.</p>
     <div class="slider-control">
       <div class="slider-label"><span>Bėgimo trukmė</span><strong id="s14-dur-label">30 min</strong></div>
       <input type="range" id="s14-dur" min="10" max="150" value="30" step="5">
@@ -1643,7 +1645,7 @@
       <input type="range" id="s14-fit" min="1" max="3" value="2" step="1">
     </div>
     <div id="s14-fatigue-bars" style="margin-top:1rem;display:flex;flex-direction:column;gap:.5rem"></div>
-    <div style="margin-top:.75rem;padding:.75rem 1rem;background:var(--bg);border-radius:8px;border:1px solid var(--border);font-size:.88rem;color:var(--muted);line-height:1.65" id="s14-insight"></div>
+    <div class="demo-insight" id="s14-insight"></div>
   </div>
 
   <div class="quiz" data-correct="1">
@@ -1699,7 +1701,7 @@
 
   <div class="demo">
     <div class="demo-title">Interaktyvus demonstravimas — Splito strategijų palyginimas</div>
-    <p style="font-size:.88rem;color:var(--muted);margin-bottom:1.25rem">Pasirinkite distanciją ir tikslinį tempą — pamatykite, kiek teigiamas ir neigiamas splitas skiriasi galutiniame rezultate.</p>
+    <p class="demo-note">Pasirinkite distanciją ir tikslinį tempą — pamatykite, kiek teigiamas ir neigiamas splitas skiriasi galutiniame rezultate.</p>
     <div class="slider-control">
       <div class="slider-label"><span>Distancija</span><strong id="s15-dist-label">10K</strong></div>
       <select id="s15-dist" class="scandi-select" style="width:100%;margin-top:.35rem">
@@ -1718,7 +1720,7 @@
       <div class="metric-card"><div class="mv" id="s15-neg" style="color:#3b82f6">54:10</div><div class="ml">Neigiamas splitas</div></div>
       <div class="metric-card"><div class="mv" id="s15-pos" style="color:var(--z4)">57:30</div><div class="ml">Teigiamas splitas</div></div>
     </div>
-    <div style="margin-top:.75rem;padding:.75rem 1rem;background:var(--bg);border-radius:8px;border:1px solid var(--border);font-size:.88rem;color:var(--muted);line-height:1.65" id="s15-insight"></div>
+    <div class="demo-insight" id="s15-insight"></div>
   </div>
 
   <div class="quiz" data-correct="0">
@@ -1773,7 +1775,7 @@
 
   <div class="demo">
     <div class="demo-title">Interaktyvus demonstravimas — Krūvio augimas ir adaptacija</div>
-    <p style="font-size:.88rem;color:var(--muted);margin-bottom:1.25rem">Slinkite savaitinį kilometražą ir stebėkite, kaip raumenų ir sausgyslių adaptacija skiriasi — ir kada atsiranda traumų rizika.</p>
+    <p class="demo-note">Slinkite savaitinį kilometražą ir stebėkite, kaip raumenų ir sausgyslių adaptacija skiriasi — ir kada atsiranda traumų rizika.</p>
     <div class="slider-control">
       <div class="slider-label"><span>Savaitinis kilometražas</span><strong id="s16-km-label">30 km/sav.</strong></div>
       <input type="range" id="s16-km" min="10" max="80" value="30" step="5">
@@ -1787,7 +1789,7 @@
       <div class="metric-card"><div class="mv" id="s16-tendon" style="color:var(--z3)">30%</div><div class="ml">Sausgyslių adaptacija</div></div>
       <div class="metric-card"><div class="mv" id="s16-risk" style="color:var(--z2)">Žema</div><div class="ml">Traumų rizika</div></div>
     </div>
-    <div style="margin-top:.75rem;padding:.75rem 1rem;background:var(--bg);border-radius:8px;border:1px solid var(--border);font-size:.88rem;color:var(--muted);line-height:1.65" id="s16-insight"></div>
+    <div class="demo-insight" id="s16-insight"></div>
   </div>
 
   <div class="quiz" data-correct="0">
@@ -1843,7 +1845,7 @@
 
   <div class="demo">
     <div class="demo-title">Interaktyvus demonstravimas — Simptomų tikrintuvas</div>
-    <p style="font-size:.88rem;color:var(--muted);margin-bottom:1rem">Pasirinkite skausmo požymius ir gaukite orientacinę rekomendaciją. Tai nėra medicinos diagnozė, o tik sprendimo priėmimo priemonė.</p>
+    <p class="demo-note" style="margin-bottom:1rem">Pasirinkite skausmo požymius ir gaukite orientacinę rekomendaciją. Tai nėra medicinos diagnozė, o tik sprendimo priėmimo priemonė.</p>
     <div style="display:flex;flex-direction:column;gap:.75rem;margin-bottom:1rem">
       <div class="method-pick-group">
         <label>Kur skauda?</label>
@@ -1872,7 +1874,7 @@
         </div>
       </div>
     </div>
-    <div id="s17-result" style="padding:1rem 1.25rem;border-radius:10px;border:2px solid var(--border);background:var(--bg);font-size:.88rem;line-height:1.7;color:var(--text)"></div>
+    <div id="s17-result" style="padding:1rem 1.25rem;border:2px solid var(--border);background:var(--bg);font-size:.88rem;line-height:1.7;color:var(--text)"></div>
   </div>
 
   <div class="quiz" data-correct="1">
@@ -1928,7 +1930,7 @@
 
   <div class="demo">
     <div class="demo-title">Interaktyvus demonstravimas — Pastovumo galia</div>
-    <p style="font-size:.88rem;color:var(--muted);margin-bottom:1.25rem">Palyginkite „tobulą" ir „pastovų" bėgiką per metus. Pamatysite, kodėl reguliarumas lenkia tobulumą.</p>
+    <p class="demo-note">Palyginkite „tobulą" ir „pastovų" bėgiką per metus. Pamatysite, kodėl reguliarumas lenkia tobulumą.</p>
     <div class="slider-control">
       <div class="slider-label"><span>Treniruočių tikslas (per savaitę)</span><strong id="s18-goal-label">3 treniruotės</strong></div>
       <input type="range" id="s18-goal" min="2" max="5" value="3" step="1">
@@ -1942,7 +1944,7 @@
       <div class="metric-card"><div class="mv" id="s18-real" style="color:var(--z2)">125</div><div class="ml">„Pastovus" bėgikas</div></div>
       <div class="metric-card"><div class="mv" id="s18-diff" style="color:var(--z3)">80%</div><div class="ml">Treniruočių skaičius iš max</div></div>
     </div>
-    <div style="margin-top:.75rem;padding:.75rem 1rem;background:var(--bg);border-radius:8px;border:1px solid var(--border);font-size:.88rem;color:var(--muted);line-height:1.65" id="s18-insight"></div>
+    <div class="demo-insight" id="s18-insight"></div>
   </div>
 
   <div class="quiz" data-correct="1">
@@ -1998,7 +2000,7 @@
 
   <div class="demo">
     <div class="demo-title">Interaktyvus demonstravimas — Rodiklių patikimumo skalė</div>
-    <p style="font-size:.88rem;color:var(--muted);margin-bottom:1rem">Paspauskite ant rodiklio — sužinosite, kiek jam galima pasitikėti ir kodėl.</p>
+    <p class="demo-note" style="margin-bottom:1rem">Paspauskite ant rodiklio — sužinosite, kiek jam galima pasitikėti ir kodėl.</p>
     <div id="s19-metrics" style="display:flex;flex-direction:column;gap:.5rem;margin-top:.5rem"></div>
   </div>
 
@@ -2045,7 +2047,7 @@
 
   <div class="demo">
     <div class="demo-title">Interaktyvus demonstravimas — Treniruočių modelių analizatorius</div>
-    <p style="font-size:.88rem;color:var(--muted);margin-bottom:1.25rem">Reguliuokite slankiklius, kad atitiktų jūsų paskutinių treniruočių modelius. Kiekvienas signalas įvertinamas atskirai.</p>
+    <p class="demo-note">Reguliuokite slankiklius, kad atitiktų jūsų paskutinių treniruočių modelius. Kiekvienas signalas įvertinamas atskirai.</p>
 
     <div class="slider-control">
       <div class="slider-label">
@@ -2081,7 +2083,7 @@
     </div>
 
     <div id="s22-signals" style="margin-top:1.25rem;display:flex;flex-direction:column;gap:.6rem"></div>
-    <div style="margin-top:1rem;padding:.85rem 1rem;border-radius:8px;border:1px solid var(--border);background:var(--bg)">
+    <div class="demo-desc">
       <p id="s22-summary" style="font-size:.88rem;color:var(--muted);line-height:1.7"></p>
     </div>
   </div>
@@ -2133,7 +2135,7 @@
 
   <div class="demo">
     <div class="demo-title">Interaktyvus demonstravimas — Atsigavimo pasiruošimas</div>
-    <p style="font-size:.88rem;color:var(--muted);margin-bottom:1.25rem">Nustatykite praėjusios nakties miego valandas ir kokybę. Pamatysite, kaip tai veikia šiandienos adaptacijos langą ir kokios treniruotės tinka.</p>
+    <p class="demo-note">Nustatykite praėjusios nakties miego valandas ir kokybę. Pamatysite, kaip tai veikia šiandienos adaptacijos langą ir kokios treniruotės tinka.</p>
 
     <div class="slider-control">
       <div class="slider-label">
@@ -2171,7 +2173,7 @@
         <div class="ml">Rekomenduojama šiandien</div>
       </div>
     </div>
-    <div style="margin-top:1rem;padding:.85rem 1rem;border-radius:8px;border:1px solid var(--border);background:var(--bg)">
+    <div class="demo-desc">
       <p id="s20-desc" style="font-size:.88rem;color:var(--muted);line-height:1.7"></p>
     </div>
   </div>
@@ -2234,7 +2236,7 @@
 
   <div class="demo">
     <div class="demo-title">Interaktyvus demonstravimas — Kasdienės Mitybos tikslai</div>
-    <p style="font-size:.88rem;color:var(--muted);margin-bottom:1.25rem">Pasirinkite kūno svorį ir šiandienos treniruotės tipą, kad pamatytumėte rekomenduojamus angliavandenių ir baltymų tikslus.</p>
+    <p class="demo-note">Pasirinkite kūno svorį ir šiandienos treniruotės tipą, kad pamatytumėte rekomenduojamus angliavandenių ir baltymų tikslus.</p>
 
     <div class="slider-control">
       <div class="slider-label">
@@ -2252,7 +2254,7 @@
         <span>Šiandienos treniruotė</span>
         <strong id="s21-session-label">Lengvas bėgimas (Z2)</strong>
       </div>
-      <select id="s21-session" style="width:100%;padding:.5rem .75rem;border:1px solid var(--border);border-radius:8px;background:var(--bg);font-size:.9rem;margin-top:.4rem">
+      <select id="s21-session" style="width:100%;padding:.5rem .75rem;border:1px solid var(--border);background:var(--bg);font-size:.9rem;margin-top:.4rem">
         <option value="rest">Poilsio diena</option>
         <option value="easy" selected>Lengvas bėgimas (Z2)</option>
         <option value="moderate">Vidutinis tempo bėgimas</option>
@@ -2275,7 +2277,7 @@
         <div class="ml">Laikas po bėgimo</div>
       </div>
     </div>
-    <div style="margin-top:1rem;padding:.85rem 1rem;border-radius:8px;border:1px solid var(--border);background:var(--bg)">
+    <div class="demo-desc">
       <p id="s21-desc" style="font-size:.88rem;color:var(--muted);line-height:1.7"></p>
     </div>
   </div>

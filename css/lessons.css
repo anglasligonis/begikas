@@ -194,6 +194,27 @@
 .timeline-body h4 { font-size: .9rem; font-weight: 600; margin-bottom: .15rem; color: var(--text); }
 .timeline-body p { font-size: .82rem; color: var(--muted); line-height: 1.65; }
 
+/* ── DEMO HELPER ELEMENTS ── */
+.demo-note { font-size:.88rem; color:var(--muted); margin-bottom:1.25rem; }
+.demo-desc {
+  margin-top:1rem;
+  padding:.85rem 1rem;
+  border:1px solid var(--border);
+  background:var(--bg);
+}
+.demo-desc p { font-size:.88rem; color:var(--muted); line-height:1.7; margin:0; }
+.demo-insight {
+  margin-top:.75rem;
+  padding:.75rem 1rem;
+  background:var(--bg);
+  border:1px solid var(--border);
+  font-size:.88rem;
+  color:var(--muted);
+  line-height:1.65;
+}
+.demo-insight-warn { background:#fefce8; border-color:#fde68a; color:#713f12; font-size:.82rem; }
+.demo-insight-ok   { background:#f0fdf4; border-color:#86efac; color:#14532d; font-size:.82rem; }
+
 /* ── WINTER LAYERS (lesson 11) ── */
 .layer-row { display: flex; flex-direction: column; gap: .45rem; margin: 1rem 0; }
 .layer-item {
