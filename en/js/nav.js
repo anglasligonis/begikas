@@ -30,7 +30,12 @@ function goLesson(n) {
 
 document.querySelectorAll('.nav-pill').forEach((btn, i) => {
   btn.addEventListener('click', () => {
-    goLesson(i);
+    const main = document.querySelector('main');
+    if (main && main.style.display === 'none' && typeof enterLessons === 'function') {
+      enterLessons(i);
+    } else {
+      goLesson(i);
+    }
     if (window.innerWidth < 700) collapseNav(true);
   });
 });
