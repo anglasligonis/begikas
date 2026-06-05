@@ -17,7 +17,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=JetBrains+Mono:wght@400;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/variables.css?v=2">
 <link rel="stylesheet" href="css/layout.css?v=2">
-<link rel="stylesheet" href="css/components.css?v=2">
+<link rel="stylesheet" href="css/components.css?v=3">
 <link rel="stylesheet" href="css/lessons.css?v=3">
 <link rel="stylesheet" href="css/landing.css?v=1">
 </head>
@@ -371,7 +371,7 @@
         <strong id="s1-label">Lengvas bėgimas</strong>
       </div>
       <input type="range" id="s1" min="1" max="5" value="1" step="1">
-      <div style="display:flex;justify-content:space-between;font-size:.65rem;color:var(--light);margin-top:3px">
+      <div class="demo-range-labels">
         <span>Lengvas</span><span>Vidutinis</span><span>Sunkus</span><span>Labai sunkus</span><span>Sprintas</span>
       </div>
     </div>
@@ -479,7 +479,7 @@
     <div class="slider-control">
       <div class="slider-label"><span>Bėgimo intensyvumas</span><strong id="s2-zone-label" style="color:var(--z2)">2 zona — Lengvas</strong></div>
       <input type="range" id="s2-int" min="50" max="100" value="65" step="1">
-      <div style="display:flex;justify-content:space-between;font-size:.65rem;color:var(--light);margin-top:3px">
+      <div class="demo-range-labels">
         <span>Poilsis</span><span>Z1</span><span>Z2</span><span>Z3</span><span>Z4</span><span>Z5</span>
       </div>
     </div>
@@ -492,7 +492,7 @@
       <div class="zone-seg" style="flex:1;background:var(--z5)" title="Z5"></div>
       <div class="zone-marker" id="s2-marker"></div>
     </div>
-    <div style="display:flex;justify-content:space-between;font-size:.65rem;color:var(--light);margin-top:3px;padding:0 2px">
+    <div class="demo-range-labels" style="padding:0 2px">
       <span>50%</span><span>60%</span><span>70%</span><span>80%</span><span>90%</span><span>100%</span>
     </div>
 
@@ -644,7 +644,7 @@
     <div class="slider-control" style="margin-top:.75rem">
       <div class="slider-label"><span>Treniruotumo lygis</span><strong id="s4-fit-label">Vidutinis</strong></div>
       <input type="range" id="s4-fit" min="1" max="3" value="2" step="1">
-      <div style="display:flex;justify-content:space-between;font-size:.65rem;color:var(--light);margin-top:3px">
+      <div class="demo-range-labels">
         <span>Pradedantysis</span><span>Vidutinis</span><span>Treniruotas</span>
       </div>
     </div>
@@ -867,7 +867,7 @@
     <div class="slider-control">
       <div class="slider-label"><span>Kadencija (žingsniai per minutę)</span><strong id="s7-cad-label">170 SPM</strong></div>
       <input type="range" id="s7-cad" min="150" max="190" value="170" step="1">
-      <div style="display:flex;justify-content:space-between;font-size:.65rem;color:var(--light);margin-top:3px">
+      <div class="demo-range-labels">
         <span>Per mažas</span><span>Optimalus</span><span>Labai aukštas</span>
       </div>
     </div>
@@ -1353,7 +1353,7 @@
     <div class="slider-control">
       <div class="slider-label"><span>Aplinkos temperatūra</span><strong id="s10-temp-label">+5°C</strong></div>
       <input type="range" id="s10-temp" min="-25" max="10" value="5" step="1">
-      <div style="display:flex;justify-content:space-between;font-size:.65rem;color:var(--light);margin-top:3px"><span>−25°C</span><span>−15°C</span><span>−5°C</span><span>0°C</span><span>+10°C</span></div>
+      <div class="demo-range-labels"><span>−25°C</span><span>−15°C</span><span>−5°C</span><span>0°C</span><span>+10°C</span></div>
     </div>
     <div id="s10-layers" class="layer-row"></div>
     <div class="demo-insight">
@@ -1490,7 +1490,7 @@
     <div class="slider-control">
       <div class="slider-label"><span>Treniruotumo lygis</span><strong id="s12-fit-label">Vidutinis</strong></div>
       <input type="range" id="s12-fit" min="1" max="3" value="2" step="1">
-      <div style="display:flex;justify-content:space-between;font-size:.65rem;color:var(--light);margin-top:3px"><span>Pradedantysis</span><span>Vidutinis</span><span>Treniruotas</span></div>
+      <div class="demo-range-labels"><span>Pradedantysis</span><span>Vidutinis</span><span>Treniruotas</span></div>
     </div>
     <div class="metric-row">
       <div class="metric-card"><div class="mv" id="s12-vo2a" style="color:#3b82f6">52</div><div class="ml">A bėgikas VO₂max</div></div>
@@ -2055,7 +2055,7 @@
         <strong id="s22-hr-label">+0 k/min</strong>
       </div>
       <input type="range" id="s22-hr" min="-5" max="15" value="0" step="1">
-      <div style="display:flex;justify-content:space-between;font-size:.65rem;color:var(--light);margin-top:3px">
+      <div class="demo-range-labels">
         <span>−5 k/min</span><span>+0</span><span>+5</span><span>+10</span><span>+15 k/min</span>
       </div>
     </div>
@@ -2066,7 +2066,7 @@
         <strong id="s22-drift-label">5%</strong>
       </div>
       <input type="range" id="s22-drift" min="0" max="25" value="5" step="1">
-      <div style="display:flex;justify-content:space-between;font-size:.65rem;color:var(--light);margin-top:3px">
+      <div class="demo-range-labels">
         <span>0%</span><span>5%</span><span>10%</span><span>15%</span><span>25%+</span>
       </div>
     </div>
@@ -2077,7 +2077,7 @@
         <strong id="s22-jump-label">+8%</strong>
       </div>
       <input type="range" id="s22-jump" min="0" max="40" value="8" step="1">
-      <div style="display:flex;justify-content:space-between;font-size:.65rem;color:var(--light);margin-top:3px">
+      <div class="demo-range-labels">
         <span>0%</span><span>+10%</span><span>+20%</span><span>+30%</span><span>+40%</span>
       </div>
     </div>
@@ -2143,7 +2143,7 @@
         <strong id="s20-hours-label">7 val.</strong>
       </div>
       <input type="range" id="s20-hours" min="4" max="10" value="7" step="0.5">
-      <div style="display:flex;justify-content:space-between;font-size:.65rem;color:var(--light);margin-top:3px">
+      <div class="demo-range-labels">
         <span>4 val.</span><span>6 val.</span><span>8 val.</span><span>10 val.</span>
       </div>
     </div>
@@ -2154,7 +2154,7 @@
         <strong id="s20-quality-label">Gera</strong>
       </div>
       <input type="range" id="s20-quality" min="1" max="5" value="3" step="1">
-      <div style="display:flex;justify-content:space-between;font-size:.65rem;color:var(--light);margin-top:3px">
+      <div class="demo-range-labels">
         <span>Prasta</span><span>Vidutinė</span><span>Gera</span><span>Labai gera</span><span>Puiki</span>
       </div>
     </div>
@@ -2244,7 +2244,7 @@
         <strong id="s21-weight-label">70 kg</strong>
       </div>
       <input type="range" id="s21-weight" min="45" max="110" value="70" step="5">
-      <div style="display:flex;justify-content:space-between;font-size:.65rem;color:var(--light);margin-top:3px">
+      <div class="demo-range-labels">
         <span>45 kg</span><span>65 kg</span><span>85 kg</span><span>110 kg</span>
       </div>
     </div>
