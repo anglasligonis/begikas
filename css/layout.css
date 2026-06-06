@@ -249,11 +249,12 @@ main {
 }
 
 .lesson-title {
-  font-family: 'Bebas Neue', 'Arial Black', Impact, sans-serif;
+  font-family: 'Oswald', 'Arial Black', Impact, sans-serif;
   font-size: clamp(2.4rem, 5vw, 3.8rem);
-  font-weight: 400;
+  font-weight: 700;
   line-height: .95;
   letter-spacing: .02em;
+  text-transform: uppercase;
   margin-bottom: .85rem;
   color: var(--text);
 }
