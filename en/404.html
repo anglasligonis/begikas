@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>404 — Zone 6 | Running Physiology</title>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=JetBrains+Mono:wght@400;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/variables.css">
+  <link rel="stylesheet" href="../css/layout.css">
+  <style>
+    :root { --z6: #18042e; }
+
+    .zone-rail {
+      background: linear-gradient(to bottom,
+        var(--z6) 0%, var(--z5) 16%, var(--z4) 36%,
+        var(--z3) 56%, var(--z2) 76%, var(--z1) 100%);
+    }
+
+    .zone-rail::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; width: 100%; height: 16%;
+      animation: z6flicker 3.1s steps(1) infinite;
+    }
+
+    @keyframes z6flicker {
+      0%,100% { background: transparent; }
+      11%      { background: rgba(255,0,255,.5); }
+      12%      { background: transparent; }
+      45%      { background: rgba(255,255,255,.3); }
+      46%      { background: transparent; }
+      72%      { background: rgba(220,0,80,.4); }
+      73%      { background: transparent; }
+    }
+
+    .zone-labels-ext {
+      position: fixed;
+      left: calc(var(--rail) + 5px);
+      top: 0; height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      padding: 6vh 0;
+      z-index: 299;
+      pointer-events: none;
+    }
+
+    .zl {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: .44rem;
+      font-weight: 700;
+      color: var(--muted);
+      writing-mode: vertical-rl;
+      transform: rotate(180deg);
+    }
+
+    .zl.z6 {
+      animation: z6lblflick 3.1s steps(1) infinite;
+    }
+
+    @keyframes z6lblflick {
+      0%,100% { color: #6b00a8; opacity: .7; }
+      11%      { color: #ff00ff; opacity: 1; }
+      12%      { color: #6b00a8; opacity: .7; }
+      45%      { color: #fff;    opacity: .5; }
+      46%      { color: #6b00a8; opacity: .7; }
+    }
+
+    /* ── PAGE ── */
+    .err-wrap {
+      max-width: 820px;
+      margin: 0 auto;
+      padding: 4.5rem 2rem 8rem calc(var(--rail) + 2rem);
+    }
+
+    .err-eyebrow {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: .58rem;
+      font-weight: 700;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      display: flex;
+      align-items: center;
+      gap: .55rem;
+      margin-bottom: .75rem;
+      animation: z6lblflick 3.1s steps(1) infinite;
+    }
+    .err-eyebrow::before {
+      content: '';
+      display: block;
+      width: 22px; height: 2px;
+      background: currentColor;
+      flex-shrink: 0;
+    }
+
+    .err-code {
+      font-family: 'Bebas Neue', Impact, sans-serif;
+      font-size: clamp(6rem, 20vw, 12rem);
+      line-height: .85;
+      letter-spacing: .02em;
+      color: var(--text);
+      margin-bottom: .3rem;
+    }
+
+    .z6-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: .5rem;
+      background: #18042e;
+      color: #fff;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: .58rem;
+      font-weight: 700;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      padding: .35rem .9rem;
+      margin-bottom: 2rem;
+    }
+
+    .z6-dot {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: #ff00ff;
+      flex-shrink: 0;
+      animation: z6dot 3.1s steps(1) infinite;
+    }
+    @keyframes z6dot {
+      0%,100% { background: #ff00ff; }
+      30%      { background: #fff; }
+      60%      { background: #ff0055; }
+    }
+
+    /* ── HR MONITOR ── */
+    .hr-monitor {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      padding: 1rem 1.25rem .9rem;
+      margin-bottom: 2.25rem;
+      max-width: 540px;
+      overflow: hidden;
+    }
+
+    .hr-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: .6rem;
+    }
+
+    .hr-title {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: .5rem;
+      font-weight: 700;
+      letter-spacing: .13em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .hr-bpm {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: .58rem;
+      font-weight: 700;
+      color: var(--z5);
+      animation: blink .75s steps(1) infinite;
+    }
+    @keyframes blink { 0%,49%{opacity:1} 50%,100%{opacity:0} }
+
+    .hr-svg { width: 100%; height: 68px; display: block; overflow: visible; }
+
+    /* ── TEXT ── */
+    .err-title {
+      font-family: 'Bebas Neue', Impact, sans-serif;
+      font-size: clamp(2rem, 4.5vw, 3.1rem);
+      font-weight: 400;
+      line-height: .97;
+      letter-spacing: .02em;
+      color: var(--text);
+      margin-bottom: 1rem;
+    }
+
+    .err-body {
+      font-size: .93rem;
+      color: var(--muted);
+      line-height: 1.78;
+      max-width: 560px;
+      margin-bottom: 2rem;
+    }
+    .err-body strong { color: var(--text); }
+
+    /* ── STATS ── */
+    .err-stats {
+      display: flex;
+      gap: 2.25rem;
+      flex-wrap: wrap;
+      margin-bottom: 2.5rem;
+      padding-bottom: 2rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .err-stat-val {
+      font-family: 'Bebas Neue', Impact, sans-serif;
+      font-size: 2.5rem;
+      line-height: 1;
+      color: var(--text);
+      display: block;
+    }
+
+    .err-stat-lbl {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: .5rem;
+      font-weight: 700;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--muted);
+      display: block;
+      margin-top: .15rem;
+    }
+
+    /* ── CTA ── */
+    .btn-return {
+      display: inline-flex;
+      align-items: center;
+      gap: .55rem;
+      background: var(--text);
+      color: var(--bg);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: .62rem;
+      font-weight: 700;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      text-decoration: none;
+      padding: .8rem 1.6rem;
+      transition: opacity .12s;
+    }
+    .btn-return:hover { opacity: .8; }
+
+    .err-lang {
+      margin-top: 1.25rem;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: .52rem;
+      font-weight: 700;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    .err-lang a { color: var(--muted); text-decoration: underline; }
+    .err-lang a:hover { color: var(--text); }
+
+    @media(max-width: 600px) {
+      .err-wrap { padding: 2.5rem 1rem 5rem calc(var(--rail) + 1rem); }
+      .err-code { font-size: 5.5rem; }
+      .zone-labels-ext { display: none; }
+      .err-stats { gap: 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="zone-rail"></div>
+<div class="zone-runner"></div>
+
+<div class="zone-labels-ext">
+  <span class="zl z6">Z6</span>
+  <span class="zl">Z5</span>
+  <span class="zl">Z4</span>
+  <span class="zl">Z3</span>
+  <span class="zl">Z2</span>
+  <span class="zl">Z1</span>
+</div>
+
+<nav class="topnav">
+  <a href="/en/" class="topnav-brand">Running Physiology</a>
+  <div class="topnav-right">
+    <a href="/en/" class="tnav-link">← Home</a>
+    <div class="tnav-sep"></div>
+    <a href="/404.html" class="tnav-link">LT</a>
+  </div>
+</nav>
+
+<div class="err-wrap">
+
+  <div class="err-eyebrow">Error — Zone 6</div>
+
+  <div class="err-code">404</div>
+
+  <div class="z6-badge">
+    <span class="z6-dot"></span>
+    Zone 6 — The Zone That Does Not Exist
+  </div>
+
+  <div class="hr-monitor">
+    <div class="hr-header">
+      <span class="hr-title">Heart Rate — Live Data</span>
+      <span class="hr-bpm">∞ bpm</span>
+    </div>
+    <svg class="hr-svg" viewBox="0 0 520 68" preserveAspectRatio="none">
+      <!-- normal sinus rhythm -->
+      <polyline
+        points="0,47 28,47 38,47 42,26 46,53 50,47 88,47 98,47 102,26 106,53 110,47 148,47 158,47 162,26 166,53 170,47 200,47"
+        fill="none" stroke="#10B981" stroke-width="1.4"/>
+      <!-- spike off chart -->
+      <polyline
+        points="200,47 212,47 222,47 229,42 234,18 238,-10 242,78 246,47 264,47 284,47"
+        fill="none" stroke="#DC2626" stroke-width="1.8" stroke-linejoin="round"/>
+      <!-- flatline (animated) -->
+      <line x1="284" y1="47" x2="520" y2="47"
+        stroke="#A8A8A8" stroke-width="1.4" stroke-dasharray="3 5">
+        <animate attributeName="stroke-dashoffset" values="0;-16" dur=".9s" repeatCount="indefinite"/>
+      </line>
+      <text x="238" y="5" fill="#DC2626"
+        font-family="JetBrains Mono,monospace" font-size="6.5" font-weight="700" text-anchor="middle">ZONE 6</text>
+      <text x="318" y="43" fill="#A8A8A8"
+        font-family="JetBrains Mono,monospace" font-size="5.5">FLATLINE</text>
+    </svg>
+  </div>
+
+  <h1 class="err-title">Page not found.<br>Neither is Zone 6.</h1>
+
+  <p class="err-body">
+    Training zones run from <strong>Z1</strong> (easy walk) to <strong>Z5</strong> (maximal effort).
+    Zone 6 is a place no exercise physiologist has ever named, described, or recommended.
+    You found it on the internet. That is not an achievement. That is an error.
+    Return to the safe zones.
+  </p>
+
+  <div class="err-stats">
+    <div>
+      <span class="err-stat-val">∞</span>
+      <span class="err-stat-lbl">BPM</span>
+    </div>
+    <div>
+      <span class="err-stat-val" style="color:var(--z5)">0</span>
+      <span class="err-stat-lbl">Pages found</span>
+    </div>
+    <div>
+      <span class="err-stat-val">404</span>
+      <span class="err-stat-lbl">Error code</span>
+    </div>
+    <div>
+      <span class="err-stat-val" style="color:var(--z2)">22</span>
+      <span class="err-stat-lbl">Lessons that exist</span>
+    </div>
+  </div>
+
+  <a href="/en/" class="btn-return">← Return to the safe zone</a>
+
+  <p class="err-lang"><a href="/404.html">Lietuviškai →</a></p>
+
+</div>
+
+</body>
+</html>
