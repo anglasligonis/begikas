@@ -249,7 +249,7 @@ main {
 }
 
 .lesson-title {
-  font-family: 'Oswald', 'Arial Black', Impact, sans-serif;
+  font-family: 'Barlow Condensed', 'Arial Narrow', sans-serif;
   font-size: clamp(2.4rem, 5vw, 3.8rem);
   font-weight: 700;
   line-height: .95;
