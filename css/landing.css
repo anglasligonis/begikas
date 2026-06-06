@@ -27,7 +27,7 @@
 .ghost-word {
   position: absolute;
   bottom: -0.12em; left: -0.04em;
-  font-family: 'Oswald', 'Arial Black', sans-serif;
+  font-family: 'Barlow Condensed', 'Arial Narrow', sans-serif;
   text-transform: uppercase;
   font-size: clamp(160px, 24vw, 300px);
   line-height: 1;
@@ -70,7 +70,7 @@
 
 /* Title — per-line slide-up reveal */
 .lp-title {
-  font-family: 'Oswald', 'Arial Black', sans-serif;
+  font-family: 'Barlow Condensed', 'Arial Narrow', sans-serif;
   font-size: clamp(3rem, 6.5vw, 5.5rem);
   font-weight: 700;
   line-height: .93;
@@ -228,7 +228,7 @@
   transition: opacity .5s ease, transform .5s ease;
 }
 .lp-sec-title {
-  font-family: 'Oswald', 'Arial Black', sans-serif;
+  font-family: 'Barlow Condensed', 'Arial Narrow', sans-serif;
   font-size: clamp(2rem, 4vw, 3rem);
   font-weight: 700;
   text-transform: uppercase;
@@ -254,7 +254,7 @@
   transition: opacity .5s ease, transform .5s ease;
 }
 .lp-why-heading {
-  font-family: 'Oswald', 'Arial Black', sans-serif;
+  font-family: 'Barlow Condensed', 'Arial Narrow', sans-serif;
   font-size: clamp(2.2rem, 4vw, 3.2rem);
   font-weight: 700;
   text-transform: uppercase;
@@ -311,7 +311,7 @@
 .lp-how-step:last-child { border-right: none; }
 .lp-how-step.lp-vis { opacity: 1; transform: translateY(0); }
 .lp-step-num {
-  font-family: 'Oswald', 'Arial Black', sans-serif;
+  font-family: 'Barlow Condensed', 'Arial Narrow', sans-serif;
   font-size: 2.8rem; font-weight: 700; line-height: 1;
   color: var(--border); margin-bottom: .9rem;
 }
@@ -395,7 +395,7 @@
 }
 .lp-final-label.lp-vis { opacity: 1; transform: translateY(0); }
 .lp-final-title {
-  font-family: 'Oswald', 'Arial Black', sans-serif;
+  font-family: 'Barlow Condensed', 'Arial Narrow', sans-serif;
   font-size: clamp(2.5rem, 5vw, 4rem);
   font-weight: 700;
   text-transform: uppercase;
