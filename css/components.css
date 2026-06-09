@@ -179,10 +179,12 @@ input[type=range]::-moz-range-thumb {
   font-family: 'JetBrains Mono', 'Courier New', monospace;
   font-size: 1.55rem;
   font-weight: 700;
-  line-height: 1;
+  line-height: 1.1;
   transition: color .3s;
   display: block;
   margin-bottom: .2rem;
+  overflow-wrap: break-word;
+  word-break: break-word;
 }
 .metric-card .ml {
   font-family: 'JetBrains Mono', 'Courier New', monospace;
@@ -576,7 +578,9 @@ input[type=range]::-moz-range-thumb {
   /* Range labels: tighten font so 5 items don't overlap */
   .demo-range-labels { font-size: .55rem; }
 
-  /* Metric card: smaller value text on narrow screens */
-  .metric-card .mv { font-size: 1.25rem; }
+  /* Metric card: smaller value text + tighter padding so word labels
+     (e.g. "Optimalus", "Aukšta rizika") fit inside the box on phones */
+  .metric-card { padding: .85rem .55rem; }
+  .metric-card .mv { font-size: 1.1rem; }
   .metric-card .ml { font-size: .48rem; letter-spacing: .08em; }
 }
