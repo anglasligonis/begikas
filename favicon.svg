@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <!-- Off-white background -->
+  <rect width="32" height="32" fill="#F7F7F5"/>
+
+  <!-- Amber track line at bottom -->
+  <rect x="0" y="27" width="32" height="5" fill="#D97706"/>
+
+  <!-- Running figure -->
+  <circle cx="16" cy="6" r="3.5" fill="#0D0D0D"/>
+  <line x1="16" y1="9.5" x2="15" y2="18"  stroke="#0D0D0D" stroke-width="2.5" stroke-linecap="round"/>
+  <line x1="15" y1="18"  x2="21" y2="27"  stroke="#0D0D0D" stroke-width="2.5" stroke-linecap="round"/>
+  <line x1="15" y1="18"  x2="10" y2="26"  stroke="#0D0D0D" stroke-width="2.5" stroke-linecap="round"/>
+  <line x1="15" y1="13"  x2="22" y2="18"  stroke="#0D0D0D" stroke-width="2.5" stroke-linecap="round"/>
+  <line x1="15" y1="13"  x2="8"  y2="16"  stroke="#0D0D0D" stroke-width="2.5" stroke-linecap="round"/>
+</svg>
