@@ -47,8 +47,6 @@ function _updateMeta(n) {
     const intro = lesson && lesson.querySelector('.lesson-intro');
     metaDesc.content = intro ? intro.textContent.trim().slice(0, 160) : '';
   }
-  const canonical = document.querySelector('link[rel="canonical"]');
-  if (canonical) canonical.href = location.origin + location.pathname + '#pamoka/' + LESSON_SLUGS[n];
   if (typeof gtag === 'function') {
     gtag('event', 'page_view', { page_title: document.title, page_location: location.href });
   }

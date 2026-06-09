@@ -1,0 +1,9 @@
+{
+  "name": "begikas-tools",
+  "private": true,
+  "type": "module",
+  "description": "Build tooling for apiebegima.lt (not published to the site)",
+  "dependencies": {
+    "sharp": "^0.34.0"
+  }
+}
