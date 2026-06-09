@@ -535,3 +535,48 @@ input[type=range]::-moz-range-thumb {
   white-space: nowrap;
 }
 .glossary-btn:hover { border-color: var(--text); background: var(--surface); }
+
+/* ── SELECT ── */
+.scandi-select {
+  appearance: none;
+  -webkit-appearance: none;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  padding: .55rem .9rem;
+  font-family: 'Inter', sans-serif;
+  font-size: .88rem;
+  color: var(--text);
+  cursor: pointer;
+  outline: none;
+  transition: border-color .12s;
+}
+.scandi-select:focus { border-color: var(--text); }
+
+/* ── MOBILE ── */
+@media(max-width:600px) {
+  /* Reduce box padding so content isn't squeezed */
+  .demo  { padding: 1.25rem 1rem; }
+  .quiz  { padding: 1.25rem 1rem; }
+
+  /* Step nav: clip long lesson-name buttons rather than overflow */
+  .btn-step {
+    padding: .5rem .75rem;
+    font-size: .65rem;
+    max-width: 44%;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+  .step-counter { flex-shrink: 0; }
+
+  /* Slider label: let value wrap below long label text */
+  .slider-label { flex-wrap: wrap; }
+  .slider-label strong { margin-left: auto; }
+
+  /* Range labels: tighten font so 5 items don't overlap */
+  .demo-range-labels { font-size: .55rem; }
+
+  /* Metric card: smaller value text on narrow screens */
+  .metric-card .mv { font-size: 1.25rem; }
+  .metric-card .ml { font-size: .48rem; letter-spacing: .08em; }
+}
