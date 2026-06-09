@@ -3,6 +3,31 @@ let current = 0;
 const visited = new Set([0]);
 const completed = new Set();
 
+const LESSON_SLUGS = [
+  'why-run-slowly',
+  'heart-and-pulse',
+  'energy-and-fuel',
+  'lactate',
+  'breathing',
+  'heat-and-hydration',
+  'running-technique',
+  'how-to-improve',
+  'training-systems',
+  'strength-training',
+  'winter-running',
+  'first-race',
+  'vo2max',
+  'running-economy',
+  'fatigue',
+  'pace-distribution',
+  'load-management',
+  'pain-or-injury',
+  'motivation',
+  'running-watches',
+  'sleep-and-recovery',
+  'daily-nutrition'
+];
+
 function refreshPills() {
   const pills = document.querySelectorAll('.nav-pill');
   pills.forEach((p, i) => {
@@ -13,7 +38,23 @@ function refreshPills() {
   document.getElementById('progressFill').style.width = ((completed.size / TOTAL) * 100) + '%';
 }
 
-function goLesson(n) {
+function _updateMeta(n) {
+  const lessonTitle = NAV_LESSON_NAMES[n].replace(/^\d+\. /, '');
+  document.title = lessonTitle + ' — Running Physiology | Begikas';
+  const metaDesc = document.querySelector('meta[name="description"]');
+  if (metaDesc) {
+    const lesson = document.getElementById('lesson-' + n);
+    const intro = lesson && lesson.querySelector('.lesson-intro');
+    metaDesc.content = intro ? intro.textContent.trim().slice(0, 160) : '';
+  }
+  const canonical = document.querySelector('link[rel="canonical"]');
+  if (canonical) canonical.href = location.origin + location.pathname + '#lesson/' + LESSON_SLUGS[n];
+  if (typeof gtag === 'function') {
+    gtag('event', 'page_view', { page_title: document.title, page_location: location.href });
+  }
+}
+
+function goLesson(n, pushHistory) {
   document.getElementById('lesson-' + current).classList.remove('active');
   current = n;
   visited.add(n);
@@ -26,6 +67,11 @@ function goLesson(n) {
   window.scrollTo(0, 0);
   initDemos();
   if (window._startAnimForLesson) window._startAnimForLesson(n);
+
+  if (pushHistory !== false) {
+    history.pushState({ lesson: n }, '', '#lesson/' + LESSON_SLUGS[n]);
+  }
+  _updateMeta(n);
 }
 
 document.querySelectorAll('.nav-pill').forEach((btn, i) => {
@@ -44,7 +90,7 @@ document.querySelectorAll('.nav-pill').forEach((btn, i) => {
 const NAV_LESSON_NAMES = [
   '1. Why run slowly?', '2. Heart & pulse', '3. Energy & fuel',
   '4. Lactate', '5. Breathing', '6. Heat & hydration',
-  '7. Running technique', '8. How to improve?', '9. Methodologies',
+  '7. Running technique', '8. How to improve?', '9. Training systems',
   '10. Strength training', '11. Winter running', '12. First race',
   '13. VO₂max', '14. Running economy', '15. Fatigue',
   '16. Pace distribution', '17. Load management', '18. Pain or injury',
@@ -52,7 +98,6 @@ const NAV_LESSON_NAMES = [
   '21. Sleep & recovery', '22. Daily nutrition'
 ];
 
-// Drawer starts collapsed; always show indicator
 let navCollapsed = true;
 updateIndicator();
 
@@ -71,6 +116,23 @@ function updateIndicator() {
 
 window.toggleNav = function() { collapseNav(); };
 
+// ── POPSTATE (browser back/forward) ──
+window.addEventListener('popstate', e => {
+  const s = e.state;
+  if (s && typeof s.lesson === 'number') {
+    const landingEl = document.getElementById('landing');
+    const mainEl = document.querySelector('main');
+    if (landingEl && landingEl.style.display !== 'none') {
+      landingEl.style.display = 'none';
+      if (mainEl) mainEl.style.display = 'block';
+    }
+    goLesson(s.lesson, false);
+  } else if (s && s.landing) {
+    if (typeof enterLanding === 'function') enterLanding(false);
+  }
+});
+
+// ── SCROLL COLLAPSE ──
 let lastScrollY = window.scrollY;
 let scrollAccum = 0;
 let ticking = false;
@@ -82,17 +144,12 @@ const TOP_ZONE = 30;
 function handleScroll() {
   const y = window.scrollY;
   const now = performance.now();
-
   if (now < ignoreScrollUntil) { lastScrollY = y; ticking = false; return; }
-
   if (window.innerWidth < 700) { lastScrollY = y; ticking = false; return; }
-
   const delta = y - lastScrollY;
   lastScrollY = y;
-
   if ((delta > 0 && scrollAccum < 0) || (delta < 0 && scrollAccum > 0)) scrollAccum = 0;
   scrollAccum += delta;
-
   if (scrollAccum > COLLAPSE_THRESHOLD && !navCollapsed) {
     collapseNav(true);
     ignoreScrollUntil = now + 320;
@@ -102,12 +159,10 @@ function handleScroll() {
 }
 
 window.addEventListener('scroll', () => {
-  if (!ticking) {
-    ticking = true;
-    requestAnimationFrame(handleScroll);
-  }
+  if (!ticking) { ticking = true; requestAnimationFrame(handleScroll); }
 }, { passive: true });
 
+// ── KEYBOARD NAVIGATION ──
 document.addEventListener('keydown', (e) => {
   if (e.target.tagName === 'INPUT' || e.target.tagName === 'BUTTON') return;
   if (e.key === 'ArrowRight' && current < TOTAL - 1) goLesson(current + 1);

@@ -2,8 +2,11 @@
 const landingEl = document.getElementById('landing');
 const mainEl    = document.querySelector('main');
 
-const LANDING_TITLE = 'Bėgimo Fiziologija — Pradedantiesiems';
-const LANDING_DESC  = 'Bėgimo fiziologijos kursas pradedantiesiems. 22 pamokos apie bėgimą, treniruotes ir atsigavimą. Nemokamai.';
+const _isEN = document.documentElement.lang === 'en';
+const LANDING_TITLE = _isEN ? 'Running Physiology — For Beginners'
+                             : 'Bėgimo Fiziologija — Pradedantiesiems';
+const LANDING_DESC  = _isEN ? 'A running physiology course for beginners. 22 lessons on running, training and recovery. Free.'
+                             : 'Bėgimo fiziologijos kursas pradedantiesiems. 22 pamokos apie bėgimą, treniruotes ir atsigavimą. Nemokamai.';
 
 function enterLessons(lessonIndex) {
   landingEl.style.display = 'none';
@@ -103,14 +106,15 @@ setTimeout(() => {
 /* ── URL ROUTING INIT ── */
 (function() {
   const hash = window.location.hash;
-  if (hash.startsWith('#pamoka/')) {
-    const slug = hash.replace(/^#pamoka\//, '').replace(/\/$/, '');
+  const hashPrefix = _isEN ? '#lesson/' : '#pamoka/';
+  if (hash.startsWith(hashPrefix)) {
+    const slug = hash.replace(new RegExp('^' + hashPrefix.replace('/', '\\/')), '').replace(/\/$/, '');
     const idx = typeof LESSON_SLUGS !== 'undefined' ? LESSON_SLUGS.indexOf(slug) : -1;
     if (idx !== -1) {
       landingEl.style.display = 'none';
       mainEl.style.display    = 'block';
       goLesson(idx, false);
-      history.replaceState({ lesson: idx }, '', '#pamoka/' + LESSON_SLUGS[idx]);
+      history.replaceState({ lesson: idx }, '', hashPrefix + LESSON_SLUGS[idx]);
     } else {
       history.replaceState({ landing: true }, '', location.pathname);
     }
