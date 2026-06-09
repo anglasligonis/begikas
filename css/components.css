@@ -105,7 +105,7 @@
   align-items: baseline;
   margin-bottom: .5rem;
 }
-.slider-label span { font-size: .82rem; font-weight: 500; color: var(--muted); }
+.slider-label span { font-size: .85rem; font-weight: 500; color: var(--soft); }
 .slider-label strong {
   font-family: 'JetBrains Mono', 'Courier New', monospace;
   font-size: 1.05rem;

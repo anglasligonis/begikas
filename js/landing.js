@@ -11,6 +11,7 @@ const LANDING_DESC  = _isEN ? 'A running physiology course for beginners. 22 les
 function enterLessons(lessonIndex) {
   landingEl.style.display = 'none';
   mainEl.style.display    = 'block';
+  document.body.classList.add('lessons-on');
   goLesson(lessonIndex !== undefined ? lessonIndex : 0);
   window.scrollTo(0, 0);
 }
@@ -18,6 +19,7 @@ function enterLessons(lessonIndex) {
 function enterLanding(pushHistory) {
   mainEl.style.display    = 'none';
   landingEl.style.display = 'block';
+  document.body.classList.remove('lessons-on');
   window.scrollTo(0, 0);
   if (pushHistory !== false) {
     history.pushState({ landing: true }, '', location.pathname);
@@ -113,6 +115,7 @@ setTimeout(() => {
     if (idx !== -1) {
       landingEl.style.display = 'none';
       mainEl.style.display    = 'block';
+      document.body.classList.add('lessons-on');
       goLesson(idx, false);
       history.replaceState({ lesson: idx }, '', hashPrefix + LESSON_SLUGS[idx]);
     } else {

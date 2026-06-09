@@ -96,6 +96,12 @@ const NAV_LESSON_NAMES = [
   '21. Sleep & recovery', '22. Daily nutrition'
 ];
 
+/* Pill titles — shown when the nav is docked as a sidebar on wide screens */
+document.querySelectorAll('.nav-pill').forEach((p, i) => {
+  const title = (NAV_LESSON_NAMES[i] || '').replace(/^\d+\. /, '');
+  p.innerHTML = '<span class="pill-num">' + p.textContent + '</span><span class="pill-title">' + title + '</span>';
+});
+
 let navCollapsed = true;
 updateIndicator();
 
@@ -124,6 +130,7 @@ window.addEventListener('popstate', e => {
       landingEl.style.display = 'none';
       if (mainEl) mainEl.style.display = 'block';
     }
+    document.body.classList.add('lessons-on');
     goLesson(s.lesson, false);
   } else if (s && s.landing) {
     if (typeof enterLanding === 'function') enterLanding(false);

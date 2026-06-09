@@ -195,25 +195,25 @@
 .timeline-body p { font-size: .82rem; color: var(--muted); line-height: 1.65; }
 
 /* ── DEMO HELPER ELEMENTS ── */
-.demo-note { font-size:.88rem; color:var(--muted); margin-bottom:1.25rem; }
+.demo-note { font-size:.92rem; color:var(--soft); margin-bottom:1.25rem; }
 .demo-desc {
   margin-top:1rem;
   padding:.85rem 1rem;
   border:1px solid var(--border);
   background:var(--bg);
 }
-.demo-desc p { font-size:.88rem; color:var(--muted); line-height:1.7; margin:0; }
+.demo-desc p { font-size:.9rem; color:var(--soft); line-height:1.7; margin:0; }
 .demo-insight {
   margin-top:.75rem;
   padding:.75rem 1rem;
   background:var(--bg);
   border:1px solid var(--border);
-  font-size:.88rem;
-  color:var(--muted);
+  font-size:.9rem;
+  color:var(--soft);
   line-height:1.65;
 }
-.demo-insight-warn { background:#fefce8; border-color:#fde68a; color:#713f12; font-size:.82rem; }
-.demo-insight-ok   { background:#f0fdf4; border-color:#86efac; color:#14532d; font-size:.82rem; }
+.demo-insight-warn { background:#fefce8; border-color:#fde68a; color:#713f12; font-size:.88rem; }
+.demo-insight-ok   { background:#f0fdf4; border-color:#86efac; color:#14532d; font-size:.88rem; }
 
 /* ── WINTER LAYERS (lesson 11) ── */
 .layer-row { display: flex; flex-direction: column; gap: .45rem; margin: 1rem 0; }
@@ -232,3 +232,13 @@
 .layer-dot { width: 8px; height: 8px; flex-shrink: 0; }
 .layer-name { font-weight: 700; flex: 1; color: var(--text); }
 .layer-note { font-size: .75rem; color: var(--muted); }
+
+/* ── WIDE-SCREEN LESSON LAYOUT ──
+   Prose stays at reading width; demos and figures break out wider. */
+@media(min-width:1100px) {
+  main { max-width: 1170px; }
+  .lesson > * { max-width: 760px; margin-left: auto; margin-right: auto; }
+  .lesson > .demo,
+  .lesson > .summary-grid { max-width: 1100px; }
+  .lesson > .lesson-illustration { max-width: 920px; }
+}
