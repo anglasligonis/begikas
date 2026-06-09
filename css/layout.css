@@ -275,6 +275,31 @@ main {
   }
 }
 
+/* Home button in lesson drawer — mobile only */
+.nav-home-btn {
+  display: none;
+}
+@media(max-width:600px) {
+  .nav-home-btn {
+    display: block;
+    width: 100%;
+    margin-bottom: .5rem;
+    background: none;
+    border: 1px solid var(--border);
+    padding: .4rem .75rem;
+    font-size: .6rem;
+    font-weight: 700;
+    font-family: 'JetBrains Mono', 'Courier New', monospace;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    cursor: pointer;
+    text-align: left;
+    transition: all .12s;
+  }
+  .nav-home-btn:hover { border-color: var(--text); color: var(--text); }
+}
+
 /* Direct lesson navigation — prevent landing flash before JS runs */
 html.lesson-route #landing { display: none; }
 html.lesson-route main     { display: block !important; }
