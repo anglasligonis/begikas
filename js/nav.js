@@ -3,6 +3,31 @@ let current = 0;
 const visited = new Set([0]);
 const completed = new Set();
 
+const LESSON_SLUGS = [
+  'kodel-begti-letai',
+  'sirdis-pulsas-zonos',
+  'energija-ir-kuras',
+  'laktatas',
+  'kvepavimas-begant',
+  'karstis-ir-hidratacija',
+  'begimo-technika',
+  'kaip-tobuleti',
+  'treniruociu-sistemos',
+  'jegos-treniruotes',
+  'ziemos-begimas',
+  'pirmos-varzybos',
+  'vo2max',
+  'begimo-ekonomija',
+  'nuovargis',
+  'tempo-paskirstymas',
+  'kruvio-valdymas',
+  'skausmas-ar-trauma',
+  'motyvacija-ir-pastovumas',
+  'begimo-laikrodziai',
+  'miegas-ir-atsigavimas',
+  'ka-valgyti-begikui'
+];
+
 function refreshPills() {
   const pills = document.querySelectorAll('.nav-pill');
   pills.forEach((p, i) => {
@@ -13,7 +38,23 @@ function refreshPills() {
   document.getElementById('progressFill').style.width = ((completed.size / TOTAL) * 100) + '%';
 }
 
-function goLesson(n) {
+function _updateMeta(n) {
+  const lessonTitle = NAV_LESSON_NAMES[n].replace(/^\d+\. /, '');
+  document.title = lessonTitle + ' — Bėgimo fiziologija | Begikas';
+  const metaDesc = document.querySelector('meta[name="description"]');
+  if (metaDesc) {
+    const lesson = document.getElementById('lesson-' + n);
+    const intro = lesson && lesson.querySelector('.lesson-intro');
+    metaDesc.content = intro ? intro.textContent.trim().slice(0, 160) : '';
+  }
+  const canonical = document.querySelector('link[rel="canonical"]');
+  if (canonical) canonical.href = location.origin + location.pathname + '#pamoka/' + LESSON_SLUGS[n];
+  if (typeof gtag === 'function') {
+    gtag('event', 'page_view', { page_title: document.title, page_location: location.href });
+  }
+}
+
+function goLesson(n, pushHistory) {
   document.getElementById('lesson-' + current).classList.remove('active');
   current = n;
   visited.add(n);
@@ -26,6 +67,11 @@ function goLesson(n) {
   window.scrollTo(0, 0);
   initDemos();
   if (window._startAnimForLesson) window._startAnimForLesson(n);
+
+  if (pushHistory !== false) {
+    history.pushState({ lesson: n }, '', '#pamoka/' + LESSON_SLUGS[n]);
+  }
+  _updateMeta(n);
 }
 
 document.querySelectorAll('.nav-pill').forEach((btn, i) => {
@@ -36,7 +82,6 @@ document.querySelectorAll('.nav-pill').forEach((btn, i) => {
     } else {
       goLesson(i);
     }
-    // Auto-collapse after picking a lesson on small screens
     if (window.innerWidth < 700) collapseNav(true);
   });
 });
@@ -45,15 +90,14 @@ document.querySelectorAll('.nav-pill').forEach((btn, i) => {
 const NAV_LESSON_NAMES = [
   '1. Kodėl bėgame lėtai?','2. Širdis ir pulsas','3. Energija ir kuras',
   '4. Laktatas','5. Kvėpavimas','6. Karštis ir hidratacija',
-  '7. Bėgimo technika','8. Kaip tobulėti?','9. Metodologijos',
+  '7. Bėgimo technika','8. Kaip tobulėti?','9. Treniruočių sistemos',
   '10. Jėgos treniruotės','11. Žiemos bėgimas','12. Pirmos varžybos',
   '13. VO₂max','14. Bėgimo ekonomija','15. Nuovargis',
   '16. Tempo paskirstymas','17. Krūvio valdymas','18. Skausmas ar trauma',
   '19. Motyvacija','20. Bėgimo laikrodžiai',
-  '21. Miegas ir atsigavimas','22. Kasdienė Mityba'
+  '21. Miegas ir atsigavimas','22. Kasdienė mityba'
 ];
 
-// Drawer starts collapsed (nav-collapsed set in HTML); always show indicator
 let navCollapsed = true;
 updateIndicator();
 
@@ -72,36 +116,40 @@ function updateIndicator() {
 
 window.toggleNav = function() { collapseNav(); };
 
-// Scroll-driven collapse with hysteresis + rAF debounce.
-// Accumulates scroll direction so a single jitter pixel can't flip it,
-// and ignores scroll events fired during the collapse animation.
+// ── POPSTATE (browser back/forward) ──
+window.addEventListener('popstate', e => {
+  const s = e.state;
+  if (s && typeof s.lesson === 'number') {
+    const landingEl = document.getElementById('landing');
+    const mainEl = document.querySelector('main');
+    if (landingEl && landingEl.style.display !== 'none') {
+      landingEl.style.display = 'none';
+      if (mainEl) mainEl.style.display = 'block';
+    }
+    goLesson(s.lesson, false);
+  } else if (s && s.landing) {
+    if (typeof enterLanding === 'function') enterLanding(false);
+  }
+});
+
+// ── SCROLL COLLAPSE ──
 let lastScrollY = window.scrollY;
 let scrollAccum = 0;
 let ticking = false;
 let ignoreScrollUntil = 0;
-const COLLAPSE_THRESHOLD = 36;  // px of sustained down-scroll before hiding
-const EXPAND_THRESHOLD   = 48;  // px of sustained up-scroll before showing
-const TOP_ZONE = 30;            // always show near top
+const COLLAPSE_THRESHOLD = 36;
+const EXPAND_THRESHOLD   = 48;
+const TOP_ZONE = 30;
 
 function handleScroll() {
   const y = window.scrollY;
   const now = performance.now();
-
-  // Skip events that fire while the nav is animating (prevents feedback loop)
   if (now < ignoreScrollUntil) { lastScrollY = y; ticking = false; return; }
-
-  // On mobile, skip scroll-driven toggle — it causes layout jumps as the
-  // sticky nav shifts in/out of document flow during touch momentum scrolling
   if (window.innerWidth < 700) { lastScrollY = y; ticking = false; return; }
-
   const delta = y - lastScrollY;
   lastScrollY = y;
-
-  // Reset accumulator when direction flips
   if ((delta > 0 && scrollAccum < 0) || (delta < 0 && scrollAccum > 0)) scrollAccum = 0;
   scrollAccum += delta;
-
-  // Only auto-collapse on sustained downward scroll; user opens drawer manually
   if (scrollAccum > COLLAPSE_THRESHOLD && !navCollapsed) {
     collapseNav(true);
     ignoreScrollUntil = now + 320;
@@ -111,13 +159,10 @@ function handleScroll() {
 }
 
 window.addEventListener('scroll', () => {
-  if (!ticking) {
-    ticking = true;
-    requestAnimationFrame(handleScroll);
-  }
+  if (!ticking) { ticking = true; requestAnimationFrame(handleScroll); }
 }, { passive: true });
 
-// Keyboard navigation (left/right arrows)
+// ── KEYBOARD NAVIGATION ──
 document.addEventListener('keydown', (e) => {
   if (e.target.tagName === 'INPUT' || e.target.tagName === 'BUTTON') return;
   if (e.key === 'ArrowRight' && current < TOTAL - 1) goLesson(current + 1);

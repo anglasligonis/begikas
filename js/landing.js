@@ -2,6 +2,9 @@
 const landingEl = document.getElementById('landing');
 const mainEl    = document.querySelector('main');
 
+const LANDING_TITLE = 'Bėgimo Fiziologija — Pradedantiesiems';
+const LANDING_DESC  = 'Bėgimo fiziologijos kursas pradedantiesiems. 22 pamokos apie bėgimą, treniruotes ir atsigavimą. Nemokamai.';
+
 function enterLessons(lessonIndex) {
   landingEl.style.display = 'none';
   mainEl.style.display    = 'block';
@@ -9,10 +12,21 @@ function enterLessons(lessonIndex) {
   window.scrollTo(0, 0);
 }
 
-function enterLanding() {
+function enterLanding(pushHistory) {
   mainEl.style.display    = 'none';
   landingEl.style.display = 'block';
   window.scrollTo(0, 0);
+  if (pushHistory !== false) {
+    history.pushState({ landing: true }, '', location.pathname);
+    document.title = LANDING_TITLE;
+    const metaDesc = document.querySelector('meta[name="description"]');
+    if (metaDesc) metaDesc.content = LANDING_DESC;
+    const canonical = document.querySelector('link[rel="canonical"]');
+    if (canonical) canonical.href = location.origin + location.pathname;
+    if (typeof gtag === 'function') {
+      gtag('event', 'page_view', { page_title: LANDING_TITLE, page_location: location.href });
+    }
+  }
 }
 
 window.startCourse = enterLessons;
@@ -21,7 +35,7 @@ window.startCourse = enterLessons;
 const brand = document.querySelector('.topnav-brand');
 if (brand) {
   brand.style.cursor = 'pointer';
-  brand.addEventListener('click', enterLanding);
+  brand.addEventListener('click', () => enterLanding());
 }
 
 /* Lesson cards in strip */
@@ -34,10 +48,7 @@ const lpIO = new IntersectionObserver(entries => {
   entries.forEach(entry => {
     if (!entry.isIntersecting) return;
     const el = entry.target;
-
-    if (el.classList.contains('lp-reveal')) {
-      el.classList.add('lp-vis');
-    }
+    if (el.classList.contains('lp-reveal')) el.classList.add('lp-vis');
     if (el.classList.contains('lp-zone-row')) {
       const idx = [...el.parentElement.children].indexOf(el);
       setTimeout(() => el.classList.add('lp-vis'), idx * 110);
@@ -88,3 +99,27 @@ function countUp(el) {
 setTimeout(() => {
   document.querySelectorAll('[data-to]').forEach(countUp);
 }, 1400);
+
+/* ── URL ROUTING INIT ── */
+(function() {
+  const hash = window.location.hash;
+  if (hash.startsWith('#pamoka/')) {
+    const slug = hash.replace(/^#pamoka\//, '').replace(/\/$/, '');
+    const idx = typeof LESSON_SLUGS !== 'undefined' ? LESSON_SLUGS.indexOf(slug) : -1;
+    if (idx !== -1) {
+      landingEl.style.display = 'none';
+      mainEl.style.display    = 'block';
+      goLesson(idx, false);
+      history.replaceState({ lesson: idx }, '', '#pamoka/' + LESSON_SLUGS[idx]);
+    } else {
+      history.replaceState({ landing: true }, '', location.pathname);
+    }
+  } else {
+    history.replaceState({ landing: true }, '', location.pathname);
+    document.title = LANDING_TITLE;
+    const metaDesc = document.querySelector('meta[name="description"]');
+    if (metaDesc && !metaDesc.content) metaDesc.content = LANDING_DESC;
+    const canonical = document.querySelector('link[rel="canonical"]');
+    if (canonical) canonical.href = location.origin + location.pathname;
+  }
+})();
