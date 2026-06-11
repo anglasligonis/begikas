@@ -365,10 +365,10 @@ function initDemo9() {
   const sel = document.getElementById('s9-area');
   const exercises = {
     knee: {
-      why: 'Kelio skausmas dažniausiai kyla dėl silpnų klubų pagrobėjų (gluteus medius) ir keturgalvių. Kai klubas nenukrenta į šoną bėgimo metu, kelio apkrova mažėja drastiškai.',
+      why: 'Kelio skausmas dažniausiai kyla dėl silpnų klubo atitraukiamųjų raumenų (vidurinio sėdmens raumens, gluteus medius) ir keturgalvių. Kai klubas nenukrenta į šoną bėgimo metu, kelio apkrova smarkiai sumažėja.',
       items: [
         { name: 'Vienos kojos pritūpimas', tag: 'Keturgalviai · Gluteus medius', sets: '3 × 8 k.k.', desc: 'Stovėkite ant vienos kojos, lėtai lenkite kelį iki 60–70°. Kelias negali krypti į vidų. Pradėkite prie sienos palaikymui.' },
-        { name: 'Klamster / Clamshell', tag: 'Klubų pagrobėjai', sets: '3 × 15 k.k.', desc: 'Atsigulkite ant šono, kojos sulenktos 90°. Atidarykite viršutinę koją kaip kriaušę — negalima sukioti dubens. Pasipriešinimui naudokite gumelę.' },
+        { name: 'Kriauklė (Clamshell)', tag: 'Klubo atitraukiamieji raumenys', sets: '3 × 15 k.k.', desc: 'Atsigulkite ant šono, kojos sulenktos 90°. Atidarykite viršutinę koją kaip kriauklę — negalima sukioti dubens. Pasipriešinimui naudokite gumelę.' },
         { name: 'Stepping-down (ekscentrinis)', tag: 'Keturgalviai ekscentriškai', sets: '3 × 10 k.k.', desc: 'Stovėkite ant laiptelio. Lėtai (3–4 sek.) nuleiskite kitą koją žemyn. Koncentruokitės į lėtą nusileidimą, ne kilimą.' },
         { name: 'Sėdmenų tiltelis', tag: 'Gluteus maximus · Stuburo tiesiamieji', sets: '3 × 15', desc: 'Atsigulkite ant nugaros, kojos sulenktos. Pakelkite dubenį iki tiesios linijos. Vienos kojos versija — pažengusiems.' }
       ]
@@ -383,12 +383,12 @@ function initDemo9() {
       ]
     },
     achilles: {
-      why: 'Achilo sausgyslė reikalauja ekscentrino stiprinimo. Dydgaard protokolas — nuolaidžiai pripažintas efektyviausiu Achilo reabilitacijos būdu — grindžiamas būtent ekscentriniu kulno leidimu.',
+      why: 'Achilo sausgyslė reikalauja ekscentrinio stiprinimo. Alfredson protokolas — plačiai pripažintas efektyviausiu Achilo reabilitacijos būdu — grindžiamas būtent ekscentriniu kulno leidimu.',
       items: [
         { name: 'Alfredson protokolas (ekscentrinis)', tag: 'Achilo sausgyslė · Soleus · Gastrocnemius', sets: '3 × 15 k.k. × 2/d.', desc: 'Ant laiptelio pakėlę abi kojas, pereikite ant vienos ir lėtai (3 sek.) leiskite kulną žemiau laiptelio. Pradedant bus nepatogu — tai normalu. Sustokite jei aštrus skausmas.' },
         { name: 'Tiesios kojos kulno leidimas', tag: 'Gastrocnemius ekscentriškai', sets: '3 × 15 k.k.', desc: 'Tas pats kaip Alfredson, bet koja tiesi (ne sulenkta). Apkrauna aukštesnę Achilo dalį.' },
         { name: 'Soleus stiprinimas', tag: 'Soleus (giliasis)', sets: '3 × 15 k.k.', desc: 'Kulno kėlimas sulenkta kelio — apkrauna soleus, kuris prisideda prie Achilo apačios.' },
-        { name: 'Čiurnos mobilumas', tag: 'Dorsifleksija', sets: '2 × 20', desc: 'Stovėkite prie sienos, lenkite kelį link sienos nekeliando kulno. Gerina dorsifleksiją, kuri dažnai sutrikusi Achilo sindrome.' }
+        { name: 'Čiurnos mobilumas', tag: 'Dorsifleksija', sets: '2 × 20', desc: 'Stovėkite prie sienos, lenkite kelį link sienos nekeldami kulno. Gerina dorsifleksiją, kuri dažnai sutrikusi Achilo sindrome.' }
       ]
     },
     hip: {
@@ -401,12 +401,12 @@ function initDemo9() {
       ]
     },
     core: {
-      why: 'Šerdis bėgant veikia kaip jėgos perdavimo centras — sieja kojų ir rankų judesius. Silpna šerdis leidžia energijai ,,išsibarstyti" per liemenį ir didina juosmens apkrovą.',
+      why: 'Liemens raumenys bėgant veikia kaip jėgos perdavimo centras — sieja kojų ir rankų judesius. Silpni liemens raumenys leidžia energijai ,,išsibarstyti" ir didina juosmens apkrovą.',
       items: [
-        { name: 'Planka (dead bug variacija)', tag: 'Transversus abdominis · Šerdis', sets: '3 × 30–45 sek.', desc: 'Atsigulkite ant nugaros, kojos 90° kampą. Lėtai tiesinkite kaitaliodami priešingą ranką ir koją, neleisdami juosmeniui kilti nuo grindų.' },
+        { name: 'Planka (dead bug variacija)', tag: 'Transversus abdominis · Liemuo', sets: '3 × 30–45 sek.', desc: 'Atsigulkite ant nugaros, kojos 90° kampą. Lėtai tiesinkite kaitaliodami priešingą ranką ir koją, neleisdami juosmeniui kilti nuo grindų.' },
         { name: 'Šoninis tiltelis', tag: 'Šoniniai stabilizatoriai', sets: '3 × 20–30 sek. k.k.', desc: 'Atsirėmę ant alkūnės ir kojos briaunos, laikykite kūną tiesų. Pakelkite ir nuleiskite dubenį. Stiprina oblique ir šoninę grandinę.' },
-        { name: 'Bird-dog', tag: 'Nugaros tiesiamieji · Šerdis', sets: '3 × 10 k.k.', desc: 'Stovėkite ant keturių. Lėtai tiesinkite priešingą ranką ir koją išlaikydami stuburą neutralioje padėtyje.' },
-        { name: 'Pallof press', tag: 'Anti-rotacinė šerdis', sets: '3 × 10 k.k.', desc: 'Su guma ar bloku spausdami abi rankas tiesiai priešais save neleiskite kūnui sukiotis į šoną. Imituoja šerdies darbą bėgant.' }
+        { name: 'Bird-dog', tag: 'Nugaros tiesiamieji · Liemuo', sets: '3 × 10 k.k.', desc: 'Stovėkite ant keturių. Lėtai tiesinkite priešingą ranką ir koją išlaikydami stuburą neutralioje padėtyje.' },
+        { name: 'Pallof press', tag: 'Liemens anti-rotacija', sets: '3 × 10 k.k.', desc: 'Su guma ar bloku spausdami abi rankas tiesiai priešais save neleiskite kūnui sukiotis į šoną. Imituoja liemens raumenų darbą bėgant.' }
       ]
     }
   };
@@ -1631,7 +1631,7 @@ function initDemo19() {
         function(c,cx,ty,tw,th){ drawBridge(c,cx,ty,tw,th,amp); });
       drawExCard(ctx, xs[0], ys[1], cw, ch, 'Ekscentrinis kulno kėlimas', 'Blauzda · Achilo sausgyslė',
         function(c,cx,ty,tw,th){ drawHeel(c,cx,ty,tw,th,amp); });
-      drawExCard(ctx, xs[1], ys[1], cw, ch, 'Bird-dog', 'Šerdis · Nugaros tiesiamieji',
+      drawExCard(ctx, xs[1], ys[1], cw, ch, 'Bird-dog', 'Liemuo · Nugaros tiesiamieji',
         function(c,cx,ty,tw,th){ drawBirdDog(c,cx,ty,tw,th,amp); });
 
       RAF['exCanvas'] = requestAnimationFrame(frame);
