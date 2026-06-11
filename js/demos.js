@@ -18,7 +18,7 @@ function initDemo1() {
     document.getElementById('s1-fib1').textContent = fib1[v - 1] + '%';
     document.getElementById('s1-fib2').textContent = fib2[v - 1] + '%';
     document.getElementById('s1-fuel').textContent = fuels[v - 1];
-    document.getElementById('s1-fuel').style.color = v <= 2 ? '#D97706' : '#3b82f6';
+    document.getElementById('s1-fuel').style.color = v <= 2 ? '#C98A00' : '#3672E0';
     document.getElementById('s1-desc').textContent = descs[v - 1];
     // SVG bars
     document.getElementById('fib2a-bar').setAttribute('width', (fib2[v-1] * 0.15).toFixed(1));
@@ -94,12 +94,12 @@ function initDemo3() {
     document.getElementById('s3-gly-pct').textContent = Math.round(glyLeft) + '%';
     const fillEl = document.getElementById('s3-gly-fill');
     fillEl.style.width = glyLeft + '%';
-    fillEl.style.background = glyLeft > 50 ? '#3b82f6' : glyLeft > 20 ? '#D97706' : '#DC2626';
+    fillEl.style.background = glyLeft > 50 ? '#3672E0' : glyLeft > 20 ? '#C98A00' : '#D63B36';
     document.getElementById('s3-gly-label').textContent = glyLeft <= 0 ? 'IŠSEKĘS' : glyLeft < 20 ? 'Kritiška' : glyLeft < 50 ? 'Mažai' : 'Pakankamai';
     document.getElementById('s3-fat-fill').style.width = (fat > 0 ? 100 : 15) + '%';
     document.getElementById('s3-fat-label').textContent = fat > 50 ? 'Aktyvus (pagrindinis)' : fat > 0 ? 'Aktyvus (pagalbinis)' : 'Minimalus';
     document.getElementById('s3-wall').textContent = depletionPerMin[iv] > 0 ? wallMin + ' min' : '—';
-    document.getElementById('s3-wall').style.color = wallMin < dur ? '#DC2626' : 'var(--text)';
+    document.getElementById('s3-wall').style.color = wallMin < dur ? '#D63B36' : 'var(--text)';
     const descs = [
       `Lengvas tempas: ${fat}% kuro iš riebalų, ${carb}% iš glikogeno. Glikogenas eikvojamas lėtai — galite bėgti ilgai nerizikuodami „siena".`,
       `Vidutinis tempas: glikogenas tampa svarbiu kuro šaltiniu. Po ~${wallMin} min be papildomo maitinimosi atsargos išseks.`,
@@ -146,12 +146,12 @@ function initDemo4() {
     [2, 4, 6, 8, 10].forEach(v => {
       const y = pad.t + ch - (v / 12) * ch;
       ctx.beginPath(); ctx.moveTo(pad.l, y); ctx.lineTo(pad.l + cw, y); ctx.stroke();
-      ctx.fillStyle = '#9ca3af'; ctx.font = '9px Inter,sans-serif';
+      ctx.fillStyle = '#9ca3af'; ctx.font = '9px Instrument Sans,sans-serif';
       ctx.textAlign = 'right';
       ctx.fillText(v, pad.l - 4, y + 3);
     });
     // axes labels
-    ctx.fillStyle = '#6b7280'; ctx.font = '8px Inter,sans-serif'; ctx.textAlign = 'center';
+    ctx.fillStyle = '#6b7280'; ctx.font = '8px Instrument Sans,sans-serif'; ctx.textAlign = 'center';
     ctx.fillText('Laktatas (mmol/L)', 10, h / 2);
     [50, 60, 70, 80, 90, 100].forEach(v => {
       const x = pad.l + ((v - 50) / 50) * cw;
@@ -164,7 +164,7 @@ function initDemo4() {
     ctx.strokeStyle = '#d1d5db'; ctx.lineWidth = 1; ctx.setLineDash([4, 3]);
     ctx.beginPath(); ctx.moveTo(thrX, pad.t); ctx.lineTo(thrX, pad.t + ch); ctx.stroke();
     ctx.setLineDash([]);
-    ctx.fillStyle = '#9ca3af'; ctx.font = '8px Inter,sans-serif'; ctx.textAlign = 'center';
+    ctx.fillStyle = '#9ca3af'; ctx.font = '8px Instrument Sans,sans-serif'; ctx.textAlign = 'center';
     ctx.fillText('Slenkstis', thrX, pad.t + 9);
 
     // curve
@@ -182,7 +182,7 @@ function initDemo4() {
     const lac = getLactate(currentPct, fitLevel);
     const cy_ = pad.t + ch - Math.min(ch, (lac / 12) * ch);
     ctx.beginPath(); ctx.arc(cx_, cy_, 6, 0, Math.PI * 2);
-    ctx.fillStyle = lac > 4 ? '#DC2626' : lac > 2 ? '#D97706' : '#10B981';
+    ctx.fillStyle = lac > 4 ? '#D63B36' : lac > 2 ? '#C98A00' : '#0E9A6C';
     ctx.fill();
     ctx.strokeStyle = '#fff'; ctx.lineWidth = 2; ctx.stroke();
   }
@@ -196,10 +196,10 @@ function initDemo4() {
     document.getElementById('s4-fit-label').textContent = fitLabels[fit - 1];
     const lac = getLactate(pct, fit);
     document.getElementById('s4-lac').textContent = Math.max(0, lac).toFixed(1);
-    document.getElementById('s4-lac').style.color = lac > 4 ? '#DC2626' : lac > 2.5 ? '#D97706' : '#10B981';
+    document.getElementById('s4-lac').style.color = lac > 4 ? '#D63B36' : lac > 2.5 ? '#C98A00' : '#0E9A6C';
     const lvl = lac < 2 ? 'Žemas (normalus)' : lac < 4 ? 'Vidutinis (slenkstis)' : 'Aukštas (kaupiasi)';
     document.getElementById('s4-thr-label').textContent = lvl;
-    document.getElementById('s4-thr-label').style.color = lac < 2 ? '#10B981' : lac < 4 ? '#D97706' : '#DC2626';
+    document.getElementById('s4-thr-label').style.color = lac < 2 ? '#0E9A6C' : lac < 4 ? '#C98A00' : '#D63B36';
     document.getElementById('s4-thr-pct').textContent = thr + '%';
     const thrExplain = document.getElementById('s4-thr-explain');
     const thrBpm = document.getElementById('s4-thr-bpm');
@@ -271,10 +271,10 @@ function initDemo6() {
     const per15 = Math.round(sweatBase * 1000 / 4 * 0.8);
 
     document.getElementById('s6-core').textContent = core + '°C';
-    document.getElementById('s6-core').style.color = parseFloat(core) > 39.5 ? '#DC2626' : parseFloat(core) > 38.5 ? '#D97706' : '#3b82f6';
+    document.getElementById('s6-core').style.color = parseFloat(core) > 39.5 ? '#D63B36' : parseFloat(core) > 38.5 ? '#C98A00' : '#3672E0';
     document.getElementById('s6-sweat').textContent = sweatBase.toFixed(1) + ' L';
     document.getElementById('s6-pace-hit').textContent = (pacePenalty > 0 ? '–' : '') + pacePenalty + '%';
-    document.getElementById('s6-pace-hit').style.color = pacePenalty > 8 ? '#DC2626' : pacePenalty > 3 ? '#D97706' : '#10B981';
+    document.getElementById('s6-pace-hit').style.color = pacePenalty > 8 ? '#D63B36' : pacePenalty > 3 ? '#C98A00' : '#0E9A6C';
     document.getElementById('s6-drink').textContent = per15 + ' ml';
 
     let desc;
@@ -301,17 +301,17 @@ function initDemo7() {
     const force = Math.max(1.5, Math.min(3.5, forceBase));
     const contactMs = Math.round(320 - (cad - 150) * 3.2);
     document.getElementById('s7-force').textContent = force.toFixed(1) + '×';
-    document.getElementById('s7-force').style.color = force > 2.8 ? '#DC2626' : force > 2.2 ? '#D97706' : '#10B981';
+    document.getElementById('s7-force').style.color = force > 2.8 ? '#D63B36' : force > 2.2 ? '#C98A00' : '#0E9A6C';
     document.getElementById('s7-contact').textContent = Math.max(150, contactMs) + ' ms';
     let rating, rColor, desc;
     if (cad < 160) {
-      rating = 'Aukšta rizika'; rColor = '#DC2626';
+      rating = 'Aukšta rizika'; rColor = '#D63B36';
       desc = `${cad} SPM — per mažas. Žingsnis tikriausiai per ilgas, koja nusileisdama per toli priešais kūną. Smūgio jėga ${force.toFixed(1)}× kūno svorio kelia didelę kelio ir blauzdos traumų riziką.`;
     } else if (cad < 168) {
-      rating = 'Vidutinė rizika'; rColor = '#D97706';
+      rating = 'Vidutinė rizika'; rColor = '#C98A00';
       desc = `${cad} SPM — priimtina, bet dar yra kur tobulėti. Pamėginkite didinti 5 SPM per savaitę iki 170–180 diapazono.`;
     } else if (cad <= 182) {
-      rating = 'Optimalus'; rColor = '#10B981';
+      rating = 'Optimalus'; rColor = '#0E9A6C';
       desc = `${cad} SPM — puiku. Šiame diapazone bėga daugelis patyrusių bėgikų. Kontakto laikas trumpas, smūgio jėga minimali.`;
     } else {
       rating = 'Labai aukštas'; rColor = '#94a3b8';
@@ -332,17 +332,17 @@ function initDemo8() {
 
   const recs = {
     '5k-low':      { name:'Danielso formulė', color:'#8b5cf6', why:'Riboto laiko sąlygomis Danielso VDOT sistema yra efektyviausia — kiekviena treniruotė turi aiškų tikslą ir tikslų tempą. Nereikia didelių apimčių: 3 struktūruotos treniruotės per savaitę duoda gerų rezultatų.', borrow:'Pasiskolinkite: apskaičiuokite savo VDOT iš paskutinio 5K laiko (vdoto.com) ir naudokite gautas zonas bent lengvoms treniruotėms.' },
-    '5k-mid':      { name:'Poliarizuotas modelis', color:'#10B981', why:'80/20 metodas puikiai tinka 5K distancijai su vidutine apimtimi. 2–3 lengvos treniruotės per savaitę + 1 tikrai sunki (intervalai) duoda aiškų progresą nenuvargstant.', borrow:'Pasiskolinkite: atidžiai saugokite Z3 — jei jaučiate, kad bėgate „patogiai sunkiai", greičiausiai tai pilkoji zona. Bėkite arba lėčiau, arba greičiau.' },
-    '5k-high':     { name:'Norvegiška treniruočių sistema', color:'#3b82f6', why:'Su 8+ val./sav. galima pradėti eksperimentuoti su dvigubomis treniruotėmis. Dėmesys slenkstiniam tempui — dvi laktatinės treniruotės per savaitę (ne per dieną, kaip elitui) duoda puikius rezultatus.', borrow:'Pasiskolinkite: vieną kartą per savaitę bėkite du kartus — ryte lengvai 30–40 min, vakare slenkstinį tempą 20–30 min.' },
+    '5k-mid':      { name:'Poliarizuotas modelis', color:'#0E9A6C', why:'80/20 metodas puikiai tinka 5K distancijai su vidutine apimtimi. 2–3 lengvos treniruotės per savaitę + 1 tikrai sunki (intervalai) duoda aiškų progresą nenuvargstant.', borrow:'Pasiskolinkite: atidžiai saugokite Z3 — jei jaučiate, kad bėgate „patogiai sunkiai", greičiausiai tai pilkoji zona. Bėkite arba lėčiau, arba greičiau.' },
+    '5k-high':     { name:'Norvegiška treniruočių sistema', color:'#3672E0', why:'Su 8+ val./sav. galima pradėti eksperimentuoti su dvigubomis treniruotėmis. Dėmesys slenkstiniam tempui — dvi laktatinės treniruotės per savaitę (ne per dieną, kaip elitui) duoda puikius rezultatus.', borrow:'Pasiskolinkite: vieną kartą per savaitę bėkite du kartus — ryte lengvai 30–40 min, vakare slenkstinį tempą 20–30 min.' },
     'half-low':    { name:'Danielso formulė', color:'#8b5cf6', why:'Pusmaratonui su ribotu laiku Danielso sistema siūlo aiškią struktūrą: ilgas bėgimas savaitgalį + viena kokybinė sesija + lengvos dienos. Nedaug, bet tikslinga.', borrow:'Pasiskolinkite: savaitgalio ilgas bėgimas visada turi būti tikrai lengvas (galite kalbėtis) — tai Danielso E tempas, ne maratoninis.' },
-    'half-mid':    { name:'Lydiardo treniruočių sistema', color:'#D97706', why:'Pusmaratonui su vidutine apimtimi Lydiardo principas veikia puikiai: 8–10 sav. aerobinio pagrindo kūrimas (ilgi, lėti bėgimai), tada 3–4 sav. slenkstinio darbo. Finišui stiprūs liks kojos.', borrow:'Pasiskolinkite: prieš pradėdami greičio darbus, 8 savaites bėgkite tik lengvai. Tai nuobodu, bet aerobinis pagrindas apsimoka.' },
-    'half-high':   { name:'Poliarizuotas modelis', color:'#10B981', why:'Su didelėmis apimtimis poliarizuotas modelis leidžia bėgti daug ir nesusirgti. 80% lengvų treniruočių + 1–2 tikrai sunkios per savaitę yra idealus santykis pusmaratonui.', borrow:'Pasiskolinkite: vienas ilgas bėgimas per savaitę (16–22 km) tikrai lengvu tempu yra pusmaratonio treniruočių kertinis akmuo.' },
-    'marathon-low':{ name:'Lydiardo treniruočių sistema', color:'#D97706', why:'Maratonui net su ribotu laiku Lydiardo principas yra svarbiausias: ilgi, lėti savaitgalio bėgimai kuria riebalų efektyvumą ir sausgyslių atsparumą. Geriau 3 treniruotės per savaitę su ilgu savaitgaliu nei 5 vidutinės.', borrow:'Pasiskolinkite: kiekvieną savaitę — vienas bėgimas ilgesnis nei visa kita. Palaipsniui didinkite iki 28–30 km prieš maratoną.' },
-    'marathon-mid':{ name:'Poliarizuotas modelis', color:'#10B981', why:'Maratonui su vidutine apimtimi 80/20 metodas leidžia bėgti pakankamai daug be pervargimo. Ilgi savaitgalio bėgimai (lengvi!) + 1 slenkstinė sesija per savaitę yra klasikinis receptas.', borrow:'Pasiskolinkite: maratoninis tempas = Z2/Z3 riba. Treniruotės „maratoniniu tempu" yra labai veiksmingos, bet jas reikia subalansuoti su daug lengvesnio bėgimo.' },
-    'marathon-high':{ name:'Keniečių / Etiopų modelis', color:'#DC2626', why:'Su didelėmis apimtimis keniečių logika veikia: kuo daugiau lengvo bėgimo, tuo geresnis riebalų metabolizmas ir aerobinė bazė. 80–90% visų kilometrų turi būti tikrai lengvi — net jei tai jaučiasi per lengva.', borrow:'Pasiskolinkite: jei bėgate 60+ km/sav., patikrinkite — ar tikrai 80% yra lengva? Daugelis bėga per greitai lengvomis dienomis ir per lėtai sunkiomis.' },
-    'health-low':  { name:'Poliarizuotas modelis', color:'#10B981', why:'Sveikatai ir ilgaamžiškumui poliarizuotas modelis yra idealus: mažiausiai traumų, didelis malonumas, tvarumas dešimtmečius. Net 3 treniruotės per savaitę (2 lengvos + 1 sunkesnė) duoda reikšmingos naudos sveikatai.', borrow:'Pasiskolinkite: 30 min lengvo bėgimo 3× per savaitę yra pakankamai. Svarbiausia — reguliarumas, ne intensyvumas.' },
-    'health-mid':  { name:'Poliarizuotas modelis', color:'#10B981', why:'Su vidutine apimtimi poliarizuotas modelis leidžia mėgautis bėgimu be pervargimo. 80% treniruočių turi būti malonios — jei bėgimas nuolat sunkus, ilgainiui tai nesveika.', borrow:'Pasiskolinkite: sekmadienio ilgas bėgimas tikrai lengvu tempu yra vienas sveikiausių įpročių. Net 60–90 min Z1/Z2 daro stebuklus sirdies ir metabolinei sveikatai.' },
-    'health-high': { name:'Lydiardo treniruočių sistema', color:'#D97706', why:'Su dideliu laiku Lydiardo aerobinio pagrindo principas yra tvariausias ilguoju laikotarpiu. Didelės lengvo bėgimo apimtys be pervargimo kuria kapiliarų tinklą, gerina metabolinę sveikatą ir ilgina aktyvų gyvenimą.', borrow:'Pasiskolinkite: jei mėgstate bėgti daug — bėkite daug, bet lėtai. Greitis ateina pats, kai aerobinis pagrindas stiprus.' }
+    'half-mid':    { name:'Lydiardo treniruočių sistema', color:'#C98A00', why:'Pusmaratonui su vidutine apimtimi Lydiardo principas veikia puikiai: 8–10 sav. aerobinio pagrindo kūrimas (ilgi, lėti bėgimai), tada 3–4 sav. slenkstinio darbo. Finišui stiprūs liks kojos.', borrow:'Pasiskolinkite: prieš pradėdami greičio darbus, 8 savaites bėgkite tik lengvai. Tai nuobodu, bet aerobinis pagrindas apsimoka.' },
+    'half-high':   { name:'Poliarizuotas modelis', color:'#0E9A6C', why:'Su didelėmis apimtimis poliarizuotas modelis leidžia bėgti daug ir nesusirgti. 80% lengvų treniruočių + 1–2 tikrai sunkios per savaitę yra idealus santykis pusmaratonui.', borrow:'Pasiskolinkite: vienas ilgas bėgimas per savaitę (16–22 km) tikrai lengvu tempu yra pusmaratonio treniruočių kertinis akmuo.' },
+    'marathon-low':{ name:'Lydiardo treniruočių sistema', color:'#C98A00', why:'Maratonui net su ribotu laiku Lydiardo principas yra svarbiausias: ilgi, lėti savaitgalio bėgimai kuria riebalų efektyvumą ir sausgyslių atsparumą. Geriau 3 treniruotės per savaitę su ilgu savaitgaliu nei 5 vidutinės.', borrow:'Pasiskolinkite: kiekvieną savaitę — vienas bėgimas ilgesnis nei visa kita. Palaipsniui didinkite iki 28–30 km prieš maratoną.' },
+    'marathon-mid':{ name:'Poliarizuotas modelis', color:'#0E9A6C', why:'Maratonui su vidutine apimtimi 80/20 metodas leidžia bėgti pakankamai daug be pervargimo. Ilgi savaitgalio bėgimai (lengvi!) + 1 slenkstinė sesija per savaitę yra klasikinis receptas.', borrow:'Pasiskolinkite: maratoninis tempas = Z2/Z3 riba. Treniruotės „maratoniniu tempu" yra labai veiksmingos, bet jas reikia subalansuoti su daug lengvesnio bėgimo.' },
+    'marathon-high':{ name:'Keniečių / Etiopų modelis', color:'#D63B36', why:'Su didelėmis apimtimis keniečių logika veikia: kuo daugiau lengvo bėgimo, tuo geresnis riebalų metabolizmas ir aerobinė bazė. 80–90% visų kilometrų turi būti tikrai lengvi — net jei tai jaučiasi per lengva.', borrow:'Pasiskolinkite: jei bėgate 60+ km/sav., patikrinkite — ar tikrai 80% yra lengva? Daugelis bėga per greitai lengvomis dienomis ir per lėtai sunkiomis.' },
+    'health-low':  { name:'Poliarizuotas modelis', color:'#0E9A6C', why:'Sveikatai ir ilgaamžiškumui poliarizuotas modelis yra idealus: mažiausiai traumų, didelis malonumas, tvarumas dešimtmečius. Net 3 treniruotės per savaitę (2 lengvos + 1 sunkesnė) duoda reikšmingos naudos sveikatai.', borrow:'Pasiskolinkite: 30 min lengvo bėgimo 3× per savaitę yra pakankamai. Svarbiausia — reguliarumas, ne intensyvumas.' },
+    'health-mid':  { name:'Poliarizuotas modelis', color:'#0E9A6C', why:'Su vidutine apimtimi poliarizuotas modelis leidžia mėgautis bėgimu be pervargimo. 80% treniruočių turi būti malonios — jei bėgimas nuolat sunkus, ilgainiui tai nesveika.', borrow:'Pasiskolinkite: sekmadienio ilgas bėgimas tikrai lengvu tempu yra vienas sveikiausių įpročių. Net 60–90 min Z1/Z2 daro stebuklus sirdies ir metabolinei sveikatai.' },
+    'health-high': { name:'Lydiardo treniruočių sistema', color:'#C98A00', why:'Su dideliu laiku Lydiardo aerobinio pagrindo principas yra tvariausias ilguoju laikotarpiu. Didelės lengvo bėgimo apimtys be pervargimo kuria kapiliarų tinklą, gerina metabolinę sveikatą ir ilgina aktyvų gyvenimą.', borrow:'Pasiskolinkite: jei mėgstate bėgti daug — bėkite daug, bet lėtai. Greitis ateina pats, kai aerobinis pagrindas stiprus.' }
   };
 
   function update() {
@@ -540,7 +540,7 @@ function initDemo12() {
     document.getElementById('s12-fit-label').textContent = d.label;
     document.getElementById('s12-vo2a').textContent = d.vo2;
     document.getElementById('s12-eco').textContent = d.eco;
-    document.getElementById('s12-eco').style.color = ['#DC2626','#D97706','#10B981'][parseInt(sl.value)-1];
+    document.getElementById('s12-eco').style.color = ['#D63B36','#C98A00','#0E9A6C'][parseInt(sl.value)-1];
     document.getElementById('s12-10k').textContent = d.time;
     document.getElementById('s12-insight').textContent = d.insight;
   }
@@ -596,7 +596,7 @@ function initDemo13() {
     });
 
     // ── Axis labels ──
-    ctx.font='10px Inter,sans-serif'; ctx.fillStyle='#9ca3af'; ctx.textAlign='right';
+    ctx.font='10px Instrument Sans,sans-serif'; ctx.fillStyle='#9ca3af'; ctx.textAlign='right';
     [0,10,20,30].forEach(g=>{
       ctx.fillText(g+'%', pad.left-5, py(g)+3);
     });
@@ -619,7 +619,7 @@ function initDemo13() {
     ctx.fill(); ctx.restore();
 
     // ── Phase labels on chart ──
-    ctx.font='7.5px Inter,sans-serif'; ctx.fillStyle='#b6bdc7'; ctx.textAlign='center';
+    ctx.font='7.5px Instrument Sans,sans-serif'; ctx.fillStyle='#b6bdc7'; ctx.textAlign='center';
     ctx.fillText('Sparčiausias augimas', px(2), pad.top+9);
     ctx.fillText('Lėtėja, bet tęsiasi', px(7.5), pad.top+9);
     ctx.fillText('Ilgametė investicija', px(16), pad.top+9);
@@ -639,11 +639,11 @@ function initDemo13() {
       const fx=px(i), fy=py(econs(i));
       i===1 ? ctx.moveTo(fx,fy) : ctx.lineTo(fx,fy);
     }
-    ctx.strokeStyle='#10B981'; ctx.lineWidth=2.5; ctx.stroke();
+    ctx.strokeStyle='#0E9A6C'; ctx.lineWidth=2.5; ctx.stroke();
 
     // ── Legend ──
-    ctx.font='700 8.5px Inter,sans-serif'; ctx.textAlign='left';
-    ctx.fillStyle='#10B981'; ctx.fillRect(pad.left+4, pad.top+14, 14, 2.5);
+    ctx.font='700 8.5px Instrument Sans,sans-serif'; ctx.textAlign='left';
+    ctx.fillStyle='#0E9A6C'; ctx.fillRect(pad.left+4, pad.top+14, 14, 2.5);
     ctx.fillText('Nuoseklus', pad.left+20, pad.top+18);
     ctx.fillStyle='#94a3b8';
     ctx.setLineDash([4,3]);
@@ -661,13 +661,13 @@ function initDemo13() {
     // ── Dots at marker ──
     const cy1=py(econs(y)), cy2=py(espor(y));
     ctx.beginPath(); ctx.arc(mx, cy1, 5, 0, 2*Math.PI);
-    ctx.fillStyle='#10B981'; ctx.fill();
+    ctx.fillStyle='#0E9A6C'; ctx.fill();
     ctx.beginPath(); ctx.arc(mx, cy2, 5, 0, 2*Math.PI);
     ctx.fillStyle='#94a3b8'; ctx.fill();
 
     // ── Year bubble above marker ──
     const bubTxt = y + ' m.';
-    ctx.font='700 9px Inter,sans-serif'; ctx.textAlign='center';
+    ctx.font='700 9px Instrument Sans,sans-serif'; ctx.textAlign='center';
     const bw = ctx.measureText(bubTxt).width + 10;
     const bx = Math.min(Math.max(mx, pad.left+bw/2), W-pad.right-bw/2);
     ctx.fillStyle='#374151'; ctx.beginPath();
@@ -736,9 +736,9 @@ function initDemo14() {
   const durSl = document.getElementById('s14-dur');
   const fitSl = document.getElementById('s14-fit');
   const factors = [
-    { id:'f-glycogen', label:'Glikogeno eikvojimas', color:'#3b82f6', base:120, fitMod:1.3 },
-    { id:'f-dehydr',   label:'Skysčių netekimas',    color:'#D97706', base:90,  fitMod:1.1 },
-    { id:'f-heat',     label:'Kūno perkaitimas',     color:'#DC2626', base:80,  fitMod:1.2 },
+    { id:'f-glycogen', label:'Glikogeno eikvojimas', color:'#3672E0', base:120, fitMod:1.3 },
+    { id:'f-dehydr',   label:'Skysčių netekimas',    color:'#C98A00', base:90,  fitMod:1.1 },
+    { id:'f-heat',     label:'Kūno perkaitimas',     color:'#D63B36', base:80,  fitMod:1.2 },
     { id:'f-central',  label:'Centrinis nuovargis',  color:'#8b5cf6', base:100, fitMod:1.25 }
   ];
   const barsEl = document.getElementById('s14-fatigue-bars');
@@ -820,11 +820,11 @@ function initDemo16() {
     const musclePct = Math.min(100, Math.round((weeks / 6) * 100));
     const tendonPct = Math.min(100, Math.round((weeks / 16) * 100));
     const progressionRisk = km > 50 && weeks < 8 ? 'Aukšta' : km > 35 && weeks < 6 ? 'Vidutinė' : 'Žema';
-    const riskColor = progressionRisk === 'Aukšta' ? '#DC2626' : progressionRisk === 'Vidutinė' ? '#D97706' : '#10B981';
+    const riskColor = progressionRisk === 'Aukšta' ? '#D63B36' : progressionRisk === 'Vidutinė' ? '#C98A00' : '#0E9A6C';
     document.getElementById('s16-muscle').textContent = musclePct+'%';
-    document.getElementById('s16-muscle').style.color = musclePct > 60 ? '#10B981' : '#D97706';
+    document.getElementById('s16-muscle').style.color = musclePct > 60 ? '#0E9A6C' : '#C98A00';
     document.getElementById('s16-tendon').textContent = tendonPct+'%';
-    document.getElementById('s16-tendon').style.color = tendonPct > 60 ? '#10B981' : '#DC2626';
+    document.getElementById('s16-tendon').style.color = tendonPct > 60 ? '#0E9A6C' : '#D63B36';
     document.getElementById('s16-risk').textContent = progressionRisk;
     document.getElementById('s16-risk').style.color = riskColor;
     let insight = '';
@@ -886,7 +886,7 @@ function initDemo18() {
     document.getElementById('s18-perfect').textContent = perfect;
     document.getElementById('s18-real').textContent = real;
     document.getElementById('s18-diff').textContent = pct+'%';
-    document.getElementById('s18-real').style.color = consist >= 80 ? '#10B981' : consist >= 60 ? '#D97706' : '#DC2626';
+    document.getElementById('s18-real').style.color = consist >= 80 ? '#0E9A6C' : consist >= 60 ? '#C98A00' : '#D63B36';
     let insight = '';
     if (consist >= 85) insight = `${real} treniruotės per metus — puiku! Net ne tobulas, bet labai pastovus bėgikas kuria solidų pagrindą. Šis reguliarumas per 2–3 metus duoda rezultatus, kurių negali pasiekti heroiška, bet nenuosekli programa.`;
     else if (consist >= 65) insight = `${real} treniruotės per metus. Tai vis dar pakankamai, kad matytumėte aiškią pažangą. Pabandykite identifikuoti, kas trukdo praleistoms treniruotėms, ir pašalinkite barjerus iš anksto.`;
@@ -901,15 +901,15 @@ function initDemo18() {
 // ── DEMO 19: Watch metrics reliability ──
 function initDemo19() {
   const metrics = [
-    { name:'GPS atstumas', reliability:'Patikimas', color:'#10B981', detail:'GPS tikslumas paprastai ±1–3%. Klysta labiau tarp aukštų pastatų ar tankiuose miškuose. Pakankamai tikslus treniruočių stebėjimui.' },
-    { name:'Bėgimo laikas', reliability:'Patikimas', color:'#10B981', detail:'Tiesiogiai matuojamas. Absoliučiai tikslus.' },
-    { name:'Kadencija', reliability:'Patikimas', color:'#10B981', detail:'Akcelerometro duomenys — labai tikslūs. Vienas naudingiausių techninių rodiklių pradedantiesiems.' },
-    { name:'Širdies ritmas (krūtinės dirž.)', reliability:'Patikimas', color:'#10B981', detail:'Elektros signalo matavimas — labai tikslus net intervalinių metu. Jei norite tikslaus HR — naudokite krūtinės diržą.' },
-    { name:'Širdies ritmas (riešo jutikl.)', reliability:'Vidutiniškai patikimas', color:'#D97706', detail:'Optinis matavimas yra vidutiniškai tikslus lygaus tempo bėgimui. Intervalinių ar kalnų bėgimų metu atsilieka 10–30 sek. ir gali skirtis iki 15 dūžių.' },
-    { name:'VO₂max įvertinimas', reliability:'Tik orientacinis', color:'#DC2626', detail:'Algoritmas, pagrįstas HR ir tempo santykiu. Gali skirtis 10–15% nuo tikro VO₂max. Naudinga kaip ilgalaikė tendencija, bet absoliutūs skaičiai nepatikimi.' },
-    { name:'Pasirengimo balas / kūno baterija', reliability:'Tik orientacinis', color:'#DC2626', detail:'Statistinis modelis, sukalibruotas vidutiniam vartotojui. Gali rodyti "žemą pasirengimą" po blogos nakties net jei fiziologiškai esate gerai. Naudokite kaip vieną iš signalų, ne kaip tiesą.' },
-    { name:'Atsistatymo laikas', reliability:'Tik orientacinis', color:'#DC2626', detail:'Labai apytikslis. Tas pats algoritmas skirtingiems žmonėms duoda skirtingus rezultatus. Naudokite rytinį pulsą ir savijautą kaip tikslesnius atsigavimo rodiklius.' },
-    { name:'Savaitinis kilometražas', reliability:'Patikimas', color:'#10B981', detail:'GPS duomenų suma — patikimas rodiklis. Vienas naudingiausių rodiklių krūvio valdymui. Stebėkite jį kas savaitę.' }
+    { name:'GPS atstumas', reliability:'Patikimas', color:'#0E9A6C', detail:'GPS tikslumas paprastai ±1–3%. Klysta labiau tarp aukštų pastatų ar tankiuose miškuose. Pakankamai tikslus treniruočių stebėjimui.' },
+    { name:'Bėgimo laikas', reliability:'Patikimas', color:'#0E9A6C', detail:'Tiesiogiai matuojamas. Absoliučiai tikslus.' },
+    { name:'Kadencija', reliability:'Patikimas', color:'#0E9A6C', detail:'Akcelerometro duomenys — labai tikslūs. Vienas naudingiausių techninių rodiklių pradedantiesiems.' },
+    { name:'Širdies ritmas (krūtinės dirž.)', reliability:'Patikimas', color:'#0E9A6C', detail:'Elektros signalo matavimas — labai tikslus net intervalinių metu. Jei norite tikslaus HR — naudokite krūtinės diržą.' },
+    { name:'Širdies ritmas (riešo jutikl.)', reliability:'Vidutiniškai patikimas', color:'#C98A00', detail:'Optinis matavimas yra vidutiniškai tikslus lygaus tempo bėgimui. Intervalinių ar kalnų bėgimų metu atsilieka 10–30 sek. ir gali skirtis iki 15 dūžių.' },
+    { name:'VO₂max įvertinimas', reliability:'Tik orientacinis', color:'#D63B36', detail:'Algoritmas, pagrįstas HR ir tempo santykiu. Gali skirtis 10–15% nuo tikro VO₂max. Naudinga kaip ilgalaikė tendencija, bet absoliutūs skaičiai nepatikimi.' },
+    { name:'Pasirengimo balas / kūno baterija', reliability:'Tik orientacinis', color:'#D63B36', detail:'Statistinis modelis, sukalibruotas vidutiniam vartotojui. Gali rodyti "žemą pasirengimą" po blogos nakties net jei fiziologiškai esate gerai. Naudokite kaip vieną iš signalų, ne kaip tiesą.' },
+    { name:'Atsistatymo laikas', reliability:'Tik orientacinis', color:'#D63B36', detail:'Labai apytikslis. Tas pats algoritmas skirtingiems žmonėms duoda skirtingus rezultatus. Naudokite rytinį pulsą ir savijautą kaip tikslesnius atsigavimo rodiklius.' },
+    { name:'Savaitinis kilometražas', reliability:'Patikimas', color:'#0E9A6C', detail:'GPS duomenų suma — patikimas rodiklis. Vienas naudingiausių rodiklių krūvio valdymui. Stebėkite jį kas savaitę.' }
   ];
   const container = document.getElementById('s19-metrics');
   let active = -1;
@@ -969,7 +969,7 @@ function initDemo19() {
   function ease(t){ return t<0.5 ? 2*t*t : -1+(4-2*t)*t; }
 
   function label(ctx, text, x, y, size, color, align, bold) {
-    ctx.font = (bold?'700 ':'400 ') + (size||11) + 'px Inter,sans-serif';
+    ctx.font = (bold?'700 ':'400 ') + (size||11) + 'px Instrument Sans,sans-serif';
     ctx.textAlign = align||'center';
     ctx.fillStyle = color||'#374151';
     ctx.fillText(text, x, y);
@@ -1036,7 +1036,7 @@ function initDemo19() {
       var chest = (type === 'chest');
       var bg   = chest ? '#fff7f7' : '#f0fdf4';
       var bord = chest ? '#fca5a5' : '#86efac';
-      var hi   = chest ? '#DC2626' : '#10B981';
+      var hi   = chest ? '#D63B36' : '#0E9A6C';
 
       ctx.fillStyle = bg; pill(ctx, px, py, pw, ph, 10); ctx.fill();
       ctx.strokeStyle = bord; ctx.lineWidth = 1.5; pill(ctx, px, py, pw, ph, 10); ctx.stroke();
@@ -1091,7 +1091,7 @@ function initDemo19() {
       ctx.strokeStyle = chest ? '#d1d5db' : 'rgba(16,185,129,0.7)'; ctx.lineWidth=1.4;
       ctx.beginPath(); ctx.moveTo(backX+2, diaY); ctx.lineTo(fWaist+4, diaY); ctx.stroke();
       ctx.restore();
-      if (!chest) label(ctx,'diafragma ↓', backX-4, diaY+3, 6.5, '#10B981','right');
+      if (!chest) label(ctx,'diafragma ↓', backX-4, diaY+3, 6.5, '#0E9A6C','right');
 
       // ── HANDS (the self-test): one on chest, one on belly ──
       // Chest hand
@@ -1132,7 +1132,7 @@ function initDemo19() {
 
       if (phase) {
         // phase pill centred at the very bottom
-        ctx.font='700 9px Inter,sans-serif';
+        ctx.font='700 9px Instrument Sans,sans-serif';
         var tw = ctx.measureText(phase).width;
         ctx.fillStyle = 'rgba(55,65,81,0.92)';
         pill(ctx, W/2-tw/2-8, H-17, tw+16, 14, 7); ctx.fill();
@@ -1195,7 +1195,7 @@ function initDemo19() {
       var strikeAhead = isWrong ? W*0.115 : W*0.025;   // KEY difference
       var behind      = W*0.075;
       var lift        = H*0.14;
-      var col         = isWrong ? '#DC2626' : '#10B981';
+      var col         = isWrong ? '#D63B36' : '#0E9A6C';
 
       // ── Bold vertical body-centre line ──
       ctx.save(); ctx.setLineDash([5,4]);
@@ -1268,11 +1268,11 @@ function initDemo19() {
 
         // force arrow + label
         if (isWrong) {
-          arrow(ctx, front.x, groundY-7, front.x-26, groundY-30, '#DC2626', 2);
-          label(ctx,'stabdo!', (cx+front.x)/2, by-7, 8, '#DC2626','center',true);
+          arrow(ctx, front.x, groundY-7, front.x-26, groundY-30, '#D63B36', 2);
+          label(ctx,'stabdo!', (cx+front.x)/2, by-7, 8, '#D63B36','center',true);
         } else {
-          arrow(ctx, front.x, groundY-6, front.x, groundY-30, '#10B981', 2);
-          label(ctx,'po kūnu', (cx+front.x)/2+6, by-7, 8, '#10B981','center',true);
+          arrow(ctx, front.x, groundY-6, front.x, groundY-30, '#0E9A6C', 2);
+          label(ctx,'po kūnu', (cx+front.x)/2+6, by-7, 8, '#0E9A6C','center',true);
         }
         ctx.restore();
       }
@@ -1300,7 +1300,7 @@ function initDemo19() {
 
       // titles
       var lcx = mid/2+pad/2, rcx = mid+4+(mid-pad-4)/2;
-      label(ctx,'✕  Perkrova per žingsnį', lcx, pad+15, 10, '#dc2626','center',true);
+      label(ctx,'✕  Perkrova per žingsnį', lcx, pad+15, 10, '#D63B36','center',true);
       label(ctx,'✓  Teisingas žingsnis', rcx, pad+15, 10, '#16a34a','center',true);
       label(ctx,'koja krenta toli priekyje', lcx, pad+27, 7.5, '#9ca3af');
       label(ctx,'koja krenta po kūnu', rcx, pad+27, 7.5, '#9ca3af');
@@ -1413,7 +1413,7 @@ function initDemo19() {
       // ── KNEE highlight + vertical guide showing knee tracks over foot ──
       ctx.beginPath(); ctx.arc(kneeX, kneeY, 5.5, 0, 2*Math.PI);
       ctx.fillStyle='rgba(16,185,129,'+(0.25+amp*0.45)+')'; ctx.fill();
-      ctx.strokeStyle='#10B981'; ctx.lineWidth=1.3; ctx.stroke();
+      ctx.strokeStyle='#0E9A6C'; ctx.lineWidth=1.3; ctx.stroke();
       // dashed vertical guide from knee to foot
       ctx.save(); ctx.setLineDash([3,3]);
       ctx.strokeStyle='rgba(16,185,129,0.45)'; ctx.lineWidth=1;
@@ -1422,7 +1422,7 @@ function initDemo19() {
 
       // depth label changes with movement
       label(ctx, amp > 0.6 ? 'apačia' : amp < 0.25 ? 'viršus' : 'leidžiasi', cx+tw*0.30, hipY, 7, '#9ca3af','center');
-      label(ctx,'kelias virš pėdos', cx+tw*0.06, ty+th-1, 6.5, '#10B981');
+      label(ctx,'kelias virš pėdos', cx+tw*0.06, ty+th-1, 6.5, '#0E9A6C');
     }
 
     // 2. Glute bridge
@@ -1466,7 +1466,7 @@ function initDemo19() {
       ctx.fillStyle='#e5e7eb';
       ctx.beginPath(); ctx.ellipse(footX, gy, 9,3.5, 0,0,2*Math.PI); ctx.fill();
       ctx.beginPath(); ctx.ellipse(shoulderX, gy, 6,3, 0,0,2*Math.PI); ctx.fill();
-      label(ctx,'dubuo aukštyn', cx, ty+th-1, 6.5, '#10B981');
+      label(ctx,'dubuo aukštyn', cx, ty+th-1, 6.5, '#0E9A6C');
     }
 
     // 3. Eccentric heel raise
@@ -1508,7 +1508,7 @@ function initDemo19() {
       var toeX  = ankleX - tw*0.02;
       // sole line from toe (on step) to heel (hanging)
       var heelHi = (amp > 0.45);
-      ctx.strokeStyle = heelHi ? '#10B981' : '#374151';
+      ctx.strokeStyle = heelHi ? '#0E9A6C' : '#374151';
       ctx.lineWidth = 3;
       ctx.beginPath();
       ctx.moveTo(toeX, forefootY);
@@ -1541,12 +1541,12 @@ function initDemo19() {
       ctx.fillStyle = heelHi ? 'rgba(16,185,129,0.5)' : 'rgba(148,163,184,0.4)';
       ctx.fill();
       if (heelHi) {
-        ctx.strokeStyle='#10B981'; ctx.lineWidth=1.3; ctx.stroke();
+        ctx.strokeStyle='#0E9A6C'; ctx.lineWidth=1.3; ctx.stroke();
       }
       // big direction arrow on the heel showing slow downward (eccentric) phase
       if (amp > 0.3 && amp < 0.95) {
-        arrow(ctx, heelX+tw*0.10, heelY-th*0.05, heelX+tw*0.10, heelY+th*0.05, '#10B981', 2);
-        label(ctx,'3 sek.', heelX+tw*0.13, heelY, 7.5, '#10B981','left',true);
+        arrow(ctx, heelX+tw*0.10, heelY-th*0.05, heelX+tw*0.10, heelY+th*0.05, '#0E9A6C', 2);
+        label(ctx,'3 sek.', heelX+tw*0.13, heelY, 7.5, '#0E9A6C','left',true);
       } else if (amp <= 0.3) {
         // rising phase, small up hint
         arrow(ctx, heelX+tw*0.10, heelY+th*0.04, heelX+tw*0.10, heelY-th*0.04, '#9ca3af', 1.6);
@@ -1558,7 +1558,7 @@ function initDemo19() {
       ctx.beginPath(); ctx.moveTo(stepX2, stepTopY); ctx.lineTo(cx+tw*0.30, stepTopY); ctx.stroke();
       ctx.restore();
 
-      label(ctx, amp > 0.55 ? 'kulnas žemiau laiptelio' : 'kulnas viršuje', cx, ty+th-1, 6.5, heelHi ? '#10B981' : '#9ca3af');
+      label(ctx, amp > 0.55 ? 'kulnas žemiau laiptelio' : 'kulnas viršuje', cx, ty+th-1, 6.5, heelHi ? '#0E9A6C' : '#9ca3af');
     }
 
     // 4. Bird-dog
@@ -1590,7 +1590,7 @@ function initDemo19() {
       var armLen = tw*0.30;
       var axEnd = spineX2 + Math.cos(armAngle)*armLen;
       var ayEnd = spineY - Math.sin(armAngle)*armLen;
-      ctx.strokeStyle='#10B981'; ctx.lineWidth=2.5;
+      ctx.strokeStyle='#0E9A6C'; ctx.lineWidth=2.5;
       ctx.beginPath(); ctx.moveTo(spineX2, spineY); ctx.lineTo(axEnd, ayEnd); ctx.stroke();
       ctx.beginPath(); ctx.arc(axEnd, ayEnd, 4, 0, 2*Math.PI);
       ctx.fillStyle='rgba(16,185,129,'+(0.2+ext*0.6)+')'; ctx.fill();
@@ -1598,7 +1598,7 @@ function initDemo19() {
       var legLen = tw*0.30;
       var lxEnd = spineX1 - Math.cos(armAngle)*legLen;
       var lyEnd = spineY - Math.sin(armAngle)*legLen;
-      ctx.strokeStyle='#10B981'; ctx.lineWidth=2.5;
+      ctx.strokeStyle='#0E9A6C'; ctx.lineWidth=2.5;
       ctx.beginPath(); ctx.moveTo(spineX1, spineY); ctx.lineTo(lxEnd, lyEnd); ctx.stroke();
       ctx.beginPath(); ctx.arc(lxEnd, lyEnd, 4, 0, 2*Math.PI);
       ctx.fillStyle='rgba(16,185,129,'+(0.2+ext*0.6)+')'; ctx.fill();
@@ -1609,7 +1609,7 @@ function initDemo19() {
         ctx.beginPath(); ctx.moveTo(lxEnd, spineY); ctx.lineTo(axEnd, spineY); ctx.stroke();
         ctx.setLineDash([]);
       }
-      label(ctx,'priešinga ranka ir koja', cx, ty+th-1, 6.5, '#10B981');
+      label(ctx,'priešinga ranka ir koja', cx, ty+th-1, 6.5, '#0E9A6C');
     }
 
     function frame(ts) {
@@ -1676,11 +1676,11 @@ function initDemo20() {
     const qualityScore = (quality - 1) / 4 * 40;
     const adapt = Math.round(hoursScore + qualityScore);
 
-    const statusLabels = adapt >= 85 ? ['Puiki',      '#10B981'] :
-                         adapt >= 65 ? ['Gera',       '#10B981'] :
-                         adapt >= 45 ? ['Vidutinė',   '#D97706'] :
-                         adapt >= 25 ? ['Maža',       '#DC2626'] :
-                                       ['Labai maža', '#DC2626'];
+    const statusLabels = adapt >= 85 ? ['Puiki',      '#0E9A6C'] :
+                         adapt >= 65 ? ['Gera',       '#0E9A6C'] :
+                         adapt >= 45 ? ['Vidutinė',   '#C98A00'] :
+                         adapt >= 25 ? ['Maža',       '#D63B36'] :
+                                       ['Labai maža', '#D63B36'];
     const sessionRec = adapt >= 80 ? 'Sunkios treniruotės galima' :
                        adapt >= 60 ? 'Lengva ar vidutinė' :
                        adapt >= 40 ? 'Tik lengvas bėgimas' :
@@ -1777,40 +1777,40 @@ function initDemo22() {
 
     let hrColor, hrVal, hrDetail;
     if (hr <= 0) {
-      hrColor = '#10B981'; hrVal = 'Normalus';
+      hrColor = '#0E9A6C'; hrVal = 'Normalus';
       hrDetail = 'Ties baze arba žemiau — pilnas atsigavimas po paskutinių treniruočių. Organizmas apdorojo treniruočių stresą. Sunkios treniruotės tinkamos.';
     } else if (hr <= 4) {
       hrColor = '#84cc16'; hrVal = 'Šiek tiek pakilęs';
       hrDetail = 'Mažas padidėjimas — vis dar normalios svyravimo ribose. Gali atspindėti vakarykštę treniruotę. Lengvas bėgimas tinkamas; palaukite su intervalais iki rytojaus.';
     } else if (hr <= 7) {
-      hrColor = '#D97706'; hrVal = 'Pakilęs';
+      hrColor = '#C98A00'; hrVal = 'Pakilęs';
       hrDetail = 'Aiškiai virš bazės. Organizmas vis dar apdoroja neseną treniruočių krūvį. Šiandien — tik lengvas bėgimas ar poilsis. Jei taip tęsiasi 3+ dienas, mažinkite bendrą apimtį.';
     } else {
-      hrColor = '#DC2626'; hrVal = 'Aukštas';
+      hrColor = '#D63B36'; hrVal = 'Aukštas';
       hrDetail = `${hr} k/min virš bazės — aiškus pervargimo signalas. Kartu su bet kuriuo kitu pakilusiu rodikliu tai yra galutinis poilsio dienos signalas. Pirma atmeskite ligą — pakilęs ramybės pulsas yra ir ankstyvas infekcijos simptomas.`;
     }
 
     let driftColor, driftVal, driftDetail;
     if (drift <= 5) {
-      driftColor = '#10B981'; driftVal = 'Geras';
+      driftColor = '#0E9A6C'; driftVal = 'Geras';
       driftDetail = 'Mažas nukrypimas — jūsų lengvas tempas yra tikrai aerobinis. Pulsas stabilus viso bėgimo metu, tai reiškia, kad esate gerai Z2 ribose ir širdies ir kraujagyslių sistema nedirba sunkiai jį palaikydama.';
     } else if (drift <= 10) {
-      driftColor = '#D97706'; driftVal = 'Vidutinis';
+      driftColor = '#C98A00'; driftVal = 'Vidutinis';
       driftDetail = 'Pastebimas nukrypimas. Jūsų pradinis tempas gali būti šiek tiek per greitas Z2, arba esate lengvai dehidratuoti. Pabandykite pradėti 10–15 sek/km lėčiau ir patikrinkite, ar nukrypimas sumažėja žemiau 5%.';
     } else {
-      driftColor = '#DC2626'; driftVal = 'Didelis';
+      driftColor = '#D63B36'; driftVal = 'Didelis';
       driftDetail = `${drift}% nukrypimas reiškia, kad jūsų lengvi bėgimai nėra lengvi. Tikriausiai bėgate Z3 riboje — pakankamai, kad kaupiamas nuovargis, bet nepakankamai realiai slenkstinei adaptacijai. Tai pilkoji zona. Lėtinkite, kol nukrypimas sumažės žemiau 8%.`;
     }
 
     let jumpColor, jumpVal, jumpDetail;
     if (jump <= 10) {
-      jumpColor = '#10B981'; jumpVal = 'Saugus';
+      jumpColor = '#0E9A6C'; jumpVal = 'Saugus';
       jumpDetail = 'Kilometražo padidėjimas neviršija 10% gairės. Raumenys ir sausgyslės turi pakankamai laiko prisitaikyti prie naujo krūvio. Tęskite šiuo tempu ir kas 3–4 savaites planuokite mažesnio krūvio savaitę.';
     } else if (jump <= 20) {
-      jumpColor = '#D97706'; jumpVal = 'Atsargiai';
+      jumpColor = '#C98A00'; jumpVal = 'Atsargiai';
       jumpDetail = `${jump}% šuolis viršija saugią gairę. Raumenys prisitaiko per 1–2 savaites; sausgyslės — per 4–8 savaites. Traumų rizikos langas atviras. Atidžiai stebėkite blauzdinės, Achilo sausgyslės ir kelio signalus šią savaitę.`;
     } else {
-      jumpColor = '#DC2626'; jumpVal = 'Didelė rizika';
+      jumpColor = '#D63B36'; jumpVal = 'Didelė rizika';
       jumpDetail = `${jump}% yra reikšmingas krūvio šuolis. Tai vienas iš stipriausių pervargimo traumų prognozuotojų mėgėjų bėgikams. Net jei jaučiatės gerai — kitą savaitę sumažinkite apimtį, kad absorbuotumėte šuolį prieš vėl didindami.`;
     }
 

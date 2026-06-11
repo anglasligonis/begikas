@@ -1,35 +1,80 @@
 :root {
-  /* Zone colours */
-  --z1: #3B82F6;
-  --z2: #10B981;
-  --z3: #D97706;
-  --z4: #EA6C0A;
-  --z5: #DC2626;
+  /* Zone colours — recalibrated for the Nordic Pulse palette */
+  --z1: #3672E0;
+  --z2: #0E9A6C;
+  --z3: #C98A00;
+  --z4: #E06420;
+  --z5: #D63B36;
   /* Zone tints — lesson callouts & highlights */
-  --z1bg: #EFF6FF;
-  --z2bg: #F0FDF4;
-  --z3bg: #FFFBEB;
-  --z4bg: #FFF7ED;
-  --z5bg: #FEF2F2;
+  --z1bg: rgba(54,114,224,.08);
+  --z2bg: rgba(14,154,108,.08);
+  --z3bg: rgba(201,138,0,.10);
+  --z4bg: rgba(224,100,32,.09);
+  --z5bg: rgba(214,59,54,.08);
+  /* Brand */
+  --ink:        #10151C;
+  --pulse:      #FF3B2F;
+  --pulse-deep: #D92B20;
   /* Surfaces */
-  --bg:      #F7F7F5;
-  --surface: #EEEEEB;
-  --border:  #DCDCDA;
-  --text:    #0D0D0D;
-  --soft:    #4A4A4A;
-  --muted:   #6F6F6F;
-  --light:   #A8A8A8;
-  /* Layout */
-  --rail: 6px;
+  --bg:      #F8F9FA;
+  --surface: #FFFFFF;
+  --band:    #EFF1F3;
+  --border:  #E2E5E9;
+  --text:    #10151C;
+  --soft:    #3A414B;
+  --muted:   #6E7681;
+  --light:   #9AA1AB;
+  /* Type */
+  --font-display: 'Schibsted Grotesk', system-ui, sans-serif;
+  --font-body:    'Instrument Sans', system-ui, sans-serif;
+  --font-mono:    'Spline Sans Mono', 'Courier New', monospace;
+  /* Radius */
+  --r-sm: 8px;
+  --r-md: 14px;
+  --r-lg: 22px;
+  /* Elevation */
+  --e1: 0 1px 2px rgba(16,21,28,.05);
+  --e2: 0 4px 16px rgba(16,21,28,.07);
+  --e3: 0 12px 40px rgba(16,21,28,.10);
+  /* Layout — zone rail removed in Nordic Pulse */
+  --rail: 0px;
 }
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; }
 body {
   background: var(--bg);
-  color: var(--text);
-  font-family: 'Inter', system-ui, sans-serif;
+  color: var(--soft);
+  font-family: var(--font-body);
   line-height: 1.6;
   font-size: 16px;
 }
 a { color: inherit; }
+
+/* ── NORDIC PULSE POLISH ── */
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::selection { background: rgba(255,59,47,.16); color: var(--ink); }
+
+:focus-visible {
+  outline: 2px solid var(--pulse);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+/* film grain — barely-there texture over everything */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 950;
+  opacity: .5;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.025 0'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* refined scrollbar */
+* { scrollbar-width: thin; scrollbar-color: var(--border) transparent; }

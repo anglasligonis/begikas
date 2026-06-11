@@ -3,87 +3,91 @@
   background: var(--surface);
   border: 1px solid var(--border);
   border-left: 4px solid var(--border);
+  border-radius: var(--r-md);
+  box-shadow: var(--e1);
   padding: 1.25rem 1.5rem;
   margin-bottom: .85rem;
-  transition: border-left-color .2s;
+  transition: border-left-color .2s, box-shadow .2s;
 }
-.method-card:hover { border-left-color: var(--z3); }
+.method-card:hover { border-left-color: var(--z3); box-shadow: var(--e2); }
 .method-card.norwegian  { border-left-color: var(--z1); }
 .method-card.kenyan     { border-left-color: var(--z5); }
 .method-card.polarized  { border-left-color: var(--z2); }
 .method-card.lydiard    { border-left-color: var(--z3); }
-.method-card.daniels    { border-left-color: #8b5cf6; }
+.method-card.daniels    { border-left-color: #7C5CDB; }
 
-.method-name { font-size: .95rem; font-weight: 700; margin-bottom: .15rem; color: var(--text); }
-.method-sub { font-size: .75rem; color: var(--muted); margin-bottom: .6rem; font-style: italic; }
+.method-name { font-family: var(--font-display); font-size: 1rem; font-weight: 600; margin-bottom: .15rem; color: var(--text); }
+.method-sub { font-size: .8rem; color: var(--muted); margin-bottom: .6rem; font-style: italic; }
 
 .method-badges { display: flex; gap: .35rem; flex-wrap: wrap; margin-bottom: .75rem; }
 .method-badge {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: .56rem;
-  font-weight: 700;
-  letter-spacing: .08em;
-  padding: .18rem .55rem;
-  border: 1px solid var(--border);
+  font-family: var(--font-mono);
+  font-size: .72rem;
+  font-weight: 600;
+  letter-spacing: .06em;
+  padding: .2rem .6rem;
+  border: 1px solid var(--band);
+  border-radius: 999px;
   background: var(--bg);
   color: var(--muted);
-  text-transform: uppercase;
 }
 
-.method-body { font-size: .875rem; color: #484848; line-height: 1.72; margin-bottom: .85rem; }
+.method-body { font-size: .9rem; color: var(--soft); line-height: 1.72; margin-bottom: .85rem; }
 
 .ibar-wrap { margin-top: .5rem; }
 .ibar-title {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: .56rem;
-  font-weight: 700;
+  font-family: var(--font-mono);
+  font-size: .72rem;
+  font-weight: 600;
+  letter-spacing: .08em;
   text-transform: uppercase;
-  letter-spacing: .1em;
   color: var(--light);
   margin-bottom: .3rem;
 }
-.ibar { display: flex; height: 8px; overflow: hidden; gap: 1px; width: 100%; }
+.ibar { display: flex; height: 8px; border-radius: 4px; overflow: hidden; gap: 1px; width: 100%; }
 .ibar-seg { height: 100%; transition: flex .4s; }
 .ibar-legend { display: flex; gap: .75rem; margin-top: .3rem; flex-wrap: wrap; }
 .ibar-legend span {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: .54rem;
+  font-family: var(--font-mono);
+  font-size: .72rem;
   color: var(--muted);
   display: flex;
   align-items: center;
   gap: .3rem;
 }
-.ibar-legend span::before { content: ''; width: 8px; height: 8px; flex-shrink: 0; }
+.ibar-legend span::before { content: ''; width: 8px; height: 8px; border-radius: 2px; flex-shrink: 0; }
 
 .method-picker { display: flex; gap: .75rem; flex-wrap: wrap; margin-bottom: 1rem; }
 .method-pick-group { display: flex; flex-direction: column; gap: .3rem; flex: 1; min-width: 200px; }
 .method-pick-group label {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: .58rem;
-  font-weight: 700;
+  font-family: var(--font-mono);
+  font-size: .72rem;
+  font-weight: 600;
+  letter-spacing: .08em;
   text-transform: uppercase;
-  letter-spacing: .1em;
   color: var(--muted);
 }
 
 .method-rec {
   background: var(--bg);
-  border: 1px solid var(--border);
+  border: 1px solid var(--band);
   border-left: 3px solid var(--z3);
+  border-radius: var(--r-md);
   padding: 1.25rem 1.5rem;
   transition: border-left-color .3s;
 }
 .method-rec-header { display: flex; align-items: center; gap: .6rem; margin-bottom: .5rem; }
-.method-rec-dot { width: 10px; height: 10px; flex-shrink: 0; }
-.method-rec-name { font-weight: 700; font-size: .95rem; color: var(--text); }
-.method-rec-why { font-size: .875rem; color: var(--muted); line-height: 1.7; }
+.method-rec-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+.method-rec-name { font-family: var(--font-display); font-weight: 600; font-size: 1rem; color: var(--text); }
+.method-rec-why { font-size: .9rem; color: var(--muted); line-height: 1.7; }
 .method-rec-borrow {
   margin-top: .75rem;
-  padding: .6rem .85rem;
+  padding: .7rem .95rem;
   background: var(--surface);
-  border: 1px solid var(--border);
-  font-size: .82rem;
-  color: #484848;
+  border: 1px solid var(--band);
+  border-radius: var(--r-sm);
+  font-size: .9rem;
+  color: var(--soft);
   line-height: 1.65;
 }
 
@@ -92,21 +96,23 @@
   margin: 1.75rem 0;
   background: var(--surface);
   border: 1px solid var(--border);
-  padding: 1.25rem 1.5rem;
+  border-radius: var(--r-lg);
+  box-shadow: var(--e1);
+  padding: 1.4rem 1.6rem;
 }
 .illustration-title {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: .58rem;
-  font-weight: 700;
+  font-family: var(--font-mono);
+  font-size: .72rem;
+  font-weight: 600;
+  letter-spacing: .09em;
   text-transform: uppercase;
-  letter-spacing: .14em;
-  color: var(--muted);
+  color: var(--light);
   margin-bottom: 1rem;
   display: flex;
   align-items: center;
   gap: .5rem;
 }
-.illustration-title::before { content: ''; width: 6px; height: 6px; background: var(--z2); flex-shrink: 0; }
+.illustration-title::before { content: ''; width: 7px; height: 7px; border-radius: 50%; background: var(--z2); flex-shrink: 0; }
 .illustration-title svg { width: 100%; height: auto; display: block; }
 
 /* ── SUMMARY CARDS (lesson 20) ── */
@@ -115,14 +121,16 @@
 .summary-card {
   background: var(--surface);
   border: 1px solid var(--border);
-  padding: 1rem 1.25rem;
+  border-radius: var(--r-md);
+  box-shadow: var(--e1);
+  padding: 1.1rem 1.3rem;
 }
-.summary-card h3 { font-size: .85rem; font-weight: 700; margin-bottom: .35rem; color: var(--text); }
-.summary-card p { font-size: .82rem; color: var(--muted); line-height: 1.65; }
+.summary-card h3 { font-family: var(--font-display); font-size: .9rem; font-weight: 600; margin-bottom: .35rem; color: var(--text); }
+.summary-card p { font-size: .9rem; color: var(--muted); line-height: 1.65; }
 .summary-card .sc-num {
-  font-family: 'JetBrains Mono', monospace;
+  font-family: var(--font-mono);
   font-size: 1.6rem;
-  font-weight: 700;
+  font-weight: 600;
   display: block;
   margin-bottom: .1rem;
   color: var(--text);
@@ -134,31 +142,34 @@
 .exercise-card {
   background: var(--surface);
   border: 1px solid var(--border);
-  padding: 1rem 1.25rem;
+  border-radius: var(--r-md);
+  box-shadow: var(--e1);
+  padding: 1.1rem 1.3rem;
 }
-.exercise-name { font-size: .92rem; font-weight: 700; margin-bottom: .2rem; color: var(--text); }
+.exercise-name { font-family: var(--font-display); font-size: .95rem; font-weight: 600; margin-bottom: .2rem; color: var(--text); }
 .exercise-tag {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: .56rem;
-  font-weight: 700;
+  font-family: var(--font-mono);
+  font-size: .72rem;
+  font-weight: 600;
   color: var(--muted);
   text-transform: uppercase;
-  letter-spacing: .1em;
+  letter-spacing: .08em;
   margin-bottom: .45rem;
   display: block;
 }
-.exercise-desc { font-size: .83rem; color: var(--muted); line-height: 1.65; }
+.exercise-desc { font-size: .9rem; color: var(--muted); line-height: 1.65; }
 .exercise-sets {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: .68rem;
-  font-weight: 700;
+  font-family: var(--font-mono);
+  font-size: .72rem;
+  font-weight: 600;
   color: var(--text);
   margin-top: .5rem;
-  padding: .2rem .6rem;
+  padding: .22rem .7rem;
   background: var(--bg);
-  border: 1px solid var(--border);
+  border: 1px solid var(--band);
+  border-radius: 999px;
   display: inline-block;
-  letter-spacing: .04em;
+  letter-spacing: .02em;
 }
 
 /* ── RACE TIMELINE (lesson 12) ── */
@@ -176,44 +187,47 @@
   position: absolute;
   left: -6px; top: .55rem;
   width: 10px; height: 10px;
+  border-radius: 50%;
   background: var(--z2);
   border: 2px solid var(--bg);
 }
 .timeline-step.warn::before  { background: var(--z3); }
 .timeline-step.alert::before { background: var(--z4); }
 .timeline-time {
-  font-family: 'JetBrains Mono', monospace;
-  font-weight: 700;
-  font-size: .75rem;
-  letter-spacing: .04em;
+  font-family: var(--font-mono);
+  font-weight: 600;
+  font-size: .8rem;
+  letter-spacing: .02em;
   color: var(--text);
   min-width: 96px;
   padding-top: .35rem;
   flex-shrink: 0;
 }
-.timeline-body h4 { font-size: .9rem; font-weight: 600; margin-bottom: .15rem; color: var(--text); }
-.timeline-body p { font-size: .82rem; color: var(--muted); line-height: 1.65; }
+.timeline-body h4 { font-family: var(--font-display); font-size: .95rem; font-weight: 600; margin-bottom: .15rem; color: var(--text); }
+.timeline-body p { font-size: .9rem; color: var(--muted); line-height: 1.65; }
 
 /* ── DEMO HELPER ELEMENTS ── */
-.demo-note { font-size:.92rem; color:var(--soft); margin-bottom:1.25rem; }
+.demo-note { font-size: .95rem; color:var(--soft); margin-bottom:1.25rem; }
 .demo-desc {
   margin-top:1rem;
-  padding:.85rem 1rem;
-  border:1px solid var(--border);
+  padding:.9rem 1.1rem;
+  border:1px solid var(--band);
+  border-radius: var(--r-md);
   background:var(--bg);
 }
-.demo-desc p { font-size:.9rem; color:var(--soft); line-height:1.7; margin:0; }
+.demo-desc p { font-size: .9rem; color:var(--soft); line-height:1.7; margin:0; }
 .demo-insight {
   margin-top:.75rem;
-  padding:.75rem 1rem;
+  padding:.8rem 1.1rem;
   background:var(--bg);
-  border:1px solid var(--border);
-  font-size:.9rem;
+  border:1px solid var(--band);
+  border-radius: var(--r-md);
+  font-size: .9rem;
   color:var(--soft);
   line-height:1.65;
 }
-.demo-insight-warn { background:#fefce8; border-color:#fde68a; color:#713f12; font-size:.88rem; }
-.demo-insight-ok   { background:#f0fdf4; border-color:#86efac; color:#14532d; font-size:.88rem; }
+.demo-insight-warn { background:var(--z3bg); border-color:rgba(201,138,0,.3); color:var(--soft); font-size:.9rem; }
+.demo-insight-ok   { background:var(--z2bg); border-color:rgba(14,154,108,.3); color:var(--soft); font-size:.9rem; }
 
 /* ── WINTER LAYERS (lesson 11) ── */
 .layer-row { display: flex; flex-direction: column; gap: .45rem; margin: 1rem 0; }
@@ -221,17 +235,18 @@
   display: flex;
   align-items: center;
   gap: .75rem;
-  padding: .6rem .9rem;
-  border: 1px solid var(--border);
+  padding: .65rem 1rem;
+  border: 1px solid var(--band);
+  border-radius: var(--r-md);
   background: var(--bg);
-  font-size: .85rem;
+  font-size: .9rem;
   transition: all .25s;
 }
 .layer-item.active { background: var(--z1bg); border-color: var(--z1); }
 .layer-item.removed { opacity: .25; text-decoration: line-through; }
-.layer-dot { width: 8px; height: 8px; flex-shrink: 0; }
-.layer-name { font-weight: 700; flex: 1; color: var(--text); }
-.layer-note { font-size: .75rem; color: var(--muted); }
+.layer-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+.layer-name { font-weight: 600; flex: 1; color: var(--text); }
+.layer-note { font-size: .8rem; color: var(--muted); }
 
 /* ── WIDE-SCREEN LESSON LAYOUT ──
    Prose stays at reading width; demos and figures break out wider. */

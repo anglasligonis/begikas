@@ -173,3 +173,30 @@ document.addEventListener('keydown', (e) => {
   if (e.key === 'ArrowRight' && current < TOTAL - 1) goLesson(current + 1);
   if (e.key === 'ArrowLeft' && current > 0) goLesson(current - 1);
 });
+
+// ── MOBILE BOTTOM ACTION BAR ──
+(function () {
+  const prev  = document.getElementById('mbPrev');
+  const next  = document.getElementById('mbNext');
+  const label = document.getElementById('mbLabel');
+  const labelBtn = document.getElementById('mbLabelBtn');
+  if (!prev || !next || !label || !labelBtn) return;
+
+  function updateMobileBar() {
+    label.textContent = (current + 1) + ' / ' + TOTAL;
+    prev.disabled = current === 0;
+    next.disabled = current === TOTAL - 1;
+  }
+
+  prev.addEventListener('click', () => { if (current > 0) goLesson(current - 1); });
+  next.addEventListener('click', () => { if (current < TOTAL - 1) goLesson(current + 1); });
+  labelBtn.addEventListener('click', () => collapseNav());
+
+  const _goLesson = goLesson;
+  goLesson = function (n, pushHistory) {
+    _goLesson(n, pushHistory);
+    updateMobileBar();
+  };
+
+  updateMobileBar();
+})();

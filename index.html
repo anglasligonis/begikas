@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="referrer" content="no-referrer-when-downgrade">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self'; connect-src https://www.google-analytics.com https://analytics.google.com https://stats.g.doubleclick.net;">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src https://www.google-analytics.com https://analytics.google.com https://stats.g.doubleclick.net;">
 <title>Bėgimo Fiziologija — Pradedantiesiems</title>
 <meta name="description" content="Bėgimo fiziologijos kursas pradedantiesiems. 22 pamokos apie bėgimą, treniruotes ir atsigavimą. Nemokamai.">
 <link rel="canonical" href="https://apiebegima.lt/">
@@ -70,12 +70,12 @@
   gtag('js', new Date());
   gtag('config', 'G-3G4SLW2V7C');
 </script>
-<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700&family=JetBrains+Mono:wght@400;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/variables.css?v=3">
-<link rel="stylesheet" href="css/layout.css?v=5">
-<link rel="stylesheet" href="css/components.css?v=6">
-<link rel="stylesheet" href="css/lessons.css?v=4">
-<link rel="stylesheet" href="css/landing.css?v=3">
+<link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@500;600;700&family=Spline+Sans+Mono:wght@400;500;600;700&family=Instrument+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/variables.css?v=4">
+<link rel="stylesheet" href="css/layout.css?v=6">
+<link rel="stylesheet" href="css/components.css?v=7">
+<link rel="stylesheet" href="css/lessons.css?v=5">
+<link rel="stylesheet" href="css/landing.css?v=4">
 </head>
 <body>
 
@@ -235,6 +235,7 @@
         <p>Geriausi bėgikai pasaulyje treniruojasi lėtai — 80% laiko jų pulsas būna žemas. Tai ne atsitiktinumas. Tai fiziologija.</p>
         <p>Šiame kurse sužinosite, kodėl lėtas bėgimas stato aerobinį pagrindą, kaip energija juda raumenyse, ką iš tikrųjų reiškia jūsų pulsas ir kaip kūnas prisitaiko prie krūvio bėgant savaitė po savaitės.</p>
         <p>Jokios magijos. Tik mokslas — papasakotas žmogiškai.</p>
+        <p class="lp-why-quote">„80 procentų treniruočių turėtų jaustis per lengvos. Tai ne silpnumas — tai strategija."<span class="lp-why-quote-src">Polarizuoto treniruočių modelio principas</span></p>
       </div>
     </div>
     <figure class="lp-photo lp-reveal">
@@ -251,15 +252,29 @@
   <div class="lp-section lp-section--surface">
     <p class="lp-eyebrow-sec lp-reveal">Ko išmoksite</p>
     <h2 class="lp-sec-title lp-reveal">22 pamokos. Nuo pulso iki miego.</h2>
-    <div class="lp-topics-grid">
-      <div class="lp-topic-card"><div class="lp-topic-dot" style="background:var(--z1)"></div><div class="lp-topic-name">Treniruočių zonos</div><div class="lp-topic-desc">Kodėl Z2 yra svarbiausia zona ir kaip ją rasti</div></div>
-      <div class="lp-topic-card"><div class="lp-topic-dot" style="background:var(--z2)"></div><div class="lp-topic-name">Širdis ir energija</div><div class="lp-topic-desc">Kaip kuras patenka į raumenis ir kodėl tai svarbu</div></div>
-      <div class="lp-topic-card"><div class="lp-topic-dot" style="background:var(--z4)"></div><div class="lp-topic-name">Laktatas</div><div class="lp-topic-desc">Kas tai iš tikrųjų yra ir kada jis pasirodo</div></div>
-      <div class="lp-topic-card"><div class="lp-topic-dot" style="background:var(--z2)"></div><div class="lp-topic-name">Kvėpavimas</div><div class="lp-topic-desc">Kodėl bėgti nosimi — ne keistenybė, o technika</div></div>
-      <div class="lp-topic-card"><div class="lp-topic-dot" style="background:var(--z3)"></div><div class="lp-topic-name">Bėgimo technika</div><div class="lp-topic-desc">Kas keičiasi žingsnyje, kai kūnas pavargsta</div></div>
-      <div class="lp-topic-card"><div class="lp-topic-dot" style="background:var(--z1)"></div><div class="lp-topic-name">Atsigavimas ir miegas</div><div class="lp-topic-desc">Adaptacija vyksta po bėgimo, ne per jį</div></div>
-      <div class="lp-topic-card"><div class="lp-topic-dot" style="background:var(--z5)"></div><div class="lp-topic-name">VO₂max</div><div class="lp-topic-desc">Ką ši vertė reiškia ir ar tikrai verta jos siekti</div></div>
-      <div class="lp-topic-card"><div class="lp-topic-dot" style="background:var(--z2)"></div><div class="lp-topic-name">Mityba</div><div class="lp-topic-desc">Kaip valgyti, kad kūnas turėtų degalų ilgam</div></div>
+    <div class="lp-course-map" id="lpLessonTrack">
+      <div class="lp-lcard" data-start-lesson="0"><div class="lp-l-dot" style="background:var(--z1)"></div><div class="lp-l-num">01</div><div class="lp-l-title">Kodėl bėgame lėtai?</div></div>
+      <div class="lp-lcard" data-start-lesson="1"><div class="lp-l-dot" style="background:var(--z2)"></div><div class="lp-l-num">02</div><div class="lp-l-title">Širdis ir pulsas</div></div>
+      <div class="lp-lcard" data-start-lesson="2"><div class="lp-l-dot" style="background:var(--z3)"></div><div class="lp-l-num">03</div><div class="lp-l-title">Energija ir kuras</div></div>
+      <div class="lp-lcard" data-start-lesson="3"><div class="lp-l-dot" style="background:var(--z4)"></div><div class="lp-l-num">04</div><div class="lp-l-title">Laktatas</div></div>
+      <div class="lp-lcard" data-start-lesson="4"><div class="lp-l-dot" style="background:var(--z2)"></div><div class="lp-l-num">05</div><div class="lp-l-title">Kvėpavimas</div></div>
+      <div class="lp-lcard" data-start-lesson="5"><div class="lp-l-dot" style="background:var(--z3)"></div><div class="lp-l-num">06</div><div class="lp-l-title">Karštis ir hidratacija</div></div>
+      <div class="lp-lcard" data-start-lesson="6"><div class="lp-l-dot" style="background:var(--z1)"></div><div class="lp-l-num">07</div><div class="lp-l-title">Bėgimo technika</div></div>
+      <div class="lp-lcard" data-start-lesson="7"><div class="lp-l-dot" style="background:var(--z4)"></div><div class="lp-l-num">08</div><div class="lp-l-title">Kaip tobulėti?</div></div>
+      <div class="lp-lcard" data-start-lesson="8"><div class="lp-l-dot" style="background:var(--z3)"></div><div class="lp-l-num">09</div><div class="lp-l-title">Treniruočių sistemos</div></div>
+      <div class="lp-lcard" data-start-lesson="9"><div class="lp-l-dot" style="background:var(--z4)"></div><div class="lp-l-num">10</div><div class="lp-l-title">Jėgos treniruotės</div></div>
+      <div class="lp-lcard" data-start-lesson="10"><div class="lp-l-dot" style="background:var(--z2)"></div><div class="lp-l-num">11</div><div class="lp-l-title">Žiemos bėgimas</div></div>
+      <div class="lp-lcard" data-start-lesson="11"><div class="lp-l-dot" style="background:var(--z5)"></div><div class="lp-l-num">12</div><div class="lp-l-title">Pirmos varžybos</div></div>
+      <div class="lp-lcard" data-start-lesson="12"><div class="lp-l-dot" style="background:var(--z5)"></div><div class="lp-l-num">13</div><div class="lp-l-title">VO₂max</div></div>
+      <div class="lp-lcard" data-start-lesson="13"><div class="lp-l-dot" style="background:var(--z3)"></div><div class="lp-l-num">14</div><div class="lp-l-title">Bėgimo ekonomija</div></div>
+      <div class="lp-lcard" data-start-lesson="14"><div class="lp-l-dot" style="background:var(--z4)"></div><div class="lp-l-num">15</div><div class="lp-l-title">Nuovargis</div></div>
+      <div class="lp-lcard" data-start-lesson="15"><div class="lp-l-dot" style="background:var(--z4)"></div><div class="lp-l-num">16</div><div class="lp-l-title">Tempo paskirstymas</div></div>
+      <div class="lp-lcard" data-start-lesson="16"><div class="lp-l-dot" style="background:var(--z3)"></div><div class="lp-l-num">17</div><div class="lp-l-title">Krūvio valdymas</div></div>
+      <div class="lp-lcard" data-start-lesson="17"><div class="lp-l-dot" style="background:var(--z4)"></div><div class="lp-l-num">18</div><div class="lp-l-title">Skausmas ar trauma</div></div>
+      <div class="lp-lcard" data-start-lesson="18"><div class="lp-l-dot" style="background:var(--z2)"></div><div class="lp-l-num">19</div><div class="lp-l-title">Motyvacija ir pastovumas</div></div>
+      <div class="lp-lcard" data-start-lesson="19"><div class="lp-l-dot" style="background:var(--z2)"></div><div class="lp-l-num">20</div><div class="lp-l-title">Bėgimo laikrodžiai</div></div>
+      <div class="lp-lcard" data-start-lesson="20"><div class="lp-l-dot" style="background:var(--z1)"></div><div class="lp-l-num">21</div><div class="lp-l-title">Miegas ir atsigavimas</div></div>
+      <div class="lp-lcard" data-start-lesson="21"><div class="lp-l-dot" style="background:var(--z2)"></div><div class="lp-l-num">22</div><div class="lp-l-title">Kasdienė mityba</div></div>
     </div>
   </div>
 
@@ -286,25 +301,6 @@
     </div>
   </div>
 
-  <!-- PULL QUOTE -->
-  <div class="lp-section lp-section--surface lp-quote-section" style="text-align:center;">
-    <figure class="lp-quote-photo lp-reveal">
-      <picture>
-        <source type="image/avif" srcset="images/opt/jeremy-lapak-cvvfvq-480.avif 480w, images/opt/jeremy-lapak-cvvfvq-800.avif 800w, images/opt/jeremy-lapak-cvvfvq-1200.avif 1200w" sizes="(max-width: 820px) 100vw, 360px">
-        <source type="image/webp" srcset="images/opt/jeremy-lapak-cvvfvq-480.webp 480w, images/opt/jeremy-lapak-cvvfvq-800.webp 800w, images/opt/jeremy-lapak-cvvfvq-1200.webp 1200w" sizes="(max-width: 820px) 100vw, 360px">
-        <img src="images/opt/jeremy-lapak-cvvfvq-800.jpg" srcset="images/opt/jeremy-lapak-cvvfvq-480.jpg 480w, images/opt/jeremy-lapak-cvvfvq-800.jpg 800w, images/opt/jeremy-lapak-cvvfvq-1200.jpg 1200w" sizes="(max-width: 820px) 100vw, 360px" width="800" height="1065" loading="lazy" decoding="async" alt="Bėgikas atviroje kalvoje">
-      </picture>
-    </figure>
-    <blockquote class="lp-quote-inner lp-reveal">
-      <div class="lp-quote-lines">
-        <span class="lp-quote-dash"></span>
-        <span class="lp-quote-mark">Sporto mokslas</span>
-        <span class="lp-quote-dash"></span>
-      </div>
-      <p class="lp-quote-text">„80 procentų treniruočių turėtų jaustis per lengvos. Tai ne silpnumas — tai strategija."</p>
-      <footer class="lp-quote-src">Polarizuoto treniruočių modelio principas</footer>
-    </blockquote>
-  </div>
 
   <!-- ZONE CHART -->
   <div class="lp-section">
@@ -338,13 +334,6 @@
         <div class="lp-zr-meta">&lt;130 bpm<br>40–45 %</div>
       </div>
     </div>
-    <figure class="lp-zone-photo lp-reveal">
-      <picture>
-        <source type="image/avif" srcset="images/opt/track-480.avif 480w, images/opt/track-800.avif 800w, images/opt/track-1200.avif 1200w" sizes="(max-width: 820px) 1px, 30vw">
-        <source type="image/webp" srcset="images/opt/track-480.webp 480w, images/opt/track-800.webp 800w, images/opt/track-1200.webp 1200w" sizes="(max-width: 820px) 1px, 30vw">
-        <img src="images/opt/track-800.jpg" srcset="images/opt/track-480.jpg 480w, images/opt/track-800.jpg 800w, images/opt/track-1200.jpg 1200w" sizes="(max-width: 820px) 1px, 30vw" width="800" height="1200" loading="lazy" decoding="async" alt="Bėgimo takelio juostos iš viršaus">
-      </picture>
-    </figure>
     </div>
   </div>
 
@@ -364,37 +353,6 @@
     </div>
   </div>
 
-  <!-- LESSON STRIP -->
-  <div class="lp-lesson-strip">
-    <div class="lp-strip-head">
-      <span class="lp-strip-lbl">Viso kurso pamokos</span>
-      <span class="lp-strip-hint">← slinkti →</span>
-    </div>
-    <div class="lp-lesson-track" id="lpLessonTrack">
-      <div class="lp-lcard" data-start-lesson="0"><div class="lp-l-dot" style="background:var(--z1)"></div><div class="lp-l-num">01</div><div class="lp-l-title">Kodėl bėgame lėtai?</div></div>
-      <div class="lp-lcard" data-start-lesson="1"><div class="lp-l-dot" style="background:var(--z2)"></div><div class="lp-l-num">02</div><div class="lp-l-title">Širdis ir pulsas</div></div>
-      <div class="lp-lcard" data-start-lesson="2"><div class="lp-l-dot" style="background:var(--z3)"></div><div class="lp-l-num">03</div><div class="lp-l-title">Energija ir kuras</div></div>
-      <div class="lp-lcard" data-start-lesson="3"><div class="lp-l-dot" style="background:var(--z4)"></div><div class="lp-l-num">04</div><div class="lp-l-title">Laktatas</div></div>
-      <div class="lp-lcard" data-start-lesson="4"><div class="lp-l-dot" style="background:var(--z2)"></div><div class="lp-l-num">05</div><div class="lp-l-title">Kvėpavimas</div></div>
-      <div class="lp-lcard" data-start-lesson="5"><div class="lp-l-dot" style="background:var(--z3)"></div><div class="lp-l-num">06</div><div class="lp-l-title">Karštis ir hidratacija</div></div>
-      <div class="lp-lcard" data-start-lesson="6"><div class="lp-l-dot" style="background:var(--z1)"></div><div class="lp-l-num">07</div><div class="lp-l-title">Bėgimo technika</div></div>
-      <div class="lp-lcard" data-start-lesson="7"><div class="lp-l-dot" style="background:var(--z4)"></div><div class="lp-l-num">08</div><div class="lp-l-title">Kaip tobulėti?</div></div>
-      <div class="lp-lcard" data-start-lesson="8"><div class="lp-l-dot" style="background:var(--z3)"></div><div class="lp-l-num">09</div><div class="lp-l-title">Treniruočių sistemos</div></div>
-      <div class="lp-lcard" data-start-lesson="9"><div class="lp-l-dot" style="background:var(--z4)"></div><div class="lp-l-num">10</div><div class="lp-l-title">Jėgos treniruotės</div></div>
-      <div class="lp-lcard" data-start-lesson="10"><div class="lp-l-dot" style="background:var(--z2)"></div><div class="lp-l-num">11</div><div class="lp-l-title">Žiemos bėgimas</div></div>
-      <div class="lp-lcard" data-start-lesson="11"><div class="lp-l-dot" style="background:var(--z5)"></div><div class="lp-l-num">12</div><div class="lp-l-title">Pirmos varžybos</div></div>
-      <div class="lp-lcard" data-start-lesson="12"><div class="lp-l-dot" style="background:var(--z5)"></div><div class="lp-l-num">13</div><div class="lp-l-title">VO₂max</div></div>
-      <div class="lp-lcard" data-start-lesson="13"><div class="lp-l-dot" style="background:var(--z3)"></div><div class="lp-l-num">14</div><div class="lp-l-title">Bėgimo ekonomija</div></div>
-      <div class="lp-lcard" data-start-lesson="14"><div class="lp-l-dot" style="background:var(--z4)"></div><div class="lp-l-num">15</div><div class="lp-l-title">Nuovargis</div></div>
-      <div class="lp-lcard" data-start-lesson="15"><div class="lp-l-dot" style="background:var(--z4)"></div><div class="lp-l-num">16</div><div class="lp-l-title">Tempo paskirstymas</div></div>
-      <div class="lp-lcard" data-start-lesson="16"><div class="lp-l-dot" style="background:var(--z3)"></div><div class="lp-l-num">17</div><div class="lp-l-title">Krūvio valdymas</div></div>
-      <div class="lp-lcard" data-start-lesson="17"><div class="lp-l-dot" style="background:var(--z4)"></div><div class="lp-l-num">18</div><div class="lp-l-title">Skausmas ar trauma</div></div>
-      <div class="lp-lcard" data-start-lesson="18"><div class="lp-l-dot" style="background:var(--z2)"></div><div class="lp-l-num">19</div><div class="lp-l-title">Motyvacija ir pastovumas</div></div>
-      <div class="lp-lcard" data-start-lesson="19"><div class="lp-l-dot" style="background:var(--z2)"></div><div class="lp-l-num">20</div><div class="lp-l-title">Bėgimo laikrodžiai</div></div>
-      <div class="lp-lcard" data-start-lesson="20"><div class="lp-l-dot" style="background:var(--z1)"></div><div class="lp-l-num">21</div><div class="lp-l-title">Miegas ir atsigavimas</div></div>
-      <div class="lp-lcard" data-start-lesson="21"><div class="lp-l-dot" style="background:var(--z2)"></div><div class="lp-l-num">22</div><div class="lp-l-title">Kasdienė mityba</div></div>
-    </div>
-  </div>
 
 </section>
 
@@ -471,20 +429,20 @@
         <svg viewBox="0 0 100 200" style="width:100%;height:auto">
           <!-- Simple leg with muscle groups -->
           <rect x="30" y="10" width="40" height="80" rx="12" fill="#f1f5f9" stroke="#e5e7eb" stroke-width="1.5" id="quad-fill"/>
-          <text x="50" y="40" text-anchor="middle" font-size="7" fill="#9ca3af" font-family="Inter,sans-serif">Keturgalvis</text>
-          <text x="50" y="52" text-anchor="middle" font-size="6" fill="#9ca3af" font-family="Inter,sans-serif">(šlaunis)</text>
+          <text x="50" y="40" text-anchor="middle" font-size="7" fill="#9ca3af" font-family="Instrument Sans,sans-serif">Keturgalvis</text>
+          <text x="50" y="52" text-anchor="middle" font-size="6" fill="#9ca3af" font-family="Instrument Sans,sans-serif">(šlaunis)</text>
           <rect x="33" y="98" width="34" height="70" rx="10" fill="#f1f5f9" stroke="#e5e7eb" stroke-width="1.5" id="calf-fill"/>
-          <text x="50" y="128" text-anchor="middle" font-size="7" fill="#9ca3af" font-family="Inter,sans-serif">Blauzda</text>
+          <text x="50" y="128" text-anchor="middle" font-size="7" fill="#9ca3af" font-family="Instrument Sans,sans-serif">Blauzda</text>
           <circle cx="50" cy="93" r="9" fill="#f1f5f9" stroke="#e5e7eb" stroke-width="1.5"/>
-          <text x="50" y="96" text-anchor="middle" font-size="6" fill="#9ca3af" font-family="Inter,sans-serif">kelys</text>
+          <text x="50" y="96" text-anchor="middle" font-size="6" fill="#9ca3af" font-family="Instrument Sans,sans-serif">kelys</text>
           <!-- fiber type bars -->
-          <text x="10" y="175" text-anchor="middle" font-size="5.5" fill="#9ca3af" font-family="Inter,sans-serif">I tipas</text>
+          <text x="10" y="175" text-anchor="middle" font-size="5.5" fill="#9ca3af" font-family="Instrument Sans,sans-serif">I tipas</text>
           <rect x="2" y="178" width="16" height="8" rx="2" fill="#e5e7eb"/>
           <rect x="2" y="178" width="16" height="8" rx="2" fill="var(--z2)" id="fib1-bar"/>
-          <text x="50" y="175" text-anchor="middle" font-size="5.5" fill="#9ca3af" font-family="Inter,sans-serif">IIa tipas</text>
+          <text x="50" y="175" text-anchor="middle" font-size="5.5" fill="#9ca3af" font-family="Instrument Sans,sans-serif">IIa tipas</text>
           <rect x="40" y="178" width="20" height="8" rx="2" fill="#e5e7eb"/>
           <rect x="40" y="178" width="0" height="8" rx="2" fill="var(--z3)" id="fib2a-bar" style="transition:width .5s"/>
-          <text x="88" y="175" text-anchor="middle" font-size="5.5" fill="#9ca3af" font-family="Inter,sans-serif">IIx tipas</text>
+          <text x="88" y="175" text-anchor="middle" font-size="5.5" fill="#9ca3af" font-family="Instrument Sans,sans-serif">IIx tipas</text>
           <rect x="80" y="178" width="16" height="8" rx="2" fill="#e5e7eb"/>
           <rect x="80" y="178" width="0" height="8" rx="2" fill="var(--z4)" id="fib2x-bar" style="transition:width .5s"/>
         </svg>
@@ -655,7 +613,7 @@
         <span id="s3-gly-pct" style="font-size:.82rem;font-weight:600">100%</span>
       </div>
       <div class="fuel-tank">
-        <div class="fuel-fill" id="s3-gly-fill" style="width:100%;background:#3b82f6"></div>
+        <div class="fuel-fill" id="s3-gly-fill" style="width:100%;background:#3672E0"></div>
         <div class="fuel-label" id="s3-gly-label">Pilnas</div>
       </div>
       <div style="display:flex;justify-content:space-between;align-items:center;margin-top:.85rem;margin-bottom:.3rem">
@@ -670,7 +628,7 @@
 
     <div class="metric-row">
       <div class="metric-card"><div class="mv" id="s3-fatpct" style="color:#f59e0b">60%</div><div class="ml">Riebalai (% kuro)</div></div>
-      <div class="metric-card"><div class="mv" id="s3-carpct" style="color:#3b82f6">40%</div><div class="ml">Glikogenas (% kuro)</div></div>
+      <div class="metric-card"><div class="mv" id="s3-carpct" style="color:#3672E0">40%</div><div class="ml">Glikogenas (% kuro)</div></div>
       <div class="metric-card"><div class="mv" id="s3-wall">—</div><div class="ml">„Siena" po (min)</div></div>
     </div>
 
@@ -818,12 +776,12 @@
           <path d="M60 20 L60 45" stroke="#60a5fa" stroke-width="2.5" stroke-linecap="round"/>
           <path d="M60 42 Q48 48 40 52" stroke="#60a5fa" stroke-width="1.8" fill="none" stroke-linecap="round"/>
           <path d="M60 42 Q72 48 80 52" stroke="#60a5fa" stroke-width="1.8" fill="none" stroke-linecap="round"/>
-          <text x="60" y="95" text-anchor="middle" font-size="7" fill="#6b7280" font-family="Inter,sans-serif" id="lung-vol-label">~0.5 L / įkvėpimas</text>
+          <text x="60" y="95" text-anchor="middle" font-size="7" fill="#6b7280" font-family="Instrument Sans,sans-serif" id="lung-vol-label">~0.5 L / įkvėpimas</text>
         </svg>
       </div>
       <div style="flex:1;min-width:180px">
         <div class="metric-row" style="margin-top:0">
-          <div class="metric-card"><div class="mv" id="s5-rr" style="color:#3b82f6">15</div><div class="ml">Įkvėp./min</div></div>
+          <div class="metric-card"><div class="mv" id="s5-rr" style="color:#3672E0">15</div><div class="ml">Įkvėp./min</div></div>
           <div class="metric-card"><div class="mv" id="s5-tv">0.5 L</div><div class="ml">Oro tūris</div></div>
           <div class="metric-card"><div class="mv" id="s5-route" style="color:var(--z2)">Nosis</div><div class="ml">Kelias</div></div>
         </div>
@@ -887,7 +845,7 @@
     </div>
 
     <div class="metric-row">
-      <div class="metric-card"><div class="mv" id="s6-core" style="color:#3b82f6">38.2°C</div><div class="ml">Kūno temp.</div></div>
+      <div class="metric-card"><div class="mv" id="s6-core" style="color:#3672E0">38.2°C</div><div class="ml">Kūno temp.</div></div>
       <div class="metric-card"><div class="mv" id="s6-sweat">0.6 L</div><div class="ml">Prakaitas/val</div></div>
       <div class="metric-card"><div class="mv" id="s6-pace-hit" style="color:var(--z2)">–0%</div><div class="ml">Greičio sumažėjimas</div></div>
       <div class="metric-card"><div class="mv" id="s6-drink">150 ml</div><div class="ml">Rekomenduojama kas 15 min</div></div>
@@ -1583,7 +1541,7 @@
       <div class="demo-range-labels"><span>Pradedantysis</span><span>Vidutinis</span><span>Treniruotas</span></div>
     </div>
     <div class="metric-row">
-      <div class="metric-card"><div class="mv" id="s12-vo2a" style="color:#3b82f6">52</div><div class="ml">A bėgikas VO₂max</div></div>
+      <div class="metric-card"><div class="mv" id="s12-vo2a" style="color:#3672E0">52</div><div class="ml">A bėgikas VO₂max</div></div>
       <div class="metric-card"><div class="mv" id="s12-eco" style="color:var(--z2)">Vidutinė</div><div class="ml">Ekonomija (A)</div></div>
       <div class="metric-card"><div class="mv" id="s12-10k" style="color:var(--text)">52:00</div><div class="ml">10K rezultatas (A)</div></div>
     </div>
@@ -1808,7 +1766,7 @@
     </div>
     <div class="metric-row">
       <div class="metric-card"><div class="mv" id="s15-even" style="color:var(--z2)">55:00</div><div class="ml">Tolygus splitas</div></div>
-      <div class="metric-card"><div class="mv" id="s15-neg" style="color:#3b82f6">54:10</div><div class="ml">Neigiamas splitas</div></div>
+      <div class="metric-card"><div class="mv" id="s15-neg" style="color:#3672E0">54:10</div><div class="ml">Neigiamas splitas</div></div>
       <div class="metric-card"><div class="mv" id="s15-pos" style="color:var(--z4)">57:30</div><div class="ml">Teigiamas splitas</div></div>
     </div>
     <div class="demo-insight" id="s15-insight"></div>
@@ -2394,11 +2352,18 @@
 
 </main>
 
+<!-- MOBILE BOTTOM ACTION BAR -->
+<nav class="mobile-bar" aria-label="Pamokų navigacija">
+  <button class="mb-btn" id="mbPrev" aria-label="Ankstesnė pamoka">←</button>
+  <button class="mb-label" id="mbLabelBtn">Pamoka&nbsp;<span id="mbLabel">1 / 22</span></button>
+  <button class="mb-btn" id="mbNext" aria-label="Kita pamoka">→</button>
+</nav>
 
-<script defer src="js/nav.js?v=5"></script>
+
+<script defer src="js/nav.js?v=6"></script>
 <script defer src="js/quiz.js?v=2"></script>
 <script defer src="js/glossary.js?v=2"></script>
-<script defer src="js/demos.js?v=2"></script>
+<script defer src="js/demos.js?v=3"></script>
 <script defer src="js/landing.js?v=4"></script>
 </body>
 </html>

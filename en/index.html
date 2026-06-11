@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="referrer" content="no-referrer-when-downgrade">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self'; connect-src https://www.google-analytics.com https://analytics.google.com https://stats.g.doubleclick.net;">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src https://www.google-analytics.com https://analytics.google.com https://stats.g.doubleclick.net;">
 <title>Running Physiology — For Beginners</title>
 <meta name="description" content="A running physiology course for beginners. 22 lessons on running, training and recovery. Free.">
 <link rel="canonical" href="https://apiebegima.lt/en/">
@@ -70,12 +70,12 @@
   gtag('js', new Date());
   gtag('config', 'G-3G4SLW2V7C');
 </script>
-<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700&family=JetBrains+Mono:wght@400;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../css/variables.css?v=3">
-<link rel="stylesheet" href="../css/layout.css?v=5">
-<link rel="stylesheet" href="../css/components.css?v=6">
-<link rel="stylesheet" href="../css/lessons.css?v=4">
-<link rel="stylesheet" href="../css/landing.css?v=3">
+<link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@500;600;700&family=Spline+Sans+Mono:wght@400;500;600;700&family=Instrument+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/variables.css?v=4">
+<link rel="stylesheet" href="../css/layout.css?v=6">
+<link rel="stylesheet" href="../css/components.css?v=7">
+<link rel="stylesheet" href="../css/lessons.css?v=5">
+<link rel="stylesheet" href="../css/landing.css?v=4">
 </head>
 <body>
 
@@ -235,6 +235,7 @@
         <p>The world's best runners train slowly — 80&nbsp;% of the time their heart rate is low. That's not a coincidence. It's physiology.</p>
         <p>In this course you'll learn why slow running builds the aerobic foundation, how energy moves through your muscles, what your heart rate really means, and how your body adapts week after week.</p>
         <p>No magic. Just science — explained like a human being.</p>
+        <p class="lp-why-quote">"80 percent of your training should feel too easy. That's not weakness — that's strategy."<span class="lp-why-quote-src">Principle of the polarised training model</span></p>
       </div>
     </div>
     <figure class="lp-photo lp-reveal">
@@ -251,15 +252,29 @@
   <div class="lp-section lp-section--surface">
     <p class="lp-eyebrow-sec lp-reveal">What you'll learn</p>
     <h2 class="lp-sec-title lp-reveal">22 lessons. From heart rate to sleep.</h2>
-    <div class="lp-topics-grid">
-      <div class="lp-topic-card"><div class="lp-topic-dot" style="background:var(--z1)"></div><div class="lp-topic-name">Training zones</div><div class="lp-topic-desc">Why Z2 is the most important zone and how to find it</div></div>
-      <div class="lp-topic-card"><div class="lp-topic-dot" style="background:var(--z2)"></div><div class="lp-topic-name">Heart &amp; energy</div><div class="lp-topic-desc">How fuel reaches your muscles and why it matters</div></div>
-      <div class="lp-topic-card"><div class="lp-topic-dot" style="background:var(--z4)"></div><div class="lp-topic-name">Lactate</div><div class="lp-topic-desc">What it actually is and when it shows up</div></div>
-      <div class="lp-topic-card"><div class="lp-topic-dot" style="background:var(--z2)"></div><div class="lp-topic-name">Breathing</div><div class="lp-topic-desc">Why nose breathing isn't weird — it's technique</div></div>
-      <div class="lp-topic-card"><div class="lp-topic-dot" style="background:var(--z3)"></div><div class="lp-topic-name">Running form</div><div class="lp-topic-desc">What changes in your stride when fatigue sets in</div></div>
-      <div class="lp-topic-card"><div class="lp-topic-dot" style="background:var(--z1)"></div><div class="lp-topic-name">Recovery &amp; sleep</div><div class="lp-topic-desc">Adaptation happens after the run, not during it</div></div>
-      <div class="lp-topic-card"><div class="lp-topic-dot" style="background:var(--z5)"></div><div class="lp-topic-name">VO₂max</div><div class="lp-topic-desc">What this number means and whether it's worth chasing</div></div>
-      <div class="lp-topic-card"><div class="lp-topic-dot" style="background:var(--z2)"></div><div class="lp-topic-name">Nutrition</div><div class="lp-topic-desc">How to eat so your body has fuel for the long run</div></div>
+    <div class="lp-course-map" id="lpLessonTrack">
+      <div class="lp-lcard" data-start-lesson="0"><div class="lp-l-dot" style="background:var(--z1)"></div><div class="lp-l-num">01</div><div class="lp-l-title">Why run slowly?</div></div>
+      <div class="lp-lcard" data-start-lesson="1"><div class="lp-l-dot" style="background:var(--z2)"></div><div class="lp-l-num">02</div><div class="lp-l-title">Heart &amp; pulse</div></div>
+      <div class="lp-lcard" data-start-lesson="2"><div class="lp-l-dot" style="background:var(--z3)"></div><div class="lp-l-num">03</div><div class="lp-l-title">Energy &amp; fuel</div></div>
+      <div class="lp-lcard" data-start-lesson="3"><div class="lp-l-dot" style="background:var(--z4)"></div><div class="lp-l-num">04</div><div class="lp-l-title">Lactate</div></div>
+      <div class="lp-lcard" data-start-lesson="4"><div class="lp-l-dot" style="background:var(--z2)"></div><div class="lp-l-num">05</div><div class="lp-l-title">Breathing</div></div>
+      <div class="lp-lcard" data-start-lesson="5"><div class="lp-l-dot" style="background:var(--z3)"></div><div class="lp-l-num">06</div><div class="lp-l-title">Heat &amp; hydration</div></div>
+      <div class="lp-lcard" data-start-lesson="6"><div class="lp-l-dot" style="background:var(--z1)"></div><div class="lp-l-num">07</div><div class="lp-l-title">Running form</div></div>
+      <div class="lp-lcard" data-start-lesson="7"><div class="lp-l-dot" style="background:var(--z4)"></div><div class="lp-l-num">08</div><div class="lp-l-title">How to improve?</div></div>
+      <div class="lp-lcard" data-start-lesson="8"><div class="lp-l-dot" style="background:var(--z3)"></div><div class="lp-l-num">09</div><div class="lp-l-title">Methodologies</div></div>
+      <div class="lp-lcard" data-start-lesson="9"><div class="lp-l-dot" style="background:var(--z4)"></div><div class="lp-l-num">10</div><div class="lp-l-title">Strength training</div></div>
+      <div class="lp-lcard" data-start-lesson="10"><div class="lp-l-dot" style="background:var(--z2)"></div><div class="lp-l-num">11</div><div class="lp-l-title">Winter running</div></div>
+      <div class="lp-lcard" data-start-lesson="11"><div class="lp-l-dot" style="background:var(--z5)"></div><div class="lp-l-num">12</div><div class="lp-l-title">First race</div></div>
+      <div class="lp-lcard" data-start-lesson="12"><div class="lp-l-dot" style="background:var(--z5)"></div><div class="lp-l-num">13</div><div class="lp-l-title">VO₂max</div></div>
+      <div class="lp-lcard" data-start-lesson="13"><div class="lp-l-dot" style="background:var(--z3)"></div><div class="lp-l-num">14</div><div class="lp-l-title">Running economy</div></div>
+      <div class="lp-lcard" data-start-lesson="14"><div class="lp-l-dot" style="background:var(--z4)"></div><div class="lp-l-num">15</div><div class="lp-l-title">Fatigue</div></div>
+      <div class="lp-lcard" data-start-lesson="15"><div class="lp-l-dot" style="background:var(--z4)"></div><div class="lp-l-num">16</div><div class="lp-l-title">Pace distribution</div></div>
+      <div class="lp-lcard" data-start-lesson="16"><div class="lp-l-dot" style="background:var(--z3)"></div><div class="lp-l-num">17</div><div class="lp-l-title">Load management</div></div>
+      <div class="lp-lcard" data-start-lesson="17"><div class="lp-l-dot" style="background:var(--z4)"></div><div class="lp-l-num">18</div><div class="lp-l-title">Pain or injury</div></div>
+      <div class="lp-lcard" data-start-lesson="18"><div class="lp-l-dot" style="background:var(--z2)"></div><div class="lp-l-num">19</div><div class="lp-l-title">Motivation &amp; consistency</div></div>
+      <div class="lp-lcard" data-start-lesson="19"><div class="lp-l-dot" style="background:var(--z2)"></div><div class="lp-l-num">20</div><div class="lp-l-title">Running watches</div></div>
+      <div class="lp-lcard" data-start-lesson="20"><div class="lp-l-dot" style="background:var(--z1)"></div><div class="lp-l-num">21</div><div class="lp-l-title">Sleep &amp; recovery</div></div>
+      <div class="lp-lcard" data-start-lesson="21"><div class="lp-l-dot" style="background:var(--z2)"></div><div class="lp-l-num">22</div><div class="lp-l-title">Daily nutrition</div></div>
     </div>
   </div>
 
@@ -286,25 +301,6 @@
     </div>
   </div>
 
-  <!-- PULL QUOTE -->
-  <div class="lp-section lp-section--surface lp-quote-section" style="text-align:center;">
-    <figure class="lp-quote-photo lp-reveal">
-      <picture>
-        <source type="image/avif" srcset="../images/opt/jeremy-lapak-cvvfvq-480.avif 480w, ../images/opt/jeremy-lapak-cvvfvq-800.avif 800w, ../images/opt/jeremy-lapak-cvvfvq-1200.avif 1200w" sizes="(max-width: 820px) 100vw, 360px">
-        <source type="image/webp" srcset="../images/opt/jeremy-lapak-cvvfvq-480.webp 480w, ../images/opt/jeremy-lapak-cvvfvq-800.webp 800w, ../images/opt/jeremy-lapak-cvvfvq-1200.webp 1200w" sizes="(max-width: 820px) 100vw, 360px">
-        <img src="../images/opt/jeremy-lapak-cvvfvq-800.jpg" srcset="../images/opt/jeremy-lapak-cvvfvq-480.jpg 480w, ../images/opt/jeremy-lapak-cvvfvq-800.jpg 800w, ../images/opt/jeremy-lapak-cvvfvq-1200.jpg 1200w" sizes="(max-width: 820px) 100vw, 360px" width="800" height="1065" loading="lazy" decoding="async" alt="Runner on an open hill">
-      </picture>
-    </figure>
-    <blockquote class="lp-quote-inner lp-reveal">
-      <div class="lp-quote-lines">
-        <span class="lp-quote-dash"></span>
-        <span class="lp-quote-mark">Sports science</span>
-        <span class="lp-quote-dash"></span>
-      </div>
-      <p class="lp-quote-text">"80 percent of your training should feel too easy. That's not weakness — that's strategy."</p>
-      <footer class="lp-quote-src">Principle of the polarised training model</footer>
-    </blockquote>
-  </div>
 
   <!-- ZONE CHART -->
   <div class="lp-section">
@@ -338,13 +334,6 @@
         <div class="lp-zr-meta">&lt;130 bpm<br>40–45 %</div>
       </div>
     </div>
-    <figure class="lp-zone-photo lp-reveal">
-      <picture>
-        <source type="image/avif" srcset="../images/opt/track-480.avif 480w, ../images/opt/track-800.avif 800w, ../images/opt/track-1200.avif 1200w" sizes="(max-width: 820px) 1px, 30vw">
-        <source type="image/webp" srcset="../images/opt/track-480.webp 480w, ../images/opt/track-800.webp 800w, ../images/opt/track-1200.webp 1200w" sizes="(max-width: 820px) 1px, 30vw">
-        <img src="../images/opt/track-800.jpg" srcset="../images/opt/track-480.jpg 480w, ../images/opt/track-800.jpg 800w, ../images/opt/track-1200.jpg 1200w" sizes="(max-width: 820px) 1px, 30vw" width="800" height="1200" loading="lazy" decoding="async" alt="Running track lanes from above">
-      </picture>
-    </figure>
     </div>
   </div>
 
@@ -364,37 +353,6 @@
     </div>
   </div>
 
-  <!-- LESSON STRIP -->
-  <div class="lp-lesson-strip">
-    <div class="lp-strip-head">
-      <span class="lp-strip-lbl">All course lessons</span>
-      <span class="lp-strip-hint">← scroll →</span>
-    </div>
-    <div class="lp-lesson-track" id="lpLessonTrack">
-      <div class="lp-lcard" data-start-lesson="0"><div class="lp-l-dot" style="background:var(--z1)"></div><div class="lp-l-num">01</div><div class="lp-l-title">Why run slowly?</div></div>
-      <div class="lp-lcard" data-start-lesson="1"><div class="lp-l-dot" style="background:var(--z2)"></div><div class="lp-l-num">02</div><div class="lp-l-title">Heart &amp; pulse</div></div>
-      <div class="lp-lcard" data-start-lesson="2"><div class="lp-l-dot" style="background:var(--z3)"></div><div class="lp-l-num">03</div><div class="lp-l-title">Energy &amp; fuel</div></div>
-      <div class="lp-lcard" data-start-lesson="3"><div class="lp-l-dot" style="background:var(--z4)"></div><div class="lp-l-num">04</div><div class="lp-l-title">Lactate</div></div>
-      <div class="lp-lcard" data-start-lesson="4"><div class="lp-l-dot" style="background:var(--z2)"></div><div class="lp-l-num">05</div><div class="lp-l-title">Breathing</div></div>
-      <div class="lp-lcard" data-start-lesson="5"><div class="lp-l-dot" style="background:var(--z3)"></div><div class="lp-l-num">06</div><div class="lp-l-title">Heat &amp; hydration</div></div>
-      <div class="lp-lcard" data-start-lesson="6"><div class="lp-l-dot" style="background:var(--z1)"></div><div class="lp-l-num">07</div><div class="lp-l-title">Running form</div></div>
-      <div class="lp-lcard" data-start-lesson="7"><div class="lp-l-dot" style="background:var(--z4)"></div><div class="lp-l-num">08</div><div class="lp-l-title">How to improve?</div></div>
-      <div class="lp-lcard" data-start-lesson="8"><div class="lp-l-dot" style="background:var(--z3)"></div><div class="lp-l-num">09</div><div class="lp-l-title">Methodologies</div></div>
-      <div class="lp-lcard" data-start-lesson="9"><div class="lp-l-dot" style="background:var(--z4)"></div><div class="lp-l-num">10</div><div class="lp-l-title">Strength training</div></div>
-      <div class="lp-lcard" data-start-lesson="10"><div class="lp-l-dot" style="background:var(--z2)"></div><div class="lp-l-num">11</div><div class="lp-l-title">Winter running</div></div>
-      <div class="lp-lcard" data-start-lesson="11"><div class="lp-l-dot" style="background:var(--z5)"></div><div class="lp-l-num">12</div><div class="lp-l-title">First race</div></div>
-      <div class="lp-lcard" data-start-lesson="12"><div class="lp-l-dot" style="background:var(--z5)"></div><div class="lp-l-num">13</div><div class="lp-l-title">VO₂max</div></div>
-      <div class="lp-lcard" data-start-lesson="13"><div class="lp-l-dot" style="background:var(--z3)"></div><div class="lp-l-num">14</div><div class="lp-l-title">Running economy</div></div>
-      <div class="lp-lcard" data-start-lesson="14"><div class="lp-l-dot" style="background:var(--z4)"></div><div class="lp-l-num">15</div><div class="lp-l-title">Fatigue</div></div>
-      <div class="lp-lcard" data-start-lesson="15"><div class="lp-l-dot" style="background:var(--z4)"></div><div class="lp-l-num">16</div><div class="lp-l-title">Pace distribution</div></div>
-      <div class="lp-lcard" data-start-lesson="16"><div class="lp-l-dot" style="background:var(--z3)"></div><div class="lp-l-num">17</div><div class="lp-l-title">Load management</div></div>
-      <div class="lp-lcard" data-start-lesson="17"><div class="lp-l-dot" style="background:var(--z4)"></div><div class="lp-l-num">18</div><div class="lp-l-title">Pain or injury</div></div>
-      <div class="lp-lcard" data-start-lesson="18"><div class="lp-l-dot" style="background:var(--z2)"></div><div class="lp-l-num">19</div><div class="lp-l-title">Motivation &amp; consistency</div></div>
-      <div class="lp-lcard" data-start-lesson="19"><div class="lp-l-dot" style="background:var(--z2)"></div><div class="lp-l-num">20</div><div class="lp-l-title">Running watches</div></div>
-      <div class="lp-lcard" data-start-lesson="20"><div class="lp-l-dot" style="background:var(--z1)"></div><div class="lp-l-num">21</div><div class="lp-l-title">Sleep &amp; recovery</div></div>
-      <div class="lp-lcard" data-start-lesson="21"><div class="lp-l-dot" style="background:var(--z2)"></div><div class="lp-l-num">22</div><div class="lp-l-title">Daily nutrition</div></div>
-    </div>
-  </div>
 
 </section>
 
@@ -471,20 +429,20 @@
         <svg viewBox="0 0 100 200" style="width:100%;height:auto">
           <!-- Simple leg with muscle groups -->
           <rect x="30" y="10" width="40" height="80" rx="12" fill="#f1f5f9" stroke="#e5e7eb" stroke-width="1.5" id="quad-fill"/>
-          <text x="50" y="40" text-anchor="middle" font-size="7" fill="#9ca3af" font-family="Inter,sans-serif">Quadriceps</text>
-          <text x="50" y="52" text-anchor="middle" font-size="6" fill="#9ca3af" font-family="Inter,sans-serif">(thigh)</text>
+          <text x="50" y="40" text-anchor="middle" font-size="7" fill="#9ca3af" font-family="Instrument Sans,sans-serif">Quadriceps</text>
+          <text x="50" y="52" text-anchor="middle" font-size="6" fill="#9ca3af" font-family="Instrument Sans,sans-serif">(thigh)</text>
           <rect x="33" y="98" width="34" height="70" rx="10" fill="#f1f5f9" stroke="#e5e7eb" stroke-width="1.5" id="calf-fill"/>
-          <text x="50" y="128" text-anchor="middle" font-size="7" fill="#9ca3af" font-family="Inter,sans-serif">Calf</text>
+          <text x="50" y="128" text-anchor="middle" font-size="7" fill="#9ca3af" font-family="Instrument Sans,sans-serif">Calf</text>
           <circle cx="50" cy="93" r="9" fill="#f1f5f9" stroke="#e5e7eb" stroke-width="1.5"/>
-          <text x="50" y="96" text-anchor="middle" font-size="6" fill="#9ca3af" font-family="Inter,sans-serif">knee</text>
+          <text x="50" y="96" text-anchor="middle" font-size="6" fill="#9ca3af" font-family="Instrument Sans,sans-serif">knee</text>
           <!-- fiber type bars -->
-          <text x="10" y="175" text-anchor="middle" font-size="5.5" fill="#9ca3af" font-family="Inter,sans-serif">Type I</text>
+          <text x="10" y="175" text-anchor="middle" font-size="5.5" fill="#9ca3af" font-family="Instrument Sans,sans-serif">Type I</text>
           <rect x="2" y="178" width="16" height="8" rx="2" fill="#e5e7eb"/>
           <rect x="2" y="178" width="16" height="8" rx="2" fill="var(--z2)" id="fib1-bar"/>
-          <text x="50" y="175" text-anchor="middle" font-size="5.5" fill="#9ca3af" font-family="Inter,sans-serif">Type IIa</text>
+          <text x="50" y="175" text-anchor="middle" font-size="5.5" fill="#9ca3af" font-family="Instrument Sans,sans-serif">Type IIa</text>
           <rect x="40" y="178" width="20" height="8" rx="2" fill="#e5e7eb"/>
           <rect x="40" y="178" width="0" height="8" rx="2" fill="var(--z3)" id="fib2a-bar" style="transition:width .5s"/>
-          <text x="88" y="175" text-anchor="middle" font-size="5.5" fill="#9ca3af" font-family="Inter,sans-serif">Type IIx</text>
+          <text x="88" y="175" text-anchor="middle" font-size="5.5" fill="#9ca3af" font-family="Instrument Sans,sans-serif">Type IIx</text>
           <rect x="80" y="178" width="16" height="8" rx="2" fill="#e5e7eb"/>
           <rect x="80" y="178" width="0" height="8" rx="2" fill="var(--z4)" id="fib2x-bar" style="transition:width .5s"/>
         </svg>
@@ -655,7 +613,7 @@
         <span id="s3-gly-pct" style="font-size:.82rem;font-weight:600">100%</span>
       </div>
       <div class="fuel-tank">
-        <div class="fuel-fill" id="s3-gly-fill" style="width:100%;background:#3b82f6"></div>
+        <div class="fuel-fill" id="s3-gly-fill" style="width:100%;background:#3672E0"></div>
         <div class="fuel-label" id="s3-gly-label">Full</div>
       </div>
       <div style="display:flex;justify-content:space-between;align-items:center;margin-top:.85rem;margin-bottom:.3rem">
@@ -670,7 +628,7 @@
 
     <div class="metric-row">
       <div class="metric-card"><div class="mv" id="s3-fatpct" style="color:#f59e0b">60%</div><div class="ml">Fat (% of fuel)</div></div>
-      <div class="metric-card"><div class="mv" id="s3-carpct" style="color:#3b82f6">40%</div><div class="ml">Glycogen (% of fuel)</div></div>
+      <div class="metric-card"><div class="mv" id="s3-carpct" style="color:#3672E0">40%</div><div class="ml">Glycogen (% of fuel)</div></div>
       <div class="metric-card"><div class="mv" id="s3-wall">—</div><div class="ml">Wall after (min)</div></div>
     </div>
 
@@ -817,12 +775,12 @@
           <path d="M60 20 L60 45" stroke="#60a5fa" stroke-width="2.5" stroke-linecap="round"/>
           <path d="M60 42 Q48 48 40 52" stroke="#60a5fa" stroke-width="1.8" fill="none" stroke-linecap="round"/>
           <path d="M60 42 Q72 48 80 52" stroke="#60a5fa" stroke-width="1.8" fill="none" stroke-linecap="round"/>
-          <text x="60" y="95" text-anchor="middle" font-size="7" fill="#6b7280" font-family="Inter,sans-serif" id="lung-vol-label">~0.5 L / breath</text>
+          <text x="60" y="95" text-anchor="middle" font-size="7" fill="#6b7280" font-family="Instrument Sans,sans-serif" id="lung-vol-label">~0.5 L / breath</text>
         </svg>
       </div>
       <div style="flex:1;min-width:180px">
         <div class="metric-row" style="margin-top:0">
-          <div class="metric-card"><div class="mv" id="s5-rr" style="color:#3b82f6">15</div><div class="ml">Breaths/min</div></div>
+          <div class="metric-card"><div class="mv" id="s5-rr" style="color:#3672E0">15</div><div class="ml">Breaths/min</div></div>
           <div class="metric-card"><div class="mv" id="s5-tv">0.5 L</div><div class="ml">Air volume</div></div>
           <div class="metric-card"><div class="mv" id="s5-route" style="color:var(--z2)">Nose</div><div class="ml">Route</div></div>
         </div>
@@ -886,7 +844,7 @@
     </div>
 
     <div class="metric-row">
-      <div class="metric-card"><div class="mv" id="s6-core" style="color:#3b82f6">38.2°C</div><div class="ml">Body temp.</div></div>
+      <div class="metric-card"><div class="mv" id="s6-core" style="color:#3672E0">38.2°C</div><div class="ml">Body temp.</div></div>
       <div class="metric-card"><div class="mv" id="s6-sweat">0.6 L</div><div class="ml">Sweat/hr</div></div>
       <div class="metric-card"><div class="mv" id="s6-pace-hit" style="color:var(--z2)">–0%</div><div class="ml">Pace penalty</div></div>
       <div class="metric-card"><div class="mv" id="s6-drink">150 ml</div><div class="ml">Recommended per 15 min</div></div>
@@ -1578,7 +1536,7 @@
       <div class="demo-range-labels"><span>Beginner</span><span>Intermediate</span><span>Trained</span></div>
     </div>
     <div class="metric-row">
-      <div class="metric-card"><div class="mv" id="s12-vo2a" style="color:#3b82f6">52</div><div class="ml">Runner A VO₂max</div></div>
+      <div class="metric-card"><div class="mv" id="s12-vo2a" style="color:#3672E0">52</div><div class="ml">Runner A VO₂max</div></div>
       <div class="metric-card"><div class="mv" id="s12-eco" style="color:var(--z2)">Moderate</div><div class="ml">Economy (A)</div></div>
       <div class="metric-card"><div class="mv" id="s12-10k" style="color:var(--text)">52:00</div><div class="ml">10K time (Runner A)</div></div>
     </div>
@@ -1803,7 +1761,7 @@
     </div>
     <div class="metric-row">
       <div class="metric-card"><div class="mv" id="s15-even" style="color:var(--z2)">55:00</div><div class="ml">Even split</div></div>
-      <div class="metric-card"><div class="mv" id="s15-neg" style="color:#3b82f6">54:10</div><div class="ml">Negative split</div></div>
+      <div class="metric-card"><div class="mv" id="s15-neg" style="color:#3672E0">54:10</div><div class="ml">Negative split</div></div>
       <div class="metric-card"><div class="mv" id="s15-pos" style="color:var(--z4)">57:30</div><div class="ml">Positive split</div></div>
     </div>
     <div class="demo-insight" id="s15-insight"></div>
@@ -2389,10 +2347,17 @@
 
 </main>
 
-<script defer src="js/nav.js?v=5"></script>
+<!-- MOBILE BOTTOM ACTION BAR -->
+<nav class="mobile-bar" aria-label="Lesson navigation">
+  <button class="mb-btn" id="mbPrev" aria-label="Previous lesson">←</button>
+  <button class="mb-label" id="mbLabelBtn">Lesson&nbsp;<span id="mbLabel">1 / 22</span></button>
+  <button class="mb-btn" id="mbNext" aria-label="Next lesson">→</button>
+</nav>
+
+<script defer src="js/nav.js?v=6"></script>
 <script defer src="../js/quiz.js?v=2"></script>
 <script defer src="js/glossary.js?v=2"></script>
-<script defer src="js/demos.js?v=2"></script>
+<script defer src="js/demos.js?v=3"></script>
 <script defer src="../js/landing.js?v=4"></script>
 </body>
 </html>
