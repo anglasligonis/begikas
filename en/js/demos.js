@@ -381,7 +381,7 @@ function initDemo9() {
       ]
     },
     hip: {
-      why: 'Hip weakness is one of the most common underlying problems in running injuries. A weak gluteus medius causes knee collapse, shin syndrome and even back pain.',
+      why: 'Hip weakness is one of the most common underlying problems in running injuries. A weak gluteus medius causes knee collapse, shin splints and even back pain.',
       items: [
         { name: 'Lateral band walk', tag: 'Gluteus medius', sets: '3 × 15 steps each', desc: 'With a band around your knees or ankles, walk sideways keeping your body stable. Don\'t let your knees cave inward.' },
         { name: 'Single-leg RDL', tag: 'Gluteus maximus · Hamstrings', sets: '3 × 10 each', desc: 'Stand on one leg and hinge forward keeping your back straight while lifting the free leg behind you. The entire posterior chain controls this movement.' },
