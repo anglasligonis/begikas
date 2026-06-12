@@ -153,7 +153,7 @@ for (const [lang, L] of Object.entries(LANGS)) {
   head = head.replace(/href="(?:\.\.\/)?css\//g, 'href="/css/');
   head = replaceOnce(head,
     /(<link rel="stylesheet" href="\/css\/landing\.css[^>]*>)/,
-    `$1\n<link rel="stylesheet" href="/css/static.css?v=1">`, 'landing.css link');
+    `$1\n<link rel="stylesheet" href="/css/static.css?v=2">`, 'landing.css link');
 
   /* ---------- landing page ---------- */
   {

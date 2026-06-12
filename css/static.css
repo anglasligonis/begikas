@@ -1,10 +1,11 @@
 /* Button → anchor compatibility for the static-page build.
-   Class styles carry the real look; this only neutralises anchor UA defaults. */
+   Classes carry all styling; only neutralise anchor UA defaults here.
+   Deliberately no color/display rules — a.class (0,1,1) would outrank
+   the styling classes (0,1,0), e.g. .lp-cta/.btn-next color:#fff or
+   .nav-home-btn display:none. */
 a.xref, a.btn-step, a.nav-pill, a.nav-home-btn,
 a.lp-cta, a.lp-lcard, a.topnav-brand {
   text-decoration: none;
-  color: inherit;
 }
-a.btn-step { display: inline-flex; align-items: center; }
-a.nav-pill, a.nav-home-btn { display: inline-flex; align-items: center; justify-content: center; }
-a.lp-lcard { display: block; }
+/* buttons were inline-block by UA default; these classes set no display */
+a.nav-pill { display: inline-block; }
