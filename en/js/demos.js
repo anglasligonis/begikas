@@ -100,7 +100,7 @@ function initDemo3() {
     document.getElementById('s3-wall').textContent = depletionPerMin[iv] > 0 ? wallMin + ' min' : '—';
     document.getElementById('s3-wall').style.color = wallMin < dur ? '#DC2626' : 'var(--text)';
     const descs = [
-      `Easy pace: ${fat}% of fuel from fat, ${carb}% from glycogen. Glycogen depletes slowly — you can run for a long time without risking the wall.`,
+      `Easy pace: ${fat}% of fuel from fat, ${carb}% from glycogen. Glycogen depletes slowly. You can run for a long time without risking the wall.`,
       `Moderate pace: glycogen becomes a key fuel source. After ~${wallMin} min without extra nutrition, stores will run out.`,
       `Hard pace: glycogen burns quickly. Without carbohydrate intake every 30–45 min, the wall will hit around ${wallMin} min.`,
       `Very hard pace: almost entirely glycogen. Stores will last ~${wallMin} min. You won't sustain this pace over a long distance.`,
@@ -229,7 +229,7 @@ function initDemo5() {
     const descs  = [
       'Nasal breathing is ideal. The nose warms the air, produces nitric oxide, and encourages diaphragmatic breathing. Worth breathing through your nose during easy sessions.',
       'First ventilatory threshold (VT1). You start breathing deeper. You can combine nasal and mouth breathing.',
-      'Second ventilatory threshold (VT2). Rapid CO₂ removal is needed — mouth breathing is essential. Breathing muscles begin to fatigue.',
+      'Second ventilatory threshold (VT2). Rapid CO₂ removal is needed, mouth breathing is essential. Breathing muscles begin to fatigue.',
       'Breathing itself becomes a significant burden. The diaphragm and intercostal muscles consume a share of the oxygen.',
       'Maximum ventilation. Breathing muscles can consume up to 12% of total oxygen. Breathlessness may occur.'
     ];
@@ -255,7 +255,7 @@ function initDemo6() {
     const temp = parseInt(tempS.value);
     const dur  = parseInt(durS.value);
     document.getElementById('s6-temp-label').textContent =
-      temp + '°C — ' + (temp <= 10 ? 'Cold' : temp <= 18 ? 'Cool' : temp <= 25 ? 'Warm' : temp <= 32 ? 'Hot' : 'Very hot');
+      temp + '°C, ' + (temp <= 10 ? 'Cold' : temp <= 18 ? 'Cool' : temp <= 25 ? 'Warm' : temp <= 32 ? 'Hot' : 'Very hot');
     document.getElementById('s6-dur-label').textContent = dur + ' min';
 
     const sweatBase   = 0.4 + (temp - 5) * 0.03;
@@ -272,8 +272,8 @@ function initDemo6() {
     document.getElementById('s6-drink').textContent = per15 + ' ml';
 
     let desc;
-    if (temp <= 10) desc = 'Cold air — ideal conditions. The body maintains temperature easily. Hydration needs are low, but don\'t forget to drink.';
-    else if (temp <= 18) desc = 'Cool conditions — optimal for running. Sweat cools effectively. Drink ~150 ml every 15 min.';
+    if (temp <= 10) desc = 'Cold air, ideal conditions. The body maintains temperature easily. Hydration needs are low, but don\'t forget to drink.';
+    else if (temp <= 18) desc = 'Cool conditions, optimal for running. Sweat cools effectively. Drink ~150 ml every 15 min.';
     else if (temp <= 25) desc = `Warm conditions. The heart works harder to cool the body. Slow down ~${pacePenalty}% and drink ${per15} ml every 15 min.`;
     else if (temp <= 32) desc = `Hot! Heat impact: pace drops ~${pacePenalty}%. After ${dur} min body temperature reaches ${core}°C. Drink ${per15} ml every 15 min and add electrolytes.`;
     else desc = `Dangerously hot. Pace drops ~${pacePenalty}%. Risk of dehydration and heat stroke is real. Run only very early in the morning when the air is cooler.`;
@@ -298,16 +298,16 @@ function initDemo7() {
     let rating, rColor, desc;
     if (cad < 160) {
       rating = 'High risk'; rColor = '#DC2626';
-      desc = `${cad} SPM — too low. Your stride is probably too long, with the foot landing too far in front of the body. An impact force of ${force.toFixed(1)}× body weight poses a high risk of knee and shin injuries.`;
+      desc = `${cad} SPM, too low. Your stride is probably too long, with the foot landing too far in front of the body. An impact force of ${force.toFixed(1)}× body weight poses a high risk of knee and shin injuries.`;
     } else if (cad < 168) {
       rating = 'Moderate risk'; rColor = '#D97706';
-      desc = `${cad} SPM — acceptable, but there's room to improve. Try increasing by 5 SPM per week towards the 170–180 range.`;
+      desc = `${cad} SPM, acceptable, but there's room to improve. Try increasing by 5 SPM per week towards the 170–180 range.`;
     } else if (cad <= 182) {
       rating = 'Optimal'; rColor = '#10B981';
-      desc = `${cad} SPM — excellent. This is the range most experienced runners work in. Ground contact time is short and impact force is minimal.`;
+      desc = `${cad} SPM, excellent. This is the range most experienced runners work in. Ground contact time is short and impact force is minimal.`;
     } else {
       rating = 'Very high'; rColor = '#94a3b8';
-      desc = `${cad} SPM — very high cadence. This is mostly seen in sprinting. At this rhythm over a long run, you'll fatigue quickly.`;
+      desc = `${cad} SPM, very high cadence. This is mostly seen in sprinting. At this rhythm over a long run, you'll fatigue quickly.`;
     }
     document.getElementById('s7-rating').textContent = rating;
     document.getElementById('s7-rating').style.color = rColor;
@@ -321,18 +321,18 @@ function initDemo8() {
   const goalS = document.getElementById('s8-goal');
   const timeS = document.getElementById('s8-time');
   const recs = {
-    '5k-low':       { name:"Daniels' formula",         color:'#8b5cf6', why:"With limited time, Daniels' VDOT system is the most efficient — every session has a clear purpose and precise pace. You don't need high volume: 3 structured sessions per week deliver solid results.", borrow:"Borrow this: calculate your VDOT from your last 5K time (vdoto.com) and use the resulting zones at least for your easy runs." },
-    '5k-mid':       { name:'Polarised model',           color:'#10B981', why:'The 80/20 method works great for 5K with moderate volume. 2–3 easy sessions per week + 1 truly hard one (intervals) gives clear progress without fatigue.', borrow:'Borrow this: guard your Z3 carefully — if a run feels "comfortably hard", that\'s probably the grey zone. Run either slower or faster.' },
-    '5k-high':      { name:'Norwegian training system', color:'#3b82f6', why:'With 8+ hrs/week you can start experimenting with double sessions. Focus on threshold pace — two lactate-threshold sessions per week (not per day) delivers excellent results.', borrow:'Borrow this: once a week, run twice — an easy 30–40 min in the morning, then a 20–30 min threshold run in the evening.' },
-    'half-low':     { name:"Daniels' formula",          color:'#8b5cf6', why:"For a half marathon with limited time, Daniels' system offers a clear structure: long run at the weekend + one quality session + easy days. Not much, but purposeful.", borrow:"Borrow this: the weekend long run should always be truly easy (you can talk) — that's Daniels' E pace, not marathon pace." },
+    '5k-low':       { name:"Daniels' formula",         color:'#8b5cf6', why:"With limited time, Daniels' VDOT system is the most efficient, every session has a clear purpose and precise pace. You don't need high volume: 3 structured sessions per week deliver solid results.", borrow:"Borrow this: calculate your VDOT from your last 5K time (vdoto.com) and use the resulting zones at least for your easy runs." },
+    '5k-mid':       { name:'Polarised model',           color:'#10B981', why:'The 80/20 method works great for 5K with moderate volume. 2–3 easy sessions per week + 1 truly hard one (intervals) gives clear progress without fatigue.', borrow:'Borrow this: guard your Z3 carefully, if a run feels "comfortably hard", that\'s probably the grey zone. Run either slower or faster.' },
+    '5k-high':      { name:'Norwegian training system', color:'#3b82f6', why:'With 8+ hrs/week you can start experimenting with double sessions. Focus on threshold pace, two lactate-threshold sessions per week (not per day) delivers excellent results.', borrow:'Borrow this: once a week, run twice, an easy 30–40 min in the morning, then a 20–30 min threshold run in the evening.' },
+    'half-low':     { name:"Daniels' formula",          color:'#8b5cf6', why:"For a half marathon with limited time, Daniels' system offers a clear structure: long run at the weekend + one quality session + easy days. Not much, but purposeful.", borrow:"Borrow this: the weekend long run should always be truly easy (you can talk). That's Daniels' E pace, not marathon pace." },
     'half-mid':     { name:'Lydiard system',            color:'#D97706', why:"For a half marathon with moderate volume, Lydiard's principle works beautifully: 8–10 weeks of aerobic base building (long, slow runs), then 3–4 weeks of threshold work. Your legs will be strong at the finish.", borrow:"Borrow this: before starting speed work, run only easily for 8 weeks. It's boring, but the aerobic base pays off." },
     'half-high':    { name:'Polarised model',           color:'#10B981', why:'With high volume, the polarised model lets you run a lot without overtraining. 80% easy sessions + 1–2 truly hard ones per week is the ideal ratio for a half marathon.', borrow:'Borrow this: one long run per week (16–22 km) at a truly easy pace is the cornerstone of half-marathon training.' },
-    'marathon-low': { name:'Lydiard system',            color:'#D97706', why:"For a marathon even with limited time, Lydiard's principle is paramount: long, easy weekend runs build fat efficiency and tendon resilience. Better 3 sessions per week with a long weekend run than 5 average ones.", borrow:'Borrow this: every week — one run longer than all the rest. Gradually build to 28–30 km before the marathon.' },
+    'marathon-low': { name:'Lydiard system',            color:'#D97706', why:"For a marathon even with limited time, Lydiard's principle is paramount: long, easy weekend runs build fat efficiency and tendon resilience. Better 3 sessions per week with a long weekend run than 5 average ones.", borrow:'Borrow this: every week, one run longer than all the rest. Gradually build to 28–30 km before the marathon.' },
     'marathon-mid': { name:'Polarised model',           color:'#10B981', why:'For a marathon with moderate volume, the 80/20 method lets you run enough without overtraining. Long easy weekend runs + 1 threshold session per week is the classic recipe.', borrow:'Borrow this: marathon pace = the Z2/Z3 boundary. "Marathon pace" sessions are very effective, but must be balanced with a lot of easier running.' },
-    'marathon-high':{ name:'Kenyan / Ethiopian model',  color:'#DC2626', why:"With high volume, Kenyan logic holds: the more easy running, the better the fat metabolism and aerobic base. 80–90% of all kilometres must be truly easy — even if it feels too easy.", borrow:"Borrow this: if you're running 60+ km/week, check — is 80% of it really easy? Many runners go too fast on easy days and too slow on hard ones." },
+    'marathon-high':{ name:'Kenyan / Ethiopian model',  color:'#DC2626', why:"With high volume, Kenyan logic holds: the more easy running, the better the fat metabolism and aerobic base. 80–90% of all kilometres must be truly easy, even if it feels too easy.", borrow:"Borrow this: if you're running 60+ km/week, check, is 80% of it really easy? Many runners go too fast on easy days and too slow on hard ones." },
     'health-low':   { name:'Polarised model',           color:'#10B981', why:'For health and longevity, the polarised model is ideal: fewest injuries, great enjoyment, sustainable for decades. Even 3 sessions per week (2 easy + 1 harder) delivers significant health benefits.', borrow:'Borrow this: 30 min of easy running 3× per week is enough. The key is consistency, not intensity.' },
-    'health-mid':   { name:'Polarised model',           color:'#10B981', why:"With moderate volume, the polarised model lets you enjoy running without overtraining. 80% of sessions should be enjoyable — if running is always hard, that's not healthy long-term.", borrow:'Borrow this: a Sunday long run at a truly easy pace is one of the healthiest habits you can build. Even 60–90 min in Z1/Z2 does wonders for heart and metabolic health.' },
-    'health-high':  { name:'Lydiard system',            color:'#D97706', why:"With plenty of time, Lydiard's aerobic base principle is the most sustainable over the long term. Large volumes of easy running without overtraining build the capillary network, improve metabolic health and extend an active life.", borrow:"Borrow this: if you love running a lot — run a lot, but slowly. Speed comes naturally once the aerobic base is strong." }
+    'health-mid':   { name:'Polarised model',           color:'#10B981', why:"With moderate volume, the polarised model lets you enjoy running without overtraining. 80% of sessions should be enjoyable, if running is always hard, that's not healthy long-term.", borrow:'Borrow this: a Sunday long run at a truly easy pace is one of the healthiest habits you can build. Even 60–90 min in Z1/Z2 does wonders for heart and metabolic health.' },
+    'health-high':  { name:'Lydiard system',            color:'#D97706', why:"With plenty of time, Lydiard's aerobic base principle is the most sustainable over the long term. Large volumes of easy running without overtraining build the capillary network, improve metabolic health and extend an active life.", borrow:"Borrow this: if you love running a lot, run a lot, but slowly. Speed comes naturally once the aerobic base is strong." }
   };
   function update() {
     const key = goalS.value + '-' + timeS.value;
@@ -357,26 +357,26 @@ function initDemo9() {
       why: 'Knee pain most often stems from weak hip abductors (gluteus medius) and quads. When the hip doesn\'t drop to the side during the stride, knee load drops dramatically.',
       items: [
         { name: 'Single-leg squat', tag: 'Quads · Gluteus medius', sets: '3 × 8 each', desc: 'Stand on one leg and slowly bend the knee to 60–70°. The knee must not cave inward. Start near a wall for support.' },
-        { name: 'Clamshell', tag: 'Hip abductors', sets: '3 × 15 each', desc: 'Lie on your side with knees bent at 90°. Open the top knee like a clamshell — don\'t rotate your pelvis. Use a resistance band for added load.' },
-        { name: 'Step-down (eccentric)', tag: 'Quads — eccentrically', sets: '3 × 10 each', desc: 'Stand on a step. Slowly (3–4 sec) lower the other leg down. Focus on the controlled descent, not the lift.' },
-        { name: 'Glute bridge', tag: 'Gluteus maximus · Spinal extensors', sets: '3 × 15', desc: 'Lie on your back with knees bent. Lift your pelvis to a straight line. Single-leg version — for advanced.' }
+        { name: 'Clamshell', tag: 'Hip abductors', sets: '3 × 15 each', desc: 'Lie on your side with knees bent at 90°. Open the top knee like a clamshell, don\'t rotate your pelvis. Use a resistance band for added load.' },
+        { name: 'Step-down (eccentric)', tag: 'Quads, eccentrically', sets: '3 × 10 each', desc: 'Stand on a step. Slowly (3–4 sec) lower the other leg down. Focus on the controlled descent, not the lift.' },
+        { name: 'Glute bridge', tag: 'Gluteus maximus · Spinal extensors', sets: '3 × 15', desc: 'Lie on your back with knees bent. Lift your pelvis to a straight line. Single-leg version, for advanced.' }
       ]
     },
     shin: {
       why: 'Shin pain usually signals too-rapid mileage increase and a weak tibialis anterior and calf muscle. Eccentric strengthening is the most important intervention.',
       items: [
-        { name: 'Single-leg heel raise', tag: 'Gastrocnemius · Soleus', sets: '3 × 15 each', desc: 'Stand on the edge of a step. Raise the heel as high as possible, then lower it below step level (3 sec). This is an eccentric exercise — the lowering phase matters most.' },
-        { name: 'Tibialis anterior strengthening', tag: 'Shin (front)', sets: '3 × 20', desc: 'Sit and alternately pull your toes towards you. With a resistance band — even more effective.' },
+        { name: 'Single-leg heel raise', tag: 'Gastrocnemius · Soleus', sets: '3 × 15 each', desc: 'Stand on the edge of a step. Raise the heel as high as possible, then lower it below step level (3 sec). This is an eccentric exercise, the lowering phase matters most.' },
+        { name: 'Tibialis anterior strengthening', tag: 'Shin (front)', sets: '3 × 20', desc: 'Sit and alternately pull your toes towards you. With a resistance band, even more effective.' },
         { name: 'Foot arch exercises', tag: 'Foot muscles', sets: '2 × 20', desc: 'Standing, try to "scrunch" your foot without curling your toes. Strengthens the inner arch.' },
         { name: 'Single-leg balance', tag: 'Ankle stabilisers', sets: '3 × 30 sec each', desc: 'Stand on one foot. Start with eyes open, then close them. Maintain ankle stability.' }
       ]
     },
     achilles: {
-      why: 'The Achilles tendon requires eccentric strengthening. The Alfredson protocol — widely accepted as the most effective approach to Achilles rehabilitation — is based on eccentric heel drop.',
+      why: 'The Achilles tendon requires eccentric strengthening. The Alfredson protocol, widely accepted as the most effective approach to Achilles rehabilitation, is based on eccentric heel drop.',
       items: [
-        { name: 'Alfredson protocol (eccentric)', tag: 'Achilles tendon · Soleus · Gastrocnemius', sets: '3 × 15 each × 2/day', desc: 'Rise on both feet at the edge of a step, shift to one leg and slowly (3 sec) lower the heel below the step. Some discomfort at first is normal — stop for sharp pain.' },
-        { name: 'Straight-leg heel drop', tag: 'Gastrocnemius — eccentrically', sets: '3 × 15 each', desc: 'Same as Alfredson but with a straight knee. Loads the upper Achilles.' },
-        { name: 'Soleus strengthening', tag: 'Soleus (deep)', sets: '3 × 15 each', desc: 'Heel raise with a bent knee — loads the soleus, which contributes to the lower Achilles.' },
+        { name: 'Alfredson protocol (eccentric)', tag: 'Achilles tendon · Soleus · Gastrocnemius', sets: '3 × 15 each × 2/day', desc: 'Rise on both feet at the edge of a step, shift to one leg and slowly (3 sec) lower the heel below the step. Some discomfort at first is normal, stop for sharp pain.' },
+        { name: 'Straight-leg heel drop', tag: 'Gastrocnemius, eccentrically', sets: '3 × 15 each', desc: 'Same as Alfredson but with a straight knee. Loads the upper Achilles.' },
+        { name: 'Soleus strengthening', tag: 'Soleus (deep)', sets: '3 × 15 each', desc: 'Heel raise with a bent knee, loads the soleus, which contributes to the lower Achilles.' },
         { name: 'Ankle mobility', tag: 'Dorsiflexion', sets: '2 × 20', desc: 'Stand near a wall and bend the knee towards it without lifting the heel. Improves dorsiflexion, often restricted in Achilles syndrome.' }
       ]
     },
@@ -390,7 +390,7 @@ function initDemo9() {
       ]
     },
     core: {
-      why: 'The core acts as the force-transfer centre during running — linking leg and arm movements. A weak core lets energy "leak" through the trunk and increases lower back load.',
+      why: 'The core acts as the force-transfer centre during running, linking leg and arm movements. A weak core lets energy "leak" through the trunk and increases lower back load.',
       items: [
         { name: 'Dead bug', tag: 'Transverse abdominals · Core', sets: '3 × 30–45 sec', desc: 'Lie on your back with legs at 90°. Slowly extend alternating opposite arm and leg, not letting your lower back lift from the floor.' },
         { name: 'Side plank with hip dip', tag: 'Lateral stabilisers', sets: '3 × 20–30 sec each', desc: 'Resting on your forearm and the side of your foot, keep your body straight. Dip and raise the hip. Strengthens the obliques and lateral chain.' },
@@ -443,11 +443,11 @@ function initDemo10() {
       </div>`
     ).join('');
     let advice = '';
-    if (t >= 5) advice = 'Cool conditions — dress light. The cold feeling will pass within 5–10 min of running.';
-    else if (t >= 0) advice = 'Winter conditions. Protect your hands and ears especially. It feels cold at first — that\'s normal, your body will warm up.';
-    else if (t >= -10) advice = 'Cold. On ice — shorter strides, lower centre of mass. Avoid sweat-soaked fabric against your skin.';
+    if (t >= 5) advice = 'Cool conditions, dress light. The cold feeling will pass within 5–10 min of running.';
+    else if (t >= 0) advice = 'Winter conditions. Protect your hands and ears especially. It feels cold at first. That\'s normal, your body will warm up.';
+    else if (t >= -10) advice = 'Cold. On ice, shorter strides, lower centre of mass. Avoid sweat-soaked fabric against your skin.';
     else if (t >= -20) advice = 'Very cold. A balaclava and double gloves are a necessity, not an accessory. Shorten your run or run indoors.';
-    else advice = 'Extreme cold. Consider whether running outdoors is necessary. If so — watch for frostbite signs on your fingers, ears and nose.';
+    else advice = 'Extreme cold. Consider whether running outdoors is necessary. If so, watch for frostbite signs on your fingers, ears and nose.';
     document.getElementById('s10-advice').textContent = advice;
   }
   sl.addEventListener('input', update);
@@ -459,43 +459,43 @@ function initDemo11() {
   const sel = document.getElementById('s11-dist');
   const plans = {
     '5k': [
-      { time: 'The night before', cls: '', title: 'Normal dinner', body: 'No need to carb-load — a 5K won\'t deplete your glycogen stores. Simple, familiar food. Sleep 7–8 hours.' },
+      { time: 'The night before', cls: '', title: 'Normal dinner', body: 'No need to carb-load, a 5K won\'t deplete your glycogen stores. Simple, familiar food. Sleep 7–8 hours.' },
       { time: 'Morning (−2 hrs)', cls: '', title: 'Light breakfast', body: 'Banana, oats or toast with jam. No later than 2 hrs before the start. Avoid eggs, fats and dairy.' },
-      { time: 'Before the start (−30 min)', cls: 'warn', title: 'Warm-up', body: '5–10 min of easy running + dynamic stretching. A 5K needs a fast start — so a minimal warm-up isn\'t enough.' },
+      { time: 'Before the start (−30 min)', cls: 'warn', title: 'Warm-up', body: '5–10 min of easy running + dynamic stretching. A 5K needs a fast start, so a minimal warm-up isn\'t enough.' },
       { time: 'First km', cls: 'alert', title: 'Start slower', body: 'Adrenaline and the crowd push you to go out too fast. Consciously slow the first kilometre by 10–15%. You can speed up later.' },
       { time: 'Km 2–4', cls: '', title: 'Rhythm', body: 'Find your planned pace and hold it. Breathe rhythmically.' },
-      { time: 'Last km', cls: 'warn', title: 'Finishing kick', body: 'If you have energy left — now is the time to give it all. If not — an even finish beats falling apart before the line.' },
-      { time: 'After the finish', cls: '', title: 'Recovery', body: '5 min walk, fluids, carbohydrates. After a 5K — 1–2 rest days. You can run easy tomorrow.' }
+      { time: 'Last km', cls: 'warn', title: 'Finishing kick', body: 'If you have energy left, now is the time to give it all. If not, an even finish beats falling apart before the line.' },
+      { time: 'After the finish', cls: '', title: 'Recovery', body: '5 min walk, fluids, carbohydrates. After a 5K, 1–2 rest days. You can run easy tomorrow.' }
     ],
     '10k': [
-      { time: 'The night before', cls: '', title: 'A more carb-rich dinner', body: 'Rice, pasta, bread. A 10K already depletes glycogen stores significantly — it\'s worth starting with them full. Sleep 7–8 hours.' },
+      { time: 'The night before', cls: '', title: 'A more carb-rich dinner', body: 'Rice, pasta, bread. A 10K already depletes glycogen stores significantly. It\'s worth starting with them full. Sleep 7–8 hours.' },
       { time: 'Morning (−2.5 hrs)', cls: '', title: 'Carbohydrate breakfast', body: 'Oats, banana, bread. A bit more than for a 5K.' },
-      { time: 'Before the start (−40 min)', cls: 'warn', title: 'Warm-up', body: '10 min of easy running + a few faster strides. A 10K is run at a fast pace — the warm-up is very important.' },
+      { time: 'Before the start (−40 min)', cls: 'warn', title: 'Warm-up', body: '10 min of easy running + a few faster strides. A 10K is run at a fast pace, the warm-up is very important.' },
       { time: 'Km 1–2', cls: 'alert', title: 'Controlled start', body: 'The first kilometres should be slower than your planned pace. Your heart rate is still rising. Be patient.' },
-      { time: 'Km 3–8', cls: '', title: 'Goal pace', body: 'Find your rhythm and hold it. No fuelling needed — just water in the start/finish area.' },
-      { time: 'Km 9–10', cls: 'warn', title: 'Give it everything', body: 'The last 2 km — you can give it all. Until here you should have conserved energy.' },
+      { time: 'Km 3–8', cls: '', title: 'Goal pace', body: 'Find your rhythm and hold it. No fuelling needed, just water in the start/finish area.' },
+      { time: 'Km 9–10', cls: 'warn', title: 'Give it everything', body: 'The last 2 km. You can give it all. Until here you should have conserved energy.' },
       { time: 'After the finish', cls: '', title: 'Recovery', body: 'Fluids and carbohydrates within 30–60 min. 2–3 rest days. Easy running is possible after 2 days.' }
     ],
     'half': [
       { time: '2 days before', cls: '', title: 'More carbohydrates', body: 'Slightly more carbohydrates than usual. Reduce training intensity (start of the taper).' },
-      { time: 'The night before', cls: '', title: 'Carb-loading', body: 'A large portion of rice or pasta. Early dinner (6–7 pm) — sleep without a full stomach. 8 hours of sleep.' },
-      { time: 'Morning (−2.5 hrs)', cls: '', title: 'Targeted breakfast', body: '60–80 g of carbohydrates: oats + banana + honey. Coffee — if you\'re used to it. No new foods.' },
+      { time: 'The night before', cls: '', title: 'Carb-loading', body: 'A large portion of rice or pasta. Early dinner (6–7 pm), sleep without a full stomach. 8 hours of sleep.' },
+      { time: 'Morning (−2.5 hrs)', cls: '', title: 'Targeted breakfast', body: '60–80 g of carbohydrates: oats + banana + honey. Coffee, if you\'re used to it. No new foods.' },
       { time: 'Before the start (−30 min)', cls: 'warn', title: 'Warm-up + gel', body: 'An easy 5 min run. One gel with water if you plan to use them during the race.' },
-      { time: 'Km 1–5', cls: 'alert', title: 'Conserve', body: 'Starting too fast here is a mistake — 16 km still remain. Stick to your planned pace.' },
-      { time: 'Km 7–8', cls: 'warn', title: 'First gel', body: '1 gel with 200 ml of water. No harm in starting early — better too early than too late.' },
-      { time: 'Km 14', cls: 'warn', title: 'Second gel', body: 'Another gel. Your muscles will start to feel fatigue now — maintaining glycogen matters.' },
-      { time: 'Last 3 km', cls: '', title: 'Give it all', body: 'If you conserved energy — now you can speed up. If not — stay even to the finish.' },
-      { time: 'After the finish', cls: '', title: 'Recovery', body: 'Carbohydrates + protein within 30 min. 4–5 easy days. Intense training — after 1–2 weeks.' }
+      { time: 'Km 1–5', cls: 'alert', title: 'Conserve', body: 'Starting too fast here is a mistake. 16 km still remain. Stick to your planned pace.' },
+      { time: 'Km 7–8', cls: 'warn', title: 'First gel', body: '1 gel with 200 ml of water. No harm in starting early, better too early than too late.' },
+      { time: 'Km 14', cls: 'warn', title: 'Second gel', body: 'Another gel. Your muscles will start to feel fatigue now, maintaining glycogen matters.' },
+      { time: 'Last 3 km', cls: '', title: 'Give it all', body: 'If you conserved energy, now you can speed up. If not, stay even to the finish.' },
+      { time: 'After the finish', cls: '', title: 'Recovery', body: 'Carbohydrates + protein within 30 min. 4–5 easy days. Intense training, after 1–2 weeks.' }
     ],
     'full': [
       { time: '3 days before', cls: '', title: 'Carb-loading', body: 'Start of carb-loading: 8–10 g of carbohydrates per kg of body weight per day. Cut back on fats and fibre.' },
       { time: 'The night before', cls: '', title: 'Final carb top-up', body: 'A large portion of familiar food. Sleep at 8–9 pm if the start is early. Prepare everything the night before.' },
-      { time: 'Morning (−3 hrs)', cls: '', title: 'Breakfast', body: '80–100 g of carbohydrates. Timing is crucial — 3 hrs before the start so digestion is complete.' },
-      { time: 'Before the start (−30 min)', cls: 'warn', title: 'Final gel', body: 'One gel with water. Light warm-up — a 5 min walk, not a run.' },
-      { time: 'Km 1–10', cls: 'alert', title: 'VERY important: slow start', body: 'A marathon is lost in the first km — not won. 10–15% slower than your planned pace. It feels too easy — that\'s exactly how it should be.' },
+      { time: 'Morning (−3 hrs)', cls: '', title: 'Breakfast', body: '80–100 g of carbohydrates. Timing is crucial, 3 hrs before the start so digestion is complete.' },
+      { time: 'Before the start (−30 min)', cls: 'warn', title: 'Final gel', body: 'One gel with water. Light warm-up, a 5 min walk, not a run.' },
+      { time: 'Km 1–10', cls: 'alert', title: 'VERY important: slow start', body: 'A marathon is lost in the first km, not won. 10–15% slower than your planned pace. It feels too easy. That\'s exactly how it should be.' },
       { time: 'Every 5 km', cls: 'warn', title: 'Fuelling protocol', body: '1 gel every 5–7 km, starting from ~30 min in. 200 ml of water with each gel. 5–7 gels in total.' },
-      { time: 'Km 30–35', cls: 'alert', title: 'The "wall" zone', body: 'This is where many hit glycogen depletion. If you fuelled properly — you get through it. Focus on form and rhythm.' },
-      { time: 'Km 40–42.2', cls: '', title: 'Finish', body: 'If you have anything left to give — now. If not — hold your rhythm to the line.' },
+      { time: 'Km 30–35', cls: 'alert', title: 'The "wall" zone', body: 'This is where many hit glycogen depletion. If you fuelled properly. You get through it. Focus on form and rhythm.' },
+      { time: 'Km 40–42.2', cls: '', title: 'Finish', body: 'If you have anything left to give, now. If not, hold your rhythm to the line.' },
       { time: 'After the finish', cls: '', title: 'Recovery', body: 'Don\'t rush back into training. 2 weeks of only easy movement. 3–4 weeks until normal training. The marathon demands respect.' }
     ]
   };
@@ -676,15 +676,15 @@ function initDemo13() {
     document.getElementById('s13-diff').textContent = '−' + fmtTime(diff) + ' / 10K';
 
     const milestones = [
-      [1,3,  'The first years — the fastest gains. The body learns to move in a new way and the capillary network expands rapidly.'],
+      [1,3,  'The first years, the fastest gains. The body learns to move in a new way and the capillary network expands rapidly.'],
       [4,6,  'Growth slows but continues. Tendon elasticity improves and the nervous system coordinates movement more precisely.'],
-      [7,11, 'A moderately trained runner. Economy is already significantly better than at the start — the same pace requires far less effort.'],
-      [12,16,'An experienced runner. Further gains require specialised work — strength training and technique work.'],
-      [17,20,'More than 15 years — a long-term investment. The curve never fully flattens, because the body still keeps adapting.']
+      [7,11, 'A moderately trained runner. Economy is already significantly better than at the start, the same pace requires far less effort.'],
+      [12,16,'An experienced runner. Further gains require specialised work, strength training and technique work.'],
+      [17,20,'More than 15 years, a long-term investment. The curve never fully flattens, because the body still keeps adapting.']
     ];
     const m = milestones.find(([a,b]) => y>=a && y<=b) || milestones[milestones.length-1];
     const cons = `A consistent runner saves about ${fmtTime(consSaved)} per 10K after ${y} years compared to their starting point.`;
-    const spor = ` An inconsistent one — only ${fmtTime(sporSaved)}. The difference between them: ${fmtTime(diff)}.`;
+    const spor = ` An inconsistent one, only ${fmtTime(sporSaved)}. The difference between them: ${fmtTime(diff)}.`;
     document.getElementById('s13-insight').textContent = m[2] + ' ' + cons + spor;
   }
 
@@ -787,7 +787,7 @@ function initDemo15() {
     document.getElementById('s15-neg').textContent = fmt(negTime);
     document.getElementById('s15-pos').textContent = fmt(posTime);
     const saved = posTime - negTime;
-    const insight = `${dist > 10 ? 'Over longer distances' : 'In a 5K and 10K'} a negative split can save about ${fmt(saved)} compared to a positive split. The difference grows with distance — in a marathon it can reach 10–15 minutes.`;
+    const insight = `${dist > 10 ? 'Over longer distances' : 'In a 5K and 10K'} a negative split can save about ${fmt(saved)} compared to a positive split. The difference grows with distance, in a marathon it can reach 10–15 minutes.`;
     document.getElementById('s15-insight').textContent = insight;
   }
   distSl.addEventListener('change', update);
@@ -817,7 +817,7 @@ function initDemo16() {
     let insight = '';
     if (progressionRisk === 'High') insight = `High volume in a short time: the muscles can cope (${musclePct}% adapted), but the tendons can't yet (${tendonPct}%). This is exactly the situation where most overuse injuries occur.`;
     else if (progressionRisk === 'Moderate') insight = `Moderate risk. Muscle adaptation (${musclePct}%) is ahead of tendon adaptation (${tendonPct}%). Watch carefully for any tendon signals.`;
-    else insight = `Safe zone. ${weeks < 8 ? 'Keep increasing steadily — the body will adapt.' : 'Muscle and tendon adaptation are happening in sync. You can continue your steady progression.'}`;
+    else insight = `Safe zone. ${weeks < 8 ? 'Keep increasing steadily, the body will adapt.' : 'Muscle and tendon adaptation are happening in sync. You can continue your steady progression.'}`;
     document.getElementById('s16-insight').textContent = insight;
   }
   kmSl.addEventListener('input', update);
@@ -842,10 +842,10 @@ function initDemo17() {
       rec = `🟠 REDUCE THE LOAD. ${where === 'achilles' || where === 'knee' ? 'Tendon pain that increases during a run is a serious sign. ' : ''}Run 30–40% less volume and monitor changes for a week.`;
     } else if (when === 'start' && intensity <= 3) {
       bg='#fefce8'; border='#fde68a'; color='#713f12';
-      rec = `🟡 MONITOR. Pain at the start that fades within a few minutes is often a sign of tendon overload. ${where === 'achilles' ? 'For the Achilles tendon, start eccentric calf exercises.' : 'Reduce intensity and start strengthening exercises.'} If it recurs — see a specialist.`;
+      rec = `🟡 MONITOR. Pain at the start that fades within a few minutes is often a sign of tendon overload. ${where === 'achilles' ? 'For the Achilles tendon, start eccentric calf exercises.' : 'Reduce intensity and start strengthening exercises.'} If it recurs, see a specialist.`;
     } else if (when === 'after') {
       bg='#f0fdf4'; border='#86efac'; color='#14532d';
-      rec = `🟢 NORMAL. ${where === 'muscle' ? 'Muscle soreness after a workout (DOMS) is a normal part of the adaptation process. Light movement and hydration will speed recovery.' : 'Pain only after a run — watch whether it eases off. If it grows from run to run — it\'s worth getting it checked.'}`;
+      rec = `🟢 NORMAL. ${where === 'muscle' ? 'Muscle soreness after a workout (DOMS) is a normal part of the adaptation process. Light movement and hydration will speed recovery.' : 'Pain only after a run, watch whether it eases off. If it grows from run to run. It\'s worth getting it checked.'}`;
     } else {
       rec = 'Select the nature of the pain to get a recommendation.';
     }
@@ -875,9 +875,9 @@ function initDemo18() {
     document.getElementById('s18-diff').textContent = pct+'%';
     document.getElementById('s18-real').style.color = consist >= 80 ? '#10B981' : consist >= 60 ? '#D97706' : '#DC2626';
     let insight = '';
-    if (consist >= 85) insight = `${real} sessions per year — excellent! Even an imperfect but very consistent runner builds a solid base. This regularity delivers results over 2–3 years that a heroic but inconsistent programme never can.`;
+    if (consist >= 85) insight = `${real} sessions per year, excellent! Even an imperfect but very consistent runner builds a solid base. This regularity delivers results over 2–3 years that a heroic but inconsistent programme never can.`;
     else if (consist >= 65) insight = `${real} sessions per year. That's still enough to see clear progress. Try to identify what causes missed sessions and remove the barriers in advance.`;
-    else insight = `${real} sessions per year. A high session count but poor consistency — meaning there are weeks with many sessions and long breaks. The body responds better to consistency than to intense but inconsistent periods.`;
+    else insight = `${real} sessions per year. A high session count but poor consistency, meaning there are weeks with many sessions and long breaks. The body responds better to consistency than to intense but inconsistent periods.`;
     document.getElementById('s18-insight').textContent = insight;
   }
   goalSl.addEventListener('input', update);
@@ -890,13 +890,13 @@ function initDemo19() {
   const metrics = [
     { name:'GPS distance', reliability:'Reliable', color:'#10B981', detail:'GPS accuracy is typically ±1–3%. It errs more among tall buildings or in dense forest. Accurate enough for tracking training.' },
     { name:'Run time', reliability:'Reliable', color:'#10B981', detail:'Measured directly. Absolutely accurate.' },
-    { name:'Cadence', reliability:'Reliable', color:'#10B981', detail:'Accelerometer data — very accurate. One of the most useful technical metrics for beginners.' },
-    { name:'Heart rate (chest strap)', reliability:'Reliable', color:'#10B981', detail:'Electrical signal measurement — very accurate even during intervals. If you want accurate HR — use a chest strap.' },
+    { name:'Cadence', reliability:'Reliable', color:'#10B981', detail:'Accelerometer data, very accurate. One of the most useful technical metrics for beginners.' },
+    { name:'Heart rate (chest strap)', reliability:'Reliable', color:'#10B981', detail:'Electrical signal measurement, very accurate even during intervals. If you want accurate HR, use a chest strap.' },
     { name:'Heart rate (wrist sensor)', reliability:'Moderately reliable', color:'#D97706', detail:'Optical measurement is moderately accurate for steady-pace running. During intervals or hill runs it lags 10–30 sec and can differ by up to 15 beats.' },
     { name:'VO₂max estimate', reliability:'Indicative only', color:'#DC2626', detail:'An algorithm based on the HR-to-pace ratio. It can differ 10–15% from your true VO₂max. Useful as a long-term trend, but the absolute numbers are unreliable.' },
     { name:'Readiness score / body battery', reliability:'Indicative only', color:'#DC2626', detail:'A statistical model calibrated for the average user. It may show "low readiness" after a bad night even if you\'re physiologically fine. Use it as one signal, not as the truth.' },
     { name:'Recovery time', reliability:'Indicative only', color:'#DC2626', detail:'Very approximate. The same algorithm gives different results for different people. Use your morning pulse and how you feel as more accurate recovery indicators.' },
-    { name:'Weekly mileage', reliability:'Reliable', color:'#10B981', detail:'A sum of GPS data — a reliable metric. One of the most useful metrics for load management. Track it every week.' }
+    { name:'Weekly mileage', reliability:'Reliable', color:'#10B981', detail:'A sum of GPS data, a reliable metric. One of the most useful metrics for load management. Track it every week.' }
   ];
   const container = document.getElementById('s19-metrics');
   let active = -1;
@@ -951,13 +951,13 @@ function initDemo20() {
 
     let desc;
     if (adapt >= 80) {
-      desc = `${hours} hours of ${qualityLabels[quality-1].toLowerCase()} sleep gives a strong adaptation window. Growth hormone peaks during your first cycle of deep sleep — with this quality and duration you likely got 2–3 full cycles. A hard session today will produce full training gains. Resting HR is likely at or below your baseline.`;
+      desc = `${hours} hours of ${qualityLabels[quality-1].toLowerCase()} sleep gives a strong adaptation window. Growth hormone peaks during your first cycle of deep sleep, with this quality and duration you likely got 2–3 full cycles. A hard session today will produce full training gains. Resting HR is likely at or below your baseline.`;
     } else if (adapt >= 60) {
       desc = `Reasonable recovery, but not optimal. You got enough sleep to benefit from training, but a hard interval session may not produce full adaptation. An easy or moderate run is a better choice. Prioritise sleep tonight to avoid accumulating a deficit.`;
     } else if (adapt >= 40) {
-      desc = `Below-threshold recovery. Deep sleep cycles were likely cut short, limiting HGH release and protein synthesis. Easy running is fine — it promotes blood flow and active recovery without adding stress. Avoid any intensity today. Check your resting HR: if it is elevated, confirm your decision to go easy.`;
+      desc = `Below-threshold recovery. Deep sleep cycles were likely cut short, limiting HGH release and protein synthesis. Easy running is fine. It promotes blood flow and active recovery without adding stress. Avoid any intensity today. Check your resting HR: if it is elevated, confirm your decision to go easy.`;
     } else {
-      desc = `Very low recovery. With ${hours} hours of ${qualityLabels[quality-1].toLowerCase()} sleep, your body has not completed adequate repair cycles. Training at intensity today adds load without producing adaptation — you will arrive at tomorrow's session more fatigued, not less. Rest, walk, or do 20 minutes of very easy movement only.`;
+      desc = `Very low recovery. With ${hours} hours of ${qualityLabels[quality-1].toLowerCase()} sleep, your body has not completed adequate repair cycles. Training at intensity today adds load without producing adaptation. You will arrive at tomorrow's session more fatigued, not less. Rest, walk, or do 20 minutes of very easy movement only.`;
     }
     document.getElementById('s20-desc').textContent = desc;
   }
@@ -995,10 +995,10 @@ function initDemo21() {
     document.getElementById('s21-window').textContent  = postWindow[s];
 
     const descs = {
-      rest: `On a rest day, carbohydrate needs drop significantly — ${carbs} g total is enough to maintain glycogen without impeding the fat-burning adaptation you are building. Keep protein at ${protein} g to support tendon repair from yesterday's session. This is an ideal day for a magnesium-rich meal (nuts, dark greens) and ensuring iron absorption (red meat or legumes with vitamin C).`,
-      easy: `Easy Z2 runs use mostly fat for fuel, so you don't need a glycogen top-up beforehand. ${carbs} g of carbohydrate across the day is sufficient. Prioritise ${protein} g of protein distributed across 4 meals (~30 g per meal) — this is where tendon collagen synthesis happens. If you run fasted occasionally on easy days, that is fine and builds fat-burning capacity.`,
-      moderate: `A tempo run draws meaningfully on glycogen. Have a carbohydrate-rich meal 2–3 hours before (oats, rice, or bread). Total daily target: ${carbs} g. After the session, the 45-minute recovery window matters — aim for 1 g/kg carbs (${w} g) plus ${Math.round(w * 0.4)} g protein as quickly as practical.`,
-      hard: `Hard intervals deplete glycogen significantly. Start the session with full stores: eat ${Math.round(w * 1.5)} g of carbohydrate 2–3 hours before. The 30-minute post-session window is critical — ${Math.round(w)} g carbs + 25–30 g protein immediately. Total daily target: ${carbs} g. Hydration and electrolytes matter more on hard days.`,
+      rest: `On a rest day, carbohydrate needs drop significantly, ${carbs} g total is enough to maintain glycogen without impeding the fat-burning adaptation you are building. Keep protein at ${protein} g to support tendon repair from yesterday's session. This is an ideal day for a magnesium-rich meal (nuts, dark greens) and ensuring iron absorption (red meat or legumes with vitamin C).`,
+      easy: `Easy Z2 runs use mostly fat for fuel, so you don't need a glycogen top-up beforehand. ${carbs} g of carbohydrate across the day is sufficient. Prioritise ${protein} g of protein distributed across 4 meals (~30 g per meal). This is where tendon collagen synthesis happens. If you run fasted occasionally on easy days, that is fine and builds fat-burning capacity.`,
+      moderate: `A tempo run draws meaningfully on glycogen. Have a carbohydrate-rich meal 2–3 hours before (oats, rice, or bread). Total daily target: ${carbs} g. After the session, the 45-minute recovery window matters, aim for 1 g/kg carbs (${w} g) plus ${Math.round(w * 0.4)} g protein as quickly as practical.`,
+      hard: `Hard intervals deplete glycogen significantly. Start the session with full stores: eat ${Math.round(w * 1.5)} g of carbohydrate 2–3 hours before. The 30-minute post-session window is critical, ${Math.round(w)} g carbs + 25–30 g protein immediately. Total daily target: ${carbs} g. Hydration and electrolytes matter more on hard days.`,
       long: `Long runs (90+ min) are the highest carbohydrate demand of the week. Pre-load with ${Math.round(w * 1.5)} g of easily digestible carbs the evening before and again 2–3 hours before the run. During the run, take gels or carbohydrates every 45 minutes. Post-run: ${Math.round(w)} g carbs + 30 g protein within 30 minutes. Total daily: ${carbs} g.`
     };
     document.getElementById('s21-desc').textContent = descs[s];
@@ -1036,29 +1036,29 @@ function initDemo22() {
     let hrColor, hrVal, hrDetail;
     if (hr <= 0) {
       hrColor = '#10B981'; hrVal = 'Normal';
-      hrDetail = 'At or below baseline — full recovery from recent sessions. The body has processed training stress. Hard sessions are appropriate.';
+      hrDetail = 'At or below baseline, full recovery from recent sessions. The body has processed training stress. Hard sessions are appropriate.';
     } else if (hr <= 4) {
       hrColor = '#84cc16'; hrVal = 'Slightly elevated';
-      hrDetail = 'Minor elevation — still within normal variation. Could reflect yesterday\'s session. An easy run is fine; hold off on intervals until tomorrow.';
+      hrDetail = 'Minor elevation, still within normal variation. Could reflect yesterday\'s session. An easy run is fine; hold off on intervals until tomorrow.';
     } else if (hr <= 7) {
       hrColor = '#D97706'; hrVal = 'Elevated';
       hrDetail = 'Clearly above baseline. Body is still processing recent training load. Stick to easy running or rest today. If this persists 3+ days, reduce overall volume.';
     } else {
       hrColor = '#DC2626'; hrVal = 'High';
-      hrDetail = `${hr} bpm above baseline is a clear overreaching signal. Combined with any other elevated marker, this is a definitive rest day. Rule out illness first — elevated resting HR is also an early symptom of infection.`;
+      hrDetail = `${hr} bpm above baseline is a clear overreaching signal. Combined with any other elevated marker, this is a definitive rest day. Rule out illness first, elevated resting HR is also an early symptom of infection.`;
     }
 
     // Signal 2: HR drift
     let driftColor, driftVal, driftDetail;
     if (drift <= 5) {
       driftColor = '#10B981'; driftVal = 'Good';
-      driftDetail = 'Low drift — your easy pace is truly aerobic. Heart rate is stable throughout, meaning you are well inside Z2 and the cardiovascular system is not working hard to maintain it.';
+      driftDetail = 'Low drift. Your easy pace is truly aerobic. Heart rate is stable throughout, meaning you are well inside Z2 and the cardiovascular system is not working hard to maintain it.';
     } else if (drift <= 10) {
       driftColor = '#D97706'; driftVal = 'Moderate';
       driftDetail = 'Some drift detected. Your starting pace may be slightly too fast for Z2, or you are mildly dehydrated. Try starting 10–15 sec/km slower and see if drift reduces below 5%.';
     } else {
       driftColor = '#DC2626'; driftVal = 'High';
-      driftDetail = `${drift}% drift means your easy runs are not easy. You are likely running at the Z3 boundary — enough to accumulate fatigue but not enough to produce threshold adaptations. This is the grey zone. Slow down until drift falls below 8%.`;
+      driftDetail = `${drift}% drift means your easy runs are not easy. You are likely running at the Z3 boundary, enough to accumulate fatigue but not enough to produce threshold adaptations. This is the grey zone. Slow down until drift falls below 8%.`;
     }
 
     // Signal 3: Mileage jump
@@ -1083,13 +1083,13 @@ function initDemo22() {
     const cautions = [hrVal, driftVal, jumpVal].filter(v => v === 'Caution' || v === 'Moderate' || v === 'Slightly elevated').length;
     let summary;
     if (issues >= 2) {
-      summary = 'Multiple red signals: this is a rest or active-recovery day. Ignoring two or more overload signals simultaneously is how overuse injuries develop — they rarely announce themselves with one clear warning.';
+      summary = 'Multiple red signals: this is a rest or active-recovery day. Ignoring two or more overload signals simultaneously is how overuse injuries develop. They rarely announce themselves with one clear warning.';
     } else if (issues === 1) {
       summary = 'One red signal: address it before it compounds. A single overload signal responded to early typically resolves in 1–3 days. The same signal ignored for a week often becomes an injury.';
     } else if (cautions >= 2) {
-      summary = 'Two amber signals: proceed with caution. An easy session is fine, but no intensity today. Review your past 2 weeks — a pattern of amber signals usually means overall training load has crept too high without adequate recovery.';
+      summary = 'Two amber signals: proceed with caution. An easy session is fine, but no intensity today. Review your past 2 weeks, a pattern of amber signals usually means overall training load has crept too high without adequate recovery.';
     } else {
-      summary = 'Signals look healthy. Your training load, recovery and easy-run quality are in a good range. Keep monitoring weekly — these signals are most useful as trends, not single readings.';
+      summary = 'Signals look healthy. Your training load, recovery and easy-run quality are in a good range. Keep monitoring weekly. These signals are most useful as trends, not single readings.';
     }
     document.getElementById('s22-summary').textContent = summary;
   }
@@ -1558,7 +1558,7 @@ function initDemo22() {
       ctx.strokeStyle='#9ca3af'; ctx.lineWidth=2;
       ctx.beginPath(); ctx.moveTo(fShinEndX, fShinEndY); ctx.lineTo(fShinEndX+tw*0.05, fShinEndY+2); ctx.stroke();
 
-      // ── TORSO (leans forward as hip lowers — natural squat form) ──
+      // ── TORSO (leans forward as hip lowers, natural squat form) ──
       var lean = amp*0.32;                     // radians of forward lean
       var torsoLen = th*0.30;
       var shoulderX = hipX + Math.sin(lean)*torsoLen;

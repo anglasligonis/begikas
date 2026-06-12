@@ -101,7 +101,7 @@ function initDemo3() {
     document.getElementById('s3-wall').textContent = depletionPerMin[iv] > 0 ? wallMin + ' min' : '—';
     document.getElementById('s3-wall').style.color = wallMin < dur ? '#D63B36' : 'var(--text)';
     const descs = [
-      `Lengvas tempas: ${fat}% kuro iš riebalų, ${carb}% iš glikogeno. Glikogenas eikvojamas lėtai — galite bėgti ilgai nerizikuodami „siena".`,
+      `Lengvas tempas: ${fat}% kuro iš riebalų, ${carb}% iš glikogeno. Glikogenas eikvojamas lėtai, galite bėgti ilgai nerizikuodami „siena".`,
       `Vidutinis tempas: glikogenas tampa svarbiu kuro šaltiniu. Po ~${wallMin} min be papildomo maitinimosi atsargos išseks.`,
       `Sunkus tempas: glikogenas degamas sparčiai. Jei nevalgysite angliavandenių kas 30–45 min, „siena" ateis po ~${wallMin} min.`,
       `Labai sunkus tempas: beveik vien glikogenas. Atsargos baigsis per ~${wallMin} min. Tokio tempo ilgoje distancijoje neišlaikysite.`,
@@ -233,7 +233,7 @@ function initDemo5() {
     const descs = [
       'Nosinis kvėpavimas idealus. Nosis šildo orą, gamina azoto oksidą, skatina diafragminį kvėpavimą. Lengvų treniruočių metu verta kvėpuoti per nosį.',
       'Pirmas ventiliacijos slenkstis (VT1). Pradedate kvėpuoti giliau. Galite derinti nosies ir burnos kvėpavimą.',
-      'Antrasis ventiliacijos slenkstis (VT2). Reikia greito CO₂ šalinimo — burna būtina. Kvėpavimo raumenys pradeda pavargti.',
+      'Antrasis ventiliacijos slenkstis (VT2). Reikia greito CO₂ šalinimo, burna būtina. Kvėpavimo raumenys pradeda pavargti.',
       'Kvėpavimas tampa rimta problema pats savaime. Diafragma ir tarpšonkauliniai raumenys sunaudoja dalį deguonies.',
       'Maksimalus ventiliavimas. Kvėpavimo raumenys gali sunaudoti iki 12% viso deguonies. Gali atsirasti dusulys.'
     ];
@@ -261,7 +261,7 @@ function initDemo6() {
     const temp = parseInt(tempS.value);
     const dur  = parseInt(durS.value);
     document.getElementById('s6-temp-label').textContent =
-      temp + '°C — ' + (temp <= 10 ? 'Šalta' : temp <= 18 ? 'Vėsu' : temp <= 25 ? 'Šilta' : temp <= 32 ? 'Karšta' : 'Labai karšta');
+      temp + '°C, ' + (temp <= 10 ? 'Šalta' : temp <= 18 ? 'Vėsu' : temp <= 25 ? 'Šilta' : temp <= 32 ? 'Karšta' : 'Labai karšta');
     document.getElementById('s6-dur-label').textContent = dur + ' min';
 
     const sweatBase = 0.4 + (temp - 5) * 0.03;
@@ -278,8 +278,8 @@ function initDemo6() {
     document.getElementById('s6-drink').textContent = per15 + ' ml';
 
     let desc;
-    if (temp <= 10) desc = 'Šaltas oras — idealios sąlygos. Kūnui lengva palaikyti temperatūrą. Hidratacijos poreikis mažas, bet neverta pamiršti gerti.';
-    else if (temp <= 18) desc = 'Vėsios sąlygos — optimalios bėgimui. Prakaitas aušina efektyviai. Gerkite ~150 ml kas 15 min.';
+    if (temp <= 10) desc = 'Šaltas oras, idealios sąlygos. Kūnui lengva palaikyti temperatūrą. Hidratacijos poreikis mažas, bet neverta pamiršti gerti.';
+    else if (temp <= 18) desc = 'Vėsios sąlygos, optimalios bėgimui. Prakaitas aušina efektyviai. Gerkite ~150 ml kas 15 min.';
     else if (temp <= 25) desc = `Šiltos sąlygos. Širdis dirba sunkiau aušindama kūną. Sulėtinkite tempą ~${pacePenalty}% ir gerkite ${per15} ml kas 15 min.`;
     else if (temp <= 32) desc = `Karšta! Karščio poveikis: greitis krenta ~${pacePenalty}%. Kūno temperatūra po ${dur} min pasiekia ${core}°C. Gerkite ${per15} ml kas 15 min, pridėkite elektrolitų.`;
     else desc = `Pavojingai karšta. Greitis krenta ~${pacePenalty}%. Dehidratacijos ir karščio smūgio rizika reali. Bėkite tik labai anksti ryte, kai oras atvėsta.`;
@@ -306,16 +306,16 @@ function initDemo7() {
     let rating, rColor, desc;
     if (cad < 160) {
       rating = 'Aukšta rizika'; rColor = '#D63B36';
-      desc = `${cad} SPM — per mažas. Žingsnis tikriausiai per ilgas, koja nusileisdama per toli priešais kūną. Smūgio jėga ${force.toFixed(1)}× kūno svorio kelia didelę kelio ir blauzdos traumų riziką.`;
+      desc = `${cad} SPM, per mažas. Žingsnis tikriausiai per ilgas, koja nusileisdama per toli priešais kūną. Smūgio jėga ${force.toFixed(1)}× kūno svorio kelia didelę kelio ir blauzdos traumų riziką.`;
     } else if (cad < 168) {
       rating = 'Vidutinė rizika'; rColor = '#C98A00';
-      desc = `${cad} SPM — priimtina, bet dar yra kur tobulėti. Pamėginkite didinti 5 SPM per savaitę iki 170–180 diapazono.`;
+      desc = `${cad} SPM, priimtina, bet dar yra kur tobulėti. Pamėginkite didinti 5 SPM per savaitę iki 170–180 diapazono.`;
     } else if (cad <= 182) {
       rating = 'Optimalus'; rColor = '#0E9A6C';
-      desc = `${cad} SPM — puiku. Šiame diapazone bėga daugelis patyrusių bėgikų. Kontakto laikas trumpas, smūgio jėga minimali.`;
+      desc = `${cad} SPM, puiku. Šiame diapazone bėga daugelis patyrusių bėgikų. Kontakto laikas trumpas, smūgio jėga minimali.`;
     } else {
       rating = 'Labai aukštas'; rColor = '#94a3b8';
-      desc = `${cad} SPM — labai aukšta kadencija. Tai pasiekiama daugiausia sprintuojant. Ilgo bėgimo metu toks ritmas greitai išsekina.`;
+      desc = `${cad} SPM, labai aukšta kadencija. Tai pasiekiama daugiausia sprintuojant. Ilgo bėgimo metu toks ritmas greitai išsekina.`;
     }
     document.getElementById('s7-rating').textContent = rating;
     document.getElementById('s7-rating').style.color = rColor;
@@ -331,18 +331,18 @@ function initDemo8() {
   const timeS = document.getElementById('s8-time');
 
   const recs = {
-    '5k-low':      { name:'Danielso formulė', color:'#8b5cf6', why:'Riboto laiko sąlygomis Danielso VDOT sistema yra efektyviausia — kiekviena treniruotė turi aiškų tikslą ir tikslų tempą. Nereikia didelių apimčių: 3 struktūruotos treniruotės per savaitę duoda gerų rezultatų.', borrow:'Pasiskolinkite: apskaičiuokite savo VDOT iš paskutinio 5K laiko (vdoto.com) ir naudokite gautas zonas bent lengvoms treniruotėms.' },
-    '5k-mid':      { name:'Poliarizuotas modelis', color:'#0E9A6C', why:'80/20 metodas puikiai tinka 5K distancijai su vidutine apimtimi. 2–3 lengvos treniruotės per savaitę + 1 tikrai sunki (intervalai) duoda aiškų progresą nenuvargstant.', borrow:'Pasiskolinkite: atidžiai saugokite Z3 — jei jaučiate, kad bėgate „patogiai sunkiai", greičiausiai tai pilkoji zona. Bėkite arba lėčiau, arba greičiau.' },
-    '5k-high':     { name:'Norvegiška treniruočių sistema', color:'#3672E0', why:'Su 8+ val./sav. galima pradėti eksperimentuoti su dvigubomis treniruotėmis. Dėmesys slenkstiniam tempui — dvi laktatinės treniruotės per savaitę (ne per dieną, kaip elitui) duoda puikius rezultatus.', borrow:'Pasiskolinkite: vieną kartą per savaitę bėkite du kartus — ryte lengvai 30–40 min, vakare slenkstinį tempą 20–30 min.' },
-    'half-low':    { name:'Danielso formulė', color:'#8b5cf6', why:'Pusmaratonui su ribotu laiku Danielso sistema siūlo aiškią struktūrą: ilgas bėgimas savaitgalį + viena kokybinė sesija + lengvos dienos. Nedaug, bet tikslinga.', borrow:'Pasiskolinkite: savaitgalio ilgas bėgimas visada turi būti tikrai lengvas (galite kalbėtis) — tai Danielso E tempas, ne maratoninis.' },
+    '5k-low':      { name:'Danielso formulė', color:'#8b5cf6', why:'Riboto laiko sąlygomis Danielso VDOT sistema yra efektyviausia, kiekviena treniruotė turi aiškų tikslą ir tikslų tempą. Nereikia didelių apimčių: 3 struktūruotos treniruotės per savaitę duoda gerų rezultatų.', borrow:'Pasiskolinkite: apskaičiuokite savo VDOT iš paskutinio 5K laiko (vdoto.com) ir naudokite gautas zonas bent lengvoms treniruotėms.' },
+    '5k-mid':      { name:'Poliarizuotas modelis', color:'#0E9A6C', why:'80/20 metodas puikiai tinka 5K distancijai su vidutine apimtimi. 2–3 lengvos treniruotės per savaitę + 1 tikrai sunki (intervalai) duoda aiškų progresą nenuvargstant.', borrow:'Pasiskolinkite: atidžiai saugokite Z3, jei jaučiate, kad bėgate „patogiai sunkiai", greičiausiai tai pilkoji zona. Bėkite arba lėčiau, arba greičiau.' },
+    '5k-high':     { name:'Norvegiška treniruočių sistema', color:'#3672E0', why:'Su 8+ val./sav. galima pradėti eksperimentuoti su dvigubomis treniruotėmis. Dėmesys slenkstiniam tempui, dvi laktatinės treniruotės per savaitę (ne per dieną, kaip elitui) duoda puikius rezultatus.', borrow:'Pasiskolinkite: vieną kartą per savaitę bėkite du kartus, ryte lengvai 30–40 min, vakare slenkstinį tempą 20–30 min.' },
+    'half-low':    { name:'Danielso formulė', color:'#8b5cf6', why:'Pusmaratonui su ribotu laiku Danielso sistema siūlo aiškią struktūrą: ilgas bėgimas savaitgalį + viena kokybinė sesija + lengvos dienos. Nedaug, bet tikslinga.', borrow:'Pasiskolinkite: savaitgalio ilgas bėgimas visada turi būti tikrai lengvas (galite kalbėtis), tai Danielso E tempas, ne maratoninis.' },
     'half-mid':    { name:'Lydiardo treniruočių sistema', color:'#C98A00', why:'Pusmaratonui su vidutine apimtimi Lydiardo principas veikia puikiai: 8–10 sav. aerobinio pagrindo kūrimas (ilgi, lėti bėgimai), tada 3–4 sav. slenkstinio darbo. Finišui stiprūs liks kojos.', borrow:'Pasiskolinkite: prieš pradėdami greičio darbus, 8 savaites bėgkite tik lengvai. Tai nuobodu, bet aerobinis pagrindas apsimoka.' },
     'half-high':   { name:'Poliarizuotas modelis', color:'#0E9A6C', why:'Su didelėmis apimtimis poliarizuotas modelis leidžia bėgti daug ir nesusirgti. 80% lengvų treniruočių + 1–2 tikrai sunkios per savaitę yra idealus santykis pusmaratonui.', borrow:'Pasiskolinkite: vienas ilgas bėgimas per savaitę (16–22 km) tikrai lengvu tempu yra pusmaratonio treniruočių kertinis akmuo.' },
-    'marathon-low':{ name:'Lydiardo treniruočių sistema', color:'#C98A00', why:'Maratonui net su ribotu laiku Lydiardo principas yra svarbiausias: ilgi, lėti savaitgalio bėgimai kuria riebalų efektyvumą ir sausgyslių atsparumą. Geriau 3 treniruotės per savaitę su ilgu savaitgaliu nei 5 vidutinės.', borrow:'Pasiskolinkite: kiekvieną savaitę — vienas bėgimas ilgesnis nei visa kita. Palaipsniui didinkite iki 28–30 km prieš maratoną.' },
+    'marathon-low':{ name:'Lydiardo treniruočių sistema', color:'#C98A00', why:'Maratonui net su ribotu laiku Lydiardo principas yra svarbiausias: ilgi, lėti savaitgalio bėgimai kuria riebalų efektyvumą ir sausgyslių atsparumą. Geriau 3 treniruotės per savaitę su ilgu savaitgaliu nei 5 vidutinės.', borrow:'Pasiskolinkite: kiekvieną savaitę, vienas bėgimas ilgesnis nei visa kita. Palaipsniui didinkite iki 28–30 km prieš maratoną.' },
     'marathon-mid':{ name:'Poliarizuotas modelis', color:'#0E9A6C', why:'Maratonui su vidutine apimtimi 80/20 metodas leidžia bėgti pakankamai daug be pervargimo. Ilgi savaitgalio bėgimai (lengvi!) + 1 slenkstinė sesija per savaitę yra klasikinis receptas.', borrow:'Pasiskolinkite: maratoninis tempas = Z2/Z3 riba. Treniruotės „maratoniniu tempu" yra labai veiksmingos, bet jas reikia subalansuoti su daug lengvesnio bėgimo.' },
-    'marathon-high':{ name:'Keniečių / Etiopų modelis', color:'#D63B36', why:'Su didelėmis apimtimis keniečių logika veikia: kuo daugiau lengvo bėgimo, tuo geresnis riebalų metabolizmas ir aerobinė bazė. 80–90% visų kilometrų turi būti tikrai lengvi — net jei tai jaučiasi per lengva.', borrow:'Pasiskolinkite: jei bėgate 60+ km/sav., patikrinkite — ar tikrai 80% yra lengva? Daugelis bėga per greitai lengvomis dienomis ir per lėtai sunkiomis.' },
-    'health-low':  { name:'Poliarizuotas modelis', color:'#0E9A6C', why:'Sveikatai ir ilgaamžiškumui poliarizuotas modelis yra idealus: mažiausiai traumų, didelis malonumas, tvarumas dešimtmečius. Net 3 treniruotės per savaitę (2 lengvos + 1 sunkesnė) duoda reikšmingos naudos sveikatai.', borrow:'Pasiskolinkite: 30 min lengvo bėgimo 3× per savaitę yra pakankamai. Svarbiausia — reguliarumas, ne intensyvumas.' },
-    'health-mid':  { name:'Poliarizuotas modelis', color:'#0E9A6C', why:'Su vidutine apimtimi poliarizuotas modelis leidžia mėgautis bėgimu be pervargimo. 80% treniruočių turi būti malonios — jei bėgimas nuolat sunkus, ilgainiui tai nesveika.', borrow:'Pasiskolinkite: sekmadienio ilgas bėgimas tikrai lengvu tempu yra vienas sveikiausių įpročių. Net 60–90 min Z1/Z2 daro stebuklus sirdies ir metabolinei sveikatai.' },
-    'health-high': { name:'Lydiardo treniruočių sistema', color:'#C98A00', why:'Su dideliu laiku Lydiardo aerobinio pagrindo principas yra tvariausias ilguoju laikotarpiu. Didelės lengvo bėgimo apimtys be pervargimo kuria kapiliarų tinklą, gerina metabolinę sveikatą ir ilgina aktyvų gyvenimą.', borrow:'Pasiskolinkite: jei mėgstate bėgti daug — bėkite daug, bet lėtai. Greitis ateina pats, kai aerobinis pagrindas stiprus.' }
+    'marathon-high':{ name:'Keniečių / Etiopų modelis', color:'#D63B36', why:'Su didelėmis apimtimis keniečių logika veikia: kuo daugiau lengvo bėgimo, tuo geresnis riebalų metabolizmas ir aerobinė bazė. 80–90% visų kilometrų turi būti tikrai lengvi, net jei tai jaučiasi per lengva.', borrow:'Pasiskolinkite: jei bėgate 60+ km/sav., patikrinkite, ar tikrai 80% yra lengva? Daugelis bėga per greitai lengvomis dienomis ir per lėtai sunkiomis.' },
+    'health-low':  { name:'Poliarizuotas modelis', color:'#0E9A6C', why:'Sveikatai ir ilgaamžiškumui poliarizuotas modelis yra idealus: mažiausiai traumų, didelis malonumas, tvarumas dešimtmečius. Net 3 treniruotės per savaitę (2 lengvos + 1 sunkesnė) duoda reikšmingos naudos sveikatai.', borrow:'Pasiskolinkite: 30 min lengvo bėgimo 3× per savaitę yra pakankamai. Svarbiausia, reguliarumas, ne intensyvumas.' },
+    'health-mid':  { name:'Poliarizuotas modelis', color:'#0E9A6C', why:'Su vidutine apimtimi poliarizuotas modelis leidžia mėgautis bėgimu be pervargimo. 80% treniruočių turi būti malonios, jei bėgimas nuolat sunkus, ilgainiui tai nesveika.', borrow:'Pasiskolinkite: sekmadienio ilgas bėgimas tikrai lengvu tempu yra vienas sveikiausių įpročių. Net 60–90 min Z1/Z2 daro stebuklus sirdies ir metabolinei sveikatai.' },
+    'health-high': { name:'Lydiardo treniruočių sistema', color:'#C98A00', why:'Su dideliu laiku Lydiardo aerobinio pagrindo principas yra tvariausias ilguoju laikotarpiu. Didelės lengvo bėgimo apimtys be pervargimo kuria kapiliarų tinklą, gerina metabolinę sveikatą ir ilgina aktyvų gyvenimą.', borrow:'Pasiskolinkite: jei mėgstate bėgti daug, bėkite daug, bet lėtai. Greitis ateina pats, kai aerobinis pagrindas stiprus.' }
   };
 
   function update() {
@@ -368,31 +368,31 @@ function initDemo9() {
       why: 'Kelio skausmas dažniausiai kyla dėl silpnų klubo atitraukiamųjų raumenų (vidurinio sėdmens raumens, gluteus medius) ir keturgalvių. Kai klubas nenukrenta į šoną bėgimo metu, kelio apkrova smarkiai sumažėja.',
       items: [
         { name: 'Vienos kojos pritūpimas', tag: 'Keturgalviai · Gluteus medius', sets: '3 × 8 k.k.', desc: 'Stovėkite ant vienos kojos, lėtai lenkite kelį iki 60–70°. Kelias negali krypti į vidų. Pradėkite prie sienos palaikymui.' },
-        { name: 'Kriauklė (Clamshell)', tag: 'Klubo atitraukiamieji raumenys', sets: '3 × 15 k.k.', desc: 'Atsigulkite ant šono, kojos sulenktos 90°. Atidarykite viršutinę koją kaip kriauklę — negalima sukioti dubens. Pasipriešinimui naudokite gumelę.' },
+        { name: 'Kriauklė (Clamshell)', tag: 'Klubo atitraukiamieji raumenys', sets: '3 × 15 k.k.', desc: 'Atsigulkite ant šono, kojos sulenktos 90°. Atidarykite viršutinę koją kaip kriauklę, negalima sukioti dubens. Pasipriešinimui naudokite gumelę.' },
         { name: 'Stepping-down (ekscentrinis)', tag: 'Keturgalviai ekscentriškai', sets: '3 × 10 k.k.', desc: 'Stovėkite ant laiptelio. Lėtai (3–4 sek.) nuleiskite kitą koją žemyn. Koncentruokitės į lėtą nusileidimą, ne kilimą.' },
-        { name: 'Sėdmenų tiltelis', tag: 'Gluteus maximus · Stuburo tiesiamieji', sets: '3 × 15', desc: 'Atsigulkite ant nugaros, kojos sulenktos. Pakelkite dubenį iki tiesios linijos. Vienos kojos versija — pažengusiems.' }
+        { name: 'Sėdmenų tiltelis', tag: 'Gluteus maximus · Stuburo tiesiamieji', sets: '3 × 15', desc: 'Atsigulkite ant nugaros, kojos sulenktos. Pakelkite dubenį iki tiesios linijos. Vienos kojos versija, pažengusiems.' }
       ]
     },
     shin: {
       why: 'Blauzdiniai skausmai dažniausiai signalizuoja apie per greitą apimties augimą ir silpną tibialis anterior bei blauzdos raumenį. Ekscentrinis stiprinimas yra svarbiausias.',
       items: [
-        { name: 'Kulno kėlimas (vienos kojos)', tag: 'Gastrocnemius · Soleus', sets: '3 × 15 k.k.', desc: 'Stovėkite ant laiptelio krašto. Pakelkite kulną kuo aukščiau, tada leiskite žemiau laiptelio lygio (3 sek.). Tai ekscentrinis pratimas — svarbiausia dalis yra leidimasis.' },
-        { name: 'Tibialis anterior stiprinimas', tag: 'Blauzda (priekinė dalis)', sets: '3 × 20', desc: 'Sėdėkite ir kaitaliojamais judesiais traukite pirštus link savęs. Su pasipriešinimu (guma) — dar efektyviau.' },
+        { name: 'Kulno kėlimas (vienos kojos)', tag: 'Gastrocnemius · Soleus', sets: '3 × 15 k.k.', desc: 'Stovėkite ant laiptelio krašto. Pakelkite kulną kuo aukščiau, tada leiskite žemiau laiptelio lygio (3 sek.). Tai ekscentrinis pratimas, svarbiausia dalis yra leidimasis.' },
+        { name: 'Tibialis anterior stiprinimas', tag: 'Blauzda (priekinė dalis)', sets: '3 × 20', desc: 'Sėdėkite ir kaitaliojamais judesiais traukite pirštus link savęs. Su pasipriešinimu (guma), dar efektyviau.' },
         { name: 'Pėdos lanko pratimai', tag: 'Pėdos raumeniukai', sets: '2 × 20', desc: 'Stovėdami bandykite „suraukti" pėdą nesulenkdami pirštų. Stiprina vidinį pėdos lanką.' },
         { name: 'Vienos kojos pusiausvyra', tag: 'Čiurnos stabilizatoriai', sets: '3 × 30 sek. k.k.', desc: 'Stovėkite ant vienos kojos. Pradėkite akimis atvirtomis, tada užmerkite. Laikykite čiurnos stabilumą.' }
       ]
     },
     achilles: {
-      why: 'Achilo sausgyslė reikalauja ekscentrinio stiprinimo. Alfredson protokolas — plačiai pripažintas efektyviausiu Achilo reabilitacijos būdu — grindžiamas būtent ekscentriniu kulno leidimu.',
+      why: 'Achilo sausgyslė reikalauja ekscentrinio stiprinimo. Alfredson protokolas, plačiai pripažintas efektyviausiu Achilo reabilitacijos būdu, grindžiamas būtent ekscentriniu kulno leidimu.',
       items: [
-        { name: 'Alfredson protokolas (ekscentrinis)', tag: 'Achilo sausgyslė · Soleus · Gastrocnemius', sets: '3 × 15 k.k. × 2/d.', desc: 'Ant laiptelio pakėlę abi kojas, pereikite ant vienos ir lėtai (3 sek.) leiskite kulną žemiau laiptelio. Pradedant bus nepatogu — tai normalu. Sustokite jei aštrus skausmas.' },
+        { name: 'Alfredson protokolas (ekscentrinis)', tag: 'Achilo sausgyslė · Soleus · Gastrocnemius', sets: '3 × 15 k.k. × 2/d.', desc: 'Ant laiptelio pakėlę abi kojas, pereikite ant vienos ir lėtai (3 sek.) leiskite kulną žemiau laiptelio. Pradedant bus nepatogu, tai normalu. Sustokite jei aštrus skausmas.' },
         { name: 'Tiesios kojos kulno leidimas', tag: 'Gastrocnemius ekscentriškai', sets: '3 × 15 k.k.', desc: 'Tas pats kaip Alfredson, bet koja tiesi (ne sulenkta). Apkrauna aukštesnę Achilo dalį.' },
-        { name: 'Soleus stiprinimas', tag: 'Soleus (giliasis)', sets: '3 × 15 k.k.', desc: 'Kulno kėlimas sulenkta kelio — apkrauna soleus, kuris prisideda prie Achilo apačios.' },
+        { name: 'Soleus stiprinimas', tag: 'Soleus (giliasis)', sets: '3 × 15 k.k.', desc: 'Kulno kėlimas sulenkta kelio, apkrauna soleus, kuris prisideda prie Achilo apačios.' },
         { name: 'Čiurnos mobilumas', tag: 'Dorsifleksija', sets: '2 × 20', desc: 'Stovėkite prie sienos, lenkite kelį link sienos nekeldami kulno. Gerina dorsifleksiją, kuri dažnai sutrikusi Achilo sindrome.' }
       ]
     },
     hip: {
-      why: 'Klubų silpnumas — viena dažniausių netiesiogiai su bėgimu susijusių problemų. Silpnas gluteus medius sukelia kelių krypimą, blauzdinį sindromą ir net nugaros skausmą.',
+      why: 'Klubų silpnumas, viena dažniausių netiesiogiai su bėgimu susijusių problemų. Silpnas gluteus medius sukelia kelių krypimą, blauzdinį sindromą ir net nugaros skausmą.',
       items: [
         { name: 'Lateral band walk', tag: 'Gluteus medius', sets: '3 × 15 žingsnių/k.', desc: 'Su guma aplink kelius ar kulkšnis eikite į šoną laikydami kūną stabilų. Kelio neleiskite krypti į vidų.' },
         { name: 'Vienos kojos RDL', tag: 'Gluteus maximus · Hamstring', sets: '3 × 10 k.k.', desc: 'Stovėkite ant vienos kojos, lenkitės į priekį laikydami nugarą tiesią ir kilnodami laisvą koją atgal. Kontroliuoja visas užpakalinės grandinės raumenys.' },
@@ -401,7 +401,7 @@ function initDemo9() {
       ]
     },
     core: {
-      why: 'Liemens raumenys bėgant veikia kaip jėgos perdavimo centras — sieja kojų ir rankų judesius. Silpni liemens raumenys leidžia energijai ,,išsibarstyti" ir didina juosmens apkrovą.',
+      why: 'Liemens raumenys bėgant veikia kaip jėgos perdavimo centras, sieja kojų ir rankų judesius. Silpni liemens raumenys leidžia energijai ,,išsibarstyti" ir didina juosmens apkrovą.',
       items: [
         { name: 'Planka (dead bug variacija)', tag: 'Transversus abdominis · Liemuo', sets: '3 × 30–45 sek.', desc: 'Atsigulkite ant nugaros, kojos 90° kampą. Lėtai tiesinkite kaitaliodami priešingą ranką ir koją, neleisdami juosmeniui kilti nuo grindų.' },
         { name: 'Šoninis tiltelis', tag: 'Šoniniai stabilizatoriai', sets: '3 × 20–30 sek. k.k.', desc: 'Atsirėmę ant alkūnės ir kojos briaunos, laikykite kūną tiesų. Pakelkite ir nuleiskite dubenį. Stiprina oblique ir šoninę grandinę.' },
@@ -456,11 +456,11 @@ function initDemo10() {
       </div>`
     ).join('');
     let advice = '';
-    if (t >= 5) advice = 'Vėsios sąlygos — lengvai apsirenginėkite. Šalčio jausmas bėgant praeis per 5–10 min.';
-    else if (t >= 0) advice = 'Žiemos sąlygos. Ypač apsaugokite rankas ir ausis. Pradžioje jaučiasi šalta — tai normalu, kūnas šils.';
-    else if (t >= -10) advice = 'Šalta. Ant ledo — trumpesni žingsniai, žemesnis masės centras. Venkite prakaituoto audinio prie odos.';
-    else if (t >= -20) advice = 'Labai šalta. Balaklava ir dvigubos pirštinės — ne priedas, o būtinybė. Sutrumpinkite bėgimo trukmę arba bėkite viduje.';
-    else advice = 'Ekstremalus šaltis. Apgalvokite, ar būtina bėgti lauke. Jei taip — stebėkite nušalimo ženklus pirštų, ausų ir nosies srityje.';
+    if (t >= 5) advice = 'Vėsios sąlygos, lengvai apsirenginėkite. Šalčio jausmas bėgant praeis per 5–10 min.';
+    else if (t >= 0) advice = 'Žiemos sąlygos. Ypač apsaugokite rankas ir ausis. Pradžioje jaučiasi šalta, tai normalu, kūnas šils.';
+    else if (t >= -10) advice = 'Šalta. Ant ledo, trumpesni žingsniai, žemesnis masės centras. Venkite prakaituoto audinio prie odos.';
+    else if (t >= -20) advice = 'Labai šalta. Balaklava ir dvigubos pirštinės, ne priedas, o būtinybė. Sutrumpinkite bėgimo trukmę arba bėkite viduje.';
+    else advice = 'Ekstremalus šaltis. Apgalvokite, ar būtina bėgti lauke. Jei taip, stebėkite nušalimo ženklus pirštų, ausų ir nosies srityje.';
     document.getElementById('s10-advice').textContent = advice;
   }
   sl.addEventListener('input', update);
@@ -472,43 +472,43 @@ function initDemo11() {
   const sel = document.getElementById('s11-dist');
   const plans = {
     '5k': [
-      { time: 'Iš vakaro', cls: '', title: 'Įprasta vakarienė', body: 'Nereikia specialiai krauti angliavandenių — 5K neišeikvos glikogeno atsargų. Paprasta, gerai žinoma mityba. Miegokite 7–8 val.' },
+      { time: 'Iš vakaro', cls: '', title: 'Įprasta vakarienė', body: 'Nereikia specialiai krauti angliavandenių, 5K neišeikvos glikogeno atsargų. Paprasta, gerai žinoma mityba. Miegokite 7–8 val.' },
       { time: 'Ryte (−2 val.)', cls: '', title: 'Lengvi pusryčiai', body: 'Bananas, avižos arba skrudinta duona su uogiene. Ne daugiau nei už 2 val. iki starto. Vengti kiaušinių, riebalų, pieno produktų.' },
-      { time: 'Prieš startą (−30 min)', cls: 'warn', title: 'Apšilimas', body: '5–10 min lengvo bėgimo + dinaminis tempimas. 5 km distancijoje svarbus greitas startas — todėl nepakanka apšilti tik minimaliai.' },
+      { time: 'Prieš startą (−30 min)', cls: 'warn', title: 'Apšilimas', body: '5–10 min lengvo bėgimo + dinaminis tempimas. 5 km distancijoje svarbus greitas startas, todėl nepakanka apšilti tik minimaliai.' },
       { time: 'Pirmas km', cls: 'alert', title: 'Pradėkite lėčiau', body: 'Adrenalinas ir minia verčia bėgti per greitai. Pirmą kilometrą sąmoningai sulėtinkite 10–15%. Galėsite pagreitėti vėliau.' },
       { time: 'Km 2–4', cls: '', title: 'Ritmas', body: 'Suraskite planuotą tempą ir palaikykite. Kvėpuokite ritmingai.' },
-      { time: 'Paskutinis km', cls: 'warn', title: 'Finišo spurtas', body: 'Jei turi jėgų — dabar galima viską išduoti. Jei ne — tolygus finišas geriau nei žlugimas prieš finišo liniją.' },
-      { time: 'Po finišo', cls: '', title: 'Atsistatymas', body: '5 min ėjimas, skysčiai, angliavandeniai. 5K — 1–2 poilsio dienos. Rytoj galima lengvai bėgti.' }
+      { time: 'Paskutinis km', cls: 'warn', title: 'Finišo spurtas', body: 'Jei turi jėgų, dabar galima viską išduoti. Jei ne, tolygus finišas geriau nei žlugimas prieš finišo liniją.' },
+      { time: 'Po finišo', cls: '', title: 'Atsistatymas', body: '5 min ėjimas, skysčiai, angliavandeniai. 5K, 1–2 poilsio dienos. Rytoj galima lengvai bėgti.' }
     ],
     '10k': [
-      { time: 'Iš vakaro', cls: '', title: 'Daugiau angliavandenių turinti vakarienė', body: 'Ryžiai, pasta, duona. 10 km bėgimas jau reikšmingai eikvoja glikogeno atsargas — verta turėti pilnas glikogeno atsargas. Miegokite 7–8 val.' },
+      { time: 'Iš vakaro', cls: '', title: 'Daugiau angliavandenių turinti vakarienė', body: 'Ryžiai, pasta, duona. 10 km bėgimas jau reikšmingai eikvoja glikogeno atsargas, verta turėti pilnas glikogeno atsargas. Miegokite 7–8 val.' },
       { time: 'Ryte (−2.5 val.)', cls: '', title: 'Pusryčiai su angliavandeniais', body: 'Avižos, bananas, duona. Šiek tiek daugiau nei 5K pasiruošimui.' },
-      { time: 'Prieš startą (−40 min)', cls: 'warn', title: 'Apšilimas', body: '10 min lengvo bėgimo + keli greitesni pagreitėjimai. 10K bėgama greitu tempu — apšilimas labai svarbus.' },
+      { time: 'Prieš startą (−40 min)', cls: 'warn', title: 'Apšilimas', body: '10 min lengvo bėgimo + keli greitesni pagreitėjimai. 10K bėgama greitu tempu, apšilimas labai svarbus.' },
       { time: 'Km 1–2', cls: 'alert', title: 'Kontroliuotas startas', body: 'Pirmieji kilometrai turi būti lėtesni nei planuotas tempas. Pulsas dar kyla. Būkite kantrūs.' },
-      { time: 'Km 3–8', cls: '', title: 'Tikslo tempas', body: 'Suraskite ritmą ir išlaikykite. Maitinimosi nereikia — tik vanduo starto/finišo zonoje.' },
-      { time: 'Km 9–10', cls: 'warn', title: 'Atiduokite visas jėgas', body: 'Paskutiniai 2 km — galima duoti viską. Iki čia turėjote taupyti energiją.' },
+      { time: 'Km 3–8', cls: '', title: 'Tikslo tempas', body: 'Suraskite ritmą ir išlaikykite. Maitinimosi nereikia, tik vanduo starto/finišo zonoje.' },
+      { time: 'Km 9–10', cls: 'warn', title: 'Atiduokite visas jėgas', body: 'Paskutiniai 2 km, galima duoti viską. Iki čia turėjote taupyti energiją.' },
       { time: 'Po finišo', cls: '', title: 'Atsistatymas', body: 'Skysčiai, angliavandeniai per 30–60 min. 2–3 poilsio dienos. Lengvas bėgimas galimas po 2 dienų.' }
     ],
     'half': [
       { time: '2 dienos prieš', cls: '', title: 'Daugiau angliavandenių', body: 'Šiek tiek daugiau angliavandenių nei įprastai. Sumažinkite treniruočių intensyvumą (tapering pradžia).' },
-      { time: 'Iš vakaro', cls: '', title: 'Angliavandenių krovimas', body: 'Didelė porcija ryžių ar pastos. Ankstyva vakarienė (18–19 val.) — miegas be pilno skrandžio. 8 val. miego.' },
-      { time: 'Ryte (−2.5 val.)', cls: '', title: 'Tiksliniai pusryčiai', body: '60–80g angliavandenių: avižos + bananas + medus. Kava — jei įpratę. Jokio naujo maisto.' },
+      { time: 'Iš vakaro', cls: '', title: 'Angliavandenių krovimas', body: 'Didelė porcija ryžių ar pastos. Ankstyva vakarienė (18–19 val.), miegas be pilno skrandžio. 8 val. miego.' },
+      { time: 'Ryte (−2.5 val.)', cls: '', title: 'Tiksliniai pusryčiai', body: '60–80g angliavandenių: avižos + bananas + medus. Kava, jei įpratę. Jokio naujo maisto.' },
       { time: 'Prieš startą (−30 min)', cls: 'warn', title: 'Apšilimas + geliukas', body: 'Lengvas 5 min bėgimas. Vienas geliukas su vandeniu jei planuojate naudoti bėgant.' },
-      { time: 'Km 1–5', cls: 'alert', title: 'Taupymas', body: 'Per greitas startas čia yra klaidinga — 16 km dar liko. Laikykitės planuoto tempo.' },
-      { time: 'Km 7–8', cls: 'warn', title: 'Pirmas geliukas', body: '1 geliukas su 200 ml vandens. Neskauda pradėti anksti — geriau per anksti nei per vėlai.' },
-      { time: 'Km 14', cls: 'warn', title: 'Antras geliukas', body: 'Dar vienas geliukas. Dabar raumenys ims jausti nuovargį — glikogeno palaikymas svarbus.' },
-      { time: 'Paskutiniai 3 km', cls: '', title: 'Viską atiduoti', body: 'Jei taupėte energiją — dabar galima pagreitėti. Jei ne — tolygiai iki finišo.' },
-      { time: 'Po finišo', cls: '', title: 'Atsistatymas', body: 'Angliavandeniai + baltymai per 30 min. 4–5 lengvos dienos. Intensyvios treniruotės — po 1–2 savaičių.' }
+      { time: 'Km 1–5', cls: 'alert', title: 'Taupymas', body: 'Per greitas startas čia yra klaidinga, 16 km dar liko. Laikykitės planuoto tempo.' },
+      { time: 'Km 7–8', cls: 'warn', title: 'Pirmas geliukas', body: '1 geliukas su 200 ml vandens. Neskauda pradėti anksti, geriau per anksti nei per vėlai.' },
+      { time: 'Km 14', cls: 'warn', title: 'Antras geliukas', body: 'Dar vienas geliukas. Dabar raumenys ims jausti nuovargį, glikogeno palaikymas svarbus.' },
+      { time: 'Paskutiniai 3 km', cls: '', title: 'Viską atiduoti', body: 'Jei taupėte energiją, dabar galima pagreitėti. Jei ne, tolygiai iki finišo.' },
+      { time: 'Po finišo', cls: '', title: 'Atsistatymas', body: 'Angliavandeniai + baltymai per 30 min. 4–5 lengvos dienos. Intensyvios treniruotės, po 1–2 savaičių.' }
     ],
     'full': [
       { time: '3 dienos prieš', cls: '', title: 'Angliavandenių krovimas', body: 'Angliavandenių kaupimo pradžia: 8–10g angliavandenių per kg kūno svorio per dieną. Sumažinkite riebalus ir skaidulas.' },
       { time: 'Iš vakaro', cls: '', title: 'Paskutinis angliavandenių kaupimas', body: 'Didelė porcija gerai žinomo maisto. Miegoti 20–21 val. jei startas anksti. Pasiruoškite viską vakar.' },
-      { time: 'Ryte (−3 val.)', cls: '', title: 'Pusryčiai', body: '80–100g angliavandenių. Laikas labai svarbus — 3 val. prieš startą, kad virškinimas baigtųsi.' },
-      { time: 'Prieš startą (−30 min)', cls: 'warn', title: 'Paskutinis geliukas', body: 'Vienas geliukas su vandeniu. Lengvas apšilimas — 5 min ėjimas, ne bėgimas.' },
-      { time: 'Km 1–10', cls: 'alert', title: 'LABAI svarbu: lėtas startas', body: 'Maratonas pralaimimas pirmais km — ne laimimas. 10–15% lėčiau nei planuojamas tempas. Atrodo per lengva — taip ir turi būti.' },
+      { time: 'Ryte (−3 val.)', cls: '', title: 'Pusryčiai', body: '80–100g angliavandenių. Laikas labai svarbus, 3 val. prieš startą, kad virškinimas baigtųsi.' },
+      { time: 'Prieš startą (−30 min)', cls: 'warn', title: 'Paskutinis geliukas', body: 'Vienas geliukas su vandeniu. Lengvas apšilimas, 5 min ėjimas, ne bėgimas.' },
+      { time: 'Km 1–10', cls: 'alert', title: 'LABAI svarbu: lėtas startas', body: 'Maratonas pralaimimas pirmais km, ne laimimas. 10–15% lėčiau nei planuojamas tempas. Atrodo per lengva, taip ir turi būti.' },
       { time: 'Kas 5 km', cls: 'warn', title: 'Maitinimosi protokolas', body: '1 geliukas kas 5–7 km nuo 35 km (t.y. nuo ~30 min). 200 ml vandens su kiekvienu geliuku. Iš viso 5–7 geliukai.' },
-      { time: 'Km 30–35', cls: 'alert', title: '"Sienos" zona', body: 'Čia daugelis patiria glikogeno išeikvojimą. Jei tinkamai maitinomės — praeiname. Sutelkite dėmesį į formą ir ritmą.' },
-      { time: 'Km 40–42.2', cls: '', title: 'Finišas', body: 'Jei dar turite ką atiduoti — dabar. Jei ne — laikykitės ritmo iki finišo.' },
+      { time: 'Km 30–35', cls: 'alert', title: '"Sienos" zona', body: 'Čia daugelis patiria glikogeno išeikvojimą. Jei tinkamai maitinomės, praeiname. Sutelkite dėmesį į formą ir ritmą.' },
+      { time: 'Km 40–42.2', cls: '', title: 'Finišas', body: 'Jei dar turite ką atiduoti, dabar. Jei ne, laikykitės ritmo iki finišo.' },
       { time: 'Po finišo', cls: '', title: 'Atsistatymas', body: 'Neskubėkite grįžti į treniruotes. 2 sav. tik lengvas judėjimas. 3–4 sav. iki normalių treniruočių. Maratonas reikalauja pagarbos.' }
     ]
   };
@@ -689,15 +689,15 @@ function initDemo13() {
     document.getElementById('s13-diff').textContent = '−' + fmtTime(diff) + ' / 10K';
 
     const milestones = [
-      [1,3,  'Pirmi metai — greičiausias augimas. Kūnas mokosi judėti nauju būdu, kapiliarų tinklas sparčiai plečiasi.'],
+      [1,3,  'Pirmi metai, greičiausias augimas. Kūnas mokosi judėti nauju būdu, kapiliarų tinklas sparčiai plečiasi.'],
       [4,6,  'Augimas lėtėja, bet tęsiasi. Sausgyslių elastingumas gerėja, nervų sistema koordinuoja judesį tiksliau.'],
-      [7,11, 'Vidutinio pasirengimo bėgikas. Ekonomija jau reikšmingai geresnė nei pradžioje — tas pats tempas reikalauja daug mažiau pastangų.'],
-      [12,16,'Patyręs bėgikas. Tolimesnis augimas reikalauja specializuoto darbo — jėgos treniruočių ir technikos darbo.'],
-      [17,20,'Daugiau nei 15 metų — ilgametė investicija. Kreivė niekada visiškai nesustoja, nes kūnas vis dar prisitaiko.']
+      [7,11, 'Vidutinio pasirengimo bėgikas. Ekonomija jau reikšmingai geresnė nei pradžioje, tas pats tempas reikalauja daug mažiau pastangų.'],
+      [12,16,'Patyręs bėgikas. Tolimesnis augimas reikalauja specializuoto darbo, jėgos treniruočių ir technikos darbo.'],
+      [17,20,'Daugiau nei 15 metų, ilgametė investicija. Kreivė niekada visiškai nesustoja, nes kūnas vis dar prisitaiko.']
     ];
     const m = milestones.find(([a,b]) => y>=a && y<=b) || milestones[milestones.length-1];
     const nuosk = `Nuoseklus bėgikas po ${y} metų sutaupo apie ${fmtTime(consSaved)} per 10K lyginant su savo pradžia.`;
-    const spor  = ` Nenuoseklus — tik ${fmtTime(sporSaved)}. Skirtumas tarp jų: ${fmtTime(diff)}.`;
+    const spor  = ` Nenuoseklus, tik ${fmtTime(sporSaved)}. Skirtumas tarp jų: ${fmtTime(diff)}.`;
     document.getElementById('s13-insight').textContent = m[2] + ' ' + nuosk + spor;
   }
 
@@ -800,7 +800,7 @@ function initDemo15() {
     document.getElementById('s15-neg').textContent = fmt(negTime);
     document.getElementById('s15-pos').textContent = fmt(posTime);
     const saved = posTime - negTime;
-    const insight = `${dist > 10 ? 'Ilgesnėse distancijose' : '5K ir 10K'} neigiamas splitas gali sutaupyti apie ${fmt(saved)} lyginant su teigiamu splitu. Skirtumas auga kartu su distancija — maratone jis gali siekti 10–15 minučių.`;
+    const insight = `${dist > 10 ? 'Ilgesnėse distancijose' : '5K ir 10K'} neigiamas splitas gali sutaupyti apie ${fmt(saved)} lyginant su teigiamu splitu. Skirtumas auga kartu su distancija, maratone jis gali siekti 10–15 minučių.`;
     document.getElementById('s15-insight').textContent = insight;
   }
   distSl.addEventListener('change', update);
@@ -830,7 +830,7 @@ function initDemo16() {
     let insight = '';
     if (progressionRisk === 'Aukšta') insight = `Didelė apimtis per trumpą laiką: raumenys gali susidoroti (${musclePct}% adaptacijos), bet sausgyslės dar ne (${tendonPct}%). Būtent šioje situacijoje atsiranda dauguma perkrovos traumų.`;
     else if (progressionRisk === 'Vidutinė') insight = `Vidutinė rizika. Raumenų adaptacija (${musclePct}%) lenkia sausgyslių (${tendonPct}%). Atidžiai stebėkite bet kokius sausgyslių signalus.`;
-    else insight = `Saugi zona. ${weeks < 8 ? 'Toliau nuosekliai didinkite — organizmas prisitaikys.' : 'Raumenų ir sausgyslių prisitaikymas vyksta sinchroniškai. Galite tęsti nuoseklų progresą.'}`;
+    else insight = `Saugi zona. ${weeks < 8 ? 'Toliau nuosekliai didinkite, organizmas prisitaikys.' : 'Raumenų ir sausgyslių prisitaikymas vyksta sinchroniškai. Galite tęsti nuoseklų progresą.'}`;
     document.getElementById('s16-insight').textContent = insight;
   }
   kmSl.addEventListener('input', update);
@@ -855,10 +855,10 @@ function initDemo17() {
       rec = `🟠 SUMAŽINKITE KRŪVĮ. ${where === 'achilles' || where === 'knee' ? 'Sausgyslių skausmas, didėjantis bėgimo metu, yra rimtas ženklas. ' : ''}Bėkite 30–40% mažesne apimtimi ir stebėkite pokyčius savaitę.`;
     } else if (when === 'start' && intensity <= 3) {
       bg='#fefce8'; border='#fde68a'; color='#713f12';
-      rec = `🟡 STEBĖKITE. Skausmas pradžioje, išnykstantis per kelias minutes — dažnai sausgyslės perkrovos ženklas. ${where === 'achilles' ? 'Achilo sausgyslės atveju pradėkite ekscentrinius blauzdos pratimus.' : 'Sumažinkite intensyvumą ir pradėkite stiprinimo pratimus.'} Jei kartojasi — kreipkitės į specialistą.`;
+      rec = `🟡 STEBĖKITE. Skausmas pradžioje, išnykstantis per kelias minutes, dažnai sausgyslės perkrovos ženklas. ${where === 'achilles' ? 'Achilo sausgyslės atveju pradėkite ekscentrinius blauzdos pratimus.' : 'Sumažinkite intensyvumą ir pradėkite stiprinimo pratimus.'} Jei kartojasi, kreipkitės į specialistą.`;
     } else if (when === 'after') {
       bg='#f0fdf4'; border='#86efac'; color='#14532d';
-      rec = `🟢 NORMALU. ${where === 'muscle' ? 'Raumenų skausmas po treniruotės (DOMS) — normali prisitaikymo proceso dalis. Lengvas judėjimas ir hidratacija pagreitins atsigavimą.' : 'Skausmas tik po bėgimo — stebėkite, ar nemažėja. Jei didėja iš bėgimo į bėgimą — verta konsultuotis.'}`;
+      rec = `🟢 NORMALU. ${where === 'muscle' ? 'Raumenų skausmas po treniruotės (DOMS), normali prisitaikymo proceso dalis. Lengvas judėjimas ir hidratacija pagreitins atsigavimą.' : 'Skausmas tik po bėgimo, stebėkite, ar nemažėja. Jei didėja iš bėgimo į bėgimą, verta konsultuotis.'}`;
     } else {
       rec = 'Pasirinkite skausmo pobūdį, kad gautumėte rekomendaciją.';
     }
@@ -888,9 +888,9 @@ function initDemo18() {
     document.getElementById('s18-diff').textContent = pct+'%';
     document.getElementById('s18-real').style.color = consist >= 80 ? '#0E9A6C' : consist >= 60 ? '#C98A00' : '#D63B36';
     let insight = '';
-    if (consist >= 85) insight = `${real} treniruotės per metus — puiku! Net ne tobulas, bet labai pastovus bėgikas kuria solidų pagrindą. Šis reguliarumas per 2–3 metus duoda rezultatus, kurių negali pasiekti heroiška, bet nenuosekli programa.`;
+    if (consist >= 85) insight = `${real} treniruotės per metus, puiku! Net ne tobulas, bet labai pastovus bėgikas kuria solidų pagrindą. Šis reguliarumas per 2–3 metus duoda rezultatus, kurių negali pasiekti heroiška, bet nenuosekli programa.`;
     else if (consist >= 65) insight = `${real} treniruotės per metus. Tai vis dar pakankamai, kad matytumėte aiškią pažangą. Pabandykite identifikuoti, kas trukdo praleistoms treniruotėms, ir pašalinkite barjerus iš anksto.`;
-    else insight = `${real} treniruotės per metus. Didelis treniruočių skaičius, bet prasta pastovumas — reiškia, kad yra savaičių su daug treniruočių ir ilgų pertraukų. Organizmas geriau reaguoja į nuoseklumą nei į intensyvius, bet nenuoseklius periodus.`;
+    else insight = `${real} treniruotės per metus. Didelis treniruočių skaičius, bet prasta pastovumas, reiškia, kad yra savaičių su daug treniruočių ir ilgų pertraukų. Organizmas geriau reaguoja į nuoseklumą nei į intensyvius, bet nenuoseklius periodus.`;
     document.getElementById('s18-insight').textContent = insight;
   }
   goalSl.addEventListener('input', update);
@@ -903,13 +903,13 @@ function initDemo19() {
   const metrics = [
     { name:'GPS atstumas', reliability:'Patikimas', color:'#0E9A6C', detail:'GPS tikslumas paprastai ±1–3%. Klysta labiau tarp aukštų pastatų ar tankiuose miškuose. Pakankamai tikslus treniruočių stebėjimui.' },
     { name:'Bėgimo laikas', reliability:'Patikimas', color:'#0E9A6C', detail:'Tiesiogiai matuojamas. Absoliučiai tikslus.' },
-    { name:'Kadencija', reliability:'Patikimas', color:'#0E9A6C', detail:'Akcelerometro duomenys — labai tikslūs. Vienas naudingiausių techninių rodiklių pradedantiesiems.' },
-    { name:'Širdies ritmas (krūtinės dirž.)', reliability:'Patikimas', color:'#0E9A6C', detail:'Elektros signalo matavimas — labai tikslus net intervalinių metu. Jei norite tikslaus HR — naudokite krūtinės diržą.' },
+    { name:'Kadencija', reliability:'Patikimas', color:'#0E9A6C', detail:'Akcelerometro duomenys, labai tikslūs. Vienas naudingiausių techninių rodiklių pradedantiesiems.' },
+    { name:'Širdies ritmas (krūtinės dirž.)', reliability:'Patikimas', color:'#0E9A6C', detail:'Elektros signalo matavimas, labai tikslus net intervalinių metu. Jei norite tikslaus HR, naudokite krūtinės diržą.' },
     { name:'Širdies ritmas (riešo jutikl.)', reliability:'Vidutiniškai patikimas', color:'#C98A00', detail:'Optinis matavimas yra vidutiniškai tikslus lygaus tempo bėgimui. Intervalinių ar kalnų bėgimų metu atsilieka 10–30 sek. ir gali skirtis iki 15 dūžių.' },
     { name:'VO₂max įvertinimas', reliability:'Tik orientacinis', color:'#D63B36', detail:'Algoritmas, pagrįstas HR ir tempo santykiu. Gali skirtis 10–15% nuo tikro VO₂max. Naudinga kaip ilgalaikė tendencija, bet absoliutūs skaičiai nepatikimi.' },
     { name:'Pasirengimo balas / kūno baterija', reliability:'Tik orientacinis', color:'#D63B36', detail:'Statistinis modelis, sukalibruotas vidutiniam vartotojui. Gali rodyti "žemą pasirengimą" po blogos nakties net jei fiziologiškai esate gerai. Naudokite kaip vieną iš signalų, ne kaip tiesą.' },
     { name:'Atsistatymo laikas', reliability:'Tik orientacinis', color:'#D63B36', detail:'Labai apytikslis. Tas pats algoritmas skirtingiems žmonėms duoda skirtingus rezultatus. Naudokite rytinį pulsą ir savijautą kaip tikslesnius atsigavimo rodiklius.' },
-    { name:'Savaitinis kilometražas', reliability:'Patikimas', color:'#0E9A6C', detail:'GPS duomenų suma — patikimas rodiklis. Vienas naudingiausių rodiklių krūvio valdymui. Stebėkite jį kas savaitę.' }
+    { name:'Savaitinis kilometražas', reliability:'Patikimas', color:'#0E9A6C', detail:'GPS duomenų suma, patikimas rodiklis. Vienas naudingiausių rodiklių krūvio valdymui. Stebėkite jį kas savaitę.' }
   ];
   const container = document.getElementById('s19-metrics');
   let active = -1;
@@ -1386,7 +1386,7 @@ function initDemo19() {
       ctx.strokeStyle='#9ca3af'; ctx.lineWidth=2;
       ctx.beginPath(); ctx.moveTo(fShinEndX, fShinEndY); ctx.lineTo(fShinEndX+tw*0.05, fShinEndY+2); ctx.stroke();
 
-      // ── TORSO (leans forward as hip lowers — natural squat form) ──
+      // ── TORSO (leans forward as hip lowers, natural squat form) ──
       var lean = amp*0.32;                     // radians of forward lean
       var torsoLen = th*0.30;
       var shoulderX = hipX + Math.sin(lean)*torsoLen;
@@ -1695,13 +1695,13 @@ function initDemo20() {
 
     let desc;
     if (adapt >= 80) {
-      desc = `${hours} val. ${qualityLabels[quality-1].toLowerCase()} miegas suteikia stiprų adaptacijos langą. Augimo hormonas kulminuoja per pirmąjį gilaus miego ciklą — tokios trukmės ir kokybės miegas suteikia 2–3 pilnus ciklus. Sunkios treniruotės šiandien duos pilną treniruočių naudą. Ramybės pulsas tikriausiai ties baze arba žemiau.`;
+      desc = `${hours} val. ${qualityLabels[quality-1].toLowerCase()} miegas suteikia stiprų adaptacijos langą. Augimo hormonas kulminuoja per pirmąjį gilaus miego ciklą, tokios trukmės ir kokybės miegas suteikia 2–3 pilnus ciklus. Sunkios treniruotės šiandien duos pilną treniruočių naudą. Ramybės pulsas tikriausiai ties baze arba žemiau.`;
     } else if (adapt >= 60) {
       desc = `Pakankamai geras atsigavimas, bet ne optimalus. Miegas pakankamas treniruotei, tačiau intensyvūs intervalai gali neduoti pilnos adaptacijos. Lengvas ar vidutinis bėgimas yra geresnis pasirinkimas. Pasirūpinkite miego kokybe šiąnakt, kad nepradėtumėte kaupti deficito.`;
     } else if (adapt >= 40) {
-      desc = `Nepakankamas atsigavimas. Gilaus miego ciklai tikriausiai buvo sutrumpinti, ribojant HGH išskyrimą ir baltymų sintezę. Lengvas bėgimas tinkamas — jis gerina kraujo apytaką ir aktyviai padeda atsigauti, nedidindamas streso. Venkite jokio intensyvumo šiandien. Patikrinkite ramybės pulsą — jei pakilęs, tai patvirtina sprendimą bėgti lengvai.`;
+      desc = `Nepakankamas atsigavimas. Gilaus miego ciklai tikriausiai buvo sutrumpinti, ribojant HGH išskyrimą ir baltymų sintezę. Lengvas bėgimas tinkamas, jis gerina kraujo apytaką ir aktyviai padeda atsigauti, nedidindamas streso. Venkite jokio intensyvumo šiandien. Patikrinkite ramybės pulsą, jei pakilęs, tai patvirtina sprendimą bėgti lengvai.`;
     } else {
-      desc = `Labai mažas atsigavimas. Esant ${hours} val. ${qualityLabels[quality-1].toLowerCase()} miegui, organizmas nebaigė pakankamų atsistatymo ciklų. Intensyvios treniruotės šiandien tik didina krūvį nesuteikdamos adaptacijos — rytoj atvyksite pavargę, o ne pailsėję. Poilsis, ėjimas arba 20 min labai lengvo judėjimo.`;
+      desc = `Labai mažas atsigavimas. Esant ${hours} val. ${qualityLabels[quality-1].toLowerCase()} miegui, organizmas nebaigė pakankamų atsistatymo ciklų. Intensyvios treniruotės šiandien tik didina krūvį nesuteikdamos adaptacijos, rytoj atvyksite pavargę, o ne pailsėję. Poilsis, ėjimas arba 20 min labai lengvo judėjimo.`;
     }
     document.getElementById('s20-desc').textContent = desc;
   }
@@ -1738,11 +1738,11 @@ function initDemo21() {
     document.getElementById('s21-window').textContent  = postWindow[s];
 
     const descs = {
-      rest: `Poilsio dieną angliavandenių poreikis žymiai mažesnis — ${carbs} g pakanka glikogenui palaikyti neslopinant riebalų deginimo adaptacijos. Išlaikykite ${protein} g baltymų sausgyslių atstatymui po vakarykštės treniruotės. Ideali diena magniu turtingiems valgymams (riešutai, tamsios daržovės) ir geležies įsisavinimui (raudona mėsa ar ankštiniai su vitaminu C).`,
-      easy: `Lengvi Z2 bėgimai daugiausia naudoja riebalus kurui — prieš treniruotę glikogeno papildymo nereikia. Dienos ${carbs} g angliavandenių yra pakankama. Sutelkite dėmesį į ${protein} g baltymų, paskirstytų per 4 valgius (~30 g per valgymą) — tai kur vyksta sausgyslių kolageno sintezė. Retkarčiais bėgimas nevalgius lengvomis dienomis yra tinkamas ir ugdo riebalų deginimo pajėgumą.`,
-      moderate: `Tempo bėgimas reikšmingai naudoja glikogeną. Valgykite angliavandeniais turtingą patiekalą likus 2–3 val. (avižiniai dribsniai, ryžiai ar duona). Dienos tikslas: ${carbs} g. Po treniruotės 45 minučių langas svarbus — siekite 1 g/kg angliavandenių (${w} g) ir ${Math.round(w * 0.4)} g baltymų kuo greičiau.`,
-      hard: `Sunkūs intervalai žymiai eikvoja glikogeną. Pradėkite treniruotę su pilnomis atsargomis: valgykite ${Math.round(w * 1.5)} g angliavandenių likus 2–3 val. 30 minučių langas po treniruotės yra kritiškai svarbus — ${Math.round(w)} g angliavandenių + 25–30 g baltymų nedelsiant. Dienos tikslas: ${carbs} g. Hidratacija ir elektrolitai svarbesni sunkiomis dienomis.`,
-      long: `Ilgi bėgimai (90+ min) — didžiausias savaitės angliavandenių poreikis. Iš anksto papildykite vakare prieš: ${Math.round(w * 1.5)} g lengvai virškinamų angliavandenių ir dar kartą likus 2–3 val. Bėgimo metu gelius ar angliavandenius vartokite kas 45 min. Po bėgimo: ${Math.round(w)} g angliavandenių + 30 g baltymų per 30 minučių. Dienos iš viso: ${carbs} g.`
+      rest: `Poilsio dieną angliavandenių poreikis žymiai mažesnis, ${carbs} g pakanka glikogenui palaikyti neslopinant riebalų deginimo adaptacijos. Išlaikykite ${protein} g baltymų sausgyslių atstatymui po vakarykštės treniruotės. Ideali diena magniu turtingiems valgymams (riešutai, tamsios daržovės) ir geležies įsisavinimui (raudona mėsa ar ankštiniai su vitaminu C).`,
+      easy: `Lengvi Z2 bėgimai daugiausia naudoja riebalus kurui, prieš treniruotę glikogeno papildymo nereikia. Dienos ${carbs} g angliavandenių yra pakankama. Sutelkite dėmesį į ${protein} g baltymų, paskirstytų per 4 valgius (~30 g per valgymą), tai kur vyksta sausgyslių kolageno sintezė. Retkarčiais bėgimas nevalgius lengvomis dienomis yra tinkamas ir ugdo riebalų deginimo pajėgumą.`,
+      moderate: `Tempo bėgimas reikšmingai naudoja glikogeną. Valgykite angliavandeniais turtingą patiekalą likus 2–3 val. (avižiniai dribsniai, ryžiai ar duona). Dienos tikslas: ${carbs} g. Po treniruotės 45 minučių langas svarbus, siekite 1 g/kg angliavandenių (${w} g) ir ${Math.round(w * 0.4)} g baltymų kuo greičiau.`,
+      hard: `Sunkūs intervalai žymiai eikvoja glikogeną. Pradėkite treniruotę su pilnomis atsargomis: valgykite ${Math.round(w * 1.5)} g angliavandenių likus 2–3 val. 30 minučių langas po treniruotės yra kritiškai svarbus, ${Math.round(w)} g angliavandenių + 25–30 g baltymų nedelsiant. Dienos tikslas: ${carbs} g. Hidratacija ir elektrolitai svarbesni sunkiomis dienomis.`,
+      long: `Ilgi bėgimai (90+ min), didžiausias savaitės angliavandenių poreikis. Iš anksto papildykite vakare prieš: ${Math.round(w * 1.5)} g lengvai virškinamų angliavandenių ir dar kartą likus 2–3 val. Bėgimo metu gelius ar angliavandenius vartokite kas 45 min. Po bėgimo: ${Math.round(w)} g angliavandenių + 30 g baltymų per 30 minučių. Dienos iš viso: ${carbs} g.`
     };
     document.getElementById('s21-desc').textContent = descs[s];
   }
@@ -1778,28 +1778,28 @@ function initDemo22() {
     let hrColor, hrVal, hrDetail;
     if (hr <= 0) {
       hrColor = '#0E9A6C'; hrVal = 'Normalus';
-      hrDetail = 'Ties baze arba žemiau — pilnas atsigavimas po paskutinių treniruočių. Organizmas apdorojo treniruočių stresą. Sunkios treniruotės tinkamos.';
+      hrDetail = 'Ties baze arba žemiau, pilnas atsigavimas po paskutinių treniruočių. Organizmas apdorojo treniruočių stresą. Sunkios treniruotės tinkamos.';
     } else if (hr <= 4) {
       hrColor = '#84cc16'; hrVal = 'Šiek tiek pakilęs';
-      hrDetail = 'Mažas padidėjimas — vis dar normalios svyravimo ribose. Gali atspindėti vakarykštę treniruotę. Lengvas bėgimas tinkamas; palaukite su intervalais iki rytojaus.';
+      hrDetail = 'Mažas padidėjimas, vis dar normalios svyravimo ribose. Gali atspindėti vakarykštę treniruotę. Lengvas bėgimas tinkamas; palaukite su intervalais iki rytojaus.';
     } else if (hr <= 7) {
       hrColor = '#C98A00'; hrVal = 'Pakilęs';
-      hrDetail = 'Aiškiai virš bazės. Organizmas vis dar apdoroja neseną treniruočių krūvį. Šiandien — tik lengvas bėgimas ar poilsis. Jei taip tęsiasi 3+ dienas, mažinkite bendrą apimtį.';
+      hrDetail = 'Aiškiai virš bazės. Organizmas vis dar apdoroja neseną treniruočių krūvį. Šiandien, tik lengvas bėgimas ar poilsis. Jei taip tęsiasi 3+ dienas, mažinkite bendrą apimtį.';
     } else {
       hrColor = '#D63B36'; hrVal = 'Aukštas';
-      hrDetail = `${hr} k/min virš bazės — aiškus pervargimo signalas. Kartu su bet kuriuo kitu pakilusiu rodikliu tai yra galutinis poilsio dienos signalas. Pirma atmeskite ligą — pakilęs ramybės pulsas yra ir ankstyvas infekcijos simptomas.`;
+      hrDetail = `${hr} k/min virš bazės, aiškus pervargimo signalas. Kartu su bet kuriuo kitu pakilusiu rodikliu tai yra galutinis poilsio dienos signalas. Pirma atmeskite ligą, pakilęs ramybės pulsas yra ir ankstyvas infekcijos simptomas.`;
     }
 
     let driftColor, driftVal, driftDetail;
     if (drift <= 5) {
       driftColor = '#0E9A6C'; driftVal = 'Geras';
-      driftDetail = 'Mažas nukrypimas — jūsų lengvas tempas yra tikrai aerobinis. Pulsas stabilus viso bėgimo metu, tai reiškia, kad esate gerai Z2 ribose ir širdies ir kraujagyslių sistema nedirba sunkiai jį palaikydama.';
+      driftDetail = 'Mažas nukrypimas, jūsų lengvas tempas yra tikrai aerobinis. Pulsas stabilus viso bėgimo metu, tai reiškia, kad esate gerai Z2 ribose ir širdies ir kraujagyslių sistema nedirba sunkiai jį palaikydama.';
     } else if (drift <= 10) {
       driftColor = '#C98A00'; driftVal = 'Vidutinis';
       driftDetail = 'Pastebimas nukrypimas. Jūsų pradinis tempas gali būti šiek tiek per greitas Z2, arba esate lengvai dehidratuoti. Pabandykite pradėti 10–15 sek/km lėčiau ir patikrinkite, ar nukrypimas sumažėja žemiau 5%.';
     } else {
       driftColor = '#D63B36'; driftVal = 'Didelis';
-      driftDetail = `${drift}% nukrypimas reiškia, kad jūsų lengvi bėgimai nėra lengvi. Tikriausiai bėgate Z3 riboje — pakankamai, kad kaupiamas nuovargis, bet nepakankamai realiai slenkstinei adaptacijai. Tai pilkoji zona. Lėtinkite, kol nukrypimas sumažės žemiau 8%.`;
+      driftDetail = `${drift}% nukrypimas reiškia, kad jūsų lengvi bėgimai nėra lengvi. Tikriausiai bėgate Z3 riboje, pakankamai, kad kaupiamas nuovargis, bet nepakankamai realiai slenkstinei adaptacijai. Tai pilkoji zona. Lėtinkite, kol nukrypimas sumažės žemiau 8%.`;
     }
 
     let jumpColor, jumpVal, jumpDetail;
@@ -1808,10 +1808,10 @@ function initDemo22() {
       jumpDetail = 'Kilometražo padidėjimas neviršija 10% gairės. Raumenys ir sausgyslės turi pakankamai laiko prisitaikyti prie naujo krūvio. Tęskite šiuo tempu ir kas 3–4 savaites planuokite mažesnio krūvio savaitę.';
     } else if (jump <= 20) {
       jumpColor = '#C98A00'; jumpVal = 'Atsargiai';
-      jumpDetail = `${jump}% šuolis viršija saugią gairę. Raumenys prisitaiko per 1–2 savaites; sausgyslės — per 4–8 savaites. Traumų rizikos langas atviras. Atidžiai stebėkite blauzdinės, Achilo sausgyslės ir kelio signalus šią savaitę.`;
+      jumpDetail = `${jump}% šuolis viršija saugią gairę. Raumenys prisitaiko per 1–2 savaites; sausgyslės, per 4–8 savaites. Traumų rizikos langas atviras. Atidžiai stebėkite blauzdinės, Achilo sausgyslės ir kelio signalus šią savaitę.`;
     } else {
       jumpColor = '#D63B36'; jumpVal = 'Didelė rizika';
-      jumpDetail = `${jump}% yra reikšmingas krūvio šuolis. Tai vienas iš stipriausių pervargimo traumų prognozuotojų mėgėjų bėgikams. Net jei jaučiatės gerai — kitą savaitę sumažinkite apimtį, kad absorbuotumėte šuolį prieš vėl didindami.`;
+      jumpDetail = `${jump}% yra reikšmingas krūvio šuolis. Tai vienas iš stipriausių pervargimo traumų prognozuotojų mėgėjų bėgikams. Net jei jaučiatės gerai, kitą savaitę sumažinkite apimtį, kad absorbuotumėte šuolį prieš vėl didindami.`;
     }
 
     document.getElementById('s22-signals').innerHTML =
@@ -1823,13 +1823,13 @@ function initDemo22() {
     const cautions = [hrVal, driftVal, jumpVal].filter(v => v === 'Atsargiai' || v === 'Vidutinis' || v === 'Šiek tiek pakilęs').length;
     let summary;
     if (issues >= 2) {
-      summary = 'Keli raudoni signalai: šiandien — poilsis ar aktyvus atsistatymas. Du ar daugiau vienu metu ignoruojamų perkrovos signalų — taip vystosi pervargimo traumos. Jos retai praneša apie save vienu aiškiu įspėjimu.';
+      summary = 'Keli raudoni signalai: šiandien, poilsis ar aktyvus atsistatymas. Du ar daugiau vienu metu ignoruojamų perkrovos signalų, taip vystosi pervargimo traumos. Jos retai praneša apie save vienu aiškiu įspėjimu.';
     } else if (issues === 1) {
       summary = 'Vienas raudonas signalas: reaguokite kol nesikaupia. Vienas perkrovos signalas, į kurį reaguojama laiku, paprastai išsisprendžia per 1–3 dienas. Tas pats signalas, ignoruojamas savaitę, dažnai tampa trauma.';
     } else if (cautions >= 2) {
-      summary = 'Du geltoni signalai: veikite atsargiai. Lengva treniruotė tinkama, bet šiandien — jokio intensyvumo. Peržvelkite paskutines 2 savaites — geltonų signalų modelis dažnai reiškia, kad bendras treniruočių krūvis per aukštas be pakankamo atsigavimo.';
+      summary = 'Du geltoni signalai: veikite atsargiai. Lengva treniruotė tinkama, bet šiandien, jokio intensyvumo. Peržvelkite paskutines 2 savaites, geltonų signalų modelis dažnai reiškia, kad bendras treniruočių krūvis per aukštas be pakankamo atsigavimo.';
     } else {
-      summary = 'Signalai atrodo sveiki. Jūsų treniruočių krūvis, atsigavimas ir lengvų bėgimų kokybė yra geroje srityje. Tęskite savaitinį stebėjimą — šie rodikliai naudingiausiai vertinami kaip tendencijos, o ne pavieniai rodmenys.';
+      summary = 'Signalai atrodo sveiki. Jūsų treniruočių krūvis, atsigavimas ir lengvų bėgimų kokybė yra geroje srityje. Tęskite savaitinį stebėjimą, šie rodikliai naudingiausiai vertinami kaip tendencijos, o ne pavieniai rodmenys.';
     }
     document.getElementById('s22-summary').textContent = summary;
   }
