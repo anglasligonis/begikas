@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="lt">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="referrer" content="no-referrer-when-downgrade">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src https://www.google-analytics.com https://analytics.google.com https://stats.g.doubleclick.net;">
+<title>Žiemos bėgimas — Bėgimo fiziologija | Begikas</title>
+<meta name="description" content="Šaltis, ledas ir trumpos dienos — ne priežastis sustoti. Su tinkama apranga ir technika galima bėgti net ir ties −20°C.">
+<link rel="canonical" href="https://apiebegima.lt/pamoka/ziemos-begimas/">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="alternate" hreflang="lt" href="https://apiebegima.lt/pamoka/ziemos-begimas/">
+<link rel="alternate" hreflang="en" href="https://apiebegima.lt/en/lesson/winter-running/">
+<link rel="alternate" hreflang="x-default" href="https://apiebegima.lt/pamoka/ziemos-begimas/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Begikas">
+<meta property="og:title" content="Žiemos bėgimas — Bėgimo fiziologija | Begikas">
+<meta property="og:description" content="Šaltis, ledas ir trumpos dienos — ne priežastis sustoti. Su tinkama apranga ir technika galima bėgti net ir ties −20°C.">
+<meta property="og:url" content="https://apiebegima.lt/pamoka/ziemos-begimas/">
+<meta property="og:image" content="https://apiebegima.lt/images/opt/og-man-running.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Žiemos bėgimas — Bėgimo fiziologija | Begikas">
+<meta name="twitter:description" content="Šaltis, ledas ir trumpos dienos — ne priežastis sustoti. Su tinkama apranga ir technika galima bėgti net ir ties −20°C.">
+<meta name="twitter:image" content="https://apiebegima.lt/images/opt/og-man-running.jpg">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Žiemos bėgimas",
+  "description": "Šaltis, ledas ir trumpos dienos — ne priežastis sustoti. Su tinkama apranga ir technika galima bėgti net ir ties −20°C.",
+  "inLanguage": "lt",
+  "url": "https://apiebegima.lt/pamoka/ziemos-begimas/",
+  "isPartOf": {
+    "@type": "Course",
+    "name": "Bėgimo Fiziologija — Pradedantiesiems",
+    "url": "https://apiebegima.lt/"
+  }
+}
+</script>
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-3G4SLW2V7C"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-3G4SLW2V7C');
+</script>
+<link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@500;600;700&family=Spline+Sans+Mono:wght@400;500;600;700&family=Instrument+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/variables.css?v=4">
+<link rel="stylesheet" href="/css/layout.css?v=6">
+<link rel="stylesheet" href="/css/components.css?v=7">
+<link rel="stylesheet" href="/css/lessons.css?v=5">
+<link rel="stylesheet" href="/css/landing.css?v=4">
+<link rel="stylesheet" href="/css/static.css?v=1">
+</head>
+<body class="lessons-on">
+
+
+<!-- Fixed zone rail -->
+<div class="zone-rail"></div>
+<div class="zone-runner"></div>
+<div class="zone-labels">
+  <span class="zone-label">Z5</span>
+  <span class="zone-label">Z4</span>
+  <span class="zone-label">Z3</span>
+  <span class="zone-label">Z2</span>
+  <span class="zone-label">Z1</span>
+</div>
+
+<!-- Top nav -->
+<nav class="topnav">
+  <a class="topnav-brand" href="/">Bėgimo Fiziologija</a>
+  <div class="topnav-right">
+    <div class="nav-pulse"></div>
+    <span class="lesson-indicator" id="lessonIndicator"></span>
+    <div class="tnav-sep"></div>
+    <span class="tnav-link lang-active">LT</span>
+    <div class="tnav-sep"></div>
+    <a href="/en/lesson/winter-running/" class="tnav-link">EN</a>
+    <div class="tnav-sep"></div>
+    <button class="tnav-link" onclick="toggleGlossary()">Žodynas</button>
+    <button class="nav-toggle-btn" id="navToggleBtn" onclick="toggleNav()">☰ Pamokos</button>
+  </div>
+</nav>
+<div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
+
+<!-- Lesson nav drawer -->
+<div class="lesson-nav nav-collapsed" id="lessonNav">
+  <a class="nav-home-btn" href="/">← Pradžia</a>
+  <a class="nav-pill" data-lesson="0" href="/pamoka/kodel-begti-letai/">01</a>
+  <a class="nav-pill" data-lesson="1" href="/pamoka/sirdis-pulsas-zonos/">02</a>
+  <a class="nav-pill" data-lesson="2" href="/pamoka/energija-ir-kuras/">03</a>
+  <a class="nav-pill" data-lesson="3" href="/pamoka/laktatas/">04</a>
+  <a class="nav-pill" data-lesson="4" href="/pamoka/kvepavimas-begant/">05</a>
+  <a class="nav-pill" data-lesson="5" href="/pamoka/karstis-ir-hidratacija/">06</a>
+  <a class="nav-pill" data-lesson="6" href="/pamoka/begimo-technika/">07</a>
+  <a class="nav-pill" data-lesson="7" href="/pamoka/kaip-tobuleti/">08</a>
+  <a class="nav-pill" data-lesson="8" href="/pamoka/treniruociu-sistemos/">09</a>
+  <a class="nav-pill" data-lesson="9" href="/pamoka/jegos-treniruotes/">10</a>
+  <a class="nav-pill" data-lesson="10" href="/pamoka/ziemos-begimas/">11</a>
+  <a class="nav-pill" data-lesson="11" href="/pamoka/pirmos-varzybos/">12</a>
+  <a class="nav-pill" data-lesson="12" href="/pamoka/vo2max/">13</a>
+  <a class="nav-pill" data-lesson="13" href="/pamoka/begimo-ekonomija/">14</a>
+  <a class="nav-pill" data-lesson="14" href="/pamoka/nuovargis/">15</a>
+  <a class="nav-pill" data-lesson="15" href="/pamoka/tempo-paskirstymas/">16</a>
+  <a class="nav-pill" data-lesson="16" href="/pamoka/kruvio-valdymas/">17</a>
+  <a class="nav-pill" data-lesson="17" href="/pamoka/skausmas-ar-trauma/">18</a>
+  <a class="nav-pill" data-lesson="18" href="/pamoka/motyvacija-ir-pastovumas/">19</a>
+  <a class="nav-pill" data-lesson="19" href="/pamoka/begimo-laikrodziai/">20</a>
+  <a class="nav-pill" data-lesson="20" href="/pamoka/miegas-ir-atsigavimas/">21</a>
+  <a class="nav-pill" data-lesson="21" href="/pamoka/ka-valgyti-begikui/">22</a>
+</div>
+
+<dialog id="glossaryDialog" aria-label="Žodynas">
+  <div class="glossary-header">
+    <h2>Žodynas</h2>
+    <button class="glossary-close" onclick="toggleGlossary()">✕</button>
+  </div>
+  <div class="glossary-search">
+    <input type="text" id="glossarySearch" placeholder="Ieškoti termino..." oninput="filterGlossary(this.value)">
+  </div>
+  <div class="glossary-list" id="glossaryList"></div>
+</dialog>
+
+<!-- ══════════════════════════════════════════
+     LANDING PAGE
+     ══════════════════════════════════════════ -->
+<main>
+
+<article class="lesson active" id="lesson-10">
+  <div class="lesson-header">
+    <div class="lesson-num">11 pamoka iš 22</div>
+    <h1 class="lesson-title">Žiemos bėgimas</h1>
+    <p class="lesson-intro">Šaltis, ledas ir trumpos dienos — ne priežastis sustoti. Su tinkama apranga ir technika galima bėgti net ir ties −20°C.</p>
+  </div>
+
+  <div class="takeaway"><div><strong>Pagrindinė mintis:</strong> Šaltas oras yra saugus bėgimui. Tikra problema — per šilta apranga, slidūs paviršiai ir dehidratacija, kuri šaltyje dažnai lieka nepastebėta.</div></div>
+
+  <div class="prose">
+    <p>Šaltas oras nepavojingas plaučiams — net ties −20°C oras sušyla iki kūno temperatūros pasiekus bronchus. Žiemos bėgimo tikri iššūkiai: <strong>slidumas</strong>, per karšta apranga sukelia gausų prakaitavimą (ir po to atšalimą), o troškulys šaltyje jaučiamas mažiau, nors skysčių poreikis išlieka.</p>
+    <p>Apranga veikia kaip svogūno sluoksniai: <strong>pirmasis sluoksnis</strong> (prie odos) — drėgmę nuvedantis sintetinis audinys, ne medvilnė (medvilnė sugeria prakaitą ir šaldo). <strong>Antrasis</strong> — šilumą išlaikantis flisas ar pašiltinta striukė. <strong>Trečiasis</strong> (ties −5°C ir žemiau) — vėjo ir lietaus atspari striukė.</p>
+    <p>Bėgant ant ledo ar sniego technika keičiasi: <strong>trumpesni žingsniai</strong>, žemesnis masės centras, koja nusileisdama tiesiai po kūnu (ne priekyje). Bėgimo greitis natūraliai sumažėja 10–20% — tai normalu ir teisinga.</p>
+    <p>Šaltyje raumenys ir sausgyslės šyla lėčiau. <strong>Apšilimas tampa dar svarbesnis</strong>: prieš didinant intensyvumą rekomenduojami 5–10 minučių ėjimas ar labai lėtas bėgimas. <a class="xref" href="/pamoka/begimo-technika/">7 pamoka: Technika ir traumos</a></p>
+  </div>
+
+  <div class="demo">
+    <div class="demo-title">Interaktyvus demonstravimas — Aprangos sluoksniai pagal temperatūrą</div>
+    <p class="demo-note" style="margin-bottom:1rem">Slinkite temperatūros slankiklį — matysite rekomenduojamą aprangą.</p>
+    <div class="slider-control">
+      <div class="slider-label"><span>Aplinkos temperatūra</span><strong id="s10-temp-label">+5°C</strong></div>
+      <input type="range" id="s10-temp" min="-25" max="10" value="5" step="1">
+      <div class="demo-range-labels"><span>−25°C</span><span>−15°C</span><span>−5°C</span><span>0°C</span><span>+10°C</span></div>
+    </div>
+    <div id="s10-layers" class="layer-row"></div>
+    <div class="demo-insight">
+      <p id="s10-advice"></p>
+    </div>
+  </div>
+
+  <div class="callout callout-key">
+    <span class="callout-label">Ledo paviršiai</span>
+    Ant ledo bėgikų spygliai (bėgimo spygliukai) arba Yaktrax tipo neslystantys antbačiai sumažina slydimo riziką. Kitaip — rinkitės purvo ar sniego takus vietoje lygaus ledo. Ant apledėjusio asfalto bėkite šiek tiek plačiau, žemiau ir stabiliau.
+  </div>
+
+  <div class="callout callout-warn">
+    <span class="callout-label">Šalčio rizikos</span>
+    <strong>Nušalimas</strong> — ties −10°C ir žemiau, ypač su vėju. Apsaugokite ausis, pirštus ir veidą. <strong>Hipotermija</strong> — pagrindinis pavojus, kai sustojate prakaituodami ir atvėstate — visada turėkite galimybę greitai patekti į šiltą patalpą. <strong>Dehidratacija</strong> — šaltyje troškulys jaučiamas silpniau, bet prakaituojate vis tiek.
+  </div>
+
+  <div class="quiz" data-correct="0">
+    <div class="quiz-q">Kodėl žiemos bėgimo aprangos pirmasis sluoksnis neturėtų būti medvilninis?</div>
+    <div class="quiz-opts">
+      <button class="quiz-opt">Medvilnė sugeria prakaitą ir išlaiko drėgmę prie odos, sukeldama šalimą</button>
+      <button class="quiz-opt">Medvilnė per storas audinys ir trukdo judėti</button>
+      <button class="quiz-opt">Medvilnė per karšta žiemai</button>
+    </div>
+    <div class="quiz-feedback">Taip. Medvilnė sulaiko drėgmę ir vos sustojate — šlapi drabužiai labai greitai šaldo kūną. Funkciniai audiniai (polipropilenas, Merino vilna) praleidžia drėgmę nuo odos toliau.</div>
+  </div>
+
+  <div class="step-nav">
+    <a class="btn-step btn-prev" href="/pamoka/jegos-treniruotes/">← Atgal</a>
+    <span class="step-counter">11 / 22</span>
+    <a class="btn-step btn-next" href="/pamoka/pirmos-varzybos/">Pirmos varžybos →</a>
+  </div>
+</article>
+
+</main>
+
+<nav class="mobile-bar" aria-label="Pamokų navigacija">
+  <button class="mb-btn" id="mbPrev" aria-label="Ankstesnė pamoka">←</button>
+  <button class="mb-label" id="mbLabelBtn">Pamoka&nbsp;<span id="mbLabel">1 / 22</span></button>
+  <button class="mb-btn" id="mbNext" aria-label="Kita pamoka">→</button>
+</nav>
+
+<script>window.LESSON=10;</script>
+<script defer src="/js/nav.js?v=8"></script>
+<script defer src="/js/quiz.js?v=3"></script>
+<script defer src="/js/glossary.js?v=3"></script>
+<script defer src="/js/demos.js?v=5"></script>
+</body>
+</html>

@@ -1,7 +1,8 @@
 const TOTAL = 22;
-let current = 0;
-const visited = new Set([0]);
-const completed = new Set();
+const LESSON_BASE = '/en/lesson/';
+const LS_KEY = 'begikas-completed-en';
+/* Set by an inline script on lesson pages; -1 on the landing page */
+const current = (typeof window.LESSON === 'number') ? window.LESSON : -1;
 
 const LESSON_SLUGS = [
   'why-run-slowly',
@@ -28,65 +29,24 @@ const LESSON_SLUGS = [
   'daily-nutrition'
 ];
 
+let completed = new Set();
+try { completed = new Set(JSON.parse(localStorage.getItem(LS_KEY) || '[]')); } catch (e) {}
+
+function goLesson(n) {
+  if (n >= 0 && n < TOTAL) location.href = LESSON_BASE + LESSON_SLUGS[n] + '/';
+}
+
 function refreshPills() {
+  try { localStorage.setItem(LS_KEY, JSON.stringify([...completed])); } catch (e) {}
   const pills = document.querySelectorAll('.nav-pill');
   pills.forEach((p, i) => {
     p.classList.remove('active', 'done');
     if (completed.has(i) && i !== current) p.classList.add('done');
   });
-  pills[current].classList.add('active');
-  document.getElementById('progressFill').style.width = ((completed.size / TOTAL) * 100) + '%';
+  if (current >= 0 && pills[current]) pills[current].classList.add('active');
+  const fill = document.getElementById('progressFill');
+  if (fill) fill.style.width = ((completed.size / TOTAL) * 100) + '%';
 }
-
-function _updateMeta(n) {
-  const lessonTitle = NAV_LESSON_NAMES[n].replace(/^\d+\. /, '');
-  document.title = lessonTitle + ' — Running Physiology | Begikas';
-  const metaDesc = document.querySelector('meta[name="description"]');
-  if (metaDesc) {
-    const lesson = document.getElementById('lesson-' + n);
-    const intro = lesson && lesson.querySelector('.lesson-intro');
-    metaDesc.content = intro ? intro.textContent.trim().slice(0, 160) : '';
-  }
-  if (typeof gtag === 'function') {
-    /* virtual path: GA4 strips #fragments, so hash URLs all report as "/en/" */
-    gtag('event', 'page_view', {
-      page_title: document.title,
-      page_location: location.origin + '/en/lesson/' + LESSON_SLUGS[n]
-    });
-  }
-}
-
-function goLesson(n, pushHistory) {
-  document.getElementById('lesson-' + current).classList.remove('active');
-  current = n;
-  visited.add(n);
-  document.getElementById('lesson-' + current).classList.add('active');
-  refreshPills();
-  updateIndicator();
-  ignoreScrollUntil = performance.now() + 600;
-  lastScrollY = 0;
-  scrollAccum = 0;
-  window.scrollTo(0, 0);
-  initDemos();
-  if (window._startAnimForLesson) window._startAnimForLesson(n);
-
-  if (pushHistory !== false) {
-    history.pushState({ lesson: n }, '', '#lesson/' + LESSON_SLUGS[n]);
-  }
-  _updateMeta(n);
-}
-
-document.querySelectorAll('.nav-pill').forEach((btn, i) => {
-  btn.addEventListener('click', () => {
-    const main = document.querySelector('main');
-    if (main && main.style.display === 'none' && typeof enterLessons === 'function') {
-      enterLessons(i);
-    } else {
-      goLesson(i);
-    }
-    if (window.innerWidth < 700) collapseNav(true);
-  });
-});
 
 // ── NAV COLLAPSE ──
 const NAV_LESSON_NAMES = [
@@ -108,6 +68,7 @@ document.querySelectorAll('.nav-pill').forEach((p, i) => {
 
 let navCollapsed = true;
 updateIndicator();
+refreshPills();
 
 function collapseNav(force) {
   navCollapsed = (force !== undefined) ? force : !navCollapsed;
@@ -119,27 +80,10 @@ function collapseNav(force) {
 
 function updateIndicator() {
   const ind = document.getElementById('lessonIndicator');
-  if (ind) ind.textContent = NAV_LESSON_NAMES[current] || '';
+  if (ind) ind.textContent = current >= 0 ? (NAV_LESSON_NAMES[current] || '') : '';
 }
 
 window.toggleNav = function() { collapseNav(); };
-
-// ── POPSTATE (browser back/forward) ──
-window.addEventListener('popstate', e => {
-  const s = e.state;
-  if (s && typeof s.lesson === 'number') {
-    const landingEl = document.getElementById('landing');
-    const mainEl = document.querySelector('main');
-    if (landingEl && landingEl.style.display !== 'none') {
-      landingEl.style.display = 'none';
-      if (mainEl) mainEl.style.display = 'block';
-    }
-    document.body.classList.add('lessons-on');
-    goLesson(s.lesson, false);
-  } else if (s && s.landing) {
-    if (typeof enterLanding === 'function') enterLanding(false);
-  }
-});
 
 // ── SCROLL COLLAPSE ──
 let lastScrollY = window.scrollY;
@@ -147,8 +91,6 @@ let scrollAccum = 0;
 let ticking = false;
 let ignoreScrollUntil = 0;
 const COLLAPSE_THRESHOLD = 36;
-const EXPAND_THRESHOLD   = 48;
-const TOP_ZONE = 30;
 
 function handleScroll() {
   const y = window.scrollY;
@@ -173,6 +115,7 @@ window.addEventListener('scroll', () => {
 
 // ── KEYBOARD NAVIGATION ──
 document.addEventListener('keydown', (e) => {
+  if (current < 0) return;
   if (e.target.tagName === 'INPUT' || e.target.tagName === 'BUTTON') return;
   if (e.key === 'ArrowRight' && current < TOTAL - 1) goLesson(current + 1);
   if (e.key === 'ArrowLeft' && current > 0) goLesson(current - 1);
@@ -184,23 +127,13 @@ document.addEventListener('keydown', (e) => {
   const next  = document.getElementById('mbNext');
   const label = document.getElementById('mbLabel');
   const labelBtn = document.getElementById('mbLabelBtn');
-  if (!prev || !next || !label || !labelBtn) return;
+  if (!prev || !next || !label || !labelBtn || current < 0) return;
 
-  function updateMobileBar() {
-    label.textContent = (current + 1) + ' / ' + TOTAL;
-    prev.disabled = current === 0;
-    next.disabled = current === TOTAL - 1;
-  }
+  label.textContent = (current + 1) + ' / ' + TOTAL;
+  prev.disabled = current === 0;
+  next.disabled = current === TOTAL - 1;
 
   prev.addEventListener('click', () => { if (current > 0) goLesson(current - 1); });
   next.addEventListener('click', () => { if (current < TOTAL - 1) goLesson(current + 1); });
   labelBtn.addEventListener('click', () => collapseNav());
-
-  const _goLesson = goLesson;
-  goLesson = function (n, pushHistory) {
-    _goLesson(n, pushHistory);
-    updateMobileBar();
-  };
-
-  updateMobileBar();
 })();

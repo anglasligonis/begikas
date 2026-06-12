@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="lt">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="referrer" content="no-referrer-when-downgrade">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src https://www.google-analytics.com https://analytics.google.com https://stats.g.doubleclick.net;">
+<title>Nuovargis — kodėl organizmas liepia sulėtėti — Bėgimo fiziologija | Begikas</title>
+<meta name="description" content="Nuovargis nėra vien raumenų problema. Tai viso organizmo apsauginė sistema — ir centrinis, ir periferinis lygmuo.">
+<link rel="canonical" href="https://apiebegima.lt/pamoka/nuovargis/">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="alternate" hreflang="lt" href="https://apiebegima.lt/pamoka/nuovargis/">
+<link rel="alternate" hreflang="en" href="https://apiebegima.lt/en/lesson/fatigue/">
+<link rel="alternate" hreflang="x-default" href="https://apiebegima.lt/pamoka/nuovargis/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Begikas">
+<meta property="og:title" content="Nuovargis — kodėl organizmas liepia sulėtėti — Bėgimo fiziologija | Begikas">
+<meta property="og:description" content="Nuovargis nėra vien raumenų problema. Tai viso organizmo apsauginė sistema — ir centrinis, ir periferinis lygmuo.">
+<meta property="og:url" content="https://apiebegima.lt/pamoka/nuovargis/">
+<meta property="og:image" content="https://apiebegima.lt/images/opt/og-man-running.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Nuovargis — kodėl organizmas liepia sulėtėti — Bėgimo fiziologija | Begikas">
+<meta name="twitter:description" content="Nuovargis nėra vien raumenų problema. Tai viso organizmo apsauginė sistema — ir centrinis, ir periferinis lygmuo.">
+<meta name="twitter:image" content="https://apiebegima.lt/images/opt/og-man-running.jpg">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Nuovargis — kodėl organizmas liepia sulėtėti",
+  "description": "Nuovargis nėra vien raumenų problema. Tai viso organizmo apsauginė sistema — ir centrinis, ir periferinis lygmuo.",
+  "inLanguage": "lt",
+  "url": "https://apiebegima.lt/pamoka/nuovargis/",
+  "isPartOf": {
+    "@type": "Course",
+    "name": "Bėgimo Fiziologija — Pradedantiesiems",
+    "url": "https://apiebegima.lt/"
+  }
+}
+</script>
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-3G4SLW2V7C"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-3G4SLW2V7C');
+</script>
+<link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@500;600;700&family=Spline+Sans+Mono:wght@400;500;600;700&family=Instrument+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/variables.css?v=4">
+<link rel="stylesheet" href="/css/layout.css?v=6">
+<link rel="stylesheet" href="/css/components.css?v=7">
+<link rel="stylesheet" href="/css/lessons.css?v=5">
+<link rel="stylesheet" href="/css/landing.css?v=4">
+<link rel="stylesheet" href="/css/static.css?v=1">
+</head>
+<body class="lessons-on">
+
+
+<!-- Fixed zone rail -->
+<div class="zone-rail"></div>
+<div class="zone-runner"></div>
+<div class="zone-labels">
+  <span class="zone-label">Z5</span>
+  <span class="zone-label">Z4</span>
+  <span class="zone-label">Z3</span>
+  <span class="zone-label">Z2</span>
+  <span class="zone-label">Z1</span>
+</div>
+
+<!-- Top nav -->
+<nav class="topnav">
+  <a class="topnav-brand" href="/">Bėgimo Fiziologija</a>
+  <div class="topnav-right">
+    <div class="nav-pulse"></div>
+    <span class="lesson-indicator" id="lessonIndicator"></span>
+    <div class="tnav-sep"></div>
+    <span class="tnav-link lang-active">LT</span>
+    <div class="tnav-sep"></div>
+    <a href="/en/lesson/fatigue/" class="tnav-link">EN</a>
+    <div class="tnav-sep"></div>
+    <button class="tnav-link" onclick="toggleGlossary()">Žodynas</button>
+    <button class="nav-toggle-btn" id="navToggleBtn" onclick="toggleNav()">☰ Pamokos</button>
+  </div>
+</nav>
+<div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
+
+<!-- Lesson nav drawer -->
+<div class="lesson-nav nav-collapsed" id="lessonNav">
+  <a class="nav-home-btn" href="/">← Pradžia</a>
+  <a class="nav-pill" data-lesson="0" href="/pamoka/kodel-begti-letai/">01</a>
+  <a class="nav-pill" data-lesson="1" href="/pamoka/sirdis-pulsas-zonos/">02</a>
+  <a class="nav-pill" data-lesson="2" href="/pamoka/energija-ir-kuras/">03</a>
+  <a class="nav-pill" data-lesson="3" href="/pamoka/laktatas/">04</a>
+  <a class="nav-pill" data-lesson="4" href="/pamoka/kvepavimas-begant/">05</a>
+  <a class="nav-pill" data-lesson="5" href="/pamoka/karstis-ir-hidratacija/">06</a>
+  <a class="nav-pill" data-lesson="6" href="/pamoka/begimo-technika/">07</a>
+  <a class="nav-pill" data-lesson="7" href="/pamoka/kaip-tobuleti/">08</a>
+  <a class="nav-pill" data-lesson="8" href="/pamoka/treniruociu-sistemos/">09</a>
+  <a class="nav-pill" data-lesson="9" href="/pamoka/jegos-treniruotes/">10</a>
+  <a class="nav-pill" data-lesson="10" href="/pamoka/ziemos-begimas/">11</a>
+  <a class="nav-pill" data-lesson="11" href="/pamoka/pirmos-varzybos/">12</a>
+  <a class="nav-pill" data-lesson="12" href="/pamoka/vo2max/">13</a>
+  <a class="nav-pill" data-lesson="13" href="/pamoka/begimo-ekonomija/">14</a>
+  <a class="nav-pill" data-lesson="14" href="/pamoka/nuovargis/">15</a>
+  <a class="nav-pill" data-lesson="15" href="/pamoka/tempo-paskirstymas/">16</a>
+  <a class="nav-pill" data-lesson="16" href="/pamoka/kruvio-valdymas/">17</a>
+  <a class="nav-pill" data-lesson="17" href="/pamoka/skausmas-ar-trauma/">18</a>
+  <a class="nav-pill" data-lesson="18" href="/pamoka/motyvacija-ir-pastovumas/">19</a>
+  <a class="nav-pill" data-lesson="19" href="/pamoka/begimo-laikrodziai/">20</a>
+  <a class="nav-pill" data-lesson="20" href="/pamoka/miegas-ir-atsigavimas/">21</a>
+  <a class="nav-pill" data-lesson="21" href="/pamoka/ka-valgyti-begikui/">22</a>
+</div>
+
+<dialog id="glossaryDialog" aria-label="Žodynas">
+  <div class="glossary-header">
+    <h2>Žodynas</h2>
+    <button class="glossary-close" onclick="toggleGlossary()">✕</button>
+  </div>
+  <div class="glossary-search">
+    <input type="text" id="glossarySearch" placeholder="Ieškoti termino..." oninput="filterGlossary(this.value)">
+  </div>
+  <div class="glossary-list" id="glossaryList"></div>
+</dialog>
+
+<!-- ══════════════════════════════════════════
+     LANDING PAGE
+     ══════════════════════════════════════════ -->
+<main>
+
+<article class="lesson active" id="lesson-14">
+  <div class="lesson-header">
+    <div class="lesson-num">15 pamoka iš 22</div>
+    <h1 class="lesson-title">Nuovargis — kodėl organizmas liepia sulėtėti</h1>
+    <p class="lesson-intro">Nuovargis nėra vien raumenų problema. Tai viso organizmo apsauginė sistema — ir centrinis, ir periferinis lygmuo.</p>
+  </div>
+
+  <div class="takeaway"><div><strong>Pagrindinė mintis:</strong> Smegenys pradeda stabdyti dar prieš tikrąjį raumenų išsekimą. Supratę tai, galite protingiau valdyti pastangas — ir atpažinti tikrą pervargimą laiku.</div></div>
+
+  <div class="prose">
+    <p>Bėgant ilgą laiką arba dideliu intensyvumu ateina momentas, kai kojos pasunkėja, kvėpavimas tampa sunkesnis, o mintyse atsiranda noras sustoti. Dauguma žmonių tai vadina nuovargiu ir mano, kad priežastis paprasta — raumenys pavargo. Tačiau nuovargis yra daug sudėtingesnis reiškinys.</p>
+    <p>Mokslininkai skiria du nuovargio tipus: <strong>periferinį</strong> ir <strong>centrinį</strong>. Periferinis nuovargis vyksta tiesiogiai raumenyse ir juos supančiuose audiniuose. Bėgant eikvojamas glikogenas <a class="xref" href="/pamoka/energija-ir-kuras/">3 pamoka: Energija</a>, kaupiasi metabolitai, mažėja raumenų gebėjimas susitraukti. Šis nuovargis yra lokalus — jaučiamas konkrečiuose raumenyse.</p>
+    <p>Centrinis nuovargis vyksta smegenų ir nervų sistemos lygmeniu. Dar prieš periferinius raumenis pasiekiant tikrąją išeikvojimo ribą, smegenys pradeda siųsti stabdymo signalus. Tai vadinama centrinio reguliatoriaus (angl. central governor) teorija — smegenys nuolat vertina organizmo būklę ir, prognozuodamos galimą pavojų, mažina raumenų aktyvavimo intensyvumą. Štai kodėl finišo tiesiosios artėjimas netikėtai suteikia jėgų — smegenys, pajutusios, kad finišas arti, „atleidžia" saugos stabdžius.</p>
+    <p>Ūminis nuovargis (tai, ką jaučiate po vienos sunkios treniruotės) paprastai praeina per 24–72 valandas. <strong>Chroninis nuovargis</strong> yra rimtesnis. Kai organizmas per kelias savaites negauna pakankamai poilsio, prasideda pervargimas. Jis atpažįstamas iš kelių požymių: pulsas rytais aukštesnis nei įprastai, lengvas bėgimas jaučiasi sunkiai, nėra noro treniruotis, miegas neišsprendžia nuovargio. Jei šie ženklai trunka daugiau nei savaitę, reikia rimtos poilsio savaitės, ne paprastos atsipalaidavimo dienos.</p>
+  </div>
+
+  <div class="callout callout-warn">
+    <span class="callout-label">Pervargimo sindromas</span>
+    Pervargimo sindromas (overtraining syndrome) yra rimta būklė, kuriai atsigauti prireikia savaičių ar net mėnesių. Jį sukelia per ilgai tęsiamas krūvio didinimas be pakankamo poilsio. Skirtingai nuo paprasto nuovargio, pervargimas nesustoja po kelių poilsio dienų — ir treniruotės jo neišsprendžia, tik paaštrina.
+  </div>
+
+  <div class="callout callout-tip">
+    <span class="callout-label">Rytinio pulso metodas</span>
+    Rytinio pulso matavimas — vienas pigiausių ir patikimiausių chroninio nuovargio rodiklių. Matuokite pulsą tuo pačiu metu gulėdami po pabudimo. Jei tris dienas iš eilės jis 7–10 dūžių aukštesnis nei įprastai — organizmas siunčia atkūrimo signalą.
+  </div>
+
+  <div class="callout callout-key">
+    <span class="callout-label">Nuovargis varžybų metu</span>
+    Nuovargio pojūtis varžybų metu nebūtinai reiškia, kad raumenys išsekę. Dažnai tai smegenų apsauginis signalas. Treniruotas bėgikas išmoksta atskirti, kada signalas reiškia tikrą pavojų ir kada jį galima drąsiai ignoruoti — tai ugdoma su patirtimi.
+  </div>
+
+  <div class="demo">
+    <div class="demo-title">Interaktyvus demonstravimas — Nuovargio veiksniai</div>
+    <p class="demo-note">Slinkite, kad pamatytumėte, kaip skirtingi nuovargio veiksniai kaupiasi ilgesnio bėgimo metu.</p>
+    <div class="slider-control">
+      <div class="slider-label"><span>Bėgimo trukmė</span><strong id="s14-dur-label">30 min</strong></div>
+      <input type="range" id="s14-dur" min="10" max="150" value="30" step="5">
+    </div>
+    <div class="slider-control">
+      <div class="slider-label"><span>Treniruotumo lygis</span><strong id="s14-fit-label">Vidutinis</strong></div>
+      <input type="range" id="s14-fit" min="1" max="3" value="2" step="1">
+    </div>
+    <div id="s14-fatigue-bars" style="margin-top:1rem;display:flex;flex-direction:column;gap:.5rem"></div>
+    <div class="demo-insight" id="s14-insight"></div>
+  </div>
+
+  <div class="quiz" data-correct="1">
+    <div class="quiz-q">Ką reiškia „centrinis nuovargis"?</div>
+    <div class="quiz-opts">
+      <button class="quiz-opt">Nuovargis pilvo raumenyse</button>
+      <button class="quiz-opt">Smegenų siunčiami stabdymo signalai, apsaugantys organizmą dar prieš pasiekiant tikrąją raumenų išeikvojimo ribą</button>
+      <button class="quiz-opt">Nuovargis dėl per didelio angliavandenių trūkumo</button>
+    </div>
+    <div class="quiz-feedback">Tiksliai. Centrinis nuovargis — tai nervų sistemos apsauginis mechanizmas. Smegenys nuolat stebi organizmo būklę ir mažina raumenų aktyvavimą dar prieš tikrąjį išsekimą. Tai viena priežasčių, kodėl prie finišo visada atsiranda „atsarginių" jėgų.</div>
+  </div>
+
+  <div class="step-nav">
+    <a class="btn-step btn-prev" href="/pamoka/begimo-ekonomija/">← Atgal</a>
+    <span class="step-counter">15 / 22</span>
+    <a class="btn-step btn-next" href="/pamoka/tempo-paskirstymas/">Tempo paskirstymas →</a>
+  </div>
+</article>
+
+</main>
+
+<nav class="mobile-bar" aria-label="Pamokų navigacija">
+  <button class="mb-btn" id="mbPrev" aria-label="Ankstesnė pamoka">←</button>
+  <button class="mb-label" id="mbLabelBtn">Pamoka&nbsp;<span id="mbLabel">1 / 22</span></button>
+  <button class="mb-btn" id="mbNext" aria-label="Kita pamoka">→</button>
+</nav>
+
+<script>window.LESSON=14;</script>
+<script defer src="/js/nav.js?v=8"></script>
+<script defer src="/js/quiz.js?v=3"></script>
+<script defer src="/js/glossary.js?v=3"></script>
+<script defer src="/js/demos.js?v=5"></script>
+</body>
+</html>

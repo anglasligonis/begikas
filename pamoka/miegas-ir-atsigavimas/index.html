@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="lt">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="referrer" content="no-referrer-when-downgrade">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src https://www.google-analytics.com https://analytics.google.com https://stats.g.doubleclick.net;">
+<title>Miegas, atsigavimas ir adaptacijos mechanizmas — Bėgimo fiziologija | Begikas</title>
+<meta name="description" content="Geriausia treniruotė nieko neverta, jei po jos nesiranda vietos atsigavimui. Miegas nėra poilsis — tai vieta, kur formuojasi fizinis pajėgumas.">
+<link rel="canonical" href="https://apiebegima.lt/pamoka/miegas-ir-atsigavimas/">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="alternate" hreflang="lt" href="https://apiebegima.lt/pamoka/miegas-ir-atsigavimas/">
+<link rel="alternate" hreflang="en" href="https://apiebegima.lt/en/lesson/sleep-and-recovery/">
+<link rel="alternate" hreflang="x-default" href="https://apiebegima.lt/pamoka/miegas-ir-atsigavimas/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Begikas">
+<meta property="og:title" content="Miegas, atsigavimas ir adaptacijos mechanizmas — Bėgimo fiziologija | Begikas">
+<meta property="og:description" content="Geriausia treniruotė nieko neverta, jei po jos nesiranda vietos atsigavimui. Miegas nėra poilsis — tai vieta, kur formuojasi fizinis pajėgumas.">
+<meta property="og:url" content="https://apiebegima.lt/pamoka/miegas-ir-atsigavimas/">
+<meta property="og:image" content="https://apiebegima.lt/images/opt/og-man-running.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Miegas, atsigavimas ir adaptacijos mechanizmas — Bėgimo fiziologija | Begikas">
+<meta name="twitter:description" content="Geriausia treniruotė nieko neverta, jei po jos nesiranda vietos atsigavimui. Miegas nėra poilsis — tai vieta, kur formuojasi fizinis pajėgumas.">
+<meta name="twitter:image" content="https://apiebegima.lt/images/opt/og-man-running.jpg">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Miegas, atsigavimas ir adaptacijos mechanizmas",
+  "description": "Geriausia treniruotė nieko neverta, jei po jos nesiranda vietos atsigavimui. Miegas nėra poilsis — tai vieta, kur formuojasi fizinis pajėgumas.",
+  "inLanguage": "lt",
+  "url": "https://apiebegima.lt/pamoka/miegas-ir-atsigavimas/",
+  "isPartOf": {
+    "@type": "Course",
+    "name": "Bėgimo Fiziologija — Pradedantiesiems",
+    "url": "https://apiebegima.lt/"
+  }
+}
+</script>
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-3G4SLW2V7C"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-3G4SLW2V7C');
+</script>
+<link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@500;600;700&family=Spline+Sans+Mono:wght@400;500;600;700&family=Instrument+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/variables.css?v=4">
+<link rel="stylesheet" href="/css/layout.css?v=6">
+<link rel="stylesheet" href="/css/components.css?v=7">
+<link rel="stylesheet" href="/css/lessons.css?v=5">
+<link rel="stylesheet" href="/css/landing.css?v=4">
+<link rel="stylesheet" href="/css/static.css?v=1">
+</head>
+<body class="lessons-on">
+
+
+<!-- Fixed zone rail -->
+<div class="zone-rail"></div>
+<div class="zone-runner"></div>
+<div class="zone-labels">
+  <span class="zone-label">Z5</span>
+  <span class="zone-label">Z4</span>
+  <span class="zone-label">Z3</span>
+  <span class="zone-label">Z2</span>
+  <span class="zone-label">Z1</span>
+</div>
+
+<!-- Top nav -->
+<nav class="topnav">
+  <a class="topnav-brand" href="/">Bėgimo Fiziologija</a>
+  <div class="topnav-right">
+    <div class="nav-pulse"></div>
+    <span class="lesson-indicator" id="lessonIndicator"></span>
+    <div class="tnav-sep"></div>
+    <span class="tnav-link lang-active">LT</span>
+    <div class="tnav-sep"></div>
+    <a href="/en/lesson/sleep-and-recovery/" class="tnav-link">EN</a>
+    <div class="tnav-sep"></div>
+    <button class="tnav-link" onclick="toggleGlossary()">Žodynas</button>
+    <button class="nav-toggle-btn" id="navToggleBtn" onclick="toggleNav()">☰ Pamokos</button>
+  </div>
+</nav>
+<div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
+
+<!-- Lesson nav drawer -->
+<div class="lesson-nav nav-collapsed" id="lessonNav">
+  <a class="nav-home-btn" href="/">← Pradžia</a>
+  <a class="nav-pill" data-lesson="0" href="/pamoka/kodel-begti-letai/">01</a>
+  <a class="nav-pill" data-lesson="1" href="/pamoka/sirdis-pulsas-zonos/">02</a>
+  <a class="nav-pill" data-lesson="2" href="/pamoka/energija-ir-kuras/">03</a>
+  <a class="nav-pill" data-lesson="3" href="/pamoka/laktatas/">04</a>
+  <a class="nav-pill" data-lesson="4" href="/pamoka/kvepavimas-begant/">05</a>
+  <a class="nav-pill" data-lesson="5" href="/pamoka/karstis-ir-hidratacija/">06</a>
+  <a class="nav-pill" data-lesson="6" href="/pamoka/begimo-technika/">07</a>
+  <a class="nav-pill" data-lesson="7" href="/pamoka/kaip-tobuleti/">08</a>
+  <a class="nav-pill" data-lesson="8" href="/pamoka/treniruociu-sistemos/">09</a>
+  <a class="nav-pill" data-lesson="9" href="/pamoka/jegos-treniruotes/">10</a>
+  <a class="nav-pill" data-lesson="10" href="/pamoka/ziemos-begimas/">11</a>
+  <a class="nav-pill" data-lesson="11" href="/pamoka/pirmos-varzybos/">12</a>
+  <a class="nav-pill" data-lesson="12" href="/pamoka/vo2max/">13</a>
+  <a class="nav-pill" data-lesson="13" href="/pamoka/begimo-ekonomija/">14</a>
+  <a class="nav-pill" data-lesson="14" href="/pamoka/nuovargis/">15</a>
+  <a class="nav-pill" data-lesson="15" href="/pamoka/tempo-paskirstymas/">16</a>
+  <a class="nav-pill" data-lesson="16" href="/pamoka/kruvio-valdymas/">17</a>
+  <a class="nav-pill" data-lesson="17" href="/pamoka/skausmas-ar-trauma/">18</a>
+  <a class="nav-pill" data-lesson="18" href="/pamoka/motyvacija-ir-pastovumas/">19</a>
+  <a class="nav-pill" data-lesson="19" href="/pamoka/begimo-laikrodziai/">20</a>
+  <a class="nav-pill" data-lesson="20" href="/pamoka/miegas-ir-atsigavimas/">21</a>
+  <a class="nav-pill" data-lesson="21" href="/pamoka/ka-valgyti-begikui/">22</a>
+</div>
+
+<dialog id="glossaryDialog" aria-label="Žodynas">
+  <div class="glossary-header">
+    <h2>Žodynas</h2>
+    <button class="glossary-close" onclick="toggleGlossary()">✕</button>
+  </div>
+  <div class="glossary-search">
+    <input type="text" id="glossarySearch" placeholder="Ieškoti termino..." oninput="filterGlossary(this.value)">
+  </div>
+  <div class="glossary-list" id="glossaryList"></div>
+</dialog>
+
+<!-- ══════════════════════════════════════════
+     LANDING PAGE
+     ══════════════════════════════════════════ -->
+<main>
+
+<article class="lesson active" id="lesson-20">
+  <div class="lesson-header">
+    <div class="lesson-num">21 pamoka iš 22</div>
+    <h1 class="lesson-title">Miegas, atsigavimas ir adaptacijos mechanizmas</h1>
+    <p class="lesson-intro">Geriausia treniruotė nieko neverta, jei po jos nesiranda vietos atsigavimui. Miegas nėra poilsis — tai vieta, kur formuojasi fizinis pajėgumas.</p>
+  </div>
+
+  <div class="takeaway"><div><strong>Pagrindinė mintis:</strong> Treniruotė yra dirgiklis. Miegas yra adaptacija. Praleisti miegą — tarsi pasodinti sėklas ir pamiršti jas laistyti.</div></div>
+
+  <div class="prose">
+    <p>Bėgant sukuriami mikrotrauminiai pažeidimai raumenų skaidulose ir sausgyslėse. Tai tyčinis procesas — organizmas jas atnaujina stipresnes. Tačiau atnaujinimas vyksta gilaus miego metu, o ne bėgimo metu. Per pirmąsias dvi gilaus miego valandas hipofizė išskiria didžiąją dalį dienos <strong>augimo hormono (HGH)</strong> — pagrindinio baltymų sintezės ir sausgyslių kolageno atnaujinimo signalo.</p>
+    <p>REM miegas (vėliau naktį) įtvirtina <strong>motorinius modelius</strong>, išmoktus treniruotės metu. Bėgikas, kuris praktikuoja teisingą bėgimo techniką <a class="xref" href="/pamoka/begimo-technika/">7 pamoka: Technika</a>, bet miega tik 5 valandas, įsisavins mažiau neuroraumeninių gebėjimų nei tas, kuris miega 8.</p>
+    <p>Bėgikams rekomenduojama miegoti <strong>7–9 valandas per naktį</strong>. Svarbu ir kiekis, ir kokybė — sutrūkinėjęs 8 valandų miegas duoda mažiau lėtų bangų nei ištisinis 7 valandų.</p>
+  </div>
+
+  <div class="callout callout-key">
+    <span class="callout-label">Rytinis ramybės pulsas — paprasčiausias atsigavimo rodiklis</span>
+    Išmatuokite pulsą per 60 sekundžių prieš keldamiesi. Sekite 2–3 savaites, kad nustatytumėte asmeninę bazę. Jei pulsas yra <strong>5–7 BPM aukštesnis nei bazė</strong> — organizmas vis dar patiria stresą po praėjusios treniruotės. Toks rytas — ne diena intensyviai treniruotei.
+  </div>
+
+  <div class="prose">
+    <p><strong>Aktyvus ir pasyvus atsigavimas</strong> — reikšmingas skirtumas. Pasyvus atsigavimas — nieko neveikimas. Aktyvus atsigavimas — labai lengvas judėjimas: 20–30 minučių Z1 ėjimas ar švelnus bėgiojimas. Esant mažam intensyvumui, kraujas geriau teka į sausgysles ir raumenis nedidindamas treniruotės krūvio, o tai paspartina uždegimą sukeliančių medžiagų pasišalinimą. Daugumai bėgikų aktyvus atsigavimas poilsio dienomis duoda daugiau naudos nei visiškas poilsis.</p>
+    <p><strong>Nepakankamo atsigavimo požymiai:</strong> raumenų skausmingumas ilgiau nei 48 valandas, motyvacijos praradimas, lėtėjantis tempas esant tam pačiam pulsui per keletą savaičių <a class="xref" href="/pamoka/begimo-laikrodziai/">20 pamoka</a>, dirglumas ir blogas miegas nepaisant fizinio nuovargio. Vienas ar du požymiai retkarčiais — norma. Keli kartu ilgiau nei savaitę — pervargimo signalas.</p>
+  </div>
+
+  <div class="callout callout-tip">
+    <span class="callout-label">Praktiniai įpročiai</span>
+    Pastovūs miego ir kėlimosi laikai svarbiau nei bendras valandų skaičius. Organizmo hormoninis atsistatymo grafikas susijęs su cirkadiniu ritmu — 7 valandų miegas pastoviu laiku atkuria organizmą labiau nei 8 valandos nereguliariomis valandomis. Venkite intensyvaus bėgimo likus 3 valandoms iki miego: pakilusi kūno temperatūra ir kortizolis po sunkių treniruočių atideda užmigimą.
+  </div>
+
+  <div class="callout callout-myth">
+    <span class="callout-label">Paplitęs mitas</span>
+    „Savaitgalį galiu kompensuoti miego trūkumą." Dalinis miego trūkumas kaupiasi per savaitę ir trikdo atsigavimą net jei šeštadienį miegosite ilgiau. Pastovumas yra vertingesnis nei kompensacija.
+  </div>
+
+  <div class="demo">
+    <div class="demo-title">Interaktyvus demonstravimas — Atsigavimo pasiruošimas</div>
+    <p class="demo-note">Nustatykite praėjusios nakties miego valandas ir kokybę. Pamatysite, kaip tai veikia šiandienos adaptacijos langą ir kokios treniruotės tinka.</p>
+
+    <div class="slider-control">
+      <div class="slider-label">
+        <span>Miego trukmė</span>
+        <strong id="s20-hours-label">7 val.</strong>
+      </div>
+      <input type="range" id="s20-hours" min="4" max="10" value="7" step="0.5">
+      <div class="demo-range-labels">
+        <span>4 val.</span><span>6 val.</span><span>8 val.</span><span>10 val.</span>
+      </div>
+    </div>
+
+    <div class="slider-control" style="margin-top:1rem">
+      <div class="slider-label">
+        <span>Miego kokybė</span>
+        <strong id="s20-quality-label">Gera</strong>
+      </div>
+      <input type="range" id="s20-quality" min="1" max="5" value="3" step="1">
+      <div class="demo-range-labels">
+        <span>Prasta</span><span>Vidutinė</span><span>Gera</span><span>Labai gera</span><span>Puiki</span>
+      </div>
+    </div>
+
+    <div class="metric-row" style="margin-top:1.25rem">
+      <div class="metric-card">
+        <div class="mv" id="s20-adapt">72%</div>
+        <div class="ml">Adaptacijos langas</div>
+      </div>
+      <div class="metric-card">
+        <div class="mv" id="s20-status">Vidutinis</div>
+        <div class="ml">Atsigavimo būklė</div>
+      </div>
+      <div class="metric-card">
+        <div class="mv" id="s20-session">Lengvas bėgimas</div>
+        <div class="ml">Rekomenduojama šiandien</div>
+      </div>
+    </div>
+    <div class="demo-desc">
+      <p id="s20-desc"></p>
+    </div>
+  </div>
+
+  <div class="quiz" data-correct="1">
+    <div class="quiz-q">Kada vyksta bėgimo adaptacija (raumenų atstatymas, sausgyslių atnaujinimas)?</div>
+    <div class="quiz-opts">
+      <button class="quiz-opt">Bėgimo metu</button>
+      <button class="quiz-opt">Gilaus miego metu</button>
+      <button class="quiz-opt">Valandą po bėgimo</button>
+    </div>
+    <div class="quiz-feedback">Teisingai. Gilaus miego (lėtų bangų miegas) metu išsiskiria augimo hormonas ir vyksta baltymų sintezė. Bėgimas suteikia dirgiklį — miegas suteikia adaptaciją.</div>
+  </div>
+
+  <div class="step-nav">
+    <a class="btn-step btn-prev" href="/pamoka/begimo-laikrodziai/">← Atgal</a>
+    <span class="step-counter">21 / 22</span>
+    <a class="btn-step btn-next" href="/pamoka/ka-valgyti-begikui/">Kasdienė mityba →</a>
+  </div>
+</article>
+
+</main>
+
+<nav class="mobile-bar" aria-label="Pamokų navigacija">
+  <button class="mb-btn" id="mbPrev" aria-label="Ankstesnė pamoka">←</button>
+  <button class="mb-label" id="mbLabelBtn">Pamoka&nbsp;<span id="mbLabel">1 / 22</span></button>
+  <button class="mb-btn" id="mbNext" aria-label="Kita pamoka">→</button>
+</nav>
+
+<script>window.LESSON=20;</script>
+<script defer src="/js/nav.js?v=8"></script>
+<script defer src="/js/quiz.js?v=3"></script>
+<script defer src="/js/glossary.js?v=3"></script>
+<script defer src="/js/demos.js?v=5"></script>
+</body>
+</html>

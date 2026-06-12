@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="referrer" content="no-referrer-when-downgrade">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src https://www.google-analytics.com https://analytics.google.com https://stats.g.doubleclick.net;">
+<title>Running watches and data — Running Physiology | Begikas</title>
+<meta name="description" content="A watch is a great tool — when you know what it's for. The key is knowing which metrics are reliable and which are just an algorithm's best guess.">
+<link rel="canonical" href="https://apiebegima.lt/en/lesson/running-watches/">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="alternate" hreflang="lt" href="https://apiebegima.lt/pamoka/begimo-laikrodziai/">
+<link rel="alternate" hreflang="en" href="https://apiebegima.lt/en/lesson/running-watches/">
+<link rel="alternate" hreflang="x-default" href="https://apiebegima.lt/pamoka/begimo-laikrodziai/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Begikas">
+<meta property="og:title" content="Running watches and data — Running Physiology | Begikas">
+<meta property="og:description" content="A watch is a great tool — when you know what it's for. The key is knowing which metrics are reliable and which are just an algorithm's best guess.">
+<meta property="og:url" content="https://apiebegima.lt/en/lesson/running-watches/">
+<meta property="og:image" content="https://apiebegima.lt/images/opt/og-man-running.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Running watches and data — Running Physiology | Begikas">
+<meta name="twitter:description" content="A watch is a great tool — when you know what it's for. The key is knowing which metrics are reliable and which are just an algorithm's best guess.">
+<meta name="twitter:image" content="https://apiebegima.lt/images/opt/og-man-running.jpg">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Running watches and data",
+  "description": "A watch is a great tool — when you know what it's for. The key is knowing which metrics are reliable and which are just an algorithm's best guess.",
+  "inLanguage": "en",
+  "url": "https://apiebegima.lt/en/lesson/running-watches/",
+  "isPartOf": {
+    "@type": "Course",
+    "name": "Running Physiology — For Beginners",
+    "url": "https://apiebegima.lt/en/"
+  }
+}
+</script>
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-3G4SLW2V7C"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-3G4SLW2V7C');
+</script>
+<link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@500;600;700&family=Spline+Sans+Mono:wght@400;500;600;700&family=Instrument+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/variables.css?v=4">
+<link rel="stylesheet" href="/css/layout.css?v=6">
+<link rel="stylesheet" href="/css/components.css?v=7">
+<link rel="stylesheet" href="/css/lessons.css?v=5">
+<link rel="stylesheet" href="/css/landing.css?v=4">
+<link rel="stylesheet" href="/css/static.css?v=1">
+</head>
+<body class="lessons-on">
+
+
+<!-- Fixed zone rail -->
+<div class="zone-rail"></div>
+<div class="zone-runner"></div>
+<div class="zone-labels">
+  <span class="zone-label">Z5</span>
+  <span class="zone-label">Z4</span>
+  <span class="zone-label">Z3</span>
+  <span class="zone-label">Z2</span>
+  <span class="zone-label">Z1</span>
+</div>
+
+<!-- Top nav -->
+<nav class="topnav">
+  <a class="topnav-brand" href="/en/">Running Physiology</a>
+  <div class="topnav-right">
+    <div class="nav-pulse"></div>
+    <span class="lesson-indicator" id="lessonIndicator"></span>
+    <div class="tnav-sep"></div>
+    <a href="/pamoka/begimo-laikrodziai/" class="tnav-link">LT</a>
+    <div class="tnav-sep"></div>
+    <span class="tnav-link lang-active">EN</span>
+    <div class="tnav-sep"></div>
+    <button class="tnav-link" onclick="toggleGlossary()">Glossary</button>
+    <button class="nav-toggle-btn" id="navToggleBtn" onclick="toggleNav()">☰ Lessons</button>
+  </div>
+</nav>
+<div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
+
+<!-- Lesson nav drawer -->
+<div class="lesson-nav nav-collapsed" id="lessonNav">
+  <a class="nav-home-btn" href="/en/">← Home</a>
+  <a class="nav-pill" data-lesson="0" href="/en/lesson/why-run-slowly/">01</a>
+  <a class="nav-pill" data-lesson="1" href="/en/lesson/heart-and-pulse/">02</a>
+  <a class="nav-pill" data-lesson="2" href="/en/lesson/energy-and-fuel/">03</a>
+  <a class="nav-pill" data-lesson="3" href="/en/lesson/lactate/">04</a>
+  <a class="nav-pill" data-lesson="4" href="/en/lesson/breathing/">05</a>
+  <a class="nav-pill" data-lesson="5" href="/en/lesson/heat-and-hydration/">06</a>
+  <a class="nav-pill" data-lesson="6" href="/en/lesson/running-technique/">07</a>
+  <a class="nav-pill" data-lesson="7" href="/en/lesson/how-to-improve/">08</a>
+  <a class="nav-pill" data-lesson="8" href="/en/lesson/training-systems/">09</a>
+  <a class="nav-pill" data-lesson="9" href="/en/lesson/strength-training/">10</a>
+  <a class="nav-pill" data-lesson="10" href="/en/lesson/winter-running/">11</a>
+  <a class="nav-pill" data-lesson="11" href="/en/lesson/first-race/">12</a>
+  <a class="nav-pill" data-lesson="12" href="/en/lesson/vo2max/">13</a>
+  <a class="nav-pill" data-lesson="13" href="/en/lesson/running-economy/">14</a>
+  <a class="nav-pill" data-lesson="14" href="/en/lesson/fatigue/">15</a>
+  <a class="nav-pill" data-lesson="15" href="/en/lesson/pace-distribution/">16</a>
+  <a class="nav-pill" data-lesson="16" href="/en/lesson/load-management/">17</a>
+  <a class="nav-pill" data-lesson="17" href="/en/lesson/pain-or-injury/">18</a>
+  <a class="nav-pill" data-lesson="18" href="/en/lesson/motivation/">19</a>
+  <a class="nav-pill" data-lesson="19" href="/en/lesson/running-watches/">20</a>
+  <a class="nav-pill" data-lesson="20" href="/en/lesson/sleep-and-recovery/">21</a>
+  <a class="nav-pill" data-lesson="21" href="/en/lesson/daily-nutrition/">22</a>
+</div>
+
+<dialog id="glossaryDialog" aria-label="Glossary">
+  <div class="glossary-header">
+    <h2>Glossary</h2>
+    <button class="glossary-close" onclick="toggleGlossary()">✕</button>
+  </div>
+  <div class="glossary-search">
+    <input type="text" id="glossarySearch" placeholder="Search term..." oninput="filterGlossary(this.value)">
+  </div>
+  <div class="glossary-list" id="glossaryList"></div>
+</dialog>
+
+<!-- ══════════════════════════════════════════
+     LANDING PAGE
+     ══════════════════════════════════════════ -->
+<main>
+
+<article class="lesson active" id="lesson-19">
+  <div class="lesson-header">
+    <div class="lesson-num">Lesson 20 of 22</div>
+    <h1 class="lesson-title">Running watches and data</h1>
+    <p class="lesson-intro">A watch is a great tool — when you know what it's for. The key is knowing which metrics are reliable and which are just an algorithm's best guess.</p>
+  </div>
+
+  <div class="takeaway"><div><strong>Key idea:</strong> The best runners use data as a helper, not a master. A watch supplements — but never replaces — the ability to listen to your own body.</div></div>
+
+  <div class="prose">
+    <p>GPS watches have become so accessible that almost every beginner buys two things first: running shoes and a watch. That is a positive development — data helps you understand your training. But it has also created a new problem: data overload without context.</p>
+    <p>Watch metrics fall into two categories. <strong>Reliable data</strong> — directly measured variables: GPS distance (with a small margin of error in densely built areas), running time, and cadence <a class="xref" href="/en/lesson/running-technique/">Lesson 7: Technique</a>. Wrist-based heart rate is moderately reliable during steady-intensity running, but during intervals or hill running it often lags 10–30 seconds behind — worth knowing.</p>
+    <p><strong>Estimated metrics</strong> are algorithms that interpret the measurements. VO₂max estimates <a class="xref" href="/en/lesson/vo2max/">Lesson 13: VO₂max</a>, "readiness score", "body battery", "recovery time" — these are all statistical models calibrated to an average user. They may show the right trend, but the absolute numbers are approximate. A runner who slept badly before an easy run can receive a low "readiness score" even if they are physiologically fine. And vice versa.</p>
+    <p>The greatest risk watches introduce is the conscious or unconscious tendency to push the pace on easy runs because you know others may see your activity. An easy session is not supposed to look fast — it is supposed to be easy. Three metrics that give most beginners the most value: heart rate (helps you stay in the right zone <a class="xref" href="/en/lesson/heart-and-pulse/">Lesson 2: Zones</a>), cadence, and weekly mileage. The rest are useful extras, but not the basis for decisions.</p>
+  </div>
+
+  <div class="callout callout-tip">
+    <span class="callout-label">A week without a watch</span>
+    Try running for one week with a covered screen or no watch at all. It trains you to listen to your body rather than react to numbers. Many runners discover their intuitive pace is far more accurate than they expected.
+  </div>
+
+  <div class="callout callout-warn">
+    <span class="callout-label">Watch zones vs. body zones</span>
+    The HR zone shown on your watch and your true physiological zone don't necessarily match. If the watch says "Z2" but you can chat freely — trust how you feel. The talk test is more accurate than the algorithm.
+  </div>
+
+  <div class="callout callout-key">
+    <span class="callout-label">The right question</span>
+    The question is not "what does the watch say?" — it is "how does my body feel today, and what does the watch say?" When both answers align, the data is useful information. When they conflict — trust your body.
+  </div>
+
+  <div class="demo">
+    <div class="demo-title">Interactive demo — Metric reliability scale</div>
+    <p class="demo-note" style="margin-bottom:1rem">Tap a metric to see how reliable it is and why.</p>
+    <div id="s19-metrics" style="display:flex;flex-direction:column;gap:.5rem;margin-top:.5rem"></div>
+  </div>
+
+  <div class="quiz" data-correct="1">
+    <div class="quiz-q">Which watch metric can you trust most?</div>
+    <div class="quiz-opts">
+      <button class="quiz-opt">Readiness score</button>
+      <button class="quiz-opt">GPS distance and running time</button>
+      <button class="quiz-opt">VO₂max estimate</button>
+    </div>
+    <div class="quiz-feedback">Exactly. GPS distance and running time are directly measured — they are reliable. Readiness scores and VO₂max estimates are algorithms built on statistical models. They may point in the right direction, but the absolute numbers are approximate.</div>
+  </div>
+
+  <div class="callout callout-key" style="margin-top:2rem;border-top:1px solid var(--border);padding-top:1.5rem">
+    <span class="callout-label">Reading patterns over time</span>
+    Single data points lie. Trends tell the truth. A small set of signals read consistently over weeks gives you more insight than any individual reading.
+  </div>
+
+  <div class="prose">
+    <p><strong>Resting heart rate trend</strong> is the most accessible overtraining signal. Check your HR for 60 seconds before getting out of bed — your watch can do this automatically. Establish a personal 2-week baseline. A reading 5–7 bpm above baseline means the body is still under load from previous sessions <a class="xref" href="/en/lesson/sleep-and-recovery/">Lesson 21</a>. Consistent elevation over 7–10 days without a clear cause (illness, stress, travel) is a signal to reduce training load <a class="xref" href="/en/lesson/load-management/">Lesson 17</a>.</p>
+    <p><strong>Aerobic efficiency (pace/HR ratio)</strong> is the most revealing long-term metric. For any given easy pace, track what heart rate your body produces each week. As fitness improves, the same pace demands a lower HR — or the same HR produces a faster pace. If this ratio declines over 3–4 weeks (same pace, rising HR), you are either over-training, under-recovering, dehydrated, or spending too many runs in the grey zone.</p>
+    <p><strong>Cardiac drift within a run:</strong> run 45–60 minutes at what feels like Z2, holding pace constant. If HR climbs more than 5–8% by the end versus the first 10 minutes, you started too fast for true Z2. This one test tells you whether your easy runs are actually easy.</p>
+  </div>
+
+  <div class="callout callout-key">
+    <span class="callout-label">The grey zone trap — how to spot it in your data</span>
+    Export a month of your easy runs. Look at the HR distribution. If the majority of time is in Z3 (70–80% of max HR) rather than Z2 (60–70%), you are in the grey zone <a class="xref" href="/en/lesson/how-to-improve/">Lesson 8</a> — too hard for recovery, too easy for real aerobic gains. The fix is simple but uncomfortable: run slower on easy days than you currently think is necessary.
+  </div>
+
+  <div class="prose">
+    <p><strong>Weekly mileage progression:</strong> plot your weekly kilometres over rolling 4-week blocks. The 10% rule (never increase more than 10% per week) is a useful guardrail, but the pattern matters as much as the number. A gradual staircase with periodic down-weeks (every 3–4 weeks, reduce volume by 20–30%) is healthy progression. A spike followed by a drop is usually the injury pattern <a class="xref" href="/en/lesson/load-management/">Lesson 17</a>.</p>
+    <p><strong>Using race results to recalibrate zones:</strong> after a 5K or 10K, use your finishing time to recalculate training zones. Tools like Daniels' VDOT or McMillan Running Calculator give you updated paces for easy runs, threshold work, and intervals. Many runners are training at zones calibrated from a time two years out of date — making their easy days too hard and interval targets too soft.</p>
+  </div>
+
+  <div class="callout callout-tip">
+    <span class="callout-label">Minimum viable tracking</span>
+    You do not need every metric. Track just four things weekly: (1) resting HR each morning, (2) total kilometres, (3) how your easy runs felt on a 1–5 scale, (4) hours of sleep. Reviewing these four numbers each Sunday gives you 90% of the insight a coach would use.
+  </div>
+
+  <div class="callout callout-myth">
+    <span class="callout-label">Common myth</span>
+    "My VO₂max score is going up — training is working." VO₂max estimates from watches are derived from HR and pace and have up to 15% error. Your aerobic efficiency trend and race times are far more reliable indicators of whether training is actually working.
+  </div>
+
+  <div class="demo">
+    <div class="demo-title">Interactive demo — Training pattern analyser</div>
+    <p class="demo-note">Adjust the sliders to match your recent training patterns. Each signal is assessed independently.</p>
+
+    <div class="slider-control">
+      <div class="slider-label">
+        <span>Resting HR trend (vs baseline)</span>
+        <strong id="s22-hr-label">+0 bpm</strong>
+      </div>
+      <input type="range" id="s22-hr" min="-5" max="15" value="0" step="1">
+      <div class="demo-range-labels">
+        <span>−5 bpm</span><span>+0</span><span>+5</span><span>+10</span><span>+15 bpm</span>
+      </div>
+    </div>
+
+    <div class="slider-control" style="margin-top:1rem">
+      <div class="slider-label">
+        <span>HR drift during easy run (end vs start)</span>
+        <strong id="s22-drift-label">5%</strong>
+      </div>
+      <input type="range" id="s22-drift" min="0" max="25" value="5" step="1">
+      <div class="demo-range-labels">
+        <span>0%</span><span>5%</span><span>10%</span><span>15%</span><span>25%+</span>
+      </div>
+    </div>
+
+    <div class="slider-control" style="margin-top:1rem">
+      <div class="slider-label">
+        <span>Mileage increase (this week vs last)</span>
+        <strong id="s22-jump-label">+8%</strong>
+      </div>
+      <input type="range" id="s22-jump" min="0" max="40" value="8" step="1">
+      <div class="demo-range-labels">
+        <span>0%</span><span>+10%</span><span>+20%</span><span>+30%</span><span>+40%</span>
+      </div>
+    </div>
+
+    <div id="s22-signals" style="margin-top:1.25rem;display:flex;flex-direction:column;gap:.6rem"></div>
+    <div class="demo-desc">
+      <p id="s22-summary"></p>
+    </div>
+  </div>
+
+  <div class="step-nav">
+    <a class="btn-step btn-prev" href="/en/lesson/motivation/">← Back</a>
+    <span class="step-counter">20 / 22</span>
+    <a class="btn-step btn-next" href="/en/lesson/sleep-and-recovery/">Sleep &amp; recovery →</a>
+  </div>
+</article>
+
+</main>
+
+<nav class="mobile-bar" aria-label="Lesson navigation">
+  <button class="mb-btn" id="mbPrev" aria-label="Previous lesson">←</button>
+  <button class="mb-label" id="mbLabelBtn">Lesson&nbsp;<span id="mbLabel">1 / 22</span></button>
+  <button class="mb-btn" id="mbNext" aria-label="Next lesson">→</button>
+</nav>
+
+<script>window.LESSON=19;</script>
+<script defer src="/en/js/nav.js?v=8"></script>
+<script defer src="/js/quiz.js?v=3"></script>
+<script defer src="/en/js/glossary.js?v=3"></script>
+<script defer src="/en/js/demos.js?v=5"></script>
+</body>
+</html>

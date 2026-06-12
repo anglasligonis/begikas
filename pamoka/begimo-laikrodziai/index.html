@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="lt">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="referrer" content="no-referrer-when-downgrade">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src https://www.google-analytics.com https://analytics.google.com https://stats.g.doubleclick.net;">
+<title>Bėgimo laikrodžiai ir duomenys — Bėgimo fiziologija | Begikas</title>
+<meta name="description" content="Laikrodis yra puikus pagalbininkas — kai žinote, kam jis skirtas. Svarbu atskirti, kurie rodikliai yra patikimi, o kurie — tik algoritmo apskaičiuotas įvertis.">
+<link rel="canonical" href="https://apiebegima.lt/pamoka/begimo-laikrodziai/">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="alternate" hreflang="lt" href="https://apiebegima.lt/pamoka/begimo-laikrodziai/">
+<link rel="alternate" hreflang="en" href="https://apiebegima.lt/en/lesson/running-watches/">
+<link rel="alternate" hreflang="x-default" href="https://apiebegima.lt/pamoka/begimo-laikrodziai/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Begikas">
+<meta property="og:title" content="Bėgimo laikrodžiai ir duomenys — Bėgimo fiziologija | Begikas">
+<meta property="og:description" content="Laikrodis yra puikus pagalbininkas — kai žinote, kam jis skirtas. Svarbu atskirti, kurie rodikliai yra patikimi, o kurie — tik algoritmo apskaičiuotas įvertis.">
+<meta property="og:url" content="https://apiebegima.lt/pamoka/begimo-laikrodziai/">
+<meta property="og:image" content="https://apiebegima.lt/images/opt/og-man-running.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Bėgimo laikrodžiai ir duomenys — Bėgimo fiziologija | Begikas">
+<meta name="twitter:description" content="Laikrodis yra puikus pagalbininkas — kai žinote, kam jis skirtas. Svarbu atskirti, kurie rodikliai yra patikimi, o kurie — tik algoritmo apskaičiuotas įvertis.">
+<meta name="twitter:image" content="https://apiebegima.lt/images/opt/og-man-running.jpg">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Bėgimo laikrodžiai ir duomenys",
+  "description": "Laikrodis yra puikus pagalbininkas — kai žinote, kam jis skirtas. Svarbu atskirti, kurie rodikliai yra patikimi, o kurie — tik algoritmo apskaičiuotas įvertis.",
+  "inLanguage": "lt",
+  "url": "https://apiebegima.lt/pamoka/begimo-laikrodziai/",
+  "isPartOf": {
+    "@type": "Course",
+    "name": "Bėgimo Fiziologija — Pradedantiesiems",
+    "url": "https://apiebegima.lt/"
+  }
+}
+</script>
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-3G4SLW2V7C"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-3G4SLW2V7C');
+</script>
+<link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@500;600;700&family=Spline+Sans+Mono:wght@400;500;600;700&family=Instrument+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/variables.css?v=4">
+<link rel="stylesheet" href="/css/layout.css?v=6">
+<link rel="stylesheet" href="/css/components.css?v=7">
+<link rel="stylesheet" href="/css/lessons.css?v=5">
+<link rel="stylesheet" href="/css/landing.css?v=4">
+<link rel="stylesheet" href="/css/static.css?v=1">
+</head>
+<body class="lessons-on">
+
+
+<!-- Fixed zone rail -->
+<div class="zone-rail"></div>
+<div class="zone-runner"></div>
+<div class="zone-labels">
+  <span class="zone-label">Z5</span>
+  <span class="zone-label">Z4</span>
+  <span class="zone-label">Z3</span>
+  <span class="zone-label">Z2</span>
+  <span class="zone-label">Z1</span>
+</div>
+
+<!-- Top nav -->
+<nav class="topnav">
+  <a class="topnav-brand" href="/">Bėgimo Fiziologija</a>
+  <div class="topnav-right">
+    <div class="nav-pulse"></div>
+    <span class="lesson-indicator" id="lessonIndicator"></span>
+    <div class="tnav-sep"></div>
+    <span class="tnav-link lang-active">LT</span>
+    <div class="tnav-sep"></div>
+    <a href="/en/lesson/running-watches/" class="tnav-link">EN</a>
+    <div class="tnav-sep"></div>
+    <button class="tnav-link" onclick="toggleGlossary()">Žodynas</button>
+    <button class="nav-toggle-btn" id="navToggleBtn" onclick="toggleNav()">☰ Pamokos</button>
+  </div>
+</nav>
+<div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
+
+<!-- Lesson nav drawer -->
+<div class="lesson-nav nav-collapsed" id="lessonNav">
+  <a class="nav-home-btn" href="/">← Pradžia</a>
+  <a class="nav-pill" data-lesson="0" href="/pamoka/kodel-begti-letai/">01</a>
+  <a class="nav-pill" data-lesson="1" href="/pamoka/sirdis-pulsas-zonos/">02</a>
+  <a class="nav-pill" data-lesson="2" href="/pamoka/energija-ir-kuras/">03</a>
+  <a class="nav-pill" data-lesson="3" href="/pamoka/laktatas/">04</a>
+  <a class="nav-pill" data-lesson="4" href="/pamoka/kvepavimas-begant/">05</a>
+  <a class="nav-pill" data-lesson="5" href="/pamoka/karstis-ir-hidratacija/">06</a>
+  <a class="nav-pill" data-lesson="6" href="/pamoka/begimo-technika/">07</a>
+  <a class="nav-pill" data-lesson="7" href="/pamoka/kaip-tobuleti/">08</a>
+  <a class="nav-pill" data-lesson="8" href="/pamoka/treniruociu-sistemos/">09</a>
+  <a class="nav-pill" data-lesson="9" href="/pamoka/jegos-treniruotes/">10</a>
+  <a class="nav-pill" data-lesson="10" href="/pamoka/ziemos-begimas/">11</a>
+  <a class="nav-pill" data-lesson="11" href="/pamoka/pirmos-varzybos/">12</a>
+  <a class="nav-pill" data-lesson="12" href="/pamoka/vo2max/">13</a>
+  <a class="nav-pill" data-lesson="13" href="/pamoka/begimo-ekonomija/">14</a>
+  <a class="nav-pill" data-lesson="14" href="/pamoka/nuovargis/">15</a>
+  <a class="nav-pill" data-lesson="15" href="/pamoka/tempo-paskirstymas/">16</a>
+  <a class="nav-pill" data-lesson="16" href="/pamoka/kruvio-valdymas/">17</a>
+  <a class="nav-pill" data-lesson="17" href="/pamoka/skausmas-ar-trauma/">18</a>
+  <a class="nav-pill" data-lesson="18" href="/pamoka/motyvacija-ir-pastovumas/">19</a>
+  <a class="nav-pill" data-lesson="19" href="/pamoka/begimo-laikrodziai/">20</a>
+  <a class="nav-pill" data-lesson="20" href="/pamoka/miegas-ir-atsigavimas/">21</a>
+  <a class="nav-pill" data-lesson="21" href="/pamoka/ka-valgyti-begikui/">22</a>
+</div>
+
+<dialog id="glossaryDialog" aria-label="Žodynas">
+  <div class="glossary-header">
+    <h2>Žodynas</h2>
+    <button class="glossary-close" onclick="toggleGlossary()">✕</button>
+  </div>
+  <div class="glossary-search">
+    <input type="text" id="glossarySearch" placeholder="Ieškoti termino..." oninput="filterGlossary(this.value)">
+  </div>
+  <div class="glossary-list" id="glossaryList"></div>
+</dialog>
+
+<!-- ══════════════════════════════════════════
+     LANDING PAGE
+     ══════════════════════════════════════════ -->
+<main>
+
+<article class="lesson active" id="lesson-19">
+  <div class="lesson-header">
+    <div class="lesson-num">20 pamoka iš 22</div>
+    <h1 class="lesson-title">Bėgimo laikrodžiai ir duomenys</h1>
+    <p class="lesson-intro">Laikrodis yra puikus pagalbininkas — kai žinote, kam jis skirtas. Svarbu atskirti, kurie rodikliai yra patikimi, o kurie — tik algoritmo apskaičiuotas įvertis.</p>
+  </div>
+
+  <div class="takeaway"><div><strong>Pagrindinė mintis:</strong> Geriausi bėgikai naudoja duomenis kaip pagalbininką, o ne kaip šeimininką. Laikrodis papildo, bet nepakeičia gebėjimo klausytis savo kūno.</div></div>
+
+  <div class="prose">
+    <p>GPS laikrodžiai tapo tokia prieinama technologija, kad beveik kiekvienas pradedantysis pirmiausia įsigyja du dalykus: bėgimo batus ir laikrodį. Tai teigiamas pokytis — duomenys padeda suprasti treniruotes. Tačiau kartu atsirado nauja problema: duomenų perteklius be konteksto.</p>
+    <p>Laikrodžio duomenis galima suskirstyti į dvi kategorijas. <strong>Patikimi duomenys</strong> — tiesiogiai matuojami kintamieji: GPS atstumas (su nedidele paklaida tankiai užstatytose vietose), bėgimo laikas, kadencija <a class="xref" href="/pamoka/begimo-technika/">7 pamoka: Technika</a>. Širdies ritmas iš riešo yra vidutiniškai patikimas lygaus intensyvumo bėgime, tačiau intervalinių ar kalnų bėgimų metu dažnai atsilieka 10–30 sekundžių — tai svarbu žinoti.</p>
+    <p><strong>Apytiksliai apskaičiuojami rodikliai</strong> — tai algoritmai, interpretuojantys matavimus. VO₂max įvertinimai <a class="xref" href="/pamoka/vo2max/">13 pamoka: VO₂max</a>, „pasirengimo balas", „kūno baterija", „atsistatymo laikas" — visa tai statistiniai modeliai, sukalibruoti vidutiniam vartotojui. Jie gali rodyti teisingą tendenciją, bet absoliutūs skaičiai yra apytiksliai. Bėgikas, praleidęs blogą naktį prieš lengvą bėgimą, gali gauti žemą „pasirengimo balą" net jei fiziologiškai yra gerai. Ir atvirkščiai.</p>
+    <p>Didžiausias pavojus, kurį atneša laikrodžiai, yra sąmoningas ar nesąmoningas tempo didinimas lengvose treniruotėse, nes žinote, kad kiti matys jūsų veiklą. Lengva treniruotė neturi atrodyti greita — ji turi būti lengva. Trys rodikliai, kurie daugumai pradedančiųjų duoda daugiausiai naudos: širdies ritmas (padeda laikytis tinkamoje zonoje <a class="xref" href="/pamoka/sirdis-pulsas-zonos/">2 pamoka: Zonos</a>), kadencija ir savaitinis kilometražas. Likusieji rodikliai yra naudingi priedai, bet ne pagrindas sprendimams.</p>
+  </div>
+
+  <div class="callout callout-tip">
+    <span class="callout-label">Savaitė be laikrodžio</span>
+    Pabandykite vieną savaitę bėgti su apdengtu ekranu arba be laikrodžio. Tai moko klausytis kūno, o ne reaguoti į skaičius. Daugelis bėgikų atranda, kad jų intuityvus tempas yra gerokai tikslesnis nei tikėjosi.
+  </div>
+
+  <div class="callout callout-warn">
+    <span class="callout-label">Zonos laikrodyje prieš zonas kūne</span>
+    Laikrodžio pulso zona ir jūsų tikroji fiziologinė zona nebūtinai sutampa. Jei laikrodis sako „Z2", bet jaučiate, kad galite kalbėtis laisvai — tikėkite savijauta. Kalbėjimo testas yra tikslesnis nei algoritmas.
+  </div>
+
+  <div class="callout callout-key">
+    <span class="callout-label">Teisingas klausimas</span>
+    Klausimas nėra „ką sako laikrodis?" — klausimas yra „kaip šiandien jaučiasi mano kūnas, ir ką sako laikrodis?" Kai abu atsakymai sutampa — duomenys yra naudinga informacija. Kai skiriasi — pasitikėkite kūnu.
+  </div>
+
+  <div class="demo">
+    <div class="demo-title">Interaktyvus demonstravimas — Rodiklių patikimumo skalė</div>
+    <p class="demo-note" style="margin-bottom:1rem">Paspauskite ant rodiklio — sužinosite, kiek jam galima pasitikėti ir kodėl.</p>
+    <div id="s19-metrics" style="display:flex;flex-direction:column;gap:.5rem;margin-top:.5rem"></div>
+  </div>
+
+  <div class="quiz" data-correct="1">
+    <div class="quiz-q">Kuriuo laikrodžio rodikliu galima labiausiai pasitikėti?</div>
+    <div class="quiz-opts">
+      <button class="quiz-opt">Pasirengimo balui (readiness score)</button>
+      <button class="quiz-opt">GPS atstumui ir bėgimo laikui</button>
+      <button class="quiz-opt">VO₂max įvertinimui</button>
+    </div>
+    <div class="quiz-feedback">Tiksliai. GPS atstumas ir laikas yra tiesiogiai matuojami duomenys — jie patikimi. Pasirengimo balai ir VO₂max įvertinimai yra algoritmai, pagrįsti statistiniais modeliais. Jie gali rodyti teisingą kryptį, bet absoliutūs skaičiai nepatikimi.</div>
+  </div>
+
+  <div class="callout callout-key" style="margin-top:2rem;border-top:1px solid var(--border);padding-top:1.5rem">
+    <span class="callout-label">Duomenų skaitymas — tendencijos laikui bėgant</span>
+    Atskiri duomenų taškai meluoja. Tendencijos sako tiesą. Maža rodiklių aibė, stebima nuosekliai savaites, suteikia daugiau įžvalgų nei bet koks atskiras rodmuo.
+  </div>
+
+  <div class="prose">
+    <p><strong>Ramybės pulso tendencija</strong> — prieinamiausias pervargimo rodiklis. Tikrinkite pulsą 60 sekundžių prieš keldamiesi — laikrodis tai gali daryti automatiškai. Nustatykite asmeninę 2 savaičių bazę. Rodmuo 5–7 BPM virš bazės reiškia, kad organizmas vis dar apdoroja ankstesnių treniruočių stresą <a class="xref" href="/pamoka/miegas-ir-atsigavimas/">21 pamoka</a>. Nuolatinis padidėjimas per 7–10 dienų be aiškios priežasties (liga, stresas, kelionės) — signalas mažinti treniruočių krūvį <a class="xref" href="/pamoka/kruvio-valdymas/">17 pamoka</a>.</p>
+    <p><strong>Aerobinis efektyvumas (tempo/pulso santykis)</strong> — labiausiai atskleidžiantis ilgalaikis rodiklis. Kiekvieną savaitę sekite, koks pulsas gaunamas bėgant tuo pačiu lengvu tempu. Didėjant pajėgumui, tas pats tempas reikalauja mažesnio pulso — arba tas pats pulsas suteikia greitesnį tempą. Jei šis santykis blogėja per 3–4 savaites (tas pats tempas, augantis pulsas) — per daug treniruojatės, nepakanka atsigavimo arba per daug laiko leidžiate pilkojoje zonoje.</p>
+    <p><strong>Pulso nukrypimas per bėgimą:</strong> bėkite 45–60 minučių tuo tempu, kuris jaučiasi kaip Z2, išlaikydami tempą pastovų. Jei pulsas pakyla daugiau nei 5–8% pabaigoje lyginant su pirmomis 10 minučių, pradėjote per greitai tikrai Z2. Šis vienas testas atsako, ar jūsų lengvi bėgimai iš tikrųjų yra lengvi.</p>
+  </div>
+
+  <div class="callout callout-key">
+    <span class="callout-label">Pilkosios zonos spąstai — kaip juos atpažinti duomenyse</span>
+    Eksportuokite vieno mėnesio lengvus bėgimus. Pažiūrėkite į pulso pasiskirstymą. Jei dauguma laiko praleidžiama Z3 zonoje (70–80% maksimalaus pulso), o ne Z2 (60–70%), esate pilkojoje zonoje <a class="xref" href="/pamoka/kaip-tobuleti/">8 pamoka</a> — per sunku atsigavimui, per lengva tikrai aerobinei naudai. Sprendimas paprastas, bet nepatogus: bėkite lėčiau lengvomis dienomis nei dabar manote esant reikalinga.
+  </div>
+
+  <div class="prose">
+    <p><strong>Savaitinio kilometražo progresija:</strong> braižykite savaitinius kilometrus slenkančiuose 4 savaičių blokuose. 10% taisyklė (niekada nedidinkite daugiau nei 10% per savaitę) — naudinga apsauginė priemonė, tačiau modelis svarbus tiek pat, kiek skaičiai. Laipsniškas kilimas su periodinėmis mažesnio krūvio savaitėmis (kas 3–4 savaites sumažinkite apimtį 20–30%) — sveikos progresijos vaizdas. Šuolis, po kurio seka kritimas — dažniausiai traumos modelis <a class="xref" href="/pamoka/kruvio-valdymas/">17 pamoka</a>.</p>
+    <p><strong>Varžybų rezultatų naudojimas zonų rekalibracijai:</strong> po 5 km ar 10 km bėgimo naudokite finišo laiką, kad perskaičiuotumėte treniruočių zonas. Danielso VDOT ar McMillan Running Calculator suteikia atnaujintus tempus lengviems bėgimams, slenkstiniam darbui ir intervalams. Daugelis bėgikų treniruojasi pagal zonas, sukalibruotas pagal 2 metų senumo rezultatus — todėl jų lengvos dienos yra per sunkios, o intervaliniai tikslai — per lengvi.</p>
+  </div>
+
+  <div class="callout callout-tip">
+    <span class="callout-label">Minimalus sekimas</span>
+    Jums nereikia kiekvieno rodiklio. Sekite keturis dalykus kiekvieną savaitę: (1) ramybės pulsas kiekvieną rytą, (2) bendras kilometražas, (3) kaip jaučiavotės lengvų bėgimų metu (1–5 skalė), (4) miego valandos. Peržiūrėję šiuos keturis skaičius kiekvieną sekmadienį gausite 90% įžvalgų, kurias naudotų treneris.
+  </div>
+
+  <div class="callout callout-myth">
+    <span class="callout-label">Paplitęs mitas</span>
+    „Mano VO₂max balas auga — vadinasi, treniruotės veikia." VO₂max įvertinimai laikrodžiuose apskaičiuojami iš pulso ir tempo ir gali turėti iki 15% paklaidą. Jūsų aerobinio efektyvumo tendencija ir varžybų rezultatai yra daug patikimesni rodikliai, ar treniruotės iš tikrųjų veikia.
+  </div>
+
+  <div class="demo">
+    <div class="demo-title">Interaktyvus demonstravimas — Treniruočių modelių analizatorius</div>
+    <p class="demo-note">Reguliuokite slankiklius, kad atitiktų jūsų paskutinių treniruočių modelius. Kiekvienas signalas įvertinamas atskirai.</p>
+
+    <div class="slider-control">
+      <div class="slider-label">
+        <span>Ramybės pulso tendencija (vs bazė)</span>
+        <strong id="s22-hr-label">+0 BPM</strong>
+      </div>
+      <input type="range" id="s22-hr" min="-5" max="15" value="0" step="1">
+      <div class="demo-range-labels">
+        <span>−5 BPM</span><span>+0</span><span>+5</span><span>+10</span><span>+15 BPM</span>
+      </div>
+    </div>
+
+    <div class="slider-control" style="margin-top:1rem">
+      <div class="slider-label">
+        <span>Pulso nukrypimas lengvame bėgime (pabaiga vs pradžia)</span>
+        <strong id="s22-drift-label">5%</strong>
+      </div>
+      <input type="range" id="s22-drift" min="0" max="25" value="5" step="1">
+      <div class="demo-range-labels">
+        <span>0%</span><span>5%</span><span>10%</span><span>15%</span><span>25%+</span>
+      </div>
+    </div>
+
+    <div class="slider-control" style="margin-top:1rem">
+      <div class="slider-label">
+        <span>Kilometražo padidėjimas (šią savaitę vs praėjusią)</span>
+        <strong id="s22-jump-label">+8%</strong>
+      </div>
+      <input type="range" id="s22-jump" min="0" max="40" value="8" step="1">
+      <div class="demo-range-labels">
+        <span>0%</span><span>+10%</span><span>+20%</span><span>+30%</span><span>+40%</span>
+      </div>
+    </div>
+
+    <div id="s22-signals" style="margin-top:1.25rem;display:flex;flex-direction:column;gap:.6rem"></div>
+    <div class="demo-desc">
+      <p id="s22-summary"></p>
+    </div>
+  </div>
+
+  <div class="step-nav">
+    <a class="btn-step btn-prev" href="/pamoka/motyvacija-ir-pastovumas/">← Atgal</a>
+    <span class="step-counter">20 / 22</span>
+    <a class="btn-step btn-next" href="/pamoka/miegas-ir-atsigavimas/">Miegas ir atsigavimas →</a>
+  </div>
+</article>
+
+</main>
+
+<nav class="mobile-bar" aria-label="Pamokų navigacija">
+  <button class="mb-btn" id="mbPrev" aria-label="Ankstesnė pamoka">←</button>
+  <button class="mb-label" id="mbLabelBtn">Pamoka&nbsp;<span id="mbLabel">1 / 22</span></button>
+  <button class="mb-btn" id="mbNext" aria-label="Kita pamoka">→</button>
+</nav>
+
+<script>window.LESSON=19;</script>
+<script defer src="/js/nav.js?v=8"></script>
+<script defer src="/js/quiz.js?v=3"></script>
+<script defer src="/js/glossary.js?v=3"></script>
+<script defer src="/js/demos.js?v=5"></script>
+</body>
+</html>

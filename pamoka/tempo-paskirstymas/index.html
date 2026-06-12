@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="lt">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="referrer" content="no-referrer-when-downgrade">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src https://www.google-analytics.com https://analytics.google.com https://stats.g.doubleclick.net;">
+<title>Tempo paskirstymas — menas nepradėti per greitai — Bėgimo fiziologija | Begikas</title>
+<meta name="description" content="Dauguma mėgėjų varžybas sugadina per pirmuosius kilometrus. Ne dėl silpnumo — dėl adrenalino ir neteisingos strategijos.">
+<link rel="canonical" href="https://apiebegima.lt/pamoka/tempo-paskirstymas/">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="alternate" hreflang="lt" href="https://apiebegima.lt/pamoka/tempo-paskirstymas/">
+<link rel="alternate" hreflang="en" href="https://apiebegima.lt/en/lesson/pace-distribution/">
+<link rel="alternate" hreflang="x-default" href="https://apiebegima.lt/pamoka/tempo-paskirstymas/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Begikas">
+<meta property="og:title" content="Tempo paskirstymas — menas nepradėti per greitai — Bėgimo fiziologija | Begikas">
+<meta property="og:description" content="Dauguma mėgėjų varžybas sugadina per pirmuosius kilometrus. Ne dėl silpnumo — dėl adrenalino ir neteisingos strategijos.">
+<meta property="og:url" content="https://apiebegima.lt/pamoka/tempo-paskirstymas/">
+<meta property="og:image" content="https://apiebegima.lt/images/opt/og-man-running.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Tempo paskirstymas — menas nepradėti per greitai — Bėgimo fiziologija | Begikas">
+<meta name="twitter:description" content="Dauguma mėgėjų varžybas sugadina per pirmuosius kilometrus. Ne dėl silpnumo — dėl adrenalino ir neteisingos strategijos.">
+<meta name="twitter:image" content="https://apiebegima.lt/images/opt/og-man-running.jpg">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Tempo paskirstymas — menas nepradėti per greitai",
+  "description": "Dauguma mėgėjų varžybas sugadina per pirmuosius kilometrus. Ne dėl silpnumo — dėl adrenalino ir neteisingos strategijos.",
+  "inLanguage": "lt",
+  "url": "https://apiebegima.lt/pamoka/tempo-paskirstymas/",
+  "isPartOf": {
+    "@type": "Course",
+    "name": "Bėgimo Fiziologija — Pradedantiesiems",
+    "url": "https://apiebegima.lt/"
+  }
+}
+</script>
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-3G4SLW2V7C"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-3G4SLW2V7C');
+</script>
+<link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@500;600;700&family=Spline+Sans+Mono:wght@400;500;600;700&family=Instrument+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/variables.css?v=4">
+<link rel="stylesheet" href="/css/layout.css?v=6">
+<link rel="stylesheet" href="/css/components.css?v=7">
+<link rel="stylesheet" href="/css/lessons.css?v=5">
+<link rel="stylesheet" href="/css/landing.css?v=4">
+<link rel="stylesheet" href="/css/static.css?v=1">
+</head>
+<body class="lessons-on">
+
+
+<!-- Fixed zone rail -->
+<div class="zone-rail"></div>
+<div class="zone-runner"></div>
+<div class="zone-labels">
+  <span class="zone-label">Z5</span>
+  <span class="zone-label">Z4</span>
+  <span class="zone-label">Z3</span>
+  <span class="zone-label">Z2</span>
+  <span class="zone-label">Z1</span>
+</div>
+
+<!-- Top nav -->
+<nav class="topnav">
+  <a class="topnav-brand" href="/">Bėgimo Fiziologija</a>
+  <div class="topnav-right">
+    <div class="nav-pulse"></div>
+    <span class="lesson-indicator" id="lessonIndicator"></span>
+    <div class="tnav-sep"></div>
+    <span class="tnav-link lang-active">LT</span>
+    <div class="tnav-sep"></div>
+    <a href="/en/lesson/pace-distribution/" class="tnav-link">EN</a>
+    <div class="tnav-sep"></div>
+    <button class="tnav-link" onclick="toggleGlossary()">Žodynas</button>
+    <button class="nav-toggle-btn" id="navToggleBtn" onclick="toggleNav()">☰ Pamokos</button>
+  </div>
+</nav>
+<div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
+
+<!-- Lesson nav drawer -->
+<div class="lesson-nav nav-collapsed" id="lessonNav">
+  <a class="nav-home-btn" href="/">← Pradžia</a>
+  <a class="nav-pill" data-lesson="0" href="/pamoka/kodel-begti-letai/">01</a>
+  <a class="nav-pill" data-lesson="1" href="/pamoka/sirdis-pulsas-zonos/">02</a>
+  <a class="nav-pill" data-lesson="2" href="/pamoka/energija-ir-kuras/">03</a>
+  <a class="nav-pill" data-lesson="3" href="/pamoka/laktatas/">04</a>
+  <a class="nav-pill" data-lesson="4" href="/pamoka/kvepavimas-begant/">05</a>
+  <a class="nav-pill" data-lesson="5" href="/pamoka/karstis-ir-hidratacija/">06</a>
+  <a class="nav-pill" data-lesson="6" href="/pamoka/begimo-technika/">07</a>
+  <a class="nav-pill" data-lesson="7" href="/pamoka/kaip-tobuleti/">08</a>
+  <a class="nav-pill" data-lesson="8" href="/pamoka/treniruociu-sistemos/">09</a>
+  <a class="nav-pill" data-lesson="9" href="/pamoka/jegos-treniruotes/">10</a>
+  <a class="nav-pill" data-lesson="10" href="/pamoka/ziemos-begimas/">11</a>
+  <a class="nav-pill" data-lesson="11" href="/pamoka/pirmos-varzybos/">12</a>
+  <a class="nav-pill" data-lesson="12" href="/pamoka/vo2max/">13</a>
+  <a class="nav-pill" data-lesson="13" href="/pamoka/begimo-ekonomija/">14</a>
+  <a class="nav-pill" data-lesson="14" href="/pamoka/nuovargis/">15</a>
+  <a class="nav-pill" data-lesson="15" href="/pamoka/tempo-paskirstymas/">16</a>
+  <a class="nav-pill" data-lesson="16" href="/pamoka/kruvio-valdymas/">17</a>
+  <a class="nav-pill" data-lesson="17" href="/pamoka/skausmas-ar-trauma/">18</a>
+  <a class="nav-pill" data-lesson="18" href="/pamoka/motyvacija-ir-pastovumas/">19</a>
+  <a class="nav-pill" data-lesson="19" href="/pamoka/begimo-laikrodziai/">20</a>
+  <a class="nav-pill" data-lesson="20" href="/pamoka/miegas-ir-atsigavimas/">21</a>
+  <a class="nav-pill" data-lesson="21" href="/pamoka/ka-valgyti-begikui/">22</a>
+</div>
+
+<dialog id="glossaryDialog" aria-label="Žodynas">
+  <div class="glossary-header">
+    <h2>Žodynas</h2>
+    <button class="glossary-close" onclick="toggleGlossary()">✕</button>
+  </div>
+  <div class="glossary-search">
+    <input type="text" id="glossarySearch" placeholder="Ieškoti termino..." oninput="filterGlossary(this.value)">
+  </div>
+  <div class="glossary-list" id="glossaryList"></div>
+</dialog>
+
+<!-- ══════════════════════════════════════════
+     LANDING PAGE
+     ══════════════════════════════════════════ -->
+<main>
+
+<article class="lesson active" id="lesson-15">
+  <div class="lesson-header">
+    <div class="lesson-num">16 pamoka iš 22</div>
+    <h1 class="lesson-title">Tempo paskirstymas — menas nepradėti per greitai</h1>
+    <p class="lesson-intro">Dauguma mėgėjų varžybas sugadina per pirmuosius kilometrus. Ne dėl silpnumo — dėl adrenalino ir neteisingos strategijos.</p>
+  </div>
+
+  <div class="takeaway"><div><strong>Pagrindinė mintis:</strong> Geras rezultatas dažniausiai prasideda nuo kantrybės pirmuose kilometruose. Neigiamas splitas — antroji pusė greitesnė — yra efektyviausia strategija daugumai distancijų.</div></div>
+
+  <div class="prose">
+    <p><strong>Splitas</strong> — tai kiekvieno kilometro ar distancijos pusės laikas varžybų metu. Jei 10K bėgate per 50 minučių, o pirmą pusę (5 km) nubėgate per 24 min ir antrą per 26 min — jūsų splitas yra <em>teigiamas</em> (pirmoji pusė greitesnė). Jei atvirkščiai — <em>neigiamas</em>. Laikrodžiai ir varžybų rezultatai visada rodo splitų sąrašą, todėl svarbu žinoti, ką jie reiškia.</p>
+    <p>„Pirmieji penki kilometrai jautėsi puikiai, tada viskas sugriuvo." Tai nėra silpnumo požymis. Tai fiziologiškai nuspėjamas per greitos pradžios, kurią sukelia adrenalinas ir entuziazmas, pasekmė.</p>
+    <p>Startas varžybose yra nepalankus psichologinis momentas teisingam tempui pasirinkti. Aplinkoje gausu dirgiklių: minia, muzika, jus aplenkiantys kiti bėgikai. Jaučiatės gerai, nes pailsėjote prieš varžybas. Pirmas kilometras beveik visada jaučiasi per lengvas — net jei bėgate per greitai. Energijos sąnaudos tuo metu dar neatspindi tikro krūvio, nes organizmas dar tik „sukyla" ir pasiekia stabilų aerobinės energijos gamybos lygį.</p>
+    <p><strong>Neigiamas splitas</strong> — tai strategija, kai pirmoji distancijos pusė bėgama šiek tiek lėčiau, o antroji šiek tiek greičiau. Kodėl tai veikia fiziologiškai? Laktatas kaupiasi eksponentiškai su greičiu <a class="xref" href="/pamoka/laktatas/">4 pamoka: Laktatas</a>. Nedidelis pirmų kilometrų sulėtinimas reikšmingai mažina laktatų kaupimąsi ir leidžia antroje distancijos pusėje bėgti neparūgštėjus raumenims. „Bandymas laimėti laiko" pirmoje pusėje yra iliuzija — laktatas, susikaupęs per pirmų kilometrų entuziazmą, antroje pusėje atneša gerokai daugiau laiko nuostolių nei buvo „sutaupyta".</p>
+    <p>Praktinė rekomendacija: pirmuosius du kilometrus bėkite 5–10 sekundžių per km lėčiau nei tikslinis tempas. Jei planuojate 5:30 min/km, pradėkite 5:35–5:40. Tai turi jaustis per lengva — taip ir turi būti. Maždaug ties 30–40% distancijos pradėkite artėti prie tikslinio tempo.</p>
+  </div>
+
+  <div class="callout callout-key">
+    <span class="callout-label">Strategija pagal distanciją</span>
+    5K galima bėgti beveik tolygiai nuo starto, nes distancija trumpa. Pusmaratonyje ir maratone neigiamas splitas duoda didžiausią naudą — kuo ilgesnė distancija, tuo brangiau kainuoja per greita pradžia.
+  </div>
+
+  <div class="callout callout-warn">
+    <span class="callout-label">Jei jau pradėjote per greitai</span>
+    Nesistenkite staigiai sulėtėti. Geriau palaipsniui sulėtinti tempą 5–10 sekundžių per km, nei staigiai stabtelėti ir paskui vėl bandyti įsibėgėti. Svarbiausia — išlaikyti ritmingą kvėpavimą ir tolygų žingsnį.
+  </div>
+
+  <div class="callout callout-tip">
+    <span class="callout-label">Laikrodžio signalas</span>
+    Prieš varžybas nustatykite <strong>maksimalų tempą pirmam kilometrui</strong> — tempą, kurio jokiu būdu neviršysite — ir įveskite jį kaip laikrodžio įspėjimą. Kai laikrodis perspėja, kad per greita — tai jūsų pačių ankstesnio intelekto žinutė karštligiškai bėgančiam sau.
+  </div>
+
+  <div class="demo">
+    <div class="demo-title">Interaktyvus demonstravimas — Splito strategijų palyginimas</div>
+    <p class="demo-note">Pasirinkite distanciją ir tikslinį tempą — pamatykite, kiek teigiamas ir neigiamas splitas skiriasi galutiniame rezultate.</p>
+    <div class="slider-control">
+      <div class="slider-label"><span>Distancija</span><strong id="s15-dist-label">10K</strong></div>
+      <select id="s15-dist" class="scandi-select" style="width:100%;margin-top:.35rem">
+        <option value="5">5K</option>
+        <option value="10" selected>10K</option>
+        <option value="21">Pusmaratonis</option>
+        <option value="42">Maratonas</option>
+      </select>
+    </div>
+    <div class="slider-control">
+      <div class="slider-label"><span>Tikslinis tempas (min/km)</span><strong id="s15-pace-label">5:30 min/km</strong></div>
+      <input type="range" id="s15-pace" min="180" max="500" value="180" step="5">
+    </div>
+    <div class="metric-row">
+      <div class="metric-card"><div class="mv" id="s15-even" style="color:var(--z2)">55:00</div><div class="ml">Tolygus splitas</div></div>
+      <div class="metric-card"><div class="mv" id="s15-neg" style="color:#3672E0">54:10</div><div class="ml">Neigiamas splitas</div></div>
+      <div class="metric-card"><div class="mv" id="s15-pos" style="color:var(--z4)">57:30</div><div class="ml">Teigiamas splitas</div></div>
+    </div>
+    <div class="demo-insight" id="s15-insight"></div>
+  </div>
+
+  <div class="quiz" data-correct="0">
+    <div class="quiz-q">Kodėl „laiko uždirbimas" pirmoje distancijos pusėje dažniausiai neveikia?</div>
+    <div class="quiz-opts">
+      <button class="quiz-opt">Per greita pradžia anksti sukelia laktatų kaupimąsi, dėl kurio antroje pusėje prarandama daugiau laiko nei buvo sutaupyta</button>
+      <button class="quiz-opt">Nes greitas bėgimas pradžioje alina psichologiškai</button>
+      <button class="quiz-opt">Nes širdies ritmas per daug pakyla</button>
+    </div>
+    <div class="quiz-feedback">Tiksliai. Laktatas kaupiasi eksponentiškai su greičiu. Kiekviena papildoma sekundė greičiau nei planuota reikalauja disproporcinių energijos sąnaudų. Antroje pusėje šio „skolos" grąžinimas kainuoja keliskart daugiau laiko nei buvo laimėta pradžioje.</div>
+  </div>
+
+  <div class="step-nav">
+    <a class="btn-step btn-prev" href="/pamoka/nuovargis/">← Atgal</a>
+    <span class="step-counter">16 / 22</span>
+    <a class="btn-step btn-next" href="/pamoka/kruvio-valdymas/">Krūvio valdymas →</a>
+  </div>
+</article>
+
+</main>
+
+<nav class="mobile-bar" aria-label="Pamokų navigacija">
+  <button class="mb-btn" id="mbPrev" aria-label="Ankstesnė pamoka">←</button>
+  <button class="mb-label" id="mbLabelBtn">Pamoka&nbsp;<span id="mbLabel">1 / 22</span></button>
+  <button class="mb-btn" id="mbNext" aria-label="Kita pamoka">→</button>
+</nav>
+
+<script>window.LESSON=15;</script>
+<script defer src="/js/nav.js?v=8"></script>
+<script defer src="/js/quiz.js?v=3"></script>
+<script defer src="/js/glossary.js?v=3"></script>
+<script defer src="/js/demos.js?v=5"></script>
+</body>
+</html>

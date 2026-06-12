@@ -1866,3 +1866,9 @@ function initDemos() {
 
 initDemos();
 updateIndicator();
+
+/* Static pages: start the current lesson's canvas animation on load
+   (the SPA used to do this from goLesson) */
+if (typeof window._startAnimForLesson === 'function' && typeof current === 'number' && current >= 0) {
+  window._startAnimForLesson(current);
+}
