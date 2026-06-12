@@ -9,3 +9,18 @@ a.lp-cta, a.lp-lcard, a.topnav-brand {
 }
 /* buttons were inline-block by UA default; these classes set no display */
 a.nav-pill { display: inline-block; }
+
+/* link from the glossary dialog to the standalone glossary page */
+.glossary-full-link {
+  display: block;
+  padding: 0 1.5rem .9rem;
+  font-family: var(--font-mono);
+  font-size: .72rem;
+  letter-spacing: .02em;
+  color: var(--muted);
+  text-decoration: none;
+}
+.glossary-full-link:hover { color: var(--text); }
+
+/* standalone glossary page (/zodynas/, /en/glossary/) */
+.glossary-page-list .glossary-entry { padding: 1.15rem 0; }
