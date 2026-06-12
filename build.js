@@ -63,7 +63,7 @@ const LANGS = {
       path: '/zodynas/',
       h1: 'Bėgimo terminų žodynas',
       eyebrow: n => `Žodynas · ${n} ${n % 10 === 0 || (n % 100 >= 11 && n % 100 <= 19) ? 'terminų' : n % 10 === 1 ? 'terminas' : 'terminai'}`,
-      intro: 'Svarbiausi bėgimo terminai, paaiškinti paprastai — nuo laktato iki VO₂max. Žodyną rasite ir kiekvienos pamokos viršutiniame meniu.',
+      intro: 'Svarbiausi bėgimo terminai, paaiškinti paprastai: nuo laktato iki VO₂max. Žodyną rasite ir kiekvienos pamokos viršutiniame meniu.',
       desc: 'Bėgimo terminų žodynas: laktatas, VO₂max, kadencija, glikogenas ir kiti svarbiausi terminai, paaiškinti paprastai.',
       scripts: `<script defer src="/js/nav.js?v=8"></script>
 <script defer src="/js/glossary.js?v=4"></script>`,
@@ -92,7 +92,7 @@ const LANGS = {
       path: '/en/glossary/',
       h1: 'Running glossary',
       eyebrow: n => `Glossary · ${n} terms`,
-      intro: 'The key running terms, explained simply — from lactate to VO₂max. The glossary is also available from the top menu in every lesson.',
+      intro: 'The key running terms, explained simply: from lactate to VO₂max. The glossary is also available from the top menu in every lesson.',
       desc: 'Running glossary: lactate, VO₂max, cadence, glycogen and other key terms explained in plain language.',
       scripts: `<script defer src="/en/js/nav.js?v=8"></script>
 <script defer src="/en/js/glossary.js?v=3"></script>`,
