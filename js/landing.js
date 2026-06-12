@@ -16,6 +16,15 @@ function enterLessons(lessonIndex) {
   window.scrollTo(0, 0);
 }
 
+function _trackLandingView() {
+  if (typeof gtag === 'function') {
+    gtag('event', 'page_view', {
+      page_title: LANDING_TITLE,
+      page_location: location.origin + location.pathname
+    });
+  }
+}
+
 function enterLanding(pushHistory) {
   mainEl.style.display    = 'none';
   landingEl.style.display = 'block';
@@ -23,15 +32,13 @@ function enterLanding(pushHistory) {
   window.scrollTo(0, 0);
   if (pushHistory !== false) {
     history.pushState({ landing: true }, '', location.pathname);
-    document.title = LANDING_TITLE;
-    const metaDesc = document.querySelector('meta[name="description"]');
-    if (metaDesc) metaDesc.content = LANDING_DESC;
-    const canonical = document.querySelector('link[rel="canonical"]');
-    if (canonical) canonical.href = location.origin + location.pathname;
-    if (typeof gtag === 'function') {
-      gtag('event', 'page_view', { page_title: LANDING_TITLE, page_location: location.href });
-    }
   }
+  document.title = LANDING_TITLE;
+  const metaDesc = document.querySelector('meta[name="description"]');
+  if (metaDesc) metaDesc.content = LANDING_DESC;
+  const canonical = document.querySelector('link[rel="canonical"]');
+  if (canonical) canonical.href = location.origin + location.pathname;
+  _trackLandingView();
 }
 
 window.startCourse = enterLessons;
@@ -120,6 +127,7 @@ setTimeout(() => {
       history.replaceState({ lesson: idx }, '', hashPrefix + LESSON_SLUGS[idx]);
     } else {
       history.replaceState({ landing: true }, '', location.pathname);
+      _trackLandingView();
     }
   } else {
     history.replaceState({ landing: true }, '', location.pathname);
@@ -128,5 +136,6 @@ setTimeout(() => {
     if (metaDesc && !metaDesc.content) metaDesc.content = LANDING_DESC;
     const canonical = document.querySelector('link[rel="canonical"]');
     if (canonical) canonical.href = location.origin + location.pathname;
+    _trackLandingView();
   }
 })();

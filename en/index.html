@@ -68,7 +68,7 @@
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
-  gtag('config', 'G-3G4SLW2V7C');
+  gtag('config', 'G-3G4SLW2V7C', { send_page_view: false }); /* page_views sent manually with virtual paths — see nav.js/landing.js */
 </script>
 <link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@500;600;700&family=Spline+Sans+Mono:wght@400;500;600;700&family=Instrument+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../css/variables.css?v=4">
@@ -2354,10 +2354,10 @@
   <button class="mb-btn" id="mbNext" aria-label="Next lesson">→</button>
 </nav>
 
-<script defer src="js/nav.js?v=6"></script>
+<script defer src="js/nav.js?v=7"></script>
 <script defer src="../js/quiz.js?v=2"></script>
 <script defer src="js/glossary.js?v=2"></script>
 <script defer src="js/demos.js?v=4"></script>
-<script defer src="../js/landing.js?v=4"></script>
+<script defer src="../js/landing.js?v=5"></script>
 </body>
 </html>

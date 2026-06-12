@@ -48,7 +48,11 @@ function _updateMeta(n) {
     metaDesc.content = intro ? intro.textContent.trim().slice(0, 160) : '';
   }
   if (typeof gtag === 'function') {
-    gtag('event', 'page_view', { page_title: document.title, page_location: location.href });
+    /* virtual path: GA4 strips #fragments, so hash URLs all report as "/" */
+    gtag('event', 'page_view', {
+      page_title: document.title,
+      page_location: location.origin + '/pamoka/' + LESSON_SLUGS[n]
+    });
   }
 }
 
