@@ -68,6 +68,42 @@ const LANGS = {
       scripts: `<script defer src="/js/nav.js?v=8"></script>
 <script defer src="/js/glossary.js?v=4"></script>`,
     },
+    calc: {
+      out: 'skaiciuokles/index.html',
+      path: '/skaiciuokles/',
+      h1: 'Skaičiuoklės',
+      eyebrow: 'Įrankis · 3 skaičiuoklės',
+      intro: 'Paverskite bėgimo fiziologiją savo skaičiais: pulso zonos pagal amžių, treniruočių tempai pagal varžybų rezultatą ir laiko prognozė kitoms distancijoms.',
+      desc: 'Bėgimo skaičiuoklės: pulso zonos (Karvoneno metodas), treniruočių tempai (Danielso VDOT) ir laiko prognozė pagal jūsų rezultatą.',
+      tabs: { hr: 'Pulso zonos', pace: 'Tempai', pred: 'Prognozė' },
+      dists: [
+        { v: '5000', l: '5 km' }, { v: '10000', l: '10 km' },
+        { v: '21097.5', l: 'Pusmaratonis' }, { v: '42195', l: 'Maratonas' },
+      ],
+      warn: 'Patikrinkite laiko formatą: naudokite min:sek arba val:min:sek.',
+      hr: {
+        title: 'Pulso zonų skaičiuoklė',
+        ageLabel: 'Amžius',
+        restToggle: 'Naudoti ramybės pulsą (tiksliau, Karvoneno metodas)',
+        restLabel: 'Ramybės pulsas', restOpt: 'neprivaloma',
+        note: '<b>Maksimalus pulsas</b> apskaičiuotas pagal formulę 220 − amžius (<strong id="calcHrmaxOut">185</strong> bpm). Tai apytikslis įvertis: tiksliausia ribą nustatyti lauko testu. Zonos pateikiamos pagal <span id="calcMethodOut">procentą nuo maksimalaus pulso</span>.',
+      },
+      pace: {
+        title: 'Treniruočių tempų skaičiuoklė',
+        distLabel: 'Neseniai įveikta distancija', timeLabel: 'Rezultatas',
+        timeHint: 'pvz. 52:30', timePh: 'val:min:sek',
+        note: 'Tempai pagrįsti <b>Danielso VDOT</b> modeliu (Daniels ir Gilbert). E lengvas, M maratono, T slenksčio, I intervalų, R kartojimų. Naudokite kaip atskaitos tašką, ne kaip taisyklę.',
+      },
+      pred: {
+        title: 'Laiko prognozės skaičiuoklė',
+        distLabel: 'Neseniai įveikta distancija', timeLabel: 'Rezultatas',
+        timeHint: 'pvz. 24:00', timePh: 'val:min:sek',
+        note: 'Prognozė pagal <b>Riegelio formulę</b> (T₂ = T₁ × (D₂ / D₁)^1,06). Ji daro prielaidą apie panašų treniruotumą; ilgesnėms distancijoms realus laikas priklauso ir nuo ištvermės bei mitybos.',
+      },
+      scripts: `<script defer src="/js/nav.js?v=8"></script>
+<script defer src="/js/glossary.js?v=4"></script>
+<script defer src="/js/calculators.js?v=1"></script>`,
+    },
   },
   en: {
     src: 'src/en.html',
@@ -96,6 +132,42 @@ const LANGS = {
       desc: 'Running glossary: lactate, VO₂max, cadence, glycogen and other key terms explained in plain language.',
       scripts: `<script defer src="/en/js/nav.js?v=8"></script>
 <script defer src="/en/js/glossary.js?v=3"></script>`,
+    },
+    calc: {
+      out: 'en/calculators/index.html',
+      path: '/en/calculators/',
+      h1: 'Calculators',
+      eyebrow: 'Tool · 3 calculators',
+      intro: 'Turn running physiology into your own numbers: heart-rate zones by age, training paces from a recent race, and time predictions for other distances.',
+      desc: 'Running calculators: heart-rate zones (Karvonen method), training paces (Daniels VDOT) and race-time prediction from your result.',
+      tabs: { hr: 'Heart-rate zones', pace: 'Paces', pred: 'Prediction' },
+      dists: [
+        { v: '5000', l: '5 km' }, { v: '10000', l: '10 km' },
+        { v: '21097.5', l: 'Half marathon' }, { v: '42195', l: 'Marathon' },
+      ],
+      warn: 'Check the time format: use mm:ss or h:mm:ss.',
+      hr: {
+        title: 'Heart-rate zone calculator',
+        ageLabel: 'Age',
+        restToggle: 'Use resting heart rate (more accurate, Karvonen method)',
+        restLabel: 'Resting heart rate', restOpt: 'optional',
+        note: '<b>Maximum heart rate</b> is estimated as 220 − age (<strong id="calcHrmaxOut">185</strong> bpm). This is an approximation: a field test is most accurate. Zones are shown as <span id="calcMethodOut">a percentage of maximum heart rate</span>.',
+      },
+      pace: {
+        title: 'Training pace calculator',
+        distLabel: 'Recent race distance', timeLabel: 'Finish time',
+        timeHint: 'e.g. 52:30', timePh: 'h:mm:ss',
+        note: 'Paces are based on the <b>Daniels VDOT</b> model (Daniels &amp; Gilbert). E easy, M marathon, T threshold, I interval, R repetition. Use them as a reference point, not a rule.',
+      },
+      pred: {
+        title: 'Race-time prediction calculator',
+        distLabel: 'Recent race distance', timeLabel: 'Finish time',
+        timeHint: 'e.g. 24:00', timePh: 'h:mm:ss',
+        note: 'Prediction uses <b>Riegel\'s formula</b> (T₂ = T₁ × (D₂ / D₁)^1.06). It assumes similar fitness; for longer distances the real time also depends on endurance and fuelling.',
+      },
+      scripts: `<script defer src="/en/js/nav.js?v=8"></script>
+<script defer src="/en/js/glossary.js?v=3"></script>
+<script defer src="/en/js/calculators.js?v=1"></script>`,
     },
   },
 };
@@ -156,6 +228,81 @@ function pageHead(headTpl, o) {
   h = replaceOnce(h, /<script type="application\/ld\+json">[\s\S]*?<\/script>/,
     `<script type="application/ld+json">\n${JSON.stringify(o.ld, null, 2)}\n</script>`, 'JSON-LD');
   return h;
+}
+
+/* Build the calculator-hub article from a per-language config. */
+function calcOptions(opts, sel) {
+  return opts.map(o => `<option value="${o.v}"${+o.v === sel ? ' selected' : ''}>${o.l}</option>`).join('');
+}
+function calcArticle(C) {
+  return `<article class="lesson active calc-page">
+  <div class="lesson-header">
+    <div class="lesson-num">${C.eyebrow}</div>
+    <h1 class="lesson-title">${C.h1}</h1>
+    <p class="lesson-intro">${C.intro}</p>
+  </div>
+
+  <nav class="calc-tabs">
+    <button class="calc-tab active" data-t="hr"><span class="tnum">01</span> ${C.tabs.hr}</button>
+    <button class="calc-tab" data-t="pace"><span class="tnum">02</span> ${C.tabs.pace}</button>
+    <button class="calc-tab" data-t="pred"><span class="tnum">03</span> ${C.tabs.pred}</button>
+  </nav>
+
+  <div class="calc-stage">
+    <section class="calc-card show" id="calc-hr">
+      <div class="calc-card-title">${C.hr.title}</div>
+      <div class="calc-field">
+        <div class="calc-flabel"><span>${C.hr.ageLabel}</span><strong id="calcAgeOut">35</strong></div>
+        <input type="range" id="calcAge" min="12" max="85" value="35">
+        <div class="calc-ends"><span>12</span><span>85</span></div>
+      </div>
+      <label class="calc-toggle"><input type="checkbox" id="calcUseRest"><span class="calc-track"></span><span>${C.hr.restToggle}</span></label>
+      <div class="calc-field" id="calcRestField" style="opacity:.4">
+        <div class="calc-flabel"><span>${C.hr.restLabel} <span class="opt">${C.hr.restOpt}</span></span><strong id="calcRestOut">60</strong></div>
+        <input type="range" id="calcRest" min="35" max="90" value="60" disabled>
+        <div class="calc-ends"><span>35</span><span>90</span></div>
+      </div>
+      <div class="calc-zbar" id="calcZbar"></div>
+      <div id="calcZones"></div>
+      <div class="calc-note">${C.hr.note}</div>
+    </section>
+
+    <section class="calc-card" id="calc-pace">
+      <div class="calc-card-title">${C.pace.title}</div>
+      <div class="calc-row2">
+        <div class="calc-field">
+          <div class="calc-flabel"><span>${C.pace.distLabel}</span></div>
+          <select class="calc-sel" id="calcPDist">${calcOptions(C.dists, 10000)}</select>
+        </div>
+        <div class="calc-field">
+          <div class="calc-flabel"><span>${C.pace.timeLabel}</span><span class="opt">${C.pace.timeHint}</span></div>
+          <input class="calc-inp" id="calcPTime" inputmode="numeric" placeholder="${C.pace.timePh}" value="52:30">
+        </div>
+      </div>
+      <div class="calc-vdot"><small>VDOT</small><b id="calcVdotOut">—</b></div>
+      <div id="calcPaces"></div>
+      <div class="calc-warn" id="calcPWarn">${C.warn}</div>
+      <div class="calc-note">${C.pace.note}</div>
+    </section>
+
+    <section class="calc-card" id="calc-pred">
+      <div class="calc-card-title">${C.pred.title}</div>
+      <div class="calc-row2">
+        <div class="calc-field">
+          <div class="calc-flabel"><span>${C.pred.distLabel}</span></div>
+          <select class="calc-sel" id="calcRDist">${calcOptions(C.dists, 5000)}</select>
+        </div>
+        <div class="calc-field">
+          <div class="calc-flabel"><span>${C.pred.timeLabel}</span><span class="opt">${C.pred.timeHint}</span></div>
+          <input class="calc-inp" id="calcRTime" inputmode="numeric" placeholder="${C.pred.timePh}" value="24:00">
+        </div>
+      </div>
+      <div id="calcPreds"></div>
+      <div class="calc-warn" id="calcRWarn">${C.warn}</div>
+      <div class="calc-note">${C.pred.note}</div>
+    </section>
+  </div>
+</article>`;
 }
 
 /* ---------- per-language build ---------- */
@@ -338,7 +485,37 @@ ${entries}
     sitemapUrls.push(pageUrl);
   }
 
-  console.log(`${lang}: landing + 22 lesson pages + glossary written`);
+  /* ---------- calculator page ---------- */
+  {
+    const C = L.calc;
+    const pageUrl = SITE + C.path;
+    const ltUrl = SITE + LANGS.lt.calc.path;
+    const enUrl = SITE + LANGS.en.calc.path;
+    let h = pageHead(head, {
+      title: C.h1 + L.titleSuffix, desc: C.desc, url: pageUrl, ltUrl, enUrl,
+      ld: {
+        '@context': 'https://schema.org',
+        '@type': 'WebApplication',
+        name: C.h1,
+        url: pageUrl,
+        applicationCategory: 'HealthApplication',
+        operatingSystem: 'Web',
+        inLanguage: lang,
+        isAccessibleForFree: true,
+        offers: { '@type': 'Offer', price: '0', priceCurrency: 'EUR' },
+        isPartOf: { '@type': 'Course', name: L.courseName, url: SITE + L.home },
+      },
+    });
+    h += `\n<link rel="stylesheet" href="/css/calculators.css?v=1">`;
+    const body = chrome.replace(langLinkRe,
+      lang === 'lt' ? `<a href="${LANGS.en.calc.path}" class="tnav-link">EN</a>`
+                    : `<a href="${LANGS.lt.calc.path}" class="tnav-link">LT</a>`);
+    const page = `${h}</head>\n<body class="lessons-on">\n${body}<main>\n\n${calcArticle(C)}\n\n</main>\n\n${C.scripts}\n</body>\n</html>\n`;
+    write(C.out, page);
+    sitemapUrls.push(pageUrl);
+  }
+
+  console.log(`${lang}: landing + 22 lesson pages + glossary + calculators written`);
 }
 
 /* ---------- sitemap ---------- */

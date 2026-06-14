@@ -5,33 +5,40 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="referrer" content="no-referrer-when-downgrade">
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src https://www.google-analytics.com https://*.google-analytics.com https://analytics.google.com https://*.analytics.google.com https://stats.g.doubleclick.net;">
-<title>Your first race — how to prepare — Running Physiology | Begikas</title>
-<meta name="description" content="The start line for the first time, exciting and daunting. Many beginner mistakes can be avoided simply by knowing what to expect.">
-<link rel="canonical" href="https://apiebegima.lt/en/lesson/first-race/">
+<title>Calculators — Running Physiology | Begikas</title>
+<meta name="description" content="Running calculators: heart-rate zones (Karvonen method), training paces (Daniels VDOT) and race-time prediction from your result.">
+<link rel="canonical" href="https://apiebegima.lt/en/calculators/">
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
-<link rel="alternate" hreflang="lt" href="https://apiebegima.lt/pamoka/pirmos-varzybos/">
-<link rel="alternate" hreflang="en" href="https://apiebegima.lt/en/lesson/first-race/">
-<link rel="alternate" hreflang="x-default" href="https://apiebegima.lt/pamoka/pirmos-varzybos/">
+<link rel="alternate" hreflang="lt" href="https://apiebegima.lt/skaiciuokles/">
+<link rel="alternate" hreflang="en" href="https://apiebegima.lt/en/calculators/">
+<link rel="alternate" hreflang="x-default" href="https://apiebegima.lt/skaiciuokles/">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Begikas">
-<meta property="og:title" content="Your first race — how to prepare — Running Physiology | Begikas">
-<meta property="og:description" content="The start line for the first time, exciting and daunting. Many beginner mistakes can be avoided simply by knowing what to expect.">
-<meta property="og:url" content="https://apiebegima.lt/en/lesson/first-race/">
+<meta property="og:title" content="Calculators — Running Physiology | Begikas">
+<meta property="og:description" content="Running calculators: heart-rate zones (Karvonen method), training paces (Daniels VDOT) and race-time prediction from your result.">
+<meta property="og:url" content="https://apiebegima.lt/en/calculators/">
 <meta property="og:image" content="https://apiebegima.lt/images/opt/og-man-running.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Your first race — how to prepare — Running Physiology | Begikas">
-<meta name="twitter:description" content="The start line for the first time, exciting and daunting. Many beginner mistakes can be avoided simply by knowing what to expect.">
+<meta name="twitter:title" content="Calculators — Running Physiology | Begikas">
+<meta name="twitter:description" content="Running calculators: heart-rate zones (Karvonen method), training paces (Daniels VDOT) and race-time prediction from your result.">
 <meta name="twitter:image" content="https://apiebegima.lt/images/opt/og-man-running.jpg">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "Article",
-  "headline": "Your first race — how to prepare",
-  "description": "The start line for the first time, exciting and daunting. Many beginner mistakes can be avoided simply by knowing what to expect.",
+  "@type": "WebApplication",
+  "name": "Calculators",
+  "url": "https://apiebegima.lt/en/calculators/",
+  "applicationCategory": "HealthApplication",
+  "operatingSystem": "Web",
   "inLanguage": "en",
-  "url": "https://apiebegima.lt/en/lesson/first-race/",
+  "isAccessibleForFree": true,
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "EUR"
+  },
   "isPartOf": {
     "@type": "Course",
     "name": "Running Physiology — For Beginners",
@@ -55,7 +62,8 @@
 <link rel="stylesheet" href="/css/lessons.css?v=5">
 <link rel="stylesheet" href="/css/landing.css?v=4">
 <link rel="stylesheet" href="/css/static.css?v=3">
-</head>
+
+<link rel="stylesheet" href="/css/calculators.css?v=1"></head>
 <body class="lessons-on">
 
 
@@ -77,7 +85,7 @@
     <div class="nav-pulse"></div>
     <span class="lesson-indicator" id="lessonIndicator"></span>
     <div class="tnav-sep"></div>
-    <a href="/pamoka/pirmos-varzybos/" class="tnav-link">LT</a>
+    <a href="/skaiciuokles/" class="tnav-link">LT</a>
     <div class="tnav-sep"></div>
     <span class="tnav-link lang-active">EN</span>
     <div class="tnav-sep"></div>
@@ -133,76 +141,79 @@
      ══════════════════════════════════════════ -->
 <main>
 
-<article class="lesson active" id="lesson-11">
+<article class="lesson active calc-page">
   <div class="lesson-header">
-    <div class="lesson-num">Lesson 12 of 22</div>
-    <h1 class="lesson-title">Your first race — how to prepare</h1>
-    <p class="lesson-intro">The start line for the first time, exciting and daunting. Many beginner mistakes can be avoided simply by knowing what to expect.</p>
+    <div class="lesson-num">Tool · 3 calculators</div>
+    <h1 class="lesson-title">Calculators</h1>
+    <p class="lesson-intro">Turn running physiology into your own numbers: heart-rate zones by age, training paces from a recent race, and time predictions for other distances.</p>
   </div>
 
-  <div class="takeaway"><div><strong>Key idea:</strong> In your first race, one mistake outweighs all others: going out too fast. Start 10–15% slower than you plan. You can always pick up the pace in the second half.</div></div>
+  <nav class="calc-tabs">
+    <button class="calc-tab active" data-t="hr"><span class="tnum">01</span> Heart-rate zones</button>
+    <button class="calc-tab" data-t="pace"><span class="tnum">02</span> Paces</button>
+    <button class="calc-tab" data-t="pred"><span class="tnum">03</span> Prediction</button>
+  </nav>
 
-  <div class="prose">
-    <p>The race environment, crowds, music, race numbers, triggers an adrenaline surge that pushes you to start too fast. This is a well-known phenomenon and the most common reason runners "blow up" in the second half of the race.</p>
-    <p>In your first race, the goal is not a personal record but a <strong>strong finish with no regrets</strong>. Leaving something in reserve lets you enjoy the finishing straight rather than fighting your own legs.</p>
-    <p>Race-day nutrition should be based on what you already know from training. Race day is not the time to experiment with new foods or gels. <a class="xref" href="/en/lesson/energy-and-fuel/">Lesson 3: Energy &amp; fuel</a></p>
-    <p>After the race, your body deserves rest. Easy running is fine the next day, but intense training should wait 1–2 weeks depending on the distance. After a marathon, full recovery can take up to 4 weeks. <a class="xref" href="/en/lesson/how-to-improve/">Lesson 8: How to improve</a></p>
-  </div>
+  <div class="calc-stage">
+    <section class="calc-card show" id="calc-hr">
+      <div class="calc-card-title">Heart-rate zone calculator</div>
+      <div class="calc-field">
+        <div class="calc-flabel"><span>Age</span><strong id="calcAgeOut">35</strong></div>
+        <input type="range" id="calcAge" min="12" max="85" value="35">
+        <div class="calc-ends"><span>12</span><span>85</span></div>
+      </div>
+      <label class="calc-toggle"><input type="checkbox" id="calcUseRest"><span class="calc-track"></span><span>Use resting heart rate (more accurate, Karvonen method)</span></label>
+      <div class="calc-field" id="calcRestField" style="opacity:.4">
+        <div class="calc-flabel"><span>Resting heart rate <span class="opt">optional</span></span><strong id="calcRestOut">60</strong></div>
+        <input type="range" id="calcRest" min="35" max="90" value="60" disabled>
+        <div class="calc-ends"><span>35</span><span>90</span></div>
+      </div>
+      <div class="calc-zbar" id="calcZbar"></div>
+      <div id="calcZones"></div>
+      <div class="calc-note"><b>Maximum heart rate</b> is estimated as 220 − age (<strong id="calcHrmaxOut">185</strong> bpm). This is an approximation: a field test is most accurate. Zones are shown as <span id="calcMethodOut">a percentage of maximum heart rate</span>.</div>
+    </section>
 
-  <div class="demo">
-    <div class="demo-title">Interactive demo — Race day schedule</div>
-    <p class="demo-note" style="margin-bottom:1rem">Choose your distance and get a recommended race-day plan.</p>
-    <div class="slider-control">
-      <div class="slider-label"><span>Distance</span><strong id="s11-dist-label">5K</strong></div>
-      <select id="s11-dist" class="scandi-select" style="width:100%;margin-top:.4rem">
-        <option value="5k">5K</option>
-        <option value="10k">10K</option>
-        <option value="half">Half marathon (21.1 km)</option>
-        <option value="full">Marathon (42.2 km)</option>
-      </select>
-    </div>
-    <div id="s11-timeline" class="race-timeline" style="margin-top:1rem"></div>
-  </div>
+    <section class="calc-card" id="calc-pace">
+      <div class="calc-card-title">Training pace calculator</div>
+      <div class="calc-row2">
+        <div class="calc-field">
+          <div class="calc-flabel"><span>Recent race distance</span></div>
+          <select class="calc-sel" id="calcPDist"><option value="5000">5 km</option><option value="10000" selected>10 km</option><option value="21097.5">Half marathon</option><option value="42195">Marathon</option></select>
+        </div>
+        <div class="calc-field">
+          <div class="calc-flabel"><span>Finish time</span><span class="opt">e.g. 52:30</span></div>
+          <input class="calc-inp" id="calcPTime" inputmode="numeric" placeholder="h:mm:ss" value="52:30">
+        </div>
+      </div>
+      <div class="calc-vdot"><small>VDOT</small><b id="calcVdotOut">—</b></div>
+      <div id="calcPaces"></div>
+      <div class="calc-warn" id="calcPWarn">Check the time format: use mm:ss or h:mm:ss.</div>
+      <div class="calc-note">Paces are based on the <b>Daniels VDOT</b> model (Daniels &amp; Gilbert). E easy, M marathon, T threshold, I interval, R repetition. Use them as a reference point, not a rule.</div>
+    </section>
 
-  <div class="callout callout-myth">
-    <span class="callout-label">Common myth</span>
-    "You need to eat lots of carbs before a race." The principle is right, the scale is wrong. Carb-loading matters only for marathons and ultra distances. For a 5K or 10K, eating normally the day before is completely sufficient.
-  </div>
-
-  <div class="callout callout-tip">
-    <span class="callout-label">Runner wisdom</span>
-    In their first race, almost everyone goes out too fast. It's a normal feeling. Set yourself a goal not of speed but of <strong>not accelerating in the first kilometre</strong>, and you will almost certainly finish better than you expected.
-  </div>
-
-  <div class="quiz" data-correct="2">
-    <div class="quiz-q">Why is going out too fast in a race dangerous?</div>
-    <div class="quiz-opts">
-      <button class="quiz-opt">Heart rate climbs too quickly and never comes back down</button>
-      <button class="quiz-opt">Muscles don't warm up properly and injury risk rises</button>
-      <button class="quiz-opt">Glycogen and lactate are thrown out of balance early. Pace drops sharply in the second half</button>
-    </div>
-    <div class="quiz-feedback">Yes. Going out too fast recruits fast-twitch fibres and burns through glycogen early. Lactate accumulates sooner than it should, in the second half your legs feel heavy and pace drops sharply. An even start is always the better strategy.</div>
-  </div>
-
-  <div class="step-nav">
-    <a class="btn-step btn-prev" href="/en/lesson/winter-running/">← Back</a>
-    <span class="step-counter">12 / 22</span>
-    <a class="btn-step btn-next" href="/en/lesson/vo2max/">VO₂max →</a>
+    <section class="calc-card" id="calc-pred">
+      <div class="calc-card-title">Race-time prediction calculator</div>
+      <div class="calc-row2">
+        <div class="calc-field">
+          <div class="calc-flabel"><span>Recent race distance</span></div>
+          <select class="calc-sel" id="calcRDist"><option value="5000" selected>5 km</option><option value="10000">10 km</option><option value="21097.5">Half marathon</option><option value="42195">Marathon</option></select>
+        </div>
+        <div class="calc-field">
+          <div class="calc-flabel"><span>Finish time</span><span class="opt">e.g. 24:00</span></div>
+          <input class="calc-inp" id="calcRTime" inputmode="numeric" placeholder="h:mm:ss" value="24:00">
+        </div>
+      </div>
+      <div id="calcPreds"></div>
+      <div class="calc-warn" id="calcRWarn">Check the time format: use mm:ss or h:mm:ss.</div>
+      <div class="calc-note">Prediction uses <b>Riegel's formula</b> (T₂ = T₁ × (D₂ / D₁)^1.06). It assumes similar fitness; for longer distances the real time also depends on endurance and fuelling.</div>
+    </section>
   </div>
 </article>
 
 </main>
 
-<nav class="mobile-bar" aria-label="Lesson navigation">
-  <button class="mb-btn" id="mbPrev" aria-label="Previous lesson">←</button>
-  <button class="mb-label" id="mbLabelBtn">Lesson&nbsp;<span id="mbLabel">1 / 22</span></button>
-  <button class="mb-btn" id="mbNext" aria-label="Next lesson">→</button>
-</nav>
-
-<script>window.LESSON=11;</script>
 <script defer src="/en/js/nav.js?v=8"></script>
-<script defer src="/js/quiz.js?v=3"></script>
 <script defer src="/en/js/glossary.js?v=3"></script>
-<script defer src="/en/js/demos.js?v=5"></script>
+<script defer src="/en/js/calculators.js?v=1"></script>
 </body>
 </html>

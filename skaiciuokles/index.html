@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="lt">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="referrer" content="no-referrer-when-downgrade">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src https://www.google-analytics.com https://*.google-analytics.com https://analytics.google.com https://*.analytics.google.com https://stats.g.doubleclick.net;">
+<title>Skaičiuoklės — Bėgimo fiziologija | Begikas</title>
+<meta name="description" content="Bėgimo skaičiuoklės: pulso zonos (Karvoneno metodas), treniruočių tempai (Danielso VDOT) ir laiko prognozė pagal jūsų rezultatą.">
+<link rel="canonical" href="https://apiebegima.lt/skaiciuokles/">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="alternate" hreflang="lt" href="https://apiebegima.lt/skaiciuokles/">
+<link rel="alternate" hreflang="en" href="https://apiebegima.lt/en/calculators/">
+<link rel="alternate" hreflang="x-default" href="https://apiebegima.lt/skaiciuokles/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Begikas">
+<meta property="og:title" content="Skaičiuoklės — Bėgimo fiziologija | Begikas">
+<meta property="og:description" content="Bėgimo skaičiuoklės: pulso zonos (Karvoneno metodas), treniruočių tempai (Danielso VDOT) ir laiko prognozė pagal jūsų rezultatą.">
+<meta property="og:url" content="https://apiebegima.lt/skaiciuokles/">
+<meta property="og:image" content="https://apiebegima.lt/images/opt/og-man-running.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Skaičiuoklės — Bėgimo fiziologija | Begikas">
+<meta name="twitter:description" content="Bėgimo skaičiuoklės: pulso zonos (Karvoneno metodas), treniruočių tempai (Danielso VDOT) ir laiko prognozė pagal jūsų rezultatą.">
+<meta name="twitter:image" content="https://apiebegima.lt/images/opt/og-man-running.jpg">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Skaičiuoklės",
+  "url": "https://apiebegima.lt/skaiciuokles/",
+  "applicationCategory": "HealthApplication",
+  "operatingSystem": "Web",
+  "inLanguage": "lt",
+  "isAccessibleForFree": true,
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "EUR"
+  },
+  "isPartOf": {
+    "@type": "Course",
+    "name": "Bėgimo Fiziologija — Pradedantiesiems",
+    "url": "https://apiebegima.lt/"
+  }
+}
+</script>
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-3G4SLW2V7C"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-3G4SLW2V7C');
+</script>
+<link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@500;600;700&family=Spline+Sans+Mono:wght@400;500;600;700&family=Instrument+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/variables.css?v=4">
+<link rel="stylesheet" href="/css/layout.css?v=6">
+<link rel="stylesheet" href="/css/components.css?v=7">
+<link rel="stylesheet" href="/css/lessons.css?v=5">
+<link rel="stylesheet" href="/css/landing.css?v=4">
+<link rel="stylesheet" href="/css/static.css?v=3">
+
+<link rel="stylesheet" href="/css/calculators.css?v=1"></head>
+<body class="lessons-on">
+
+
+<!-- Fixed zone rail -->
+<div class="zone-rail"></div>
+<div class="zone-runner"></div>
+<div class="zone-labels">
+  <span class="zone-label">Z5</span>
+  <span class="zone-label">Z4</span>
+  <span class="zone-label">Z3</span>
+  <span class="zone-label">Z2</span>
+  <span class="zone-label">Z1</span>
+</div>
+
+<!-- Top nav -->
+<nav class="topnav">
+  <a class="topnav-brand" href="/">Bėgimo Fiziologija</a>
+  <div class="topnav-right">
+    <div class="nav-pulse"></div>
+    <span class="lesson-indicator" id="lessonIndicator"></span>
+    <div class="tnav-sep"></div>
+    <span class="tnav-link lang-active">LT</span>
+    <div class="tnav-sep"></div>
+    <a href="/en/calculators/" class="tnav-link">EN</a>
+    <div class="tnav-sep"></div>
+    <a href="/skaiciuokles/" class="tnav-link">Skaičiuoklės</a>
+    <div class="tnav-sep"></div>
+    <button class="tnav-link" onclick="toggleGlossary()">Žodynas</button>
+    <button class="nav-toggle-btn" id="navToggleBtn" onclick="toggleNav()">☰ Pamokos</button>
+  </div>
+</nav>
+<div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
+
+<!-- Lesson nav drawer -->
+<div class="lesson-nav nav-collapsed" id="lessonNav">
+  <a class="nav-home-btn" href="/">← Pradžia</a>
+  <a class="nav-pill" data-lesson="0" href="/pamoka/kodel-begti-letai/">01</a>
+  <a class="nav-pill" data-lesson="1" href="/pamoka/sirdis-pulsas-zonos/">02</a>
+  <a class="nav-pill" data-lesson="2" href="/pamoka/energija-ir-kuras/">03</a>
+  <a class="nav-pill" data-lesson="3" href="/pamoka/laktatas/">04</a>
+  <a class="nav-pill" data-lesson="4" href="/pamoka/kvepavimas-begant/">05</a>
+  <a class="nav-pill" data-lesson="5" href="/pamoka/karstis-ir-hidratacija/">06</a>
+  <a class="nav-pill" data-lesson="6" href="/pamoka/begimo-technika/">07</a>
+  <a class="nav-pill" data-lesson="7" href="/pamoka/kaip-tobuleti/">08</a>
+  <a class="nav-pill" data-lesson="8" href="/pamoka/treniruociu-sistemos/">09</a>
+  <a class="nav-pill" data-lesson="9" href="/pamoka/jegos-treniruotes/">10</a>
+  <a class="nav-pill" data-lesson="10" href="/pamoka/ziemos-begimas/">11</a>
+  <a class="nav-pill" data-lesson="11" href="/pamoka/pirmos-varzybos/">12</a>
+  <a class="nav-pill" data-lesson="12" href="/pamoka/vo2max/">13</a>
+  <a class="nav-pill" data-lesson="13" href="/pamoka/begimo-ekonomija/">14</a>
+  <a class="nav-pill" data-lesson="14" href="/pamoka/nuovargis/">15</a>
+  <a class="nav-pill" data-lesson="15" href="/pamoka/tempo-paskirstymas/">16</a>
+  <a class="nav-pill" data-lesson="16" href="/pamoka/kruvio-valdymas/">17</a>
+  <a class="nav-pill" data-lesson="17" href="/pamoka/skausmas-ar-trauma/">18</a>
+  <a class="nav-pill" data-lesson="18" href="/pamoka/motyvacija-ir-pastovumas/">19</a>
+  <a class="nav-pill" data-lesson="19" href="/pamoka/begimo-laikrodziai/">20</a>
+  <a class="nav-pill" data-lesson="20" href="/pamoka/miegas-ir-atsigavimas/">21</a>
+  <a class="nav-pill" data-lesson="21" href="/pamoka/ka-valgyti-begikui/">22</a>
+</div>
+
+<dialog id="glossaryDialog" aria-label="Žodynas">
+  <div class="glossary-header">
+    <h2>Žodynas</h2>
+    <button class="glossary-close" onclick="toggleGlossary()">✕</button>
+  </div>
+  <div class="glossary-search">
+    <input type="text" id="glossarySearch" placeholder="Ieškoti termino..." oninput="filterGlossary(this.value)">
+  </div>
+  <a class="glossary-full-link" href="/zodynas/">Visas žodynas atskirame puslapyje →</a>
+  <div class="glossary-list" id="glossaryList"></div>
+</dialog>
+
+<!-- ══════════════════════════════════════════
+     LANDING PAGE
+     ══════════════════════════════════════════ -->
+<main>
+
+<article class="lesson active calc-page">
+  <div class="lesson-header">
+    <div class="lesson-num">Įrankis · 3 skaičiuoklės</div>
+    <h1 class="lesson-title">Skaičiuoklės</h1>
+    <p class="lesson-intro">Paverskite bėgimo fiziologiją savo skaičiais: pulso zonos pagal amžių, treniruočių tempai pagal varžybų rezultatą ir laiko prognozė kitoms distancijoms.</p>
+  </div>
+
+  <nav class="calc-tabs">
+    <button class="calc-tab active" data-t="hr"><span class="tnum">01</span> Pulso zonos</button>
+    <button class="calc-tab" data-t="pace"><span class="tnum">02</span> Tempai</button>
+    <button class="calc-tab" data-t="pred"><span class="tnum">03</span> Prognozė</button>
+  </nav>
+
+  <div class="calc-stage">
+    <section class="calc-card show" id="calc-hr">
+      <div class="calc-card-title">Pulso zonų skaičiuoklė</div>
+      <div class="calc-field">
+        <div class="calc-flabel"><span>Amžius</span><strong id="calcAgeOut">35</strong></div>
+        <input type="range" id="calcAge" min="12" max="85" value="35">
+        <div class="calc-ends"><span>12</span><span>85</span></div>
+      </div>
+      <label class="calc-toggle"><input type="checkbox" id="calcUseRest"><span class="calc-track"></span><span>Naudoti ramybės pulsą (tiksliau, Karvoneno metodas)</span></label>
+      <div class="calc-field" id="calcRestField" style="opacity:.4">
+        <div class="calc-flabel"><span>Ramybės pulsas <span class="opt">neprivaloma</span></span><strong id="calcRestOut">60</strong></div>
+        <input type="range" id="calcRest" min="35" max="90" value="60" disabled>
+        <div class="calc-ends"><span>35</span><span>90</span></div>
+      </div>
+      <div class="calc-zbar" id="calcZbar"></div>
+      <div id="calcZones"></div>
+      <div class="calc-note"><b>Maksimalus pulsas</b> apskaičiuotas pagal formulę 220 − amžius (<strong id="calcHrmaxOut">185</strong> bpm). Tai apytikslis įvertis: tiksliausia ribą nustatyti lauko testu. Zonos pateikiamos pagal <span id="calcMethodOut">procentą nuo maksimalaus pulso</span>.</div>
+    </section>
+
+    <section class="calc-card" id="calc-pace">
+      <div class="calc-card-title">Treniruočių tempų skaičiuoklė</div>
+      <div class="calc-row2">
+        <div class="calc-field">
+          <div class="calc-flabel"><span>Neseniai įveikta distancija</span></div>
+          <select class="calc-sel" id="calcPDist"><option value="5000">5 km</option><option value="10000" selected>10 km</option><option value="21097.5">Pusmaratonis</option><option value="42195">Maratonas</option></select>
+        </div>
+        <div class="calc-field">
+          <div class="calc-flabel"><span>Rezultatas</span><span class="opt">pvz. 52:30</span></div>
+          <input class="calc-inp" id="calcPTime" inputmode="numeric" placeholder="val:min:sek" value="52:30">
+        </div>
+      </div>
+      <div class="calc-vdot"><small>VDOT</small><b id="calcVdotOut">—</b></div>
+      <div id="calcPaces"></div>
+      <div class="calc-warn" id="calcPWarn">Patikrinkite laiko formatą: naudokite min:sek arba val:min:sek.</div>
+      <div class="calc-note">Tempai pagrįsti <b>Danielso VDOT</b> modeliu (Daniels ir Gilbert). E lengvas, M maratono, T slenksčio, I intervalų, R kartojimų. Naudokite kaip atskaitos tašką, ne kaip taisyklę.</div>
+    </section>
+
+    <section class="calc-card" id="calc-pred">
+      <div class="calc-card-title">Laiko prognozės skaičiuoklė</div>
+      <div class="calc-row2">
+        <div class="calc-field">
+          <div class="calc-flabel"><span>Neseniai įveikta distancija</span></div>
+          <select class="calc-sel" id="calcRDist"><option value="5000" selected>5 km</option><option value="10000">10 km</option><option value="21097.5">Pusmaratonis</option><option value="42195">Maratonas</option></select>
+        </div>
+        <div class="calc-field">
+          <div class="calc-flabel"><span>Rezultatas</span><span class="opt">pvz. 24:00</span></div>
+          <input class="calc-inp" id="calcRTime" inputmode="numeric" placeholder="val:min:sek" value="24:00">
+        </div>
+      </div>
+      <div id="calcPreds"></div>
+      <div class="calc-warn" id="calcRWarn">Patikrinkite laiko formatą: naudokite min:sek arba val:min:sek.</div>
+      <div class="calc-note">Prognozė pagal <b>Riegelio formulę</b> (T₂ = T₁ × (D₂ / D₁)^1,06). Ji daro prielaidą apie panašų treniruotumą; ilgesnėms distancijoms realus laikas priklauso ir nuo ištvermės bei mitybos.</div>
+    </section>
+  </div>
+</article>
+
+</main>
+
+<script defer src="/js/nav.js?v=8"></script>
+<script defer src="/js/glossary.js?v=4"></script>
+<script defer src="/js/calculators.js?v=1"></script>
+</body>
+</html>
