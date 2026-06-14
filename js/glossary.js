@@ -8,7 +8,7 @@ const GLOSSARY_TERMS = [
   { term: 'Glikogenas', def: 'Gliukozės atsargos raumenyse ir kepenyse. Pagrindinis greitos energijos šaltinis. Ribota talpa, ~1500–2000 kcal, užtenka ~90 min intensyvaus bėgimo.' },
   { term: 'Kadencija', def: 'Žingsnių skaičius per minutę (ž./min). Daugumai bėgikų optimalus diapazonas yra 170–180. Mažesnė kadencija reiškia ilgesnį žingsnį ir didesnę smūgio jėgą.' },
   { term: 'Kapiliarai', def: 'Mažiausios kraujagyslės, deguonį pristatančios tiesiai į raumens skaidulas. Ištvermės treniruotės didina kapiliarų tankumą; tai vienas pagrindinių aerobinio progreso mechanizmų.' },
-  { term: 'Kardiodriftas (pulso slinkis)', def: 'Širdies ritmo slinkis, pulsas kyla bėgant tuo pačiu tempu ilgiau, ypač karštyje ar esant dehidratacijai.' },
+  { term: 'Kardiodriftas (pulso slinkis)', def: 'Širdies ritmo slinkis, pulsas pamažu kyla ilgiau bėgant tuo pačiu tempu, ypač per karštį ar esant dehidratacijai.' },
   { term: 'Laktatas', def: 'Medžiaga, susidaranti greitai skaidant gliukozę. Ji nėra tiesioginė deginimo pojūčio priežastis, deginimą sukelia vandenilio jonai. Laktatas pats gali būti kuras.' },
   { term: 'Laktatinis slenkstis', def: 'Intensyvumo riba, po kurios laktatas kraujyje pradeda kauptis greičiau nei perdirbamas. Treniruotas bėgikas pasiekia šią ribą vėliau (didesniu tempu).' },
   { term: 'Liemuo (core)', def: 'Liemens stabilizaciniai raumenys, skersiniai pilvo raumenys, įstrižieji, nugaros tiesiamieji, diafragma. Svarbūs jėgos perdavimui tarp kojų ir rankų bėgant.' },
