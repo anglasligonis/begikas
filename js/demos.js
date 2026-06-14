@@ -204,7 +204,7 @@ function initDemo4() {
     const thrExplain = document.getElementById('s4-thr-explain');
     const thrBpm = document.getElementById('s4-thr-bpm');
     if (thrExplain) thrExplain.textContent = thr + '%';
-    if (thrBpm) thrBpm.textContent = '~' + Math.round(190 * thr / 100) + ' BPM';
+    if (thrBpm) thrBpm.textContent = '~' + Math.round(190 * thr / 100) + ' bpm';
     const descs = {
       low: 'Laktatas gaminamas, bet perdirbamas tokiu pat tempu. Galite bėgti ilgai. Čia kuriamas aerobinis pagrindas.',
       mid: 'Artėjate prie slenksčio arba jį pasiekėte. Tempas tvarus, bet reikalauja pastangų. Geriausia zona slenkščiui kelti.',
