@@ -272,6 +272,12 @@ html.lesson-route #landing { display: none; }
 html.lesson-route main     { display: block !important; }
 
 /* Responsive */
+/* Below the docked-sidebar width the "☰ Pamokos" toggle shares the top bar;
+   drop the calculators link there so the toggle stays on screen. */
+@media(max-width:768px) {
+  .tnav-calc, .tnav-calc-sep { display: none; }
+}
+
 @media(max-width:600px) {
   .topnav { padding-left: 1rem; padding-right: 1rem; gap: .6rem; }
   .topnav-brand { font-size: 0; gap: 0; } /* glyph only on phones */
